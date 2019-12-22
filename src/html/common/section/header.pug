@@ -1,0 +1,15 @@
+.header.is-sticky
+	.container
+		.navigation-menu
+			ul
+				li.logo
+					a(href="#")
+						img(src="assets/images/logo.svg", alt="TGT Logo")
+				each item in ['Home', 'Work', 'About', 'Profile']
+					li
+						a(href="#")= item
+			ul.social-list
+				each icon in ['facebook', 'behance', 'dribbble', 'github']
+					li
+						a(href="#")
+							i(class=`ri-${icon}-fill`)

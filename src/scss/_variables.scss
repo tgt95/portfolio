@@ -1,0 +1,75 @@
+// Colors
+$brand: 						#EA5D5D 				!default;
+
+// Semantic
+$blue: 							#1896FF 				!default;
+$green: 						#7AD610 				!default;
+$orange: 						#FFA65E 				!default;
+$red: 							#FF5E5E 				!default;
+$yellow: 						#FFD836 				!default;
+
+
+// Neutral
+$grey0: 						#2a3e52 				!default;
+// $grey0: 						#454545 				!default;
+$grey1: 						#87969d 				!default;
+// $grey1: 						#7D8BA4 				!default;
+// $grey1: 						#95a3bd 				!default;
+$grey2: 						#B9C1CE 				!default;
+$grey3: 						#D7DBE3 				!default;
+$grey4: 						#F5F6F8 				!default;
+
+
+// Heading
+$h1: 							40px					!default;
+$h2: 							32px					!default;
+$h3: 							28px					!default;
+$h4: 							24px					!default;
+$h5: 							20px					!default;
+$h6: 							16px					!default;
+
+
+// Social
+$twitter: 						#55acee					!default;
+$facebook: 						#4466ae					!default;
+$google: 						#dd4b39					!default;
+$dribbble: 						#ea4c89					!default;
+$behance: 						#1769ff					!default;
+$linkedin: 						#0077B5					!default;
+$pinterest: 					#cc2127					!default;
+$youtube: 						#e52d27					!default;
+$tumblr: 						#35465c					!default;
+$github-alt: 					#333333					!default;
+$reddit: 						#ff4500					!default;
+
+// Body Background
+$bg-body: #f3f6f8;
+
+
+// Border
+$border-theme:                  6px        				!default;
+$border-rounded:                30px        			!default;
+$border-color:                	#E5E5E5     			!default;
+// $border-input:                	#ced4da     			!default;
+
+// Input
+$input-height:					40px					!default;
+$input-border-color:			$border-color			!default;
+
+$input-bg:                		white					!default;
+$input-color:                	$grey0					!default;
+$input-color-active:			$brand					!default;
+
+$input-placeholder:				$grey2					!default;
+
+$input-disabled:				$grey2					!default;
+$input-disabled-bg:				$grey4					!default;
+
+
+// Checkbox & Radio
+$custom-control-size: 20px;
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,900);
+$font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$font-base: 14px;

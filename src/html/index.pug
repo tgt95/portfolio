@@ -1,0 +1,24 @@
+extends common/layout.pug
+
+block meta-title
+	title Trinh Gia Tuan | UX/UI Designer | Portfolio
+
+block custom
+
+block content
+	.section.section-banner
+		.container
+			.row.align-items-center
+				.col-md-6.content-text
+					.title Hello, <br> I'm 
+						a(href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" alt="What's a Fullstack Designer?") Fullstack Designer
+					p My name is Trinh Gia Tuan, the 24-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
+				.col-md-6.content-bg
+					include svg/banner-bg.svg
+block script
+	script.
+		//- document.querySelector('.section-banner .content-bg').style.height = window.innerHeight + 'px';
+		document.querySelector('.section-banner .container .row').style.height = window.innerHeight + 'px';
+		window.resize = (e)=> {
+			console.log(e);
+		}

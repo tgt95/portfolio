@@ -1,0 +1,21 @@
+.section-banner{
+	position: relative;
+	overflow-x: hidden;
+	.content-text{
+		.title{
+			font-size: $h1;
+			font-weight: 700;
+			color: $brand;
+			@extend .m-b-8;
+			a{
+				color: $brand;
+				text-decoration: underline;
+			}
+		}
+	}
+	.content-bg{
+		position: absolute;
+		right: 0;
+		top: -10%;
+	}
+}
