@@ -15,32 +15,43 @@
 			list-style-type: none;
 			padding-left: 0;
 			margin-bottom: 0;
-			li{
-				display: inline-block;
-				&:not(:last-child){
-					margin-right: 32px;
-				}
-				&.logo{
-					$logo-size: 60px;
-					img{
-						width: $logo-size;
-						height: $logo-size;
+			&:not(.social-list){
+				li{
+					display: inline-block;
+					&:not(:last-child){
+						margin-right: 32px;
 					}
-				}
-				a{
-					color: $brand;
-					font-weight: 600;
-					transition: border .3s ease, color .3s ease;
-					text-decoration: none;
-					border-bottom: 3px solid transparent;
-					&:hover{
+					&.logo{
+						$logo-size: 60px;
+						img{
+							width: $logo-size;
+							height: $logo-size;
+						}
+					}
+					a{
 						color: $brand;
-						border-color: $brand;
+						font-weight: 600;
+						transition: border .3s ease, color .3s ease;
+						text-decoration: none;
+						// border-bottom: 3px solid transparent;
+						&:hover{
+							color: $brand;
+							// border-color: $brand;
+						}
 					}
 				}
 			}
 			&.social-list{
-
+				display: flex;
+				align-items: center;
+				li{
+					&:not(:last-child){
+						margin-right: 32px;
+					}
+				}
+				a{
+					text-decoration: none;
+				}
 			}
 		}
 		&-right{

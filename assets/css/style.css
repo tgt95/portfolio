@@ -61,6 +61,30 @@ body {
 .m-b-19 {
   margin-bottom: 600px; }
 
+.btn-just-icon {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  line-height: 38px;
+  text-align: center; }
+  .btn-just-icon i {
+    font-size: 20px; }
+  .btn-just-icon.btn-brand {
+    -webkit-transition: color .3s ease, background-color .3s ease;
+    transition: color .3s ease, background-color .3s ease;
+    color: #EA5D5D; }
+    .btn-just-icon.btn-brand:hover {
+      background-color: rgba(234, 93, 93, 0.2); }
+
+.section {
+  margin-bottom: 120px; }
+  .section-title {
+    font-weight: 700;
+    font-size: 40px;
+    color: #EA5D5D;
+    margin-bottom: 32px; }
+
 .section-banner {
   position: relative;
   overflow-x: hidden; }
@@ -98,20 +122,31 @@ body {
     list-style-type: none;
     padding-left: 0;
     margin-bottom: 0; }
-    .header .navigation-menu ul li {
+    .header .navigation-menu ul:not(.social-list) li {
       display: inline-block; }
-      .header .navigation-menu ul li:not(:last-child) {
+      .header .navigation-menu ul:not(.social-list) li:not(:last-child) {
         margin-right: 32px; }
-      .header .navigation-menu ul li.logo img {
+      .header .navigation-menu ul:not(.social-list) li.logo img {
         width: 60px;
         height: 60px; }
-      .header .navigation-menu ul li a {
+      .header .navigation-menu ul:not(.social-list) li a {
         color: #EA5D5D;
         font-weight: 600;
         -webkit-transition: border .3s ease, color .3s ease;
         transition: border .3s ease, color .3s ease;
-        text-decoration: none;
-        border-bottom: 3px solid transparent; }
-        .header .navigation-menu ul li a:hover {
-          color: #EA5D5D;
-          border-color: #EA5D5D; }
+        text-decoration: none; }
+        .header .navigation-menu ul:not(.social-list) li a:hover {
+          color: #EA5D5D; }
+    .header .navigation-menu ul.social-list {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center; }
+      .header .navigation-menu ul.social-list li:not(:last-child) {
+        margin-right: 32px; }
+      .header .navigation-menu ul.social-list a {
+        text-decoration: none; }

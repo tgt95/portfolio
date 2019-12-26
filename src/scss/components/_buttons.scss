@@ -1,0 +1,18 @@
+.btn-just-icon{
+    display: inline-block;
+    width: $input-height-md;
+    height: $input-height-md;
+    border-radius: $border-theme;
+    line-height: $input-height-md;
+    text-align: center;
+    i{
+        font-size: 20px;
+    }
+    &.btn-brand{
+        transition: color .3s ease, background-color .3s ease;
+        color: $brand;
+        &:hover{
+            background-color: rgba($brand, .2);
+        }
+    }
+}

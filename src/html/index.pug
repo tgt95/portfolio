@@ -11,14 +11,28 @@ block content
 			.row.align-items-center
 				.col-md-6.content-text
 					.title Hello, <br> I'm 
-						a(href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" alt="What's a Fullstack Designer?") Fullstack Designer
+						a(href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?") Fullstack Designer
 					p My name is Trinh Gia Tuan, the 24-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
 				.col-md-6.content-bg
 					include svg/banner-bg.svg
+
+	.section.section-profile
+		.container
+			.row.align-items-center
+				.col-md-6
+					include svg/profile-illustration.svg
+				.col-md-6
+					.section-title Profile
 block script
 	script.
-		//- document.querySelector('.section-banner .content-bg').style.height = window.innerHeight + 'px';
-		document.querySelector('.section-banner .container .row').style.height = window.innerHeight + 'px';
+		//- $('#Human > g').velocity({ transform: ["translate(55.216854, 355.290468)", "translate(55.216854, 655.290468)"] }, { 
+		//- 	duration: 1000,
+		//- 	delay: 0,
+		//- 	easing: "linear",
+		//- 	complete: function(){
+
+		//- 	}
+		//- });
 		window.resize = (e)=> {
-			console.log(e);
+			//- console.log(e);
 		}

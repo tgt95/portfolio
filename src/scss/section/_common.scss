@@ -1,6 +1,20 @@
+.section{
+	margin-bottom: 120px;
+	&-title{
+		font-weight: 700;
+		font-size: $h1;
+		color: $brand;
+		margin-bottom: 32px;
+	}
+}
+
 .section-banner{
 	position: relative;
 	overflow-x: hidden;
+	// // overflow-y: unset;
+	// > .container > .row{
+	// 	min-height: 900px;
+	// }
 	.content-text{
 		.title{
 			font-size: $h1;

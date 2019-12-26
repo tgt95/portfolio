@@ -1,5 +1,6 @@
 // Colors
 $brand: 						#EA5D5D 				!default;
+$brand-bg: 						#FFFAFA 				!default;
 
 // Semantic
 $blue: 							#1896FF 				!default;
@@ -10,14 +11,11 @@ $yellow: 						#FFD836 				!default;
 
 
 // Neutral
-$grey0: 						#2a3e52 				!default;
-// $grey0: 						#454545 				!default;
-$grey1: 						#87969d 				!default;
-// $grey1: 						#7D8BA4 				!default;
-// $grey1: 						#95a3bd 				!default;
-$grey2: 						#B9C1CE 				!default;
-$grey3: 						#D7DBE3 				!default;
-$grey4: 						#F5F6F8 				!default;
+$neutral-0: 						#2a3e52 				!default;
+$neutral-1: 						#87969d 				!default;
+$neutral-2: 						#B9C1CE 				!default;
+$neutral-3: 						#D7DBE3 				!default;
+$neutral-4: 						#F5F6F8 				!default;
 
 
 // Heading
@@ -53,17 +51,19 @@ $border-color:                	#E5E5E5     			!default;
 // $border-input:                	#ced4da     			!default;
 
 // Input
-$input-height:					40px					!default;
+$input-height-sm:				30px					!default;
+$input-height-md:				38px				    !default;
+$input-height-lg:				48px					!default;
 $input-border-color:			$border-color			!default;
 
 $input-bg:                		white					!default;
-$input-color:                	$grey0					!default;
+$input-color:                	$neutral-0					!default;
 $input-color-active:			$brand					!default;
 
-$input-placeholder:				$grey2					!default;
+$input-placeholder:				$neutral-2					!default;
 
-$input-disabled:				$grey2					!default;
-$input-disabled-bg:				$grey4					!default;
+$input-disabled:				$neutral-2					!default;
+$input-disabled-bg:				$neutral-4					!default;
 
 
 // Checkbox & Radio
