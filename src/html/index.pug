@@ -6,6 +6,7 @@ block meta-title
 block custom
 
 block content
+	// Banner
 	.section.section-banner
 		.container
 			.row.align-items-center
@@ -15,7 +16,8 @@ block content
 					p My name is Trinh Gia Tuan, the 24-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
 				.col-md-6.content-bg
 					include svg/banner-bg.svg
-
+	
+	// Profile
 	.section.section-profile
 		.container
 			.row.align-items-center
@@ -23,6 +25,50 @@ block content
 					include svg/profile-illustration.svg
 				.col-md-6
 					.section-title Profile
+					.profile-content
+						ul
+							li
+								.title Fullname
+								span Trinh Gia Tuan
+							li
+								.title Date of Birth
+								span 11th October, 1995
+							li
+								.title Email
+								a(href="mailto:giatuantrinh@gmail.com") giatuantrinh@gmail.com
+							li
+								.title Phone
+								a(href="tel:+84703000876") 0703 000 876
+							li
+								.title Address
+								span District 11, Ho Chi Minh City
+	
+	// Skills
+	.section.section-skills
+		.container
+			.section-title.text-center Skills
+			.row.align-items-center.skills-content
+				-
+					let skills = [
+						{
+							'title': 'UI Design',
+							'icon': 'ui.svg'
+						},
+						{
+							'title': 'UX Mindset',
+							'icon': 'ux.svg'
+						},
+						{
+							'title': 'Develop',
+							'icon': 'develop.svg'
+						},
+					]
+
+				each item, index in skills
+					.col-md-4.item
+						.icon
+							img(src!=`assets/images/icons/${item.icon}`)/
+						.title= item.title
 block script
 	script.
 		//- $('#Human > g').velocity({ transform: ["translate(55.216854, 355.290468)", "translate(55.216854, 655.290468)"] }, { 

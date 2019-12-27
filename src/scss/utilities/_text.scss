@@ -1,0 +1,5 @@
+@each $type in (center, left, right){
+	.text-#{$type}{
+		text-align: $type;
+	}
+}

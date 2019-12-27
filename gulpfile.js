@@ -164,6 +164,8 @@ const plugins = ()=>{
 		paths.node_modules + '/bootstrap' + '/**/*',
 		// paths.node_modules + '/popper.js' + '/**/*',
 
+		paths.node_modules + '/velocity-animate' + '/**/*',
+
 		// paths.node_modules + '/datatables.net' + '/**/*',
 		// paths.node_modules + '/datatables.net-bs4' + '/**/*',
 		// paths.node_modules + '/datatables.net-responsive' + '/**/*',
