@@ -52,6 +52,9 @@
 				a{
 					text-decoration: none;
 				}
+				@media (max-width: 576px) {
+					display: none;
+				}
 			}
 		}
 		&-right{

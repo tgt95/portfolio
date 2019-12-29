@@ -162,9 +162,13 @@ const plugins = ()=>{
 
 		paths.node_modules + '/jquery' + '/**/*',
 		paths.node_modules + '/bootstrap' + '/**/*',
-		// paths.node_modules + '/popper.js' + '/**/*',
+		paths.node_modules + '/popper.js' + '/**/*',
 
 		paths.node_modules + '/velocity-animate' + '/**/*',
+
+		paths.node_modules + '/snapsvg' + '/**/*',
+
+		paths.node_modules + '/swiper' + '/**/*',
 
 		// paths.node_modules + '/datatables.net' + '/**/*',
 		// paths.node_modules + '/datatables.net-bs4' + '/**/*',

@@ -26,7 +26,7 @@ function () {
     this.elements = {
       contentPage: $('.content-page'),
       header: $('.header'),
-      bottomNav: $('.bottom-navigation-wrapper')
+      navigation: $('.navigation-menu')
     };
   }
 
@@ -49,10 +49,26 @@ function () {
       var banner = $('.section-banner'),
           bannerBackground = banner.find('.content-bg'),
           row = banner.find('.row');
-      bannerBackground.height(bannerBackground.outerHeight(true));
-      row.height(bannerBackground.outerHeight(true));
 
-      if (window.innerHeight >= 900) {} // Human
+      if (window.innerWidth > 991) {
+        bannerBackground.height(bannerBackground.outerHeight(true));
+        row.height(bannerBackground.outerHeight(true));
+      }
+
+      if (window.innerWidth <= 576 && window.innerWidth > 414) {
+        var height = bannerBackground.data('responsive-sm');
+        bannerBackground.find('svg').attr('width', "".concat(window.innerWidth, "px"));
+        bannerBackground.find('svg').attr('height', "".concat(height, "px"));
+        bannerBackground.find('svg').attr('viewBox', "0 0 1024 ".concat(height));
+      }
+
+      if (window.innerWidth <= 414) {
+        var _height = bannerBackground.data('responsive-xs');
+
+        bannerBackground.find('svg').attr('width', "".concat(window.innerWidth, "px"));
+        bannerBackground.find('svg').attr('height', "".concat(_height, "px"));
+        bannerBackground.find('svg').attr('viewBox', "0 0 1180 ".concat(_height));
+      } // Human
 
 
       var humanAnimate = function humanAnimate() {
@@ -110,22 +126,92 @@ function () {
       }, {
         loop: true
       }); // Light Shape
-      // const lightShapeAnimate = ()=> {
-      //     // let value = Math.round(Math.random() * 1000);
-      //     let valueY = '16px';
-      //     let valueX = '10px';
-      //     console.log(valueY);
-      // 	$('#Light-Shape')
-      // 	.velocity({ transform: ["translate(0,0)", `translate(${valueX}, ${valueY})`] }, { duration: 3500 } )
-      // 	.velocity({ transform: [`translate(${valueX}, ${valueY})`, "translate(0,0)"] }, { duration: 5000, complete: lightShapeAnimate });
-      // };
-      // lightShapeAnimate();
+
+      var lightShapeAnimate = function lightShapeAnimate() {
+        // let value = Math.round(Math.random() * 1000);
+        var value = 1.04;
+        $('#Light-Shape').velocity({
+          transform: ["scale(1)", "scale(".concat(value, ")")]
+        }, {
+          duration: 3500
+        }).velocity({
+          transform: ["scale(".concat(value, ")"), "scale(1)"]
+        }, {
+          duration: 5000,
+          complete: lightShapeAnimate
+        });
+      };
+
+      lightShapeAnimate(); // Hand Shake
+
+      var handShakeAnimate = function handShakeAnimate() {
+        var hand = Snap.select('#Hand'),
+            handBBbox = hand.getBBox();
+        var status = true;
+
+        var waveLeft = function waveLeft() {
+          hand.animate({
+            transform: "r8, ".concat(handBBbox.cx, ", ").concat(handBBbox.y2)
+          }, 500);
+        };
+
+        var waveRight = function waveRight() {
+          hand.animate({
+            transform: "r-2, ".concat(handBBbox.cx, ", ").concat(handBBbox.y2)
+          }, 500);
+        };
+
+        waveRight();
+        setInterval(function () {
+          if (status) {
+            waveLeft();
+            status = false;
+          } else {
+            waveRight();
+            status = true;
+          }
+        }, 500);
+      };
+
+      handShakeAnimate();
+    }
+  }, {
+    key: "workGrid",
+    value: function workGrid() {
+      if (window.innerWidth <= 576) {
+        $('.section-work .item').css('maxWidth', "".concat(window.innerWidth - 60, "px"));
+      }
+
+      var sliderElement = $('.section-work .swiper-container'),
+          filterButtonElements = $('.section-work .navigation-tabs a'),
+          titleElement = $('.section-work .section-title');
+      var gallerySlider = new Swiper(sliderElement, {
+        slidesPerView: 'auto',
+        slidesOffsetBefore: titleElement.position().left,
+        slidesOffsetAfter: titleElement.position().left,
+        spaceBetween: 32
+      });
+      filterButtonElements.on('click', function (e) {
+        var $this = $(e.currentTarget),
+            li = $('.section-work .navigation-tabs li'),
+            $li = $this.parent(),
+            target = $($this.data('tab-target')),
+            containers = $('.section-work .swiper-container');
+        e.preventDefault();
+        li.removeClass('active');
+        $li.addClass('active');
+        containers.hide(400, function () {
+          target.show(400);
+          gallerySlider[$li.index()].update();
+        });
+      });
     }
   }, {
     key: "init",
     value: function init() {
       this.baseConfig();
       this.bannerCofig();
+      this.workGrid();
     }
   }]);
 

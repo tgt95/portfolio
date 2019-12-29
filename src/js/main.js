@@ -15,7 +15,7 @@ class Theme {
 		this.elements = {
 			contentPage : $('.content-page'),
 			header : $('.header'),
-			bottomNav : $('.bottom-navigation-wrapper'),
+			navigation : $('.navigation-menu'),
 		};
 	}
 	baseConfig(){
@@ -32,10 +32,23 @@ class Theme {
             bannerBackground = banner.find('.content-bg'),
             row = banner.find('.row');
 
-        bannerBackground.height(bannerBackground.outerHeight(true));
-        row.height(bannerBackground.outerHeight(true));
-        if (window.innerHeight >= 900){
-        }
+		if (window.innerWidth > 991){
+			bannerBackground.height(bannerBackground.outerHeight(true));
+			row.height(bannerBackground.outerHeight(true));
+		}
+		
+		if (window.innerWidth <= 576 && window.innerWidth > 414){
+			let height = bannerBackground.data('responsive-sm');
+			bannerBackground.find('svg').attr('width', `${window.innerWidth}px`);
+			bannerBackground.find('svg').attr('height', `${height}px`);
+			bannerBackground.find('svg').attr('viewBox', `0 0 1024 ${height}`);
+		}
+		if (window.innerWidth <= 414){
+			let height = bannerBackground.data('responsive-xs');
+			bannerBackground.find('svg').attr('width', `${window.innerWidth}px`);
+			bannerBackground.find('svg').attr('height', `${height}px`);
+			bannerBackground.find('svg').attr('viewBox', `0 0 1180 ${height}`);
+		}
 
         // Human
         const humanAnimate = ()=> {
@@ -65,24 +78,83 @@ class Theme {
 			.velocity({ transform: ["scale(1)", `scale(${value})`] }, { duration: 3500 } )
 			.velocity({ transform: [`scale(${value})`, "scale(1)"] }, { duration: 5000, complete: svgAnimate });
 		};
-        svgAnimate();
-        $('#DESIGNERDEVELOPER').velocity({ opacity: 0.1 },{ loop: true },);
+		svgAnimate();
+		
+		$('#DESIGNERDEVELOPER').velocity({ opacity: 0.1 },{ loop: true },);
+		
         // Light Shape
-        // const lightShapeAnimate = ()=> {
-        //     // let value = Math.round(Math.random() * 1000);
-        //     let valueY = '16px';
-        //     let valueX = '10px';
-        //     console.log(valueY);
+        const lightShapeAnimate = ()=> {
+            // let value = Math.round(Math.random() * 1000);
+            let value = 1.04;
+			$('#Light-Shape')
+			.velocity({ transform: ["scale(1)", `scale(${value})`] }, { duration: 3500 } )
+			.velocity({ transform: [`scale(${value})`, "scale(1)"] }, { duration: 5000, complete: lightShapeAnimate });
+		};
+		lightShapeAnimate();
 
-		// 	$('#Light-Shape')
-		// 	.velocity({ transform: ["translate(0,0)", `translate(${valueX}, ${valueY})`] }, { duration: 3500 } )
-		// 	.velocity({ transform: [`translate(${valueX}, ${valueY})`, "translate(0,0)"] }, { duration: 5000, complete: lightShapeAnimate });
-		// };
-		// lightShapeAnimate();
+		// Hand Shake
+		const handShakeAnimate = ()=> {
+			let hand = Snap.select('#Hand'),
+			handBBbox = hand.getBBox();
+		
+			let status = true;
+			const waveLeft = ()=> {
+				hand.animate({ transform: `r8, ${handBBbox.cx}, ${handBBbox.y2}` }, 500);
+			}
+			const waveRight = ()=> {
+				hand.animate({ transform: `r-2, ${handBBbox.cx}, ${handBBbox.y2}` }, 500);
+			}
+			waveRight();
+			setInterval(()=> {
+				if(status){
+					waveLeft();
+					status = false;
+				}
+				else{
+					waveRight();
+					status = true;
+				}
+			}, 500)
+		};
+		handShakeAnimate();
+	}
+	workGrid(){
+		if (window.innerWidth <= 576){
+			$('.section-work .item').css('maxWidth', `${window.innerWidth - 60}px`);
+		}
+
+		let sliderElement = $('.section-work .swiper-container'),
+			filterButtonElements = $('.section-work .navigation-tabs a'),
+			titleElement = $('.section-work .section-title');
+
+		let gallerySlider = new Swiper(sliderElement,{
+			slidesPerView: 'auto',
+			slidesOffsetBefore: titleElement.position().left,
+			slidesOffsetAfter: titleElement.position().left,
+			spaceBetween: 32
+		});
+
+		filterButtonElements.on('click', (e)=> {
+			let $this = $(e.currentTarget),
+				li = $('.section-work .navigation-tabs li'),
+				$li = $this.parent(),
+				target = $($this.data('tab-target')),
+				containers = $('.section-work .swiper-container');
+				
+			e.preventDefault();
+			li.removeClass('active');
+			$li.addClass('active');
+			containers.hide(400, function(){
+				target.show(400);
+				gallerySlider[$li.index()].update();
+			});
+			
+		});
 	}
 	init(){
 		this.baseConfig();
 		this.bannerCofig();
+		this.workGrid();
 	}
 }
 

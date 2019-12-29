@@ -1,0 +1,10 @@
+footer.footer
+    .container
+        .row
+            .col-md-6.author-content © Gia Tuan Trinh. <script>document.write((new Date().getFullYear()))</script> All Rights Reserved
+            .col-md-6
+                ul.social-list
+                    each icon, index in ['facebook', 'behance', 'dribbble', 'github']
+                        li
+                            a(href=socialLink[index]).btn-just-icon.btn-brand
+                                i(class=`ri-${icon}-fill`)

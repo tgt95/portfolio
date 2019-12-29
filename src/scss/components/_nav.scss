@@ -1,0 +1,28 @@
+.navigation-tabs{
+    ul{
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+        display: flex;
+        flex-wrap: wrap;
+        li{
+            &:not(:last-child){
+                margin-right: 32px;
+            }
+            a{
+                font-weight: 600;
+                color: $neutral-0;
+                border-bottom: 2px solid transparent;
+                transition: border .3s ease, color .3s ease;
+                text-decoration: none;
+            }
+            &.active, &:hover{
+                a{
+                    color: $brand;
+                    border-color: $brand;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
