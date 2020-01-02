@@ -59,8 +59,11 @@ const html = ()=> {
 	}}))
 	.pipe(pug({
 		doctype: 'html',
-		pretty: false
+		pretty: true
 	}))
+	.pipe(rename({
+        extname: '.php'
+    }))
 	.pipe(dest('./'));
 }
 
@@ -169,6 +172,8 @@ const plugins = ()=>{
 		paths.node_modules + '/snapsvg' + '/**/*',
 
 		paths.node_modules + '/swiper' + '/**/*',
+
+		paths.node_modules + '/photoswipe' + '/**/*',
 
 		// paths.node_modules + '/datatables.net' + '/**/*',
 		// paths.node_modules + '/datatables.net-bs4' + '/**/*',

@@ -84,7 +84,7 @@ block content
 							},
 							{
 								'title': 'Mobile App',
-								'slug': 'mobile'
+								'slug': 'app'
 							},
 							//- {
 							//- 	'title': 'Branding',
@@ -183,18 +183,26 @@ block content
 							'fullImage': 'assets/images/projects/web/full/getraco.jpg',
 						},
 					]
-				each item, index in webProjects
+				mixin galleryCard(item, index)
 					.swiper-slide.item
 						.item-thumbnail
 							img(src=item.image)
-							a(href="#").overlay-content
+							<?php list($width, $height) = getimagesize('#{item.fullImage}') ?>
+							a(href=item.fullImage data-size!="<?php echo $width.'x'.$height; ?>" data-img-index=index).overlay-content
+								i.icon.ri-zoom-in-line
 						.title= item.title
+						.url-link
+							//- i.icon.ri-global-line
+							a(href=item.website target="_blank" rel="nofollow")= item.website
+
+				each item, index in webProjects
+					+galleryCard(item, index)
 			//- .swiper-pagination
 			//- .swiper-button-prev
 			//- .swiper-button-next
 			//- .swiper-scrollbar
 
-		.swiper-container(id="category-mobile" style="display: none;")
+		.swiper-container(id="category-app" style="display: none;")
 			.swiper-wrapper.slide-wrapper
 				-
 					let mobileProjects = [
@@ -234,6 +242,83 @@ block content
 					a(href="Designer-Trinh-Gia-Tuan.pdf").btn.btn-brand Download CV
 				.col-md-5.col-lg-6.content-bg
 					include svg/human-2.svg
+	
+	//- Photoswipe
+	.pswp(tabindex="-1" role="dialog" aria-hidden="true")
+		.pswp__bg
+		.pswp__scroll-wrap
+			.pswp__container
+				.pswp__item
+				.pswp__item
+				.pswp__item
+			.pswp__ui.pswp__ui--hidden
+				.pswp__top-bar
+					.pswp__counter
+					button.pswp__button.pswp__button--close(title="Close (Esc)")
+					button.pswp__button.pswp__button--share(title="Share")
+					button.pswp__button.pswp__button--fs(title="Toggle fullscreen")
+					button.pswp__button.pswp__button--zoom(title="Zoom in/out")
+					.pswp__preloader
+						.pswp__preloader__icn
+							.pswp__preloader__cut
+								.pswp__preloader__donut
+				.pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
+					.pswp__share-tooltip
+				button.pswp__button.pswp__button--arrow--left(title="Previous (arrow left)")
+				button.pswp__button.pswp__button--arrow--right(title="Next (arrow right)")
+				.pswp__caption
+					.pswp__caption__center
+		//- .pswp__custom--gallery.slider-wrapper
+		//- 	a.item.pswp__custom--gallery-item(href="<?php echo $value; ?>")
+		//- 		img(src="<?php echo $value; ?>")
+
 block script
+	//-  Get Data Image
+	| <?php $webFullImages = array(
+	each item, index in webProjects
+		| '#{item.fullImage}',
+	| ); ?>
+	
 	script.
+		// Init Gallery Plugins
+		let $pswp = document.querySelector('.pswp'),
+			webItems = [
+				<?php foreach ($webFullImages as $key => $value) { 
+					list($width, $height) = getimagesize($value); ?>
+				{
+					src: '<?php echo $value; ?>',
+					w: '<?php echo $width; ?>',
+					h: '<?php echo $height; ?>',
+					galleryUID: '<?php echo $key; ?>'
+				},
+				<?php } ?>
+			];
+		$(document).on('click', '.section-work .item-thumbnail .overlay-content', function(event) {
+			event.preventDefault();
+
+			var index = $(this).data('img-index'),
+				category = $(this).closest('.swiper-container').attr('id'),
+				data,
+				thumbnail = this,
+					options = {
+					arrowEl: true,
+					index: index,
+					bgOpacity: 0.8,
+					getThumbBoundsFn: function(index) {
+						// get window scroll Y
+						var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+						// optionally get horizontal scroll
+
+						// get position of element relative to viewport
+						var rect = thumbnail.getBoundingClientRect();
+
+						// w = width
+						return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+					}
+				}
+			category == 'category-web' ? data = webItems : 0;
+			//- category == 'category-app' && data = webItems;
+			var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, data, options);
+			lightBox.init();
+		});
 		

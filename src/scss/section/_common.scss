@@ -300,6 +300,19 @@
 			font-size: $h6;
 			font-weight: 600;
 		}
+		> .url-link{
+			[class^="ri-"], [class*=" ri-"]{
+				font-size: 20px;
+				vertical-align: middle;
+			}
+			.icon{
+				margin-right: 4px;
+			}
+			a{
+				color: $neutral-0;
+				text-decoration: underline;
+			}
+		}
 		> .item-thumbnail {
 			box-shadow: 0 0 10.28px 1.72px rgba(0,0,0,.03);
 			overflow: hidden;
@@ -319,7 +332,9 @@
 				width: 100%;
 			}
 			.overlay-content{
-				display: block;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -329,6 +344,11 @@
 				transition: background .3s ease, visibility .3s ease, opacity .3s ease;
 				visibility: hidden;
 				opacity: 0;
+				text-decoration: none;
+				> .icon{
+					font-size: 64px;
+					color: white;
+				}
 			}
 		}
 		&:hover{

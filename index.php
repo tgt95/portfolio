@@ -1,11 +1,65 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Trinh Gia Tuan | UX/UI Designer | Portfolio</title><!-- CSS--><link rel="shortcut icon" href="assets/images/logo.png"><!-- Bootstrap--><link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-grid.min.css"><link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-reboot.min.css"><!-- Swiper--><link rel="stylesheet" type="text/css" href="assets/plugins/swiper/css/swiper.min.css"><!-- Icons--><link rel="stylesheet" type="text/css" href="assets/plugins/remixicon/fonts/remixicon.css"><link rel="stylesheet" type="text/css" href="assets/css/style.min.css"><!-- Global site tag (gtag.js) - Google Analytics--><script async src="https://www.googletagmanager.com/gtag/js?id=UA-79549330-2"></script><script>window.dataLayer = window.dataLayer || [];
-function gtag() {
-	dataLayer.push(arguments);
-}
-gtag('js', new Date());
-
-gtag('config', 'UA-79549330-2');
-</script></head><body><!-- Header--><div class="header is-sticky"><div class="container"><div class="navigation-menu"><ul><li class="logo"><a href="#"><img src="assets/images/logo.svg" alt="TGT Logo"></a></li><li><a href="#">Home</a></li><li><a href="#">Work</a></li><li><a href="#">About</a></li><li><a href="#">Profile</a></li></ul><ul class="social-list"><li><a class="btn-just-icon btn-brand" href="https://www.facebook.com/tgt95"><i class="ri-facebook-fill"></i></a></li><li><a class="btn-just-icon btn-brand" href="https://www.behance.net/tgt95"><i class="ri-behance-fill"></i></a></li><li><a class="btn-just-icon btn-brand" href="https://dribbble.com/tgt95"><i class="ri-dribbble-fill"></i></a></li><li><a class="btn-just-icon btn-brand" href="https://github.com/tgt95"><i class="ri-github-fill"></i></a></li></ul></div></div></div><!-- Banner--><div class="section section-banner"><div class="container"><div class="row align-items-center"><div class="col-lg-6 content-text"><div class="title">Hello, <br> I'm <a href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?">Fullstack Designer</a></div><p>My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.</p></div><div class="col-lg-6 content-bg" data-responsive-sm="800" data-responsive-xs="600"><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trinh Gia Tuan | UX/UI Designer | Portfolio</title>
+    <!-- CSS-->
+    <link rel="shortcut icon" href="assets/images/logo.png">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-reboot.min.css">
+    <!-- Swiper-->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/swiper/css/swiper.min.css">
+    <!-- Icons-->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/photoswipe.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/default-skin/default-skin.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79549330-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+      	dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      
+      gtag('config', 'UA-79549330-2');
+      
+    </script>
+  </head>
+  <body>
+    <!-- Header-->
+    <div class="header is-sticky">
+      <div class="container">
+        <div class="navigation-menu">
+          <ul>
+            <li class="logo"><a href="#"><img src="assets/images/logo.svg" alt="TGT Logo"></a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Profile</a></li>
+          </ul>
+          <ul class="social-list">
+            <li><a class="btn-just-icon btn-brand" href="https://www.facebook.com/tgt95"><i class="ri-facebook-fill"></i></a></li>
+            <li><a class="btn-just-icon btn-brand" href="https://www.behance.net/tgt95"><i class="ri-behance-fill"></i></a></li>
+            <li><a class="btn-just-icon btn-brand" href="https://dribbble.com/tgt95"><i class="ri-dribbble-fill"></i></a></li>
+            <li><a class="btn-just-icon btn-brand" href="https://github.com/tgt95"><i class="ri-github-fill"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Banner-->
+    <div class="section section-banner">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 content-text">
+            <div class="title">Hello, <br> I'm <a href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?">Fullstack Designer</a></div>
+            <p>My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.</p>
+          </div>
+          <div class="col-lg-6 content-bg" data-responsive-sm="800" data-responsive-xs="600"><?xml version="1.0" encoding="UTF-8"?>
 <svg width="1374px" height="1093px" viewBox="0 0 1374 1093" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
     <title>human</title>
@@ -177,7 +231,16 @@ gtag('config', 'UA-79549330-2');
             </g>
         </g>
     </g>
-</svg></div></div></div></div><!-- Profile--><div class="section section-profile"><div class="container"><div class="row align-items-center"><div class="col-md-7 col-lg-6"><?xml version="1.0" encoding="UTF-8"?>
+</svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Profile-->
+    <div class="section section-profile">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-7 col-lg-6"><?xml version="1.0" encoding="UTF-8"?>
 <svg width="466px" height="367px" viewBox="0 0 466 367" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
     <title>Profile-Illustration</title>
@@ -248,7 +311,154 @@ gtag('config', 'UA-79549330-2');
             </g>
         </g>
     </g>
-</svg></div><div class="col-md-5 col-lg-6"><div class="section-title">Profile</div><div class="profile-content"><ul><li><div class="title">Fullname</div><span>Trinh Gia Tuan</span></li><li><div class="title">Date of Birth</div><span>11th October, 1995</span></li><li><div class="title">Email</div><a href="mailto:giatuantrinh@gmail.com">giatuantrinh@gmail.com</a></li><li><div class="title">Phone</div><a href="tel:+84703000876">0703 000 876</a></li><li><div class="title">Address</div><span>District 11, Ho Chi Minh City</span></li></ul></div></div></div></div></div><!-- Skills--><div class="section section-skills"><div class="container"><div class="section-title text-center">Skills</div><div class="row align-items-center skills-content"><div class="col-md-4 col-sm-6 item"><div class="icon"><img src="assets/images/icons/ui.svg"/></div><div class="title">UI Design</div></div><div class="col-md-4 col-sm-6 item"><div class="icon"><img src="assets/images/icons/ux.svg"/></div><div class="title">UX Mindset</div></div><div class="col-md-4 col-sm-6 item"><div class="icon"><img src="assets/images/icons/develop.svg"/></div><div class="title">Develop</div></div></div></div></div><!-- Work--><div class="section section-work"><div class="container"><div class="section-title">Work</div><div class="navigation-tabs"><ul><li class="active"><a href="#" data-tab-target="#category-web">Web</a></li><li><a href="#" data-tab-target="#category-mobile">Mobile App</a></li></ul></div></div><div class="swiper-container" id="category-web"><div class="swiper-wrapper slide-wrapper"><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/citigym.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Citigym - Hệ thống phòng tập đẳng cấp</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/ayaka.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Ayaka - Tả dành cho em bé đến Nhật bản</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/parimilk.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Parimilk - Dinh dưỡng cao cấp cho mọi lứa tuổi</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/ifoss.jpg"><a class="overlay-content" href="#"></a></div><div class="title">IFoss</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/chohoatuoi.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Chợ hoa tươi - Sàng bán hoa sỉ</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/007-flower.jpg"><a class="overlay-content" href="#"></a></div><div class="title">007 Flower - Bán hoa trực tuyến</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/khatoco-event.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Khatoco Event</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/last-shoes.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Last Shoes</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/news.jpg"><a class="overlay-content" href="#"></a></div><div class="title">News Concept</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/mango.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Mango App</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/evbot.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Edubot</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/evbot-admin.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Edubot Admin</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/web/getraco.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Getraco</div></div></div></div><div class="swiper-container" id="category-mobile" style="display: none;"><div class="swiper-wrapper slide-wrapper"><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/mobile/model-app.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Model Connect</div></div><div class="swiper-slide item"><div class="item-thumbnail"><img src="assets/images/projects/mobile/mango-app.jpg"><a class="overlay-content" href="#"></a></div><div class="title">Mango App</div></div></div></div></div><!-- Contact--><div class="section section-contact mb-0"><img class="shape-wave-1" src="assets/images/shape/shape-wave-1.svg"><img class="shape-wave-2" src="assets/images/shape/shape-wave-2.svg"><img class="shape-tree-1" src="assets/images/shape/tree-1.svg"><img class="shape-tree-2" src="assets/images/shape/tree-2.svg"><div class="container"><div class="row align-items-center"><div class="col-md-7 col-lg-6 content-text"><div class="title">Interested my work?</div><a class="btn btn-brand" href="Designer-Trinh-Gia-Tuan.pdf">Download CV</a></div><div class="col-md-5 col-lg-6 content-bg"><?xml version="1.0" encoding="UTF-8"?>
+</svg>
+          </div>
+          <div class="col-md-5 col-lg-6">
+            <div class="section-title">Profile</div>
+            <div class="profile-content">
+              <ul>
+                <li>
+                  <div class="title">Fullname</div><span>Trinh Gia Tuan</span>
+                </li>
+                <li>
+                  <div class="title">Date of Birth</div><span>11th October, 1995</span>
+                </li>
+                <li>
+                  <div class="title">Email</div><a href="mailto:giatuantrinh@gmail.com">giatuantrinh@gmail.com</a>
+                </li>
+                <li>
+                  <div class="title">Phone</div><a href="tel:+84703000876">0703 000 876</a>
+                </li>
+                <li>
+                  <div class="title">Address</div><span>District 11, Ho Chi Minh City</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Skills-->
+    <div class="section section-skills">
+      <div class="container">
+        <div class="section-title text-center">Skills</div>
+        <div class="row align-items-center skills-content">
+          <div class="col-md-4 col-sm-6 item">
+            <div class="icon"><img src="assets/images/icons/ui.svg"/></div>
+            <div class="title">UI Design</div>
+          </div>
+          <div class="col-md-4 col-sm-6 item">
+            <div class="icon"><img src="assets/images/icons/ux.svg"/></div>
+            <div class="title">UX Mindset</div>
+          </div>
+          <div class="col-md-4 col-sm-6 item">
+            <div class="icon"><img src="assets/images/icons/develop.svg"/></div>
+            <div class="title">Develop</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Work-->
+    <div class="section section-work">
+      <div class="container">
+        <div class="section-title">Work</div>
+        <div class="navigation-tabs">
+          <ul>
+            <li class="active"><a href="#" data-tab-target="#category-web">Web</a></li>
+            <li><a href="#" data-tab-target="#category-app">Mobile App</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="swiper-container" id="category-web">
+        <div class="swiper-wrapper slide-wrapper">
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/citigym.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/citigym.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/citigym.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="0"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Citigym - Hệ thống phòng tập đẳng cấp</div>
+                      <div class="url-link"><a href="https://citigym.com.vn" target="_blank" rel="nofollow">https://citigym.com.vn</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/ayaka.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/ayaka.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/ayaka.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="1"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Ayaka - Tả dành cho em bé đến Nhật bản</div>
+                      <div class="url-link"><a href="https://ayakadiaper.com" target="_blank" rel="nofollow">https://ayakadiaper.com</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/parimilk.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/parimilk.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/parimilk.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="2"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Parimilk - Dinh dưỡng cao cấp cho mọi lứa tuổi</div>
+                      <div class="url-link"><a href="https://www.parimilk.com" target="_blank" rel="nofollow">https://www.parimilk.com</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/ifoss.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/ifoss.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/ifoss.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="3"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">IFoss</div>
+                      <div class="url-link"><a href="http://ifoss.com/" target="_blank" rel="nofollow">http://ifoss.com/</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/chohoatuoi.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/chohoatuoi.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/chohoatuoi.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="4"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Chợ hoa tươi - Sàng bán hoa sỉ</div>
+                      <div class="url-link"><a href="http://chohoatuoi.vn" target="_blank" rel="nofollow">http://chohoatuoi.vn</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/007-flower.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/007-flower.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/007-flower.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="5"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">007 Flower - Bán hoa trực tuyến</div>
+                      <div class="url-link"><a href="http://007flower.com" target="_blank" rel="nofollow">http://007flower.com</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/khatoco-event.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/khatoco-event.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/khatoco-event.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="6"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Khatoco Event</div>
+                      <div class="url-link"><a href="https://thoitrangkhatoco.vn" target="_blank" rel="nofollow">https://thoitrangkhatoco.vn</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/last-shoes.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/last-shoes.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/last-shoes.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="7"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Last Shoes</div>
+                      <div class="url-link"><a href="http://lastshoes.com.au" target="_blank" rel="nofollow">http://lastshoes.com.au</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/news.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/news.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/news.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="8"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">News Concept</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/mango.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/mango.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/mango.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="9"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Mango App</div>
+                      <div class="url-link"><a href="http://mangoapp.vn" target="_blank" rel="nofollow">http://mangoapp.vn</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/evbot.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/evbot.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/evbot.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="10"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Edubot</div>
+                      <div class="url-link"><a href="https://edubot.xbot.com.vn" target="_blank" rel="nofollow">https://edubot.xbot.com.vn</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/evbot-admin.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/evbot-admin.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/evbot-admin.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="11"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Edubot Admin</div>
+                      <div class="url-link"><a href="https://edubot.xbot.com.vn" target="_blank" rel="nofollow">https://edubot.xbot.com.vn</a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/web/getraco.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/web/full/getraco.jpg') ?><a class="overlay-content" href="assets/images/projects/web/full/getraco.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="12"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Getraco</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+        </div>
+      </div>
+      <div class="swiper-container" id="category-app" style="display: none;">
+        <div class="swiper-wrapper slide-wrapper">
+          <div class="swiper-slide item">
+            <div class="item-thumbnail"><img src="assets/images/projects/mobile/model-app.jpg"><a class="overlay-content" href="#"></a></div>
+            <div class="title">Model Connect</div>
+          </div>
+          <div class="swiper-slide item">
+            <div class="item-thumbnail"><img src="assets/images/projects/mobile/mango-app.jpg"><a class="overlay-content" href="#"></a></div>
+            <div class="title">Mango App</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contact-->
+    <div class="section section-contact mb-0"><img class="shape-wave-1" src="assets/images/shape/shape-wave-1.svg"><img class="shape-wave-2" src="assets/images/shape/shape-wave-2.svg"><img class="shape-tree-1" src="assets/images/shape/tree-1.svg"><img class="shape-tree-2" src="assets/images/shape/tree-2.svg">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-7 col-lg-6 content-text">
+            <div class="title">Interested my work?</div><a class="btn btn-brand" href="Designer-Trinh-Gia-Tuan.pdf">Download CV</a>
+          </div>
+          <div class="col-md-5 col-lg-6 content-bg"><?xml version="1.0" encoding="UTF-8"?>
 <svg width="100%" height="562px" viewBox="0 0 415 562" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
     <title>human-555</title>
@@ -301,4 +511,115 @@ gtag('config', 'UA-79549330-2');
             </g>
         </g>
     </g>
-</svg></div></div></div></div><!-- Footer--><footer class="footer"><div class="container"><div class="row"><div class="col-md-6 author-content">© Gia Tuan Trinh. <script>document.write((new Date().getFullYear()))</script> All Rights Reserved</div><div class="col-md-6"><ul class="social-list"><li><a class="btn-just-icon btn-brand" href="https://www.facebook.com/tgt95"><i class="ri-facebook-fill"></i></a></li><li><a class="btn-just-icon btn-brand" href="https://www.behance.net/tgt95"><i class="ri-behance-fill"></i></a></li><li><a class="btn-just-icon btn-brand" href="https://dribbble.com/tgt95"><i class="ri-dribbble-fill"></i></a></li><li><a class="btn-just-icon btn-brand" href="https://github.com/tgt95"><i class="ri-github-fill"></i></a></li></ul></div></div></div></footer></body></html><!-- Javascript--><script src="assets/plugins/jquery/dist/jquery.min.js"></script><script src="assets/plugins/popper.js/dist/umd/popper.min.js"></script><script src="assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script><script src="assets/plugins/velocity-animate/velocity.min.js"></script><script src="assets/plugins/velocity-animate/velocity.ui.min.js"></script><script src="assets/plugins/snapsvg/dist/snap.svg-min.js"></script><script src="assets/plugins/swiper/js/swiper.min.js"></script><script src="assets/js/style.min.js"></script><script></script><script></script>
+</svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="pswp__bg"></div>
+      <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <div class="pswp__counter"></div>
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+            <button class="pswp__button pswp__button--share" title="Share"></button>
+            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div class="pswp__share-tooltip"></div>
+          </div>
+          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer-->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 author-content">© Gia Tuan Trinh. <script>document.write((new Date().getFullYear()))</script> All Rights Reserved</div>
+          <div class="col-md-6">
+            <ul class="social-list">
+              <li><a class="btn-just-icon btn-brand" href="https://www.facebook.com/tgt95"><i class="ri-facebook-fill"></i></a></li>
+              <li><a class="btn-just-icon btn-brand" href="https://www.behance.net/tgt95"><i class="ri-behance-fill"></i></a></li>
+              <li><a class="btn-just-icon btn-brand" href="https://dribbble.com/tgt95"><i class="ri-dribbble-fill"></i></a></li>
+              <li><a class="btn-just-icon btn-brand" href="https://github.com/tgt95"><i class="ri-github-fill"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+<!-- Javascript-->
+<script src="assets/plugins/jquery/dist/jquery.min.js"></script>
+<script src="assets/plugins/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/plugins/photoswipe/dist/photoswipe.min.js"></script>
+<script src="assets/plugins/photoswipe/dist/photoswipe-ui-default.min.js"></script>
+<script src="assets/plugins/velocity-animate/velocity.min.js"></script>
+<script src="assets/plugins/velocity-animate/velocity.ui.min.js"></script>
+<script src="assets/plugins/snapsvg/dist/snap.svg-min.js"></script>
+<script src="assets/plugins/swiper/js/swiper.min.js"></script>
+<script src="assets/js/style.min.js"></script><?php $webFullImages = array('assets/images/projects/web/full/citigym.jpg','assets/images/projects/web/full/ayaka.jpg','assets/images/projects/web/full/parimilk.jpg','assets/images/projects/web/full/ifoss.jpg','assets/images/projects/web/full/chohoatuoi.jpg','assets/images/projects/web/full/007-flower.jpg','assets/images/projects/web/full/khatoco-event.jpg','assets/images/projects/web/full/last-shoes.jpg','assets/images/projects/web/full/news.jpg','assets/images/projects/web/full/mango.jpg','assets/images/projects/web/full/evbot.jpg','assets/images/projects/web/full/evbot-admin.jpg','assets/images/projects/web/full/getraco.jpg',); ?>
+<script>
+  // Init Gallery Plugins
+  let $pswp = document.querySelector('.pswp'),
+  	webItems = [
+  		<?php foreach ($webFullImages as $key => $value) { 
+  			list($width, $height) = getimagesize($value); ?>
+  		{
+  			src: '<?php echo $value; ?>',
+  			w: '<?php echo $width; ?>',
+  			h: '<?php echo $height; ?>',
+  			galleryUID: '<?php echo $key; ?>'
+  		},
+  		<?php } ?>
+  	];
+  $(document).on('click', '.section-work .item-thumbnail .overlay-content', function(event) {
+  	event.preventDefault();
+  
+  	var index = $(this).data('img-index'),
+  		category = $(this).closest('.swiper-container').attr('id'),
+  		data,
+  		thumbnail = this,
+  			options = {
+  			arrowEl: true,
+  			index: index,
+  			bgOpacity: 0.8,
+  			getThumbBoundsFn: function(index) {
+  				// get window scroll Y
+  				var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+  				// optionally get horizontal scroll
+  
+  				// get position of element relative to viewport
+  				var rect = thumbnail.getBoundingClientRect();
+  
+  				// w = width
+  				return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+  			}
+  		}
+  	category == 'category-web' ? data = webItems : 0;
+  	//- category == 'category-app' && data = webItems;
+  	var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, data, options);
+  	lightBox.init();
+  });
+</script>
+<script></script>
