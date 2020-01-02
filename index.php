@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php ini_set('display_errors', 1); ?><!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -59,8 +59,7 @@
             <div class="title">Hello, <br> I'm <a href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?">Fullstack Designer</a></div>
             <p>My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.</p>
           </div>
-          <div class="col-lg-6 content-bg" data-responsive-sm="800" data-responsive-xs="600"><?xml version="1.0" encoding="UTF-8"?>
-<svg width="1374px" height="1093px" viewBox="0 0 1374 1093" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <div class="col-lg-6 content-bg" data-responsive-sm="800" data-responsive-xs="600"><svg width="1374px" height="1093px" viewBox="0 0 1374 1093" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
     <title>human</title>
     <desc>Created with Sketch.</desc>
@@ -240,8 +239,7 @@
     <div class="section section-profile">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-7 col-lg-6"><?xml version="1.0" encoding="UTF-8"?>
-<svg width="466px" height="367px" viewBox="0 0 466 367" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <div class="col-md-7 col-lg-6"><svg width="466px" height="367px" viewBox="0 0 466 367" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
     <title>Profile-Illustration</title>
     <desc>Created with Sketch.</desc>
@@ -440,14 +438,16 @@
       </div>
       <div class="swiper-container" id="category-app" style="display: none;">
         <div class="swiper-wrapper slide-wrapper">
-          <div class="swiper-slide item">
-            <div class="item-thumbnail"><img src="assets/images/projects/mobile/model-app.jpg"><a class="overlay-content" href="#"></a></div>
-            <div class="title">Model Connect</div>
-          </div>
-          <div class="swiper-slide item">
-            <div class="item-thumbnail"><img src="assets/images/projects/mobile/mango-app.jpg"><a class="overlay-content" href="#"></a></div>
-            <div class="title">Mango App</div>
-          </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/mobile/model-app.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/mobile/full/model-app.jpg') ?><a class="overlay-content" href="assets/images/projects/mobile/full/model-app.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="0"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Model Connect</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/mobile/mango-app.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/mobile/full/mango-app.jpg') ?><a class="overlay-content" href="assets/images/projects/mobile/full/mango-app.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="1"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Mango App</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
         </div>
       </div>
     </div>
@@ -458,8 +458,7 @@
           <div class="col-md-7 col-lg-6 content-text">
             <div class="title">Interested my work?</div><a class="btn btn-brand" href="Designer-Trinh-Gia-Tuan.pdf">Download CV</a>
           </div>
-          <div class="col-md-5 col-lg-6 content-bg"><?xml version="1.0" encoding="UTF-8"?>
-<svg width="100%" height="562px" viewBox="0 0 415 562" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <div class="col-md-5 col-lg-6 content-bg"><svg width="100%" height="562px" viewBox="0 0 415 562" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
     <title>human-555</title>
     <desc>Created with Sketch.</desc>
@@ -579,11 +578,23 @@
 <script src="assets/plugins/snapsvg/dist/snap.svg-min.js"></script>
 <script src="assets/plugins/swiper/js/swiper.min.js"></script>
 <script src="assets/js/style.min.js"></script><?php $webFullImages = array('assets/images/projects/web/full/citigym.jpg','assets/images/projects/web/full/ayaka.jpg','assets/images/projects/web/full/parimilk.jpg','assets/images/projects/web/full/ifoss.jpg','assets/images/projects/web/full/chohoatuoi.jpg','assets/images/projects/web/full/007-flower.jpg','assets/images/projects/web/full/khatoco-event.jpg','assets/images/projects/web/full/last-shoes.jpg','assets/images/projects/web/full/news.jpg','assets/images/projects/web/full/mango.jpg','assets/images/projects/web/full/evbot.jpg','assets/images/projects/web/full/evbot-admin.jpg','assets/images/projects/web/full/getraco.jpg',); ?>
+<?php $appFullImages = array('assets/images/projects/web/full/citigym.jpg','assets/images/projects/web/full/ayaka.jpg','assets/images/projects/web/full/parimilk.jpg','assets/images/projects/web/full/ifoss.jpg','assets/images/projects/web/full/chohoatuoi.jpg','assets/images/projects/web/full/007-flower.jpg','assets/images/projects/web/full/khatoco-event.jpg','assets/images/projects/web/full/last-shoes.jpg','assets/images/projects/web/full/news.jpg','assets/images/projects/web/full/mango.jpg','assets/images/projects/web/full/evbot.jpg','assets/images/projects/web/full/evbot-admin.jpg','assets/images/projects/web/full/getraco.jpg',); ?>
 <script>
   // Init Gallery Plugins
   let $pswp = document.querySelector('.pswp'),
   	webItems = [
   		<?php foreach ($webFullImages as $key => $value) { 
+  			list($width, $height) = getimagesize($value); ?>
+  		{
+  			src: '<?php echo $value; ?>',
+  			w: '<?php echo $width; ?>',
+  			h: '<?php echo $height; ?>',
+  			galleryUID: '<?php echo $key; ?>'
+  		},
+  		<?php } ?>
+  	],
+  	appItems = [
+  		<?php foreach ($appFullImages as $key => $value) { 
   			list($width, $height) = getimagesize($value); ?>
   		{
   			src: '<?php echo $value; ?>',
@@ -600,26 +611,27 @@
   		category = $(this).closest('.swiper-container').attr('id'),
   		data,
   		thumbnail = this,
-  			options = {
-  			arrowEl: true,
-  			index: index,
-  			bgOpacity: 0.8,
-  			getThumbBoundsFn: function(index) {
-  				// get window scroll Y
-  				var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-  				// optionally get horizontal scroll
+  		options = {
+  		arrowEl: true,
+  		index: index,
+  		bgOpacity: 0.8,
+  		getThumbBoundsFn: function(index) {
+  			// get window scroll Y
+  			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+  			// optionally get horizontal scroll
   
-  				// get position of element relative to viewport
-  				var rect = thumbnail.getBoundingClientRect();
+  			// get position of element relative to viewport
+  			var rect = thumbnail.getBoundingClientRect();
   
-  				// w = width
-  				return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
-  			}
+  			// w = width
+  			return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
   		}
+  	}
   	category == 'category-web' ? data = webItems : 0;
-  	//- category == 'category-app' && data = webItems;
+  	category == 'category-app' ? data = appItems : 0;
+  	console.log(category);
+  	console.log(data);
   	var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, data, options);
   	lightBox.init();
   });
 </script>
-<script></script>

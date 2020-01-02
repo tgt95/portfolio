@@ -4,6 +4,7 @@ block meta-title
 	title Trinh Gia Tuan | UX/UI Designer | Portfolio
 
 block custom
+	<?php ini_set('display_errors', 1); ?>
 
 block content
 	// Banner
@@ -220,11 +221,7 @@ block content
 						},
 					]
 				each item, index in mobileProjects
-					.swiper-slide.item
-						.item-thumbnail
-							img(src=item.image)
-							a(href="#").overlay-content
-						.title= item.title
+					+galleryCard(item, index)
 
 		//- .swiper-container(id="category-branding" style="display: none;") asd
 		//- .swiper-container(id="category-illustration" style="display: none;") asd
@@ -273,17 +270,34 @@ block content
 		//- 		img(src="<?php echo $value; ?>")
 
 block script
+
 	//-  Get Data Image
 	| <?php $webFullImages = array(
 	each item, index in webProjects
 		| '#{item.fullImage}',
 	| ); ?>
-	
+
+	| <?php $appFullImages = array(
+	each item, index in webProjects
+		| '#{item.fullImage}',
+	| ); ?>
+
 	script.
 		// Init Gallery Plugins
 		let $pswp = document.querySelector('.pswp'),
 			webItems = [
 				<?php foreach ($webFullImages as $key => $value) { 
+					list($width, $height) = getimagesize($value); ?>
+				{
+					src: '<?php echo $value; ?>',
+					w: '<?php echo $width; ?>',
+					h: '<?php echo $height; ?>',
+					galleryUID: '<?php echo $key; ?>'
+				},
+				<?php } ?>
+			],
+			appItems = [
+				<?php foreach ($appFullImages as $key => $value) { 
 					list($width, $height) = getimagesize($value); ?>
 				{
 					src: '<?php echo $value; ?>',
@@ -300,24 +314,26 @@ block script
 				category = $(this).closest('.swiper-container').attr('id'),
 				data,
 				thumbnail = this,
-					options = {
-					arrowEl: true,
-					index: index,
-					bgOpacity: 0.8,
-					getThumbBoundsFn: function(index) {
-						// get window scroll Y
-						var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-						// optionally get horizontal scroll
+				options = {
+				arrowEl: true,
+				index: index,
+				bgOpacity: 0.8,
+				getThumbBoundsFn: function(index) {
+					// get window scroll Y
+					var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+					// optionally get horizontal scroll
 
-						// get position of element relative to viewport
-						var rect = thumbnail.getBoundingClientRect();
+					// get position of element relative to viewport
+					var rect = thumbnail.getBoundingClientRect();
 
-						// w = width
-						return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
-					}
+					// w = width
+					return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
 				}
+			}
 			category == 'category-web' ? data = webItems : 0;
-			//- category == 'category-app' && data = webItems;
+			category == 'category-app' ? data = appItems : 0;
+			console.log(category);
+			console.log(data);
 			var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, data, options);
 			lightBox.init();
 		});
