@@ -1,7 +1,8 @@
+<?php ini_set('display_errors', 1); ?>
+
 include var.pug
 
 block custom
-
 doctype html
 html
 	head
@@ -76,4 +77,9 @@ script(src="assets/plugins/swiper/js/swiper.min.js")
 block page-script
 
 script(src="assets/js/style.min.js")
+script.
+	let theme = new Theme();
+	document.addEventListener('DOMContentLoaded', (e)=> {
+		theme.init();
+	});
 block script

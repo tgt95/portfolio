@@ -26,7 +26,7 @@ function () {
     this.elements = {
       contentPage: $('.content-page'),
       header: $('.header'),
-      navigation: $('.navigation-menu')
+      navigation: $('.header .navigation-menu')
     };
   }
 
@@ -42,6 +42,18 @@ function () {
       }
 
       $('[data-toggle="tooltip"]').tooltip();
+    }
+  }, {
+    key: "navigationConfig",
+    value: function navigationConfig() {
+      console.log(this.elements.navigation.find('ul:first-child'));
+      this.elements.navigation.find('ul:first-child a').on('click', function () {
+        event.preventDefault();
+        var offsetTop = $(this).data('offset-top') !== undefined ? $(this).data('offset-top') : 0;
+        $('html, body').animate({
+          scrollTop: $($.attr(this, 'href')).offset().top - offsetTop
+        }, 500);
+      });
     }
   }, {
     key: "bannerCofig",
@@ -207,11 +219,94 @@ function () {
       });
     }
   }, {
+    key: "photoswipeInit",
+    value: function photoswipeInit(container, gallerys, thumbnails) {
+      var $pswp = document.querySelectorAll('.pswp')[0],
+          $container = document.querySelectorAll(container)[0],
+          $gallerys = $container.querySelectorAll(gallerys); // Get Data
+
+      var getCategory = function getCategory(type) {
+        var data;
+
+        switch (type) {
+          case 'category-web':
+            data = webItems;
+            break;
+
+          case 'category-app':
+            data = appItems;
+            break;
+
+          case 'category-branding':
+            data = brandingItems;
+            break;
+        }
+
+        return data;
+      }; // Open Photoswipe from URL
+
+
+      var openFromURL = function openFromURL() {
+        var hash = window.location.hash.substring(1);
+
+        if (hash.includes('gid') && hash.includes('pid')) {
+          var vars = hash.split('&').slice(1, 3),
+              gid = vars[0].substring(4),
+              pid = vars[1].substring(4),
+              options = {
+            arrowEl: true,
+            bgOpacity: 0.8,
+            index: parseInt(pid.split('-').pop()),
+            galleryUID: gid
+          };
+          var gallery = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(gid), options);
+          gallery.init();
+        }
+      };
+
+      var thumbnailsOnClick = function thumbnailsOnClick(e) {
+        e.preventDefault();
+        var $this = e.currentTarget,
+            thumbnail = $this,
+            type = $this.closest(gallerys).getAttribute('id'),
+            options = {
+          arrowEl: true,
+          bgOpacity: 0.8,
+          index: parseInt($this.getAttribute('data-img-index')),
+          galleryUID: type,
+          getThumbBoundsFn: function getThumbBoundsFn(index) {
+            // get window scroll Y
+            var pageYScroll = window.pageYOffset || document.documentElement.scrollTop; // optionally get horizontal scroll
+            // get position of element relative to viewport
+
+            var rect = thumbnail.getBoundingClientRect(); // w = width
+
+            return {
+              x: rect.left,
+              y: rect.top + pageYScroll,
+              w: rect.width
+            };
+          }
+        };
+        var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(type), options);
+        lightBox.init();
+      }; // Loop Gallerys
+
+
+      $gallerys.forEach(function (element, index) {
+        element.querySelectorAll(thumbnails).forEach(function (thumbnail, thumbnailIndex) {
+          thumbnail.onclick = function (e) {
+            thumbnailsOnClick(e);
+          };
+        });
+      });
+      openFromURL();
+    }
+  }, {
     key: "init",
     value: function init() {
-      this.baseConfig(); // this.bannerCofig();
-
-      this.workGrid();
+      this.baseConfig();
+      this.navigationConfig();
     }
   }]);
 
@@ -229,14 +324,3 @@ function () {
 // 	    </div>
 //     </div>
 // `);
-// On load
-
-
-document.addEventListener('DOMContentLoaded', function (e) {
-  // $(".page-loader").fadeOut(400, ()=> $(".page-loader").remove());
-  var theme = new Theme();
-  theme.init();
-
-  window.onresize = function (e) {// theme.navigationCofig();
-  };
-});

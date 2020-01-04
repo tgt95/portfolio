@@ -1,3 +1,8 @@
+-
+	let navigationMenu = {
+		title: ['Home', 'Work', 'Profile', 'Contact'],
+		url: ['.section-banner', '.section-work', '.section-profile', '.section-contact'],
+	}
 .header.is-sticky
 	.container
 		.navigation-menu
@@ -5,9 +10,9 @@
 				li.logo
 					a(href="#")
 						img(src="assets/images/logo.svg", alt="TGT Logo")
-				each item in ['Home', 'Work', 'About', 'Profile']
+				each item, index in navigationMenu.title
 					li
-						a(href="#")= item
+						a(href=navigationMenu.url[index] data-offset-top="90")= navigationMenu.title[index]
 			ul.social-list
 				- let socialLink = ['https://www.facebook.com/tgt95', 'https://www.behance.net/tgt95', 'https://dribbble.com/tgt95', 'https://github.com/tgt95']
 				each icon, index in ['facebook', 'behance', 'dribbble', 'github']

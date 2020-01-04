@@ -4,111 +4,6 @@ block meta-title
 	title Trinh Gia Tuan | UX/UI Designer | Portfolio
 
 block custom
-	<?php ini_set('display_errors', 1); ?>
-	-
-		let webProjects = [
-			{
-				'title': 'Citigym - Hệ thống phòng tập đẳng cấp',
-				'website': 'https://citigym.com.vn',
-				'image': 'assets/images/projects/web/citigym.jpg',
-				'fullImage': 'assets/images/projects/web/full/citigym.jpg',
-			},
-			{
-				'title': 'Ayaka - Tả dành cho em bé đến Nhật bản',
-				'website': 'https://ayakadiaper.com',
-				'image': 'assets/images/projects/web/ayaka.jpg',
-				'fullImage': 'assets/images/projects/web/full/ayaka.jpg',
-			},
-			{
-				'title': 'Parimilk - Dinh dưỡng cao cấp cho mọi lứa tuổi',
-				'website': 'https://www.parimilk.com',
-				'image': 'assets/images/projects/web/parimilk.jpg',
-				'fullImage': 'assets/images/projects/web/full/parimilk.jpg',
-			},
-			{
-				'title': 'IFoss',
-				'website': 'http://ifoss.com/',
-				'image': 'assets/images/projects/web/ifoss.jpg',
-				'fullImage': 'assets/images/projects/web/full/ifoss.jpg',
-			},
-			{
-				'title': 'Chợ hoa tươi - Sàng bán hoa sỉ',
-				'website': 'http://chohoatuoi.vn',
-				'image': 'assets/images/projects/web/chohoatuoi.jpg',
-				'fullImage': 'assets/images/projects/web/full/chohoatuoi.jpg',
-			},
-			{
-				'title': '007 Flower - Bán hoa trực tuyến',
-				'website': 'http://007flower.com',
-				'image': 'assets/images/projects/web/007-flower.jpg',
-				'fullImage': 'assets/images/projects/web/full/007-flower.jpg',
-			},
-			{
-				'title': 'Khatoco Event',
-				'website': 'https://thoitrangkhatoco.vn',
-				'image': 'assets/images/projects/web/khatoco-event.jpg',
-				'fullImage': 'assets/images/projects/web/full/khatoco-event.jpg',
-			},
-			{
-				'title': 'Last Shoes',
-				'website': 'http://lastshoes.com.au',
-				'image': 'assets/images/projects/web/last-shoes.jpg',
-				'fullImage': 'assets/images/projects/web/full/last-shoes.jpg',
-			},
-			{
-				'title': 'News Concept',
-				'website': '',
-				'image': 'assets/images/projects/web/news.jpg',
-				'fullImage': 'assets/images/projects/web/full/news.jpg',
-			},
-			{
-				'title': 'Mango App',
-				'website': 'http://mangoapp.vn',
-				'image': 'assets/images/projects/web/mango.jpg',
-				'fullImage': 'assets/images/projects/web/full/mango.jpg',
-			},
-			{
-				'title': 'Edubot',
-				'website': 'https://edubot.xbot.com.vn',
-				'image': 'assets/images/projects/web/evbot.jpg',
-				'fullImage': 'assets/images/projects/web/full/evbot.jpg',
-			},
-			{
-				'title': 'Edubot Admin',
-				'website': 'https://edubot.xbot.com.vn',
-				'image': 'assets/images/projects/web/evbot-admin.jpg',
-				'fullImage': 'assets/images/projects/web/full/evbot-admin.jpg',
-			},
-			{
-				'title': 'Getraco',
-				'website': '',
-				'image': 'assets/images/projects/web/getraco.jpg',
-				'fullImage': 'assets/images/projects/web/full/getraco.jpg',
-			},
-		]
-		let mobileProjects = [
-			{
-				'title': 'Model Connect',
-				'website': '',
-				'image': 'assets/images/projects/mobile/model-app.jpg',
-				'fullImage': 'assets/images/projects/mobile/full/model-app.jpg',
-			},
-			{
-				'title': 'Mango App',
-				'website': '',
-				'image': 'assets/images/projects/mobile/mango-app.jpg',
-				'fullImage': 'assets/images/projects/mobile/full/mango-app.jpg',
-			},
-		]
-		let brandingProjects = [
-			{
-				'title': 'Nhà Ba THu',
-				'website': '',
-				'image': 'assets/images/projects/branding/bathu.jpg',
-				'fullImage': 'assets/images/projects/branding/bathu.jpg',
-				//- 'fullImage': 'assets/images/projects/branding/full/bathu.jpg',
-			},
-		]
 
 block content
 	// Banner
@@ -301,9 +196,8 @@ block script
 	| ); ?>
 
 	script.
-		// Init Gallery Plugins
-		let $pswp = document.querySelector('.pswp'),
-			webItems = [
+		// Loop Data
+		let webItems = [
 				<?php foreach ($webFullImages as $key => $value) { 
 					list($width, $height) = getimagesize($value); ?>
 				{
@@ -336,94 +230,9 @@ block script
 				},
 				<?php } ?>
 			];
-		//- console.log(appItems);
-
-		$(document).on('click', '.section-work .item-thumbnail .overlay-content', function(event) {
-			event.preventDefault();
-
-			var index = $(this).data('img-index'),
-				category = $(this).closest('.swiper-container').attr('id'),
-				data,
-				thumbnail = this,
-				options = {
-				arrowEl: true,
-				index: index,
-				bgOpacity: 0.8,
-				galleryUID: $(this).closest('.swiper-container').attr('id'),
-				getThumbBoundsFn: function(index) {
-					// get window scroll Y
-					var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-					// optionally get horizontal scroll
-
-					// get position of element relative to viewport
-					var rect = thumbnail.getBoundingClientRect();
-
-					// w = width
-					return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
-				}
-			}
-			category == 'category-web' ? data = webItems : 0;
-			category == 'category-app' ? data = appItems : 0;
-			category == 'category-branding' ? data = brandingItems : 0;
-			var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, data, options);
-			lightBox.init();
+		// Window Onload
+		document.addEventListener('DOMContentLoaded', (e)=> {
+			theme.bannerCofig();
+			theme.workGrid();
+			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content');
 		});
-
-		const openPhotoswipeFromURL = ()=> {
-			let hash = window.location.hash.substring(1), data;
-			if (hash.includes('gid') && hash.includes('pid')){
-				let vars = hash.split('&').slice(1,3),
-					gid = vars[0].substring(4),
-					pid = vars[1].substring(4),
-					options = {
-						arrowEl: true,
-						bgOpacity: 0.8,
-						index: pid.split('-').pop(),
-						galleryUID: gid,
-					};
-				gid == 'category-web' ? data = webItems : 0;
-				gid == 'category-app' ? data = appItems : 0;
-				gid == 'category-branding' ? data = brandingItems : 0;
-
-				let gallery = new PhotoSwipe( $pswp, PhotoSwipeUI_Default, data, options);
-				gallery.init();
-			}
-		}
-
-		openPhotoswipeFromURL();
-
-		const photoswipeInit = (container, gallerys, thumbnails)=> {
-			let $container = document.querySelectorAll(container)[0], 
-				$gallerys = $container.querySelectorAl(gallerys), 
-				$thumbnails = $gallerys.querySelectorAll(thumbnails);
-			console.log($container);
-			console.log($gallerys);
-			console.log($thumbnails);
-
-			const getCategory = (type)=> {
-				let data;
-				switch (type){
-					case 'category-web' :
-						data = webItems
-						break;
-					case 'category-app' :
-						data = appItems
-						break;
-					case 'category-branding' :
-						data = brandingItems
-						break;
-				}
-				return data;
-			}
-
-			const thumbnailsOnClick = (e)=> {
-				let $this = e.currentTarget;
-			}
-			$thumbnails.onclick = thumbnailsOnClick();
-			//- $thumbnails.click(function(e){
-			//- 	thumbnailsOnClick(e);
-			//- });
-		}
-
-		//- 
-		photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail .overlay-content');

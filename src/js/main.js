@@ -15,7 +15,7 @@ class Theme {
 		this.elements = {
 			contentPage : $('.content-page'),
 			header : $('.header'),
-			navigation : $('.navigation-menu'),
+			navigation : $('.header .navigation-menu'),
 		};
 	}
 	baseConfig(){
@@ -26,6 +26,16 @@ class Theme {
 			this.spacer.push(temp);
 		}
 		$('[data-toggle="tooltip"]').tooltip();
+	}
+	navigationConfig(){
+		console.log(this.elements.navigation.find('ul:first-child'));
+		this.elements.navigation.find('ul:first-child a').on('click', function() {
+			event.preventDefault();
+			let offsetTop = $(this).data('offset-top') !== undefined ? $(this).data('offset-top') : 0;
+			$('html, body').animate({
+				scrollTop: $($.attr(this, 'href')).offset().top - offsetTop
+			}, 500);
+		});
 	}
 	bannerCofig(){
         let banner = $('.section-banner'),
@@ -151,10 +161,85 @@ class Theme {
 			
 		});
 	}
+	photoswipeInit(container, gallerys, thumbnails) {
+		let $pswp = document.querySelectorAll('.pswp')[0],
+			$container = document.querySelectorAll(container)[0],
+			$gallerys = $container.querySelectorAll(gallerys);
+
+		// Get Data
+		const getCategory = (type)=> {
+			let data;
+			switch (type){
+				case 'category-web' :
+					data = webItems
+					break;
+				case 'category-app' :
+					data = appItems
+					break;
+				case 'category-branding' :
+					data = brandingItems
+					break;
+			}
+			return data;
+		}
+
+		// Open Photoswipe from URL
+		const openFromURL = ()=> {
+			let hash = window.location.hash.substring(1);
+			if (hash.includes('gid') && hash.includes('pid')){
+				let vars = hash.split('&').slice(1,3),
+					gid = vars[0].substring(4),
+					pid = vars[1].substring(4),
+					options = {
+						arrowEl: true,
+						bgOpacity: 0.8,
+						index: parseInt(pid.split('-').pop()),
+						galleryUID: gid,
+					};
+
+				let gallery = new PhotoSwipe( $pswp, PhotoSwipeUI_Default, getCategory(gid), options);
+				gallery.init();
+			}
+		}
+
+		const thumbnailsOnClick = (e)=> {
+			e.preventDefault();
+			let $this = e.currentTarget,
+				thumbnail = $this,
+				type = $this.closest(gallerys).getAttribute('id'),
+				options = {
+					arrowEl: true,
+					bgOpacity: 0.8,
+					index:  parseInt($this.getAttribute('data-img-index')),
+					galleryUID: type,
+					getThumbBoundsFn: (index)=> {
+						// get window scroll Y
+						var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+						// optionally get horizontal scroll
+
+						// get position of element relative to viewport
+						var rect = thumbnail.getBoundingClientRect();
+
+						// w = width
+						return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+					}
+				};
+
+			let lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(type), options);
+			lightBox.init();
+		}
+
+		// Loop Gallerys
+		$gallerys.forEach((element, index)=> {
+			element.querySelectorAll(thumbnails).forEach((thumbnail, thumbnailIndex)=> {
+				thumbnail.onclick = (e)=> { thumbnailsOnClick(e) }
+			});
+		});
+		openFromURL();
+	}
 	init(){
 		this.baseConfig();
-		// this.bannerCofig();
-		this.workGrid();
+		this.navigationConfig();
 	}
 }
 
@@ -172,15 +257,3 @@ class Theme {
 // 	    </div>
 //     </div>
 // `);
-
-// On load
-document.addEventListener('DOMContentLoaded', (e)=> {
-	// $(".page-loader").fadeOut(400, ()=> $(".page-loader").remove());
-
-	const theme = new Theme();
-	theme.init();
-
-	window.onresize = (e)=> {
-		// theme.navigationCofig();
-	};
-});
