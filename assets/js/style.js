@@ -46,7 +46,6 @@ function () {
   }, {
     key: "navigationConfig",
     value: function navigationConfig() {
-      console.log(this.elements.navigation.find('ul:first-child'));
       this.elements.navigation.find('ul:first-child a').on('click', function () {
         event.preventDefault();
         var offsetTop = $(this).data('offset-top') !== undefined ? $(this).data('offset-top') : 0;
@@ -324,3 +323,20 @@ function () {
 // 	    </div>
 //     </div>
 // `);
+// document.addEventListener('DOMContentLoaded', (e)=> {
+// 	let loader = document.querySelector('.page-loader'),
+// 		slideOutTime = 600;
+// 	setTimeout(()=> {
+// 		loader.animate([
+// 		// keyframes
+// 			{ transform: 'translateY(0)' }, 
+// 			{ transform: 'translateY(100%)' }
+// 		], { 
+// 		// timing options
+// 			duration: slideOutTime,
+// 		});
+// 		setTimeout(()=> {
+// 			loader.style.display = 'none';
+// 		}, slideOutTime);
+// 	}, 600);
+// });

@@ -6,14 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Trinh Gia Tuan | UX/UI Designer | Portfolio</title>
-    <!-- CSS-->
     <link rel="shortcut icon" href="assets/images/logo.png">
-    <!-- Bootstrap-->
     <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-reboot.min.css">
-    <!-- Swiper-->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/animate.css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="assets/plugins/swiper/css/swiper.min.css">
-    <!-- Icons-->
     <link rel="stylesheet" type="text/css" href="assets/plugins/remixicon/fonts/remixicon.css">
     <link rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/photoswipe.css">
     <link rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/default-skin/default-skin.css">
@@ -37,7 +34,7 @@
       <div class="container">
         <div class="navigation-menu">
           <ul>
-            <li class="logo"><a href="#"><img src="assets/images/logo.svg" alt="TGT Logo"></a></li>
+            <li class="logo"><a href=".section-banner"><img src="assets/images/logo.svg" alt="TGT Logo"></a></li>
             <li><a href=".section-banner" data-offset-top="90">Home</a></li>
             <li><a href=".section-work" data-offset-top="90">Work</a></li>
             <li><a href=".section-profile" data-offset-top="90">Profile</a></li>

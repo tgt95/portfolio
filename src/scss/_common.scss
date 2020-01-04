@@ -3,3 +3,21 @@ body{
 	color: $neutral-0;
 	font-size: $font-base;
 }
+
+// Loading
+.page-loader{
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1060;
+	.logo-img{
+		width: 120px;
+		animation: bounce 3s ease infinite;
+	}
+}

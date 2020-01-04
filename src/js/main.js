@@ -28,7 +28,6 @@ class Theme {
 		$('[data-toggle="tooltip"]').tooltip();
 	}
 	navigationConfig(){
-		console.log(this.elements.navigation.find('ul:first-child'));
 		this.elements.navigation.find('ul:first-child a').on('click', function() {
 			event.preventDefault();
 			let offsetTop = $(this).data('offset-top') !== undefined ? $(this).data('offset-top') : 0;
@@ -154,7 +153,7 @@ class Theme {
 			e.preventDefault();
 			li.removeClass('active');
 			$li.addClass('active');
-			containers.hide(400, function(){
+			containers.hide(400, ()=> {
 				target.show(400);
 				gallerySlider[$li.index()].update();
 			});
@@ -257,3 +256,22 @@ class Theme {
 // 	    </div>
 //     </div>
 // `);
+
+
+// document.addEventListener('DOMContentLoaded', (e)=> {
+// 	let loader = document.querySelector('.page-loader'),
+// 		slideOutTime = 600;
+// 	setTimeout(()=> {
+// 		loader.animate([
+// 		// keyframes
+// 			{ transform: 'translateY(0)' }, 
+// 			{ transform: 'translateY(100%)' }
+// 		], { 
+// 		// timing options
+// 			duration: slideOutTime,
+// 		});
+// 		setTimeout(()=> {
+// 			loader.style.display = 'none';
+// 		}, slideOutTime);
+// 	}, 600);
+// });
