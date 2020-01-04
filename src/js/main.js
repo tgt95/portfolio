@@ -153,7 +153,7 @@ class Theme {
 	}
 	init(){
 		this.baseConfig();
-		this.bannerCofig();
+		// this.bannerCofig();
 		this.workGrid();
 	}
 }

@@ -209,8 +209,8 @@ function () {
   }, {
     key: "init",
     value: function init() {
-      this.baseConfig();
-      this.bannerCofig();
+      this.baseConfig(); // this.bannerCofig();
+
       this.workGrid();
     }
   }]);

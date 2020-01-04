@@ -421,7 +421,8 @@ body {
       left: 0;
       right: 0;
       bottom: 0;
-      width: 100%; }
+      width: 100%;
+      height: 100%; }
     .section-work .item > .item-thumbnail .overlay-content {
       display: -webkit-box;
       display: -webkit-flex;

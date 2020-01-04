@@ -364,6 +364,7 @@
           <ul>
             <li class="active"><a href="#" data-tab-target="#category-web">Web</a></li>
             <li><a href="#" data-tab-target="#category-app">Mobile App</a></li>
+            <li><a href="#" data-tab-target="#category-branding">Branding</a></li>
           </ul>
         </div>
       </div>
@@ -446,6 +447,15 @@
                     <div class="swiper-slide item">
                       <div class="item-thumbnail"><img src="assets/images/projects/mobile/mango-app.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/mobile/full/mango-app.jpg') ?><a class="overlay-content" href="assets/images/projects/mobile/full/mango-app.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="1"><i class="icon ri-zoom-in-line"></i></a></div>
                       <div class="title">Mango App</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+        </div>
+      </div>
+      <div class="swiper-container" id="category-branding" style="display: none;">
+        <div class="swiper-wrapper slide-wrapper">
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/branding/bathu.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/branding/bathu.jpg') ?><a class="overlay-content" href="assets/images/projects/branding/bathu.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="0"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Nhà Ba THu</div>
                       <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
                     </div>
         </div>
@@ -578,7 +588,8 @@
 <script src="assets/plugins/snapsvg/dist/snap.svg-min.js"></script>
 <script src="assets/plugins/swiper/js/swiper.min.js"></script>
 <script src="assets/js/style.min.js"></script><?php $webFullImages = array('assets/images/projects/web/full/citigym.jpg','assets/images/projects/web/full/ayaka.jpg','assets/images/projects/web/full/parimilk.jpg','assets/images/projects/web/full/ifoss.jpg','assets/images/projects/web/full/chohoatuoi.jpg','assets/images/projects/web/full/007-flower.jpg','assets/images/projects/web/full/khatoco-event.jpg','assets/images/projects/web/full/last-shoes.jpg','assets/images/projects/web/full/news.jpg','assets/images/projects/web/full/mango.jpg','assets/images/projects/web/full/evbot.jpg','assets/images/projects/web/full/evbot-admin.jpg','assets/images/projects/web/full/getraco.jpg',); ?>
-<?php $appFullImages = array('assets/images/projects/web/full/citigym.jpg','assets/images/projects/web/full/ayaka.jpg','assets/images/projects/web/full/parimilk.jpg','assets/images/projects/web/full/ifoss.jpg','assets/images/projects/web/full/chohoatuoi.jpg','assets/images/projects/web/full/007-flower.jpg','assets/images/projects/web/full/khatoco-event.jpg','assets/images/projects/web/full/last-shoes.jpg','assets/images/projects/web/full/news.jpg','assets/images/projects/web/full/mango.jpg','assets/images/projects/web/full/evbot.jpg','assets/images/projects/web/full/evbot-admin.jpg','assets/images/projects/web/full/getraco.jpg',); ?>
+<?php $appFullImages = array('assets/images/projects/mobile/full/model-app.jpg','assets/images/projects/mobile/full/mango-app.jpg',); ?>
+<?php $brandingFullImages = array('assets/images/projects/branding/bathu.jpg',); ?>
 <script>
   // Init Gallery Plugins
   let $pswp = document.querySelector('.pswp'),
@@ -589,7 +600,7 @@
   			src: '<?php echo $value; ?>',
   			w: '<?php echo $width; ?>',
   			h: '<?php echo $height; ?>',
-  			galleryUID: '<?php echo $key; ?>'
+  			pid: 'web-<?php echo $key; ?>'
   		},
   		<?php } ?>
   	],
@@ -600,10 +611,23 @@
   			src: '<?php echo $value; ?>',
   			w: '<?php echo $width; ?>',
   			h: '<?php echo $height; ?>',
-  			galleryUID: '<?php echo $key; ?>'
+  			pid: 'app-<?php echo $key; ?>'
+  		},
+  		<?php } ?>
+  	],
+  	brandingItems = [
+  		<?php foreach ($brandingFullImages as $key => $value) { 
+  			list($width, $height) = getimagesize($value); ?>
+  		{
+  			src: '<?php echo $value; ?>',
+  			w: '<?php echo $width; ?>',
+  			h: '<?php echo $height; ?>',
+  			pid: 'branding-<?php echo $key; ?>'
   		},
   		<?php } ?>
   	];
+  //- console.log(appItems);
+  
   $(document).on('click', '.section-work .item-thumbnail .overlay-content', function(event) {
   	event.preventDefault();
   
@@ -615,6 +639,7 @@
   		arrowEl: true,
   		index: index,
   		bgOpacity: 0.8,
+  		galleryUID: $(this).closest('.swiper-container').attr('id'),
   		getThumbBoundsFn: function(index) {
   			// get window scroll Y
   			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -629,9 +654,67 @@
   	}
   	category == 'category-web' ? data = webItems : 0;
   	category == 'category-app' ? data = appItems : 0;
-  	console.log(category);
-  	console.log(data);
+  	category == 'category-branding' ? data = brandingItems : 0;
   	var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, data, options);
   	lightBox.init();
   });
+  
+  const openPhotoswipeFromURL = ()=> {
+  	let hash = window.location.hash.substring(1), data;
+  	if (hash.includes('gid') && hash.includes('pid')){
+  		let vars = hash.split('&').slice(1,3),
+  			gid = vars[0].substring(4),
+  			pid = vars[1].substring(4),
+  			options = {
+  				arrowEl: true,
+  				bgOpacity: 0.8,
+  				index: pid.split('-').pop(),
+  				galleryUID: gid,
+  			};
+  		gid == 'category-web' ? data = webItems : 0;
+  		gid == 'category-app' ? data = appItems : 0;
+  		gid == 'category-branding' ? data = brandingItems : 0;
+  
+  		let gallery = new PhotoSwipe( $pswp, PhotoSwipeUI_Default, data, options);
+  		gallery.init();
+  	}
+  }
+  
+  openPhotoswipeFromURL();
+  
+  const photoswipeInit = (container, gallerys, thumbnails)=> {
+  	let $container = document.querySelectorAll(container)[0], 
+  		$gallerys = $container.querySelectorAl(gallerys), 
+  		$thumbnails = $gallerys.querySelectorAll(thumbnails);
+  	console.log($container);
+  	console.log($gallerys);
+  	console.log($thumbnails);
+  
+  	const getCategory = (type)=> {
+  		let data;
+  		switch (type){
+  			case 'category-web' :
+  				data = webItems
+  				break;
+  			case 'category-app' :
+  				data = appItems
+  				break;
+  			case 'category-branding' :
+  				data = brandingItems
+  				break;
+  		}
+  		return data;
+  	}
+  
+  	const thumbnailsOnClick = (e)=> {
+  		let $this = e.currentTarget;
+  	}
+  	$thumbnails.onclick = thumbnailsOnClick();
+  	//- $thumbnails.click(function(e){
+  	//- 	thumbnailsOnClick(e);
+  	//- });
+  }
+  
+  //- 
+  photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail .overlay-content');
 </script>
