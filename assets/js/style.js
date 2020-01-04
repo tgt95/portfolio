@@ -53,6 +53,11 @@ function () {
           scrollTop: $($.attr(this, 'href')).offset().top - offsetTop
         }, 500);
       });
+      var header = this.elements.header;
+      $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        scrollTop > 64 ? header.addClass('has-background') : header.removeClass('has-background');
+      });
     }
   }, {
     key: "bannerCofig",

@@ -35,6 +35,12 @@ class Theme {
 				scrollTop: $($.attr(this, 'href')).offset().top - offsetTop
 			}, 500);
 		});
+
+		let header = this.elements.header;
+		$(window).scroll(function(){
+			let scrollTop = $(this).scrollTop();
+			scrollTop > 64 ? header.addClass('has-background') : header.removeClass('has-background');
+		});
 	}
 	bannerCofig(){
         let banner = $('.section-banner'),
