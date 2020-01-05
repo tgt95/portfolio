@@ -514,7 +514,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-7 col-lg-6 content-text">
-            <div class="title">Interested my work?</div><a class="btn btn-brand" href="Designer-Trinh-Gia-Tuan.pdf">Download CV</a>
+            <div class="title">Interested my work?</div><a class="btn btn-brand" href="ux-ui-designer-trinh-gia-tuan.pdf">Download CV</a>
           </div>
           <div class="col-md-5 col-lg-6 content-bg"><svg width="100%" height="562px" viewBox="0 0 415 562" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
