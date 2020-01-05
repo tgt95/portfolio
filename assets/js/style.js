@@ -215,11 +215,14 @@ function () {
             containers = $('.section-work .swiper-container');
         e.preventDefault();
         li.removeClass('active');
-        $li.addClass('active');
-        containers.hide(400, function () {
-          target.show(400);
-          gallerySlider[$li.index()].update();
-        });
+        $li.addClass('active'); // containers.hide(400, ()=> {
+        // 	target.show(400);
+        // 	gallerySlider[$li.index()].update();
+        // });
+
+        containers.hide();
+        target.show();
+        gallerySlider[$li.index()].update();
       });
     }
   }, {
@@ -243,6 +246,10 @@ function () {
 
           case 'category-branding':
             data = brandingItems;
+            break;
+
+          case 'category-illustration':
+            data = illustrationItems;
             break;
         }
 

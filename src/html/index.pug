@@ -90,10 +90,10 @@ block content
 								'title': 'Branding',
 								'slug': 'branding'
 							},
-							//- {
-							//- 	'title': 'Illustration',
-							//- 	'slug': 'illustration'
-							//- },
+							{
+								'title': 'Illustration',
+								'slug': 'illustration'
+							},
 						]
 					each item, index in categories
 						- let className = index === 0 ? 'active' : ''
@@ -131,8 +131,10 @@ block content
 				each item, index in brandingProjects
 					+galleryCard(item, index)
 
-		//- .swiper-container(id="category-branding" style="display: none;") asd
-		//- .swiper-container(id="category-illustration" style="display: none;") asd
+		.swiper-container(id="category-illustration" style="display: none;")
+			.swiper-wrapper.slide-wrapper
+				each item, index in illustrationProjects
+					+galleryCard(item, index)
 	// Contact
 	.section.section-contact.mb-0
 		//- include svg/bg-shape.svg
@@ -192,6 +194,11 @@ block script
 		| '#{item.fullImage}',
 	| ); ?>
 
+	| <?php $illustrationFullImages = array(
+	each item, index in illustrationProjects
+		| '#{item.fullImage}',
+	| ); ?>
+
 	script.
 		// Loop Data
 		let webItems = [
@@ -224,6 +231,17 @@ block script
 					w: '<?php echo $width; ?>',
 					h: '<?php echo $height; ?>',
 					pid: 'branding-<?php echo $key; ?>'
+				},
+				<?php } ?>
+			],
+			illustrationItems = [
+				<?php foreach ($illustrationFullImages as $key => $value) { 
+					list($width, $height) = getimagesize($value); ?>
+				{
+					src: '<?php echo $value; ?>',
+					w: '<?php echo $width; ?>',
+					h: '<?php echo $height; ?>',
+					pid: 'illustration-<?php echo $key; ?>'
 				},
 				<?php } ?>
 			];

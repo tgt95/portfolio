@@ -159,10 +159,13 @@ class Theme {
 			e.preventDefault();
 			li.removeClass('active');
 			$li.addClass('active');
-			containers.hide(400, ()=> {
-				target.show(400);
-				gallerySlider[$li.index()].update();
-			});
+			// containers.hide(400, ()=> {
+			// 	target.show(400);
+			// 	gallerySlider[$li.index()].update();
+			// });
+			containers.hide();
+			target.show();
+			gallerySlider[$li.index()].update();
 			
 		});
 	}
@@ -184,6 +187,9 @@ class Theme {
 				case 'category-branding' :
 					data = brandingItems
 					break;
+					case 'category-illustration' :
+						data = illustrationItems
+						break;
 			}
 			return data;
 		}

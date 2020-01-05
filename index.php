@@ -363,6 +363,7 @@
             <li class="active"><a href="#" data-tab-target="#category-web">Web</a></li>
             <li><a href="#" data-tab-target="#category-app">Mobile App</a></li>
             <li><a href="#" data-tab-target="#category-branding">Branding</a></li>
+            <li><a href="#" data-tab-target="#category-illustration">Illustration</a></li>
           </ul>
         </div>
       </div>
@@ -453,7 +454,56 @@
         <div class="swiper-wrapper slide-wrapper">
                     <div class="swiper-slide item">
                       <div class="item-thumbnail"><img src="assets/images/projects/branding/bathu.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/branding/bathu.jpg') ?><a class="overlay-content" href="assets/images/projects/branding/bathu.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="0"><i class="icon ri-zoom-in-line"></i></a></div>
-                      <div class="title">Nhà Ba THu</div>
+                      <div class="title">Nhà Ba Thu</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/branding/molly-browns.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/branding/molly-browns.jpg') ?><a class="overlay-content" href="assets/images/projects/branding/molly-browns.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="1"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Molly Browns</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/branding/last-shoes.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/branding/last-shoes.jpg') ?><a class="overlay-content" href="assets/images/projects/branding/last-shoes.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="2"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Last Shoes</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/branding/lion.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/branding/lion.jpg') ?><a class="overlay-content" href="assets/images/projects/branding/lion.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="3"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Lion</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/branding/mango.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/branding/mango.jpg') ?><a class="overlay-content" href="assets/images/projects/branding/mango.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="4"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Mango</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/branding/long-viet-telecom.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/branding/long-viet-telecom.jpg') ?><a class="overlay-content" href="assets/images/projects/branding/long-viet-telecom.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="5"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Long Việt Telecom</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+        </div>
+      </div>
+      <div class="swiper-container" id="category-illustration" style="display: none;">
+        <div class="swiper-wrapper slide-wrapper">
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/illustration/deadline.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/illustration/full/deadline-full.jpg') ?><a class="overlay-content" href="assets/images/projects/illustration/full/deadline-full.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="0"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Deadline</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/illustration/sg-nl.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/illustration/sg-nl.jpg') ?><a class="overlay-content" href="assets/images/projects/illustration/sg-nl.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="1"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Saigon Never Sleep</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/illustration/designer-boy-1.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/illustration/full/designer-boy-1-full.jpg') ?><a class="overlay-content" href="assets/images/projects/illustration/full/designer-boy-1-full.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="2"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Designer Boy 1</div>
+                      <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
+                    </div>
+                    <div class="swiper-slide item">
+                      <div class="item-thumbnail"><img src="assets/images/projects/illustration/designer-boy-2.jpg"><?php list($width, $height) = getimagesize('assets/images/projects/illustration/full/designer-boy-2-full.jpg') ?><a class="overlay-content" href="assets/images/projects/illustration/full/designer-boy-2-full.jpg" data-size="<?php echo $width.'x'.$height; ?>" data-img-index="3"><i class="icon ri-zoom-in-line"></i></a></div>
+                      <div class="title">Designer Boy 2</div>
                       <div class="url-link"><a href="" target="_blank" rel="nofollow"></a></div>
                     </div>
         </div>
@@ -561,7 +611,7 @@
     <footer class="footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 author-content">© Gia Tuan Trinh. <script>document.write((new Date().getFullYear()))</script> All Rights Reserved</div>
+          <div class="col-md-6 author-content">@ Design & Develop by TGT</div>
           <div class="col-md-6">
             <ul class="social-list">
               <li><a class="btn-just-icon btn-brand" href="https://www.facebook.com/tgt95"><i class="ri-facebook-fill"></i></a></li>
@@ -593,7 +643,8 @@
   });
 </script><?php $webFullImages = array('assets/images/projects/web/full/citigym.jpg','assets/images/projects/web/full/ayaka.jpg','assets/images/projects/web/full/parimilk.jpg','assets/images/projects/web/full/ifoss.jpg','assets/images/projects/web/full/chohoatuoi.jpg','assets/images/projects/web/full/007-flower.jpg','assets/images/projects/web/full/khatoco-event.jpg','assets/images/projects/web/full/last-shoes.jpg','assets/images/projects/web/full/news.jpg','assets/images/projects/web/full/mango.jpg','assets/images/projects/web/full/evbot.jpg','assets/images/projects/web/full/evbot-admin.jpg','assets/images/projects/web/full/getraco.jpg',); ?>
 <?php $appFullImages = array('assets/images/projects/mobile/full/model-app.jpg','assets/images/projects/mobile/full/mango-app.jpg',); ?>
-<?php $brandingFullImages = array('assets/images/projects/branding/bathu.jpg',); ?>
+<?php $brandingFullImages = array('assets/images/projects/branding/bathu.jpg','assets/images/projects/branding/molly-browns.jpg','assets/images/projects/branding/last-shoes.jpg','assets/images/projects/branding/lion.jpg','assets/images/projects/branding/mango.jpg','assets/images/projects/branding/long-viet-telecom.jpg',); ?>
+<?php $illustrationFullImages = array('assets/images/projects/illustration/full/deadline-full.jpg','assets/images/projects/illustration/sg-nl.jpg','assets/images/projects/illustration/full/designer-boy-1-full.jpg','assets/images/projects/illustration/full/designer-boy-2-full.jpg',); ?>
 <script>
   // Loop Data
   let webItems = [
@@ -626,6 +677,17 @@
   			w: '<?php echo $width; ?>',
   			h: '<?php echo $height; ?>',
   			pid: 'branding-<?php echo $key; ?>'
+  		},
+  		<?php } ?>
+  	],
+  	illustrationItems = [
+  		<?php foreach ($illustrationFullImages as $key => $value) { 
+  			list($width, $height) = getimagesize($value); ?>
+  		{
+  			src: '<?php echo $value; ?>',
+  			w: '<?php echo $width; ?>',
+  			h: '<?php echo $height; ?>',
+  			pid: 'illustration-<?php echo $key; ?>'
   		},
   		<?php } ?>
   	];
