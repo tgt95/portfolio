@@ -54,7 +54,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 content-text">
-            <div class="title">Hello, <br> I'm <a href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?">Fullstack Designer</a></div>
+            <div class="title">Hello, <br> I'm a <a href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?">Fullstack Designer</a></div>
             <p>My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.</p>
           </div>
           <div class="col-lg-6 content-bg" data-responsive-sm="800" data-responsive-xs="600"><svg width="1374px" height="1093px" viewBox="0 0 1374 1093" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -514,7 +514,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-7 col-lg-6 content-text">
-            <div class="title">Interested my work?</div><a class="btn btn-brand" href="ux-ui-designer-trinh-gia-tuan.pdf">Download CV</a>
+            <div class="title">Interested in my work?</div><a class="btn btn-brand" href="ux-ui-designer-trinh-gia-tuan.pdf">Download CV</a>
           </div>
           <div class="col-md-5 col-lg-6 content-bg"><svg width="100%" height="562px" viewBox="0 0 415 562" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
@@ -611,7 +611,7 @@
     <footer class="footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 author-content">@ Design & Develop by TGT</div>
+          <div class="col-md-6 author-content">@ Designed & Developed by TGT</div>
           <div class="col-md-6">
             <ul class="social-list">
               <li><a class="btn-just-icon btn-brand" href="https://www.facebook.com/tgt95"><i class="ri-facebook-fill"></i></a></li>
