@@ -80,12 +80,12 @@ const html = ()=> {
 	}}))
 	.pipe(pug({
 		doctype: 'html',
-		pretty: true,
+		pretty: false,
 		locals : {imageSize : require("image-size")}
 	}))
 	// .pipe(rename({
     //     extname: '.php'
-    // }))
+	// }))
 	.pipe(dest('./'))
 	.pipe(browserSync.stream({stream: true}));
 }
