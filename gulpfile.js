@@ -14,6 +14,8 @@ const rename 		 	= require('gulp-rename');
 const uglify 		 	= require('gulp-uglify');
 const iconfont 	 		= require('gulp-iconfont');
 const iconfontCss  		= require('gulp-iconfont-css');
+const browserSync  		= require('browser-sync').create();
+const del		  		= require('del');
 const runTimestamp 		= Math.round(Date.now()/1000);
 
 /**
@@ -46,6 +48,25 @@ const paths = {
 
 const fontName = 'customicon';
 
+// Browser Sync
+const server = (done)=> {
+	browserSync.init({
+		server: {
+			baseDir: "./"
+		},
+		port: 3000
+	});
+	done();
+};
+
+const browserSyncReload = (done)=> {
+	browserSync.reload();
+	done();
+}
+
+// Clean
+const clean = ()=> del(['dist']);
+
 const html = ()=> {
 	return src([paths.src.html + '/*.pug'])
 	.pipe(plumber({
@@ -59,16 +80,18 @@ const html = ()=> {
 	}}))
 	.pipe(pug({
 		doctype: 'html',
-		pretty: true
+		pretty: true,
+		locals : {imageSize : require("image-size")}
 	}))
-	.pipe(rename({
-        extname: '.php'
-    }))
-	.pipe(dest('./'));
+	// .pipe(rename({
+    //     extname: '.php'
+    // }))
+	.pipe(dest('./'))
+	.pipe(browserSync.stream({stream: true}));
 }
 
 const htmlWatch = ()=> {
-	watch([paths.src.html + '/**/*'], series('html')); 
+	watch([paths.src.html + '/**/*'], series('html', browserSyncReload)); 
 };
 
 const fonts = ()=> {
@@ -111,10 +134,11 @@ const scss = ()=> {
 	    .pipe(rename({ suffix: '.min' }))
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(paths.dist.css))
+		.pipe(browserSync.stream({stream: true}));
 }
 
 const scssWatch = ()=> {
-	watch([paths.src.scss + '/**/*'], series('scss')); 
+	watch([paths.src.scss + '/**/*'], series('scss', browserSyncReload)); 
 };
 
 // JS task: concatenates and uglifies JS files to script.js
@@ -152,10 +176,11 @@ const js = ()=> {
 	.pipe(uglify())
 	.pipe(sourcemaps.write('./'))
 	.pipe(dest(paths.dist.js))
+	.pipe(browserSync.stream({stream: true}));
 };
 
 const jsWatch = ()=> {
-	watch([paths.src.js], series('js')); 
+	watch([paths.src.js], series('js', browserSyncReload)); 
 };
 
 const plugins = ()=>{
@@ -186,14 +211,15 @@ const plugins = ()=>{
 // Watch task: watch SCSS and JS files for changes
 // If any change, run scss and js tasks simultaneously
 const watchTask = ()=> {
-    watch([paths.src.scss + '/**/*', paths.src.js, paths.src.html], 
-        // parallel(scss, js));    
-        parallel(scss, js, html));    
+    htmlWatch();
+	scssWatch();
+	jsWatch(); 
 }
 
 // Export the default Gulp task so it can be run
 // Runs the scss and js tasks simultaneously
 // then runs cacheBust, then watch task
+exports.server = server;
 exports.fonts = fonts;
 exports.html = html;
 exports.scss = scss;
@@ -206,6 +232,8 @@ exports.scssWatch = scssWatch;
 exports.jsWatch = jsWatch;
 
 exports.default = series(
-    parallel(scss, js, html), 
-    watchTask
+    clean,
+	parallel(scss, js, html), 
+	server,
+	watchTask
 );

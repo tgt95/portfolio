@@ -3,6 +3,7 @@
 		title: ['Home', 'Work', 'Profile', 'Contact'],
 		url: ['.section-banner', '.section-work', '.section-profile', '.section-contact'],
 	}
+	let socialIcon = ['linkedin-box', 'behance', 'dribbble', 'github']
 .header.is-sticky
 	.container
 		.navigation-menu
@@ -14,8 +15,8 @@
 					li
 						a(href=navigationMenu.url[index] data-offset-top="90")= navigationMenu.title[index]
 			ul.social-list
-				- let socialLink = ['https://www.facebook.com/tgt95', 'https://www.behance.net/tgt95', 'https://dribbble.com/tgt95', 'https://github.com/tgt95']
-				each icon, index in ['facebook', 'behance', 'dribbble', 'github']
+				- let socialLink = ['https://www.linkedin.com/in/tgt95', 'https://www.behance.net/tgt95', 'https://dribbble.com/tgt95', 'https://github.com/tgt95']
+				each icon, index in socialIcon
 					li
 						a(href=socialLink[index]).btn-just-icon.btn-brand
 							i(class=`ri-${icon}-fill`)

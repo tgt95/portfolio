@@ -185,55 +185,74 @@ block content
 					.pswp__caption__center
 
 block script
+
 	//-  Get Data Image
-	-
-		let webItems = [];
-		let appItems = [];
-		let brandingItems = [];
-		let illustrationItems = [];
-		for (x in webProjects){
-			var item = webProjects[x]
-			webItems.push(`{
-				src: '${item.fullImage}',
-				w: '${getImageSize(item.fullImage)[0]}',
-				h: '${getImageSize(item.fullImage)[1]}',
-				pid: 'web-${index}'
-			}`)
-		}
-		for (x in mobileProjects){
-			var item = mobileProjects[x]
-			appItems.push(`{
-				src: '${item.fullImage}',
-				w: '${getImageSize(item.fullImage)[0]}',
-				h: '${getImageSize(item.fullImage)[1]}',
-				pid: 'app-${index}'
-			}`)
-		}
-		for (x in brandingProjects){
-			var item = brandingProjects[x]
-			brandingItems.push(`{
-				src: '${item.fullImage}',
-				w: '${getImageSize(item.fullImage)[0]}',
-				h: '${getImageSize(item.fullImage)[1]}',
-				pid: 'branding-${index}'
-			}`)
-		}
-		for (x in illustrationProjects){
-			var item = illustrationProjects[x]
-			illustrationItems.push(`{
-				src: '${item.fullImage}',
-				w: '${getImageSize(item.fullImage)[0]}',
-				h: '${getImageSize(item.fullImage)[1]}',
-				pid: 'illustration-${index}'
-			}`)
-		}
+	| <?php $webFullImages = array(
+	each item, index in webProjects
+		| '#{item.fullImage}',
+	| ); ?>
+
+	| <?php $appFullImages = array(
+	each item, index in mobileProjects
+		| '#{item.fullImage}',
+	| ); ?>
+
+	| <?php $brandingFullImages = array(
+	each item, index in brandingProjects
+		| '#{item.fullImage}',
+	| ); ?>
+
+	| <?php $illustrationFullImages = array(
+	each item, index in illustrationProjects
+		| '#{item.fullImage}',
+	| ); ?>
 
 	script.
 		// Loop Data
-		let webItems = [!{webItems}],
-			appItems = [!{appItems}],
-			brandingItems = [!{brandingItems}],
-			illustrationItems = [!{illustrationItems}];
+		let webItems = [
+				<?php foreach ($webFullImages as $key => $value) { 
+					list($width, $height) = getimagesize($value); ?>
+				{
+					src: '<?php echo $value; ?>',
+					w: '<?php echo $width; ?>',
+					h: '<?php echo $height; ?>',
+					pid: 'web-<?php echo $key; ?>'
+				},
+				<?php } ?>
+			],
+			appItems = [
+				<?php foreach ($appFullImages as $key => $value) { 
+					list($width, $height) = getimagesize($value); ?>
+				{
+					src: '<?php echo $value; ?>',
+					w: '<?php echo $width; ?>',
+					h: '<?php echo $height; ?>',
+					pid: 'app-<?php echo $key; ?>'
+				},
+				<?php } ?>
+			],
+			brandingItems = [
+				<?php foreach ($brandingFullImages as $key => $value) { 
+					list($width, $height) = getimagesize($value); ?>
+				{
+					src: '<?php echo $value; ?>',
+					w: '<?php echo $width; ?>',
+					h: '<?php echo $height; ?>',
+					pid: 'branding-<?php echo $key; ?>'
+				},
+				<?php } ?>
+			],
+			illustrationItems = [
+				<?php foreach ($illustrationFullImages as $key => $value) { 
+					list($width, $height) = getimagesize($value); ?>
+				{
+					src: '<?php echo $value; ?>',
+					w: '<?php echo $width; ?>',
+					h: '<?php echo $height; ?>',
+					pid: 'illustration-<?php echo $key; ?>'
+				},
+				<?php } ?>
+			];
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', (e)=> {
 			theme.bannerCofig();

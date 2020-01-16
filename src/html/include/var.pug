@@ -1,5 +1,11 @@
 -
 	const varToString = varObj => Object.keys(varObj)[0];
+	function getImageSize(file){
+		let dimensions = imageSize(file);
+		let w = dimensions.width
+		let h = dimensions.height
+		return [w,h];
+	}
 
 // Data
 -
