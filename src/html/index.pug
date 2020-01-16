@@ -191,42 +191,49 @@ block script
 		let appItems = [];
 		let brandingItems = [];
 		let illustrationItems = [];
-		for (x in webProjects){
-			var item = webProjects[x]
+		//- for (x in webProjects){
+		//- 	var item = webProjects[x]
+		//- 	var index = Object.keys(webProjects).indexOf(item)
+		//- 	webItems.push(`{
+		//- 		src: '${item.fullImage}',
+		//- 		w: '${getImageSize(item.fullImage)[0]}',
+		//- 		h: '${getImageSize(item.fullImage)[1]}',
+		//- 		pid: 'web${index}',
+		//- 		test: '${webProjects[x]}'
+		//- 	}`)
+		//- }
+		webProjects.forEach(function(item, index){
 			webItems.push(`{
 				src: '${item.fullImage}',
 				w: '${getImageSize(item.fullImage)[0]}',
 				h: '${getImageSize(item.fullImage)[1]}',
-				pid: 'web-${index}'
+				pid: 'web-${index}',
 			}`)
-		}
-		for (x in mobileProjects){
-			var item = mobileProjects[x]
+		})
+		mobileProjects.forEach(function(item, index){
 			appItems.push(`{
 				src: '${item.fullImage}',
 				w: '${getImageSize(item.fullImage)[0]}',
 				h: '${getImageSize(item.fullImage)[1]}',
 				pid: 'app-${index}'
 			}`)
-		}
-		for (x in brandingProjects){
-			var item = brandingProjects[x]
+		})
+		brandingProjects.forEach(function(item, index){
 			brandingItems.push(`{
 				src: '${item.fullImage}',
 				w: '${getImageSize(item.fullImage)[0]}',
 				h: '${getImageSize(item.fullImage)[1]}',
 				pid: 'branding-${index}'
 			}`)
-		}
-		for (x in illustrationProjects){
-			var item = illustrationProjects[x]
+		})
+		illustrationProjects.forEach(function(item, index){
 			illustrationItems.push(`{
 				src: '${item.fullImage}',
 				w: '${getImageSize(item.fullImage)[0]}',
 				h: '${getImageSize(item.fullImage)[1]}',
 				pid: 'illustration-${index}'
 			}`)
-		}
+		})
 
 	script.
 		// Loop Data
