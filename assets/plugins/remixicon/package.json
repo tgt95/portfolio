@@ -1,0 +1,67 @@
+{
+  "_args": [
+    [
+      "remixicon@2.1.0",
+      "/Users/mac/Documents/Work/Coding/Templates/my-projects/portfolio-v3"
+    ]
+  ],
+  "_from": "remixicon@2.1.0",
+  "_id": "remixicon@2.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-6f2IzIDveqoNzi9/s84MeK064t89gJFdWsTDYt/IG3E03Ho4YQTu/3U8grM9nKRNL7FuTCixMypwqFzqzKlTzA==",
+  "_location": "/remixicon",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "remixicon@2.1.0",
+    "name": "remixicon",
+    "escapedName": "remixicon",
+    "rawSpec": "2.1.0",
+    "saveSpec": null,
+    "fetchSpec": "2.1.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/remixicon/-/remixicon-2.1.0.tgz",
+  "_spec": "2.1.0",
+  "_where": "/Users/mac/Documents/Work/Coding/Templates/my-projects/portfolio-v3",
+  "bugs": {
+    "url": "https://github.com/Remix-Design/remixicon/issues"
+  },
+  "contributors": [
+    {
+      "name": "Wendy Gao",
+      "email": "wendygaoyuan@163.com"
+    },
+    {
+      "name": "Jimmy Cheung",
+      "email": "jimmy@remixdesign.cn"
+    }
+  ],
+  "description": "Remix Icon is a set of open source neutral style system symbols elaborately crafted for designers and developers. All of the icons are free to use for both personal and commercial.",
+  "files": [
+    "fonts/",
+    "icons/",
+    "License",
+    "package.json",
+    "README_CN.md",
+    "README.md"
+  ],
+  "homepage": "https://remixicon.com",
+  "keywords": [
+    "remixicon",
+    "remix",
+    "icon",
+    "icon library",
+    "icon pack"
+  ],
+  "license": "Apache 2.0",
+  "name": "remixicon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Remix-Design/remixicon.git"
+  },
+  "version": "2.1.0"
+}
