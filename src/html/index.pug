@@ -85,10 +85,10 @@ block content
 				ul
 					-
 						let categories = [
-							{
-								'title': 'Featured',
-								'slug': 'featured'
-							},
+							// {
+							// 	'title': 'Featured',
+							// 	'slug': 'featured'
+							// },
 							{
 								'title': 'Web',
 								'slug': 'web'
@@ -111,12 +111,12 @@ block content
 						li(class=className)
 							a(href="#" data-tab-target=`#category-${item.slug}`)= item.title
 		
-		.swiper-container(id="category-featured")
-			.swiper-wrapper.slide-wrapper
-				.swiper-slide.item
-					.item-thumbnail
+		// .swiper-container(id="category-featured")
+		// 	.swiper-wrapper.slide-wrapper
+		// 		.swiper-slide.item
+		// 			.item-thumbnail
 					
-		.swiper-container(id="category-web" style="display: none;")
+		.swiper-container(id="category-web")
 			.swiper-wrapper.slide-wrapper
 				mixin galleryCard(item, index)
 					.swiper-slide.item
