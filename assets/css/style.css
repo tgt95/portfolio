@@ -741,7 +741,7 @@ body {
         -ms-flex-wrap: wrap;
             flex-wrap: wrap; }
     .footer ul.social-list li:not(:last-child) {
-      margin-right: 32px; }
+      margin-right: 24px; }
     .footer ul.social-list a {
       display: -webkit-box;
       display: -webkit-flex;
