@@ -347,8 +347,12 @@
 				visibility: hidden;
 				opacity: 0;
 				text-decoration: none;
-				> .icon{
+				.icon{
 					font-size: 64px;
+					color: white;
+				}
+				.text{
+					font-weight: 600;
 					color: white;
 				}
 			}

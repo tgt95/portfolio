@@ -608,8 +608,11 @@ body {
       visibility: hidden;
       opacity: 0;
       text-decoration: none; }
-      .section-work .item > .item-thumbnail .overlay-content > .icon {
+      .section-work .item > .item-thumbnail .overlay-content .icon {
         font-size: 64px;
+        color: white; }
+      .section-work .item > .item-thumbnail .overlay-content .text {
+        font-weight: 600;
         color: white; }
   .section-work .item:hover .item-thumbnail .overlay-content {
     visibility: visible;
@@ -630,7 +633,7 @@ body {
     z-index: 9; }
   .header.has-background {
     background-color: white;
-    box-shadow: 0 2px 42px 0 rgba(0, 0, 0, 0.03); }
+    box-shadow: 0 2px 42px 0 rgba(0, 0, 0, 0.08); }
   .header .navigation-menu {
     padding-top: 8px;
     padding-bottom: 8px;

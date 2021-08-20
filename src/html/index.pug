@@ -14,7 +14,7 @@ block content
 					.title Hello, <br> I'm a 
 						a(href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?") Fullstack Designer
 					//- p My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
-					p My name is Trinh Gia Tuan, a designer with a passion for developing Applications User Interfaces including mobile applications, and websites.
+					p My name is Trinh Gia Tuan, a designer with the passion for developing Applications User Interfaces including mobile applications, and websites.
 				.col-lg-6.content-bg(data-responsive-sm="800" data-responsive-xs="600")
 					include svg/banner-bg.svg
 	
@@ -85,10 +85,10 @@ block content
 				ul
 					-
 						let categories = [
-							// {
-							// 	'title': 'Featured',
-							// 	'slug': 'featured'
-							// },
+							{
+								'title': 'Featured',
+								'slug': 'featured'
+							},
 							{
 								'title': 'Web',
 								'slug': 'web'
@@ -111,12 +111,17 @@ block content
 						li(class=className)
 							a(href="#" data-tab-target=`#category-${item.slug}`)= item.title
 		
-		// .swiper-container(id="category-featured")
-		// 	.swiper-wrapper.slide-wrapper
-		// 		.swiper-slide.item
-		// 			.item-thumbnail
+		.swiper-container(id="category-featured")
+			.swiper-wrapper.slide-wrapper
+				.swiper-slide.item
+					.item-thumbnail
+						img(src="assets/images/projects/mobile/agoyu-app.jpg")
+						a(href="https://www.notion.so/Agoyu-e6be289682ac43ebaf22cb9d9ffd2049" target="_blank").overlay-content.external
+							.text-center
+								i.icon.ri-external-link-line
+								.text View case study
 					
-		.swiper-container(id="category-web")
+		.swiper-container(id="category-web" style="display: none;")
 			.swiper-wrapper.slide-wrapper
 				mixin galleryCard(item, index)
 					.swiper-slide.item
@@ -167,7 +172,7 @@ block content
 						a(href="ux-ui-designer-trinh-gia-tuan.pdf" download).btn.btn-brand 
 							i.ri-download-2-fill 
 							|  Download Resume
-						a(href="ux-ui-designer-trinh-gia-tuan.pdf").btn.btn-secondary.ml-2 
+						a(href="ux-ui-designer-trinh-gia-tuan.pdf" target="_blank").btn.btn-secondary.ml-2 
 							i.ri-eye-line
 							|  View Resume
 				.col-md-5.col-lg-6.content-bg
@@ -269,7 +274,7 @@ block script
 		document.addEventListener('DOMContentLoaded', (e)=> {
 			theme.bannerCofig();
 			theme.workGrid();
-			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content');
+			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)');
 		});
 		// Window Resize
 		window.addEventListener('resize', function(event) {

@@ -14,7 +14,7 @@ html
 		block meta-title
 		
 		//- CSS
-		link(rel="shortcut icon" href="assets/images/logo.png")
+		link(rel="shortcut icon" href="assets/images/favicon.ico")
 		//- Bootstrap
 		link(rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-grid.min.css")
 		link(rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-reboot.min.css")
@@ -89,8 +89,8 @@ script(src="assets/js/style.min.js")
 script.
 	let theme = new Theme();
 	document.addEventListener('DOMContentLoaded', (e)=> {
-		$('body').css('overflow', 'hidden');
 		theme.init();
+		$('body').css('overflow', 'hidden');
 		setTimeout(()=> {
 			$('body').css('overflow', '');
 			theme.elements.loader.addClass('move2Left animated', setTimeout(()=> {
