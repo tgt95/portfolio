@@ -26,7 +26,8 @@ function () {
     this.elements = {
       contentPage: $('.content-page'),
       header: $('.header'),
-      navigation: $('.header .navigation-menu')
+      navigation: $('.header .navigation-menu'),
+      loader: $('.page-loader')
     };
   }
 

@@ -11,13 +11,37 @@ body{
 	right: 0;
 	bottom: 0;
 	top: 0;
-	background-color: white;
+	// background-color: lighten($brand, 24%);
+	background-color: $brand;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	z-index: 1060;
+	.loader-content{
+		text-align: center;
+		.title{
+			animation: flash 3s ease infinite;
+			color: white;
+			font-weight: 600;
+			font-size: 18px;
+		}
+	}
 	.logo-img{
 		width: 120px;
-		animation: bounce 3s ease infinite;
 	}
+}
+
+@keyframes move2Left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.move2Left {
+	-webkit-animation-name: move2Left;
+	animation-name: move2Left;
 }

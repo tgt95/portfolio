@@ -16,6 +16,7 @@ class Theme {
 			contentPage : $('.content-page'),
 			header : $('.header'),
 			navigation : $('.header .navigation-menu'),
+			loader : $('.page-loader')
 		};
 	}
 	baseConfig(){
@@ -166,7 +167,6 @@ class Theme {
 			containers.hide();
 			target.show();
 			gallerySlider[$li.index()].update();
-			
 		});
 	}
 	photoswipeInit(container, gallerys, thumbnails) {

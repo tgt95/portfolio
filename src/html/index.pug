@@ -13,7 +13,8 @@ block content
 				.col-lg-6.content-text
 					.title Hello, <br> I'm a 
 						a(href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?") Fullstack Designer
-					p My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
+					//- p My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
+					p My name is Trinh Gia Tuan, a designer with a passion for developing Applications User Interfaces including mobile applications, and websites.
 				.col-lg-6.content-bg(data-responsive-sm="800" data-responsive-xs="600")
 					include svg/banner-bg.svg
 	
@@ -84,6 +85,10 @@ block content
 				ul
 					-
 						let categories = [
+							// {
+							// 	'title': 'Featured',
+							// 	'slug': 'featured'
+							// },
 							{
 								'title': 'Web',
 								'slug': 'web'
@@ -106,6 +111,11 @@ block content
 						li(class=className)
 							a(href="#" data-tab-target=`#category-${item.slug}`)= item.title
 		
+		// .swiper-container(id="category-featured")
+		// 	.swiper-wrapper.slide-wrapper
+		// 		.swiper-slide.item
+		// 			.item-thumbnail
+					
 		.swiper-container(id="category-web")
 			.swiper-wrapper.slide-wrapper
 				mixin galleryCard(item, index)
@@ -121,7 +131,6 @@ block content
 						.url-link
 							//- i.icon.ri-global-line
 							a(href=item.website target="_blank" rel="nofollow")= item.website
-
 				each item, index in webProjects
 					+galleryCard(item, index)
 			//- .swiper-pagination
@@ -154,7 +163,13 @@ block content
 			.row.align-items-center
 				.col-md-7.col-lg-6.content-text
 					.title Interested in my work?
-					a(href="ux-ui-designer-trinh-gia-tuan.pdf").btn.btn-brand Download CV
+					div
+						a(href="ux-ui-designer-trinh-gia-tuan.pdf" download).btn.btn-brand 
+							i.ri-download-2-fill 
+							|  Download Resume
+						a(href="ux-ui-designer-trinh-gia-tuan.pdf").btn.btn-secondary.ml-2 
+							i.ri-eye-line
+							|  View Resume
 				.col-md-5.col-lg-6.content-bg
 					include svg/human-2.svg
 	
@@ -187,6 +202,7 @@ block content
 block script
 	//-  Get Data Image
 	-
+		let featuredItems = [];
 		let webItems = [];
 		let appItems = [];
 		let brandingItems = [];
@@ -202,6 +218,14 @@ block script
 		//- 		test: '${webProjects[x]}'
 		//- 	}`)
 		//- }
+		// featuredProjects.forEach(function(item, index){
+		// 	featuredItems.push(`{
+		// 		src: '${item.fullImage}',
+		// 		w: '${getImageSize(item.fullImage)[0]}',
+		// 		h: '${getImageSize(item.fullImage)[1]}',
+		// 		pid: 'web-${index}',
+		// 	}`)
+		// })
 		webProjects.forEach(function(item, index){
 			webItems.push(`{
 				src: '${item.fullImage}',
@@ -247,3 +271,7 @@ block script
 			theme.workGrid();
 			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content');
 		});
+		// Window Resize
+		window.addEventListener('resize', function(event) {
+			theme.workGrid();
+		}, true);

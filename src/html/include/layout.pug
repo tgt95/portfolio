@@ -9,7 +9,7 @@ html
 		meta(charset="utf-8")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
 		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
-		//- embed(src="[MR-Inst]-Surfaces-Good-Day.mp3" autostart="true" loop="true" hidden="true" id="#bg-music")
+		embed(src="[MR-Inst]-Surfaces-Good-Day.mp3" autostart="true" loop="true" hidden="true" id="#bg-music")
 
 		block meta-title
 		
@@ -57,10 +57,11 @@ html
 
 		include layout/modal.pug
 
-		//- Loading
-		//- .page-loader
-		//- 	div
-		//- 		img(src="assets/images/logo.svg", alt="TGT Logo").logo-img
+		// Loading
+		.page-loader
+			.loader-content
+				img(src="assets/images/logo.svg", alt="TGT Logo").logo-img|
+				.title.mt-2 Loading...
 
 // Javascript
 script(src="assets/plugins/jquery/dist/jquery.min.js")
@@ -88,6 +89,14 @@ script(src="assets/js/style.min.js")
 script.
 	let theme = new Theme();
 	document.addEventListener('DOMContentLoaded', (e)=> {
+		$('body').css('overflow', 'hidden');
 		theme.init();
+		setTimeout(()=> {
+			$('body').css('overflow', '');
+			theme.elements.loader.addClass('move2Left animated', setTimeout(()=> {
+					//- theme.elements.loader.removeClass('move2Left animated');
+					theme.elements.loader.css('display', 'none');
+				}, 1000));
+		}, 1000);
 	});
 block script

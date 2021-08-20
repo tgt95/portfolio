@@ -19,6 +19,10 @@
 
 .btn{
     transition: color .3s ease, border .3s ease, box-shadow .3s ease;
+    >i{
+        font-size: 18px;
+        vertical-align: sub;
+    }
 }
 
 .btn-brand{
@@ -36,6 +40,26 @@
             color: white;
             text-decoration: none;
             background-color: darken($brand, 5%);
+            box-shadow: 0 0 10.28px 1.72px rgba(black, .03);
+        }
+    }
+}
+
+.btn-secondary{
+    &:not(.btn-just-icon){
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600;
+        color: $brand;
+        padding: 9.5px 16.8px;
+        border-radius: $border-theme;
+        background-color: lighten($brand, 24%);
+        text-decoration: none;
+        transition: all .3s ease;
+        &:hover, &:focus, &:active, &.active{
+            color: white;
+            text-decoration: none;
+            background-color: $brand;
             box-shadow: 0 0 10.28px 1.72px rgba(black, .03);
         }
     }

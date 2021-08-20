@@ -26,7 +26,10 @@
 				li{
 					display: inline-block;
 					&:not(:last-child){
-						margin-right: 32px;
+						margin-right: 24px;
+						@media (max-width: 576px) {
+							margin-right: 8px;
+						}
 					}
 					&.logo{
 						$logo-size: 60px;
@@ -48,17 +51,37 @@
 							}
 						}
 					}
-					a{
-						color: $brand;
-						font-weight: 600;
-						transition: border .3s ease, color .3s ease;
-						text-decoration: none;
-						// border-bottom: 3px solid transparent;
-						&:hover{
-							color: $brand;
-							// border-color: $brand;
+					&:not(:first-child){
+						a{
+							cursor: pointer;
+					        display: inline-block;
+					        font-weight: 600;
+					        color: $brand;
+					        padding: 9.5px 16.8px;
+					        border-radius: $border-theme;
+					        background-color: transparent;
+					        text-decoration: none;
+					        transition: all .3s ease;
+					        &:hover, &:focus, &:active, &.active{
+					            color: $brand;
+					            text-decoration: none;
+					            background-color: rgba($brand, .2);
+					            box-shadow: 0 0 10.28px 1.72px rgba(black, .03);
+							}
 						}
-					}
+			        }
+					// a{
+					// 	color: $brand;
+					// 	font-weight: 600;
+					// 	transition: border .3s ease, color .3s ease;
+					// 	text-decoration: none;
+						// border-bottom: 3px solid transparent;
+
+						// &:hover{
+						// 	color: darken($brand, 5%);
+						// 	// border-color: $brand;
+						// }
+					// }
 				}
 			}
 			&.social-list{
@@ -66,7 +89,7 @@
 				align-items: center;
 				li{
 					&:not(:last-child){
-						margin-right: 32px;
+						margin-right: 24px;
 					}
 				}
 				a{
