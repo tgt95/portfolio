@@ -327,6 +327,9 @@ body {
     .section-banner .content-text .title a {
       color: #EA5D5D;
       text-decoration: underline; }
+  @media (max-width: 1600px) and (min-width: 1080px) {
+    .section-banner .content-text {
+      top: -10%; } }
   .section-banner .content-bg {
     position: absolute;
     right: 0;
@@ -401,8 +404,8 @@ body {
   .section-skills .skills-content .item {
     text-align: center; }
     .section-skills .skills-content .item .icon {
-      width: 124px;
-      height: 124px;
+      width: 128px;
+      height: 128px;
       padding: 32px;
       border-radius: 50%;
       margin: 0 auto;
@@ -438,6 +441,17 @@ body {
     .section-skills .skills-content .item .title {
       font-size: 20px;
       font-weight: 700; }
+    @media (max-width: 576px) {
+      .section-skills .skills-content .item {
+        width: 50%; }
+        .section-skills .skills-content .item .icon {
+          width: 64px;
+          height: 64px;
+          margin-bottom: 16px; }
+          .section-skills .skills-content .item .icon img {
+            width: 32px; }
+        .section-skills .skills-content .item .title {
+          font-size: 16px; } }
   @media (max-width: 768px) {
     .section-skills .skills-content {
       -webkit-box-pack: center;
@@ -612,6 +626,7 @@ body {
         font-size: 64px;
         color: white; }
       .section-work .item > .item-thumbnail .overlay-content .text {
+        font-size: 16px;
         font-weight: 600;
         color: white; }
   .section-work .item:hover .item-thumbnail .overlay-content {
@@ -726,8 +741,7 @@ body {
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
-            align-items: center;
-    font-size: 12px; }
+            align-items: center; }
   .footer ul.social-list {
     list-style-type: none;
     padding-left: 0;

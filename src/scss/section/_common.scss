@@ -36,6 +36,9 @@
 				text-decoration: underline;
 			}
 		}
+		@media (max-width: 1600px) and (min-width: 1080px){
+			top: -10%;
+		}
 	}
 	.content-bg{
 		position: absolute;
@@ -127,8 +130,8 @@
 		.item{
 			text-align: center;
 			.icon{
-				width: 124px;
-				height: 124px;
+				width: 128px;
+				height: 128px;
 				padding: 32px;
 				border-radius: 50%;
 				margin: 0 auto;
@@ -158,6 +161,20 @@
 			.title{
 				font-size: $h5;
 				font-weight: 700;
+			}
+			@media (max-width: 576px) {
+			    width: 50%;
+			    .icon{
+					width: 64px;
+					height: 64px;
+					margin-bottom: 16px;
+					img{
+					    width: 32px;
+					}
+				}
+				.title{
+					font-size: $h6;
+				}
 			}
 		}
 	}
@@ -352,6 +369,7 @@
 					color: white;
 				}
 				.text{
+					font-size: 16px;
 					font-weight: 600;
 					color: white;
 				}
