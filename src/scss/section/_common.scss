@@ -97,6 +97,9 @@
 					font-weight: 600;
 					width: 100%;
 					max-width: 180px;
+					@media (max-width: 390px) {
+						max-width: 132px;
+					}
 				}
 				&:not(:last-child){
 					margin-bottom: 24px;

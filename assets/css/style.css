@@ -377,6 +377,9 @@ body {
       font-weight: 600;
       width: 100%;
       max-width: 180px; }
+      @media (max-width: 390px) {
+        .section-profile .profile-content ul li .title {
+          max-width: 132px; } }
     .section-profile .profile-content ul li:not(:last-child) {
       margin-bottom: 24px; }
 
