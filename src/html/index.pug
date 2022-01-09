@@ -1,42 +1,44 @@
 extends include/layout.pug
 
 block meta-title
-	title Trinh Gia Tuan | UX/UI Designer | Portfolio
+	title Trình Gia Tuấn | UX/UI Designer | Portfolio
 
 block custom
 
 block content
-	// Banner
+	//- Banner
 	.section.section-banner
 		.container
 			.row.align-items-center
 				.col-lg-6.content-text
-					.title Hello, <br> I'm a 
-						a(href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?") Fullstack Designer
+					.title Hello, <br> I'm a UX/UI Designer
+					//- .title Hello, <br> I'm a 
+					//- 	a(href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?") Fullstack Designer
+
 					//- p My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
-					p My name is Trinh Gia Tuan, a designer with the passion for developing Applications User Interfaces including mobile applications, and websites.
+					p My name is Trinh Gia Tuan, a designer with the passion for designing Applications User Interfaces including mobile applications, and websites.
 				.col-lg-6.content-bg(data-responsive-sm="800" data-responsive-xs="600")
 					include svg/banner-bg.svg
 	
-	// Profile
+	//- Profile
 	.section.section-profile
 		.container
 			.row.align-items-center
-				.col-md-7.col-lg-6
+				.col-md-7.col-lg-6.content-bg
 					include svg/profile-illustration.svg
-				.col-md-5.col-lg-6
+				.col-md-5.col-lg-6.content-text
 					.section-title Profile
 					.profile-content
 						ul
 							li
 								.title Fullname
-								span Trinh Gia Tuan
+								span Trình Gia Tuấn
 							li
 								.title Date of Birth
 								span 11th October, 1995
 							li
 								.title Email
-								a(href="mailto:giatuantrinh@gmail.com") giatuantrinh@gmail.com
+								a(href="mailto:giatuantrinh@gmail.com" style="text-decoration: underline;") giatuantrinh@gmail.com
 							//- li
 								.title Phone
 								a(href="tel:+84703000876") 0703 000 876
@@ -77,7 +79,7 @@ block content
 							img(src!=`assets/images/icons/${item.icon}`)/
 						.title= item.title
 
-	// Work
+	//- Work
 	.section.section-work
 		.container
 			.section-title Work
@@ -90,12 +92,12 @@ block content
 								'slug': 'featured'
 							},
 							{
-								'title': 'Web',
+								'title': 'Web design',
 								'slug': 'web'
 							},
 							{
 								'title': 'Mobile App',
-								'slug': 'app'
+								'slug': 'mobile'
 							},
 							{
 								'title': 'Branding',
@@ -120,7 +122,7 @@ block content
 							.text-center
 								i.icon.ri-external-link-line
 								.text View case study
-					// .title Agoyu
+					//- .title Agoyu Moving
 				.swiper-slide.item
 					.item-thumbnail
 						img(src="assets/images/projects/web/bds.jpg")
@@ -128,47 +130,33 @@ block content
 							.text-center
 								i.icon.ri-external-link-line
 								.text Showcase
-					// .title BigIn Design System
+					//- .title BigIn Design System
 					
 		.swiper-container(id="category-web" style="display: none;")
 			.swiper-wrapper.slide-wrapper
-				mixin galleryCard(item, index)
-					.swiper-slide.item
-						.item-thumbnail
-							img(src=item.image)
-							a(href=item.fullImage data-size=`${getImageSize(item.image)[0]}x${getImageSize(item.image)[1]}` data-img-index=index).overlay-content
-								i.icon.ri-zoom-in-line
-							//- <?php list($width, $height) = getimagesize('#{item.fullImage}') ?>
-							//- a(href=item.fullImage data-size!="<?php echo $width.'x'.$height; ?>" data-img-index=index).overlay-content
-							//- 	i.icon.ri-zoom-in-line
-						.title= item.title
-						.url-link
-							//- i.icon.ri-global-line
-							a(href=item.website target="_blank" rel="nofollow")= item.website
-				each item, index in webProjects
+				each item, index in database.web
 					+galleryCard(item, index)
 			//- .swiper-pagination
 			//- .swiper-button-prev
 			//- .swiper-button-next
 			//- .swiper-scrollbar
 
-		.swiper-container(id="category-app" style="display: none;")
+		.swiper-container(id="category-mobile" style="display: none;")
 			.swiper-wrapper.slide-wrapper
-				each item, index in mobileProjects
+				each item, index in database.mobile
 					+galleryCard(item, index)
 					
 		.swiper-container(id="category-branding" style="display: none;")
 			.swiper-wrapper.slide-wrapper
-				each item, index in brandingProjects
+				each item, index in database.branding
 					+galleryCard(item, index)
 
 		.swiper-container(id="category-illustration" style="display: none;")
 			.swiper-wrapper.slide-wrapper
-				each item, index in illustrationProjects
+				each item, index in database.illustration
 					+galleryCard(item, index)
-	// Contact
+	//- Contact
 	.section.section-contact.mb-0
-		//- include svg/bg-shape.svg
 		img(src="assets/images/shape/shape-wave-1.svg").shape-wave-1
 		img(src="assets/images/shape/shape-wave-2.svg").shape-wave-2
 		img(src="assets/images/shape/tree-1.svg").shape-tree-1
@@ -213,78 +201,36 @@ block content
 				.pswp__caption
 					.pswp__caption__center
 
-block script
-	//-  Get Data Image
-	-
-		let featuredItems = [];
-		let webItems = [];
-		let appItems = [];
-		let brandingItems = [];
-		let illustrationItems = [];
-		//- for (x in webProjects){
-		//- 	var item = webProjects[x]
-		//- 	var index = Object.keys(webProjects).indexOf(item)
-		//- 	webItems.push(`{
-		//- 		src: '${item.fullImage}',
-		//- 		w: '${getImageSize(item.fullImage)[0]}',
-		//- 		h: '${getImageSize(item.fullImage)[1]}',
-		//- 		pid: 'web${index}',
-		//- 		test: '${webProjects[x]}'
-		//- 	}`)
-		//- }
-		// featuredProjects.forEach(function(item, index){
-		// 	featuredItems.push(`{
-		// 		src: '${item.fullImage}',
-		// 		w: '${getImageSize(item.fullImage)[0]}',
-		// 		h: '${getImageSize(item.fullImage)[1]}',
-		// 		pid: 'web-${index}',
-		// 	}`)
-		// })
-		webProjects.forEach(function(item, index){
-			webItems.push(`{
-				src: '${item.fullImage}',
-				w: '${getImageSize(item.fullImage)[0]}',
-				h: '${getImageSize(item.fullImage)[1]}',
-				pid: 'web-${index}',
-			}`)
-		})
-		mobileProjects.forEach(function(item, index){
-			appItems.push(`{
-				src: '${item.fullImage}',
-				w: '${getImageSize(item.fullImage)[0]}',
-				h: '${getImageSize(item.fullImage)[1]}',
-				pid: 'app-${index}'
-			}`)
-		})
-		brandingProjects.forEach(function(item, index){
-			brandingItems.push(`{
-				src: '${item.fullImage}',
-				w: '${getImageSize(item.fullImage)[0]}',
-				h: '${getImageSize(item.fullImage)[1]}',
-				pid: 'branding-${index}'
-			}`)
-		})
-		illustrationProjects.forEach(function(item, index){
-			illustrationItems.push(`{
-				src: '${item.fullImage}',
-				w: '${getImageSize(item.fullImage)[0]}',
-				h: '${getImageSize(item.fullImage)[1]}',
-				pid: 'illustration-${index}'
-			}`)
-		})
 
+block script
+	//-  Server side
+	//-  Get Data Image (Not rendered)
+	-
+		for(var type in database) {
+			database[type].forEach(function(item, i){
+				//- Add new Property for JSON array
+				item['w'] = getImageSize(item.src)[0];
+				item['h'] = getImageSize(item.src)[1];
+				//- Serve for identify which ID to open PSWP overlay
+				item['pid'] = `${type}-${i}`;
+			})
+		}
+
+	//- Client side
 	script.
-		// Loop Data
-		let webItems = [!{webItems}],
-			appItems = [!{appItems}],
-			brandingItems = [!{brandingItems}],
-			illustrationItems = [!{illustrationItems}];
+		// Loop Data from Database
+		let web_data = 				[!{JSON.stringify(database.web)}],
+			mobile_data = 			[!{JSON.stringify(database.mobile)}],
+			branding_data = 		[!{JSON.stringify(database.branding)}],
+			illustration_data = 	[!{JSON.stringify(database.illustration)}];
+
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', (e)=> {
 			theme.bannerCofig();
 			theme.workGrid();
 			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)');
 		});
+
 		// Window Resize
 		window.addEventListener('resize', function(event) {
 			theme.workGrid();

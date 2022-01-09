@@ -44,8 +44,11 @@ class Theme {
 		});
 	}
 	bannerCofig(){
-        let banner = $('.section-banner'),
+		let header = this.elements.header,
+			spacer = this.elements.spacer,
+			banner = $('.section-banner'),
             bannerBackground = banner.find('.content-bg'),
+            bannerText = banner.find('.content-text'),
             row = banner.find('.row');
 
 		if (window.innerWidth > 991){
@@ -53,6 +56,9 @@ class Theme {
 			row.height(bannerBackground.outerHeight(true));
 		}
 		
+		if (window.innerWidth <= 576){
+			bannerText.css('marginTop', header.outerHeight() + this.spacer[5]);
+		}
 		if (window.innerWidth <= 576 && window.innerWidth > 414){
 			let height = bannerBackground.data('responsive-sm');
 			bannerBackground.find('svg').attr('width', `${window.innerWidth}px`);
@@ -73,7 +79,6 @@ class Theme {
 			.velocity({ transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, { duration: 2500 } )
 			.velocity({ transform: [`translate(55.216854, ${value}.290468)`, "translate(55.216854, 355.290468)"] }, { duration: 4000, complete: humanAnimate });
 		};
-        humanAnimate();
         
         // Trees
         const treesAnimate = ()=> {
@@ -84,7 +89,6 @@ class Theme {
 			.velocity({ transform: ["translate(480.000000, 489.000000)", `translate(${valueX}.000000, ${valueY}.000000)`] }, { duration: 3500 } )
 			.velocity({ transform: [`translate(${valueX}.000000, ${valueY}.000000)`, "translate(480.000000, 489.000000)"] }, { duration: 5000, complete: treesAnimate });
 		};
-        treesAnimate();
 
         // Trees
         const svgAnimate = ()=> {
@@ -94,25 +98,24 @@ class Theme {
 			.velocity({ transform: ["scale(1)", `scale(${value})`] }, { duration: 3500 } )
 			.velocity({ transform: [`scale(${value})`, "scale(1)"] }, { duration: 5000, complete: svgAnimate });
 		};
-		svgAnimate();
+		
 		
 		$('#DESIGNERDEVELOPER').velocity({ opacity: 0.1 },{ loop: true },);
 		
         // Light Shape
         const lightShapeAnimate = ()=> {
-            // let value = Math.round(Math.random() * 1000);
+			// let value = Math.round(Math.random() * 1000);
             let value = 1.04;
 			$('#Light-Shape')
 			.velocity({ transform: ["scale(1)", `scale(${value})`] }, { duration: 3500 } )
 			.velocity({ transform: [`scale(${value})`, "scale(1)"] }, { duration: 5000, complete: lightShapeAnimate });
 		};
-		lightShapeAnimate();
-
+		
 		// Hand Shake
 		const handShakeAnimate = ()=> {
 			let hand = Snap.select('#Hand'),
 			handBBbox = hand.getBBox();
-		
+			
 			let status = true;
 			const waveLeft = ()=> {
 				hand.animate({ transform: `r8, ${handBBbox.cx}, ${handBBbox.y2}` }, 500);
@@ -132,6 +135,11 @@ class Theme {
 				}
 			}, 500)
 		};
+		
+		// humanAnimate();
+		// treesAnimate();
+		// svgAnimate();
+		// lightShapeAnimate();
 		handShakeAnimate();
 	}
 	workGrid(){
@@ -141,14 +149,27 @@ class Theme {
 
 		let sliderElement = $('.section-work .swiper-container'),
 			filterButtonElements = $('.section-work .navigation-tabs a'),
+			directionButtonElements = $('.swiper-button-prev', '.swiper-button-next'),
 			titleElement = $('.section-work .section-title');
 
 		let gallerySlider = new Swiper(sliderElement,{
 			slidesPerView: 'auto',
 			slidesOffsetBefore: titleElement.position().left,
 			slidesOffsetAfter: titleElement.position().left,
-			spaceBetween: 32
+			spaceBetween: 32,
+			// pagination: {
+			// 	el: ".swiper-pagination",
+			// 	type: "fraction",
+			// },
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			}
 		});
+
+		// directionButtonElements.on('click', (e)=> {
+		// 	gallerySlider[$li.index()].update();
+		// });
 
 		filterButtonElements.on('click', (e)=> {
 			let $this = $(e.currentTarget),
@@ -179,17 +200,17 @@ class Theme {
 			let data;
 			switch (type){
 				case 'category-web' :
-					data = webItems
+					data = web_data[0]
 					break;
-				case 'category-app' :
-					data = appItems
+				case 'category-mobile' :
+					data = mobile_data[0]
 					break;
 				case 'category-branding' :
-					data = brandingItems
+					data = branding_data[0]
 					break;
-					case 'category-illustration' :
-						data = illustrationItems
-						break;
+				case 'category-illustration' :
+					data = illustration_data[0]
+					break;
 			}
 			return data;
 		}

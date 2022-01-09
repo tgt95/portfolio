@@ -63,13 +63,20 @@ function () {
   }, {
     key: "bannerCofig",
     value: function bannerCofig() {
-      var banner = $('.section-banner'),
+      var header = this.elements.header,
+          spacer = this.elements.spacer,
+          banner = $('.section-banner'),
           bannerBackground = banner.find('.content-bg'),
+          bannerText = banner.find('.content-text'),
           row = banner.find('.row');
 
       if (window.innerWidth > 991) {
         bannerBackground.height(bannerBackground.outerHeight(true));
         row.height(bannerBackground.outerHeight(true));
+      }
+
+      if (window.innerWidth <= 576) {
+        bannerText.css('marginTop', header.outerHeight() + this.spacer[5]);
       }
 
       if (window.innerWidth <= 576 && window.innerWidth > 414) {
@@ -100,9 +107,8 @@ function () {
           duration: 4000,
           complete: humanAnimate
         });
-      };
+      }; // Trees
 
-      humanAnimate(); // Trees
 
       var treesAnimate = function treesAnimate() {
         // let value = Math.round(Math.random() * 1000);
@@ -118,9 +124,8 @@ function () {
           duration: 5000,
           complete: treesAnimate
         });
-      };
+      }; // Trees
 
-      treesAnimate(); // Trees
 
       var svgAnimate = function svgAnimate() {
         // let value = Math.round(Math.random() * 1000);
@@ -137,7 +142,6 @@ function () {
         });
       };
 
-      svgAnimate();
       $('#DESIGNERDEVELOPER').velocity({
         opacity: 0.1
       }, {
@@ -157,9 +161,8 @@ function () {
           duration: 5000,
           complete: lightShapeAnimate
         });
-      };
+      }; // Hand Shake
 
-      lightShapeAnimate(); // Hand Shake
 
       var handShakeAnimate = function handShakeAnimate() {
         var hand = Snap.select('#Hand'),
@@ -188,7 +191,11 @@ function () {
             status = true;
           }
         }, 500);
-      };
+      }; // humanAnimate();
+      // treesAnimate();
+      // svgAnimate();
+      // lightShapeAnimate();
+
 
       handShakeAnimate();
     }
@@ -201,13 +208,25 @@ function () {
 
       var sliderElement = $('.section-work .swiper-container'),
           filterButtonElements = $('.section-work .navigation-tabs a'),
+          directionButtonElements = $('.swiper-button-prev', '.swiper-button-next'),
           titleElement = $('.section-work .section-title');
       var gallerySlider = new Swiper(sliderElement, {
         slidesPerView: 'auto',
         slidesOffsetBefore: titleElement.position().left,
         slidesOffsetAfter: titleElement.position().left,
-        spaceBetween: 32
-      });
+        spaceBetween: 32,
+        // pagination: {
+        // 	el: ".swiper-pagination",
+        // 	type: "fraction",
+        // },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        }
+      }); // directionButtonElements.on('click', (e)=> {
+      // 	gallerySlider[$li.index()].update();
+      // });
+
       filterButtonElements.on('click', function (e) {
         var $this = $(e.currentTarget),
             li = $('.section-work .navigation-tabs li'),
@@ -238,19 +257,19 @@ function () {
 
         switch (type) {
           case 'category-web':
-            data = webItems;
+            data = web_data[0];
             break;
 
-          case 'category-app':
-            data = appItems;
+          case 'category-mobile':
+            data = mobile_data[0];
             break;
 
           case 'category-branding':
-            data = brandingItems;
+            data = branding_data[0];
             break;
 
           case 'category-illustration':
-            data = illustrationItems;
+            data = illustration_data[0];
             break;
         }
 
