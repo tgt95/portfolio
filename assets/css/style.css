@@ -356,7 +356,9 @@ body {
           display: none; } }
     @media (max-width: 414px) {
       .section-banner .content-bg {
-        margin-top: -496px; } }
+        margin-top: -496px; }
+        .section-banner .content-bg svg {
+          margin-top: -128px; } }
 
 .section-profile .profile-content ul {
   list-style-type: none;

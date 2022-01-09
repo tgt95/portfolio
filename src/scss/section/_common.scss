@@ -63,7 +63,7 @@
 			overflow: unset;
 			svg{
 				// background: linear-gradient(180deg,#fff7f7 0,#ffc3bf 60%, #ffbab5 70%, #ffc4bf 80%,#fff 100%)
-				background: linear-gradient(180deg,#fff7f7 0,#ffc3bf 60%, #ffbab5 80%,#ffffff 100%)
+				background: linear-gradient(180deg,#fff7f7 0,#ffc3bf 60%, #ffbab5 80%,#ffffff 100%);
 			}
 			#human-bg{
 				fill: transparent;
@@ -74,7 +74,9 @@
 		}
 		@media (max-width: 414px) {
 			margin-top: -496px;
-			// margin-top: -50%;
+			svg{
+				margin-top: -128px;
+			}
 		}
 	}
 }
