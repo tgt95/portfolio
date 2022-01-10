@@ -377,8 +377,8 @@ body {
         margin-top: -396px;
         overflow: unset; }
         .section-banner .content-bg svg {
-          background: -webkit-linear-gradient(top, #fff7f7 0, #ffc3bf 60%, #ffbab5 80%, #ffffff 100%);
-          background: linear-gradient(180deg, #fff7f7 0, #ffc3bf 60%, #ffbab5 80%, #ffffff 100%); }
+          background: -webkit-linear-gradient(top, #fff7f7 0, #ffe7e5 86%, #fff 100%);
+          background: linear-gradient(180deg, #fff7f7 0, #ffe7e5 86%, #fff 100%); }
         .section-banner .content-bg #human-bg {
           fill: transparent; }
         .section-banner .content-bg #human-tree-2 {
