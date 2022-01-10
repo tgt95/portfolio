@@ -45,3 +45,8 @@ body{
 	-webkit-animation-name: move2Left;
 	animation-name: move2Left;
 }
+
+
+[class^="ri-"], [class*=" ri-"]{
+	vertical-align: middle;
+}

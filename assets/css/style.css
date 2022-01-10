@@ -1,4 +1,18 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap);
+:root {
+  --brand: 						#EA5D5D;
+  --brand-bg: 					#FFFAFA;
+  --blue:                         #1896FF;
+  --green: 					    #7AD610;
+  --orange: 					    #FFA65E;
+  --red: 					        #FF5E5E;
+  --yellow: 					    #FFD836;
+  --neutral-0:                    #2a3e52;
+  --neutral-1:                    #87969d;
+  --neutral-2:                    #B9C1CE;
+  --neutral-3:                    #D7DBE3;
+  --neutral-4:                    #F5F6F8; }
+
 body {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   color: #2a3e52;
@@ -54,6 +68,9 @@ body {
 .move2Left {
   -webkit-animation-name: move2Left;
   animation-name: move2Left; }
+
+[class^="ri-"], [class*=" ri-"] {
+  vertical-align: middle; }
 
 .m-b-1 {
   margin-bottom: 2px; }

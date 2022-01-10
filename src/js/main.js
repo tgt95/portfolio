@@ -136,10 +136,10 @@ class Theme {
 			}, 500)
 		};
 		
-		// humanAnimate();
-		// treesAnimate();
-		// svgAnimate();
-		// lightShapeAnimate();
+		humanAnimate();
+		treesAnimate();
+		svgAnimate();
+		lightShapeAnimate();
 		handShakeAnimate();
 	}
 	workGrid(){

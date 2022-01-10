@@ -191,12 +191,12 @@ function () {
             status = true;
           }
         }, 500);
-      }; // humanAnimate();
-      // treesAnimate();
-      // svgAnimate();
-      // lightShapeAnimate();
+      };
 
-
+      humanAnimate();
+      treesAnimate();
+      svgAnimate();
+      lightShapeAnimate();
       handShakeAnimate();
     }
   }, {
