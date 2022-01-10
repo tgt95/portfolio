@@ -1,7 +1,13 @@
 footer.footer
     .container
         .row
-            .col-md-6.author-content © <script>document.write((new Date().getFullYear()))</script> Tuan Trinh
+            //- .col-md-6.author-content ©&nbsp;
+                |<script>document.write((new Date().getFullYear()))</script>
+                |&nbsp;design by&nbsp;
+                b Tuan Trinh
+            .col-md-6.author-content © 
+                | Design by&nbsp;
+                b Tuan Trinh
             .col-md-6
                 ul.social-list
                     each icon, index in socialIcon
