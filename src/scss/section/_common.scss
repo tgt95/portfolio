@@ -216,7 +216,7 @@
 }
 
 @keyframes line-blow-up {
-	0{
+	0%{
 		top: 0;
 		left: 0;
 		bottom: 0;
@@ -333,6 +333,17 @@
 	.slide-wrapper{
 		padding: 32px 0;
 	}
+	.swiper-controls{
+		display: flex;
+		.slide-button-prev, .slide-button-next{
+			>i{
+				font-size: 32px;
+			}
+			&.swiper-button-disabled{
+				opacity: 0.5;
+			}
+		}
+	}
 	.item{
 		width: 100%;
 		max-width: 550px;
@@ -362,7 +373,7 @@
 				display: block;
 				content: "";
 				width: 100%;
-				padding-top: (1024/1440) * 100%;
+				padding-top: calc(1024/1440) * 100%;
 			}
 			img{
 				position: absolute;

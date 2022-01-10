@@ -24,6 +24,7 @@ function () {
       xxxl: 1600
     };
     this.elements = {
+      body: $('body'),
       contentPage: $('.content-page'),
       header: $('.header'),
       navigation: $('.header .navigation-menu'),
@@ -47,8 +48,8 @@ function () {
   }, {
     key: "navigationConfig",
     value: function navigationConfig() {
-      this.elements.navigation.find('ul:first-child a').on('click', function () {
-        event.preventDefault();
+      this.elements.navigation.find('ul:first-child a').on('click', function (e) {
+        e.preventDefault();
         var offsetTop = $(this).data('offset-top') !== undefined ? $(this).data('offset-top') : 0;
         $('html, body').animate({
           scrollTop: $($.attr(this, 'href')).offset().top - offsetTop
@@ -210,25 +211,29 @@ function () {
 
       var sliderElement = $('.section-work .swiper-container'),
           filterButtonElements = $('.section-work .navigation-tabs a'),
-          directionButtonElements = $('.swiper-button-prev', '.swiper-button-next'),
+          buttonPrevElement = $('.slide-button-prev'),
+          buttonNextElement = $('.slide-button-next'),
           titleElement = $('.section-work .section-title');
       var gallerySlider = new Swiper(sliderElement, {
         slidesPerView: 'auto',
         slidesOffsetBefore: titleElement.position().left,
         slidesOffsetAfter: titleElement.position().left,
         spaceBetween: 32,
-        // pagination: {
-        // 	el: ".swiper-pagination",
-        // 	type: "fraction",
-        // },
+        pagination: {
+          el: ".swiper-pagination",
+          type: "fraction"
+        },
         navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
+          nextEl: ".slide-button-next",
+          prevEl: ".slide-button-prev"
         }
-      }); // directionButtonElements.on('click', (e)=> {
-      // 	gallerySlider[$li.index()].update();
-      // });
-
+      });
+      buttonPrevElement.on('click', function (e) {
+        e.preventDefault(); // gallerySlider.slidePrev();
+      });
+      buttonNextElement.on('click', function (e) {
+        e.preventDefault(); // gallerySlider.slideNext();
+      });
       filterButtonElements.on('click', function (e) {
         var $this = $(e.currentTarget),
             li = $('.section-work .navigation-tabs li'),

@@ -90,11 +90,12 @@ block page-script
 script(src="assets/js/style.min.js")
 script.
 	let theme = new Theme();
+	console.log(theme.elements);
 	document.addEventListener('DOMContentLoaded', (e)=> {
 		theme.init();
-		$('body').css('overflow', 'hidden');
+		theme.elements.body.css('overflow', 'hidden');
 		setTimeout(()=> {
-			$('body').css('overflow', '');
+			theme.elements.body.css('overflow', '');
 			theme.elements.loader.addClass('move2Left animated', setTimeout(()=> {
 					//- theme.elements.loader.removeClass('move2Left animated');
 					theme.elements.loader.css('display', 'none');

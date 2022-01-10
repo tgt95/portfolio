@@ -100,7 +100,7 @@ block content
 								'slug': 'web'
 							},
 							{
-								'title': 'Mobile App',
+								'title': 'Mobile app',
 								'slug': 'mobile'
 							},
 							{
@@ -154,10 +154,14 @@ block content
 				.swiper-wrapper.slide-wrapper
 					each item, index in database[`${k}`]
 						+galleryCard(item, index)
-				//- .swiper-pagination
-				//- .swiper-button-prev
-				//- .swiper-button-next
-				//- .swiper-scrollbar
+				//- .container
+					.swiper-controls
+						a(href="#").btn-just-icon.btn-brand.slide-button-prev
+							i.ri-arrow-left-s-line
+						a(href="#").btn-just-icon.btn-brand.slide-button-next
+							i.ri-arrow-right-s-line
+						.swiper-pagination
+						//- .swiper-scrollbar
 
 	//- Contact
 	.section.section-contact.mb-0
@@ -231,7 +235,10 @@ block script
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', (e)=> {
 			theme.bannerCofig();
-			theme.workGrid();
+			// Waiting for loading end (Fix bug when have scrollbar appear)
+			setTimeout(()=> {
+				theme.workGrid();
+			}, 1100);
 			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)');
 		});
 
