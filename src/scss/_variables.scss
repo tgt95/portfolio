@@ -39,6 +39,7 @@ $youtube: 						#e52d27					!default;
 $tumblr: 						#35465c					!default;
 $github-alt: 					#333333					!default;
 $reddit: 						#ff4500					!default;
+$skype: 						#00aff0					!default;
 
 // Body Background
 $bg-body: #f3f6f8;
@@ -78,14 +79,30 @@ $font-base: 14px;
 :root{
     --brand: 						#{$brand};
     --brand-bg: 					#{$brand-bg};
+
     --blue:                         #{$blue};
     --green: 					    #{$green};
     --orange: 					    #{$orange};
     --red: 					        #{$red};
     --yellow: 					    #{$yellow};
+
     --neutral-0:                    #{$neutral-0};
     --neutral-1:                    #{$neutral-1};
     --neutral-2:                    #{$neutral-2};
     --neutral-3:                    #{$neutral-3};
     --neutral-4:                    #{$neutral-4};
+
+    // Social
+    --twitter: 						#{$twitter};
+    --facebook: 					#{$facebook};
+    --google: 						#{$google};
+    --dribbble: 					#{$dribbble};
+    --behance: 						#{$behance};
+    --linkedin: 					#{$linkedin};
+    --pinterest: 					#{$pinterest};
+    --youtube: 					    #{$youtube};
+    --tumblr: 					    #{$tumblr};
+    --github-alt: 					#{$github-alt};
+    --reddit: 					    #{$reddit};
+    --skype: 					    #{$skype};
 }

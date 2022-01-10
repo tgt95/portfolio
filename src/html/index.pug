@@ -40,7 +40,7 @@ block content
 								.title Email
 								.d-inline-flex.align-items-center
 									a.mr-1(href="mailto:giatuantrinh@gmail.com" style="text-decoration: underline;") giatuantrinh@gmail.com
-									i.ri-mail-send-line(style="color: var(--neutral-1)")
+									i.ri-send-plane-fill(style="font-size: 20px; color: var(--neutral-1);")
 							//- li
 								.title Phone
 								a(href="tel:+84703000876") 0703 000 876
@@ -51,15 +51,12 @@ block content
 								.title Skype
 								.d-inline-flex.align-items-center
 									a.mr-1(href="skype:live:giatuantrinh?chat" style="text-decoration: underline;") live:giatuantrinh
-									i.ri-skype-fill(style="font-size: 20px; color: #00aff0;")
-							//- li
-								.title Skype
-								a(href="skype:live:giatuantrinh?chat" style="text-decoration: underline;") live:giatuantrinh
+									i.ri-skype-fill(style="font-size: 20px; color: var(--skype);")
 							li
 								.title Address
 								span District 11, Ho Chi Minh City
 
-	// Skills
+	//- Skills
 	//- .section.section-skills
 		.container
 			.section-title.text-center Skills
@@ -138,30 +135,30 @@ block content
 								i.icon.ri-external-link-line
 								.text Showcase
 					//- .title BigIn Design System
-					
-		.swiper-container(id="category-web" style="display: none;")
-			.swiper-wrapper.slide-wrapper
-				each item, index in database.web
-					+galleryCard(item, index)
-			//- .swiper-pagination
-			//- .swiper-button-prev
-			//- .swiper-button-next
-			//- .swiper-scrollbar
 
-		.swiper-container(id="category-mobile" style="display: none;")
-			.swiper-wrapper.slide-wrapper
-				each item, index in database.mobile
-					+galleryCard(item, index)
-					
-		.swiper-container(id="category-branding" style="display: none;")
-			.swiper-wrapper.slide-wrapper
-				each item, index in database.branding
-					+galleryCard(item, index)
+		//- Mixins Grid details
+		mixin galleryCard(item, index)
+			.swiper-slide.item
+				.item-thumbnail
+					img(src=item.image)
+					a(href=item.src data-size=`${getImageSize(item.image)[0]}x${getImageSize(item.image)[1]}` data-img-index=index).overlay-content
+						i.icon.ri-zoom-in-line
+				.title= item.title
+				.url-link
+					//- i.icon.ri-global-line
+					a(href=item.website target="_blank" rel="nofollow")= item.website
 
-		.swiper-container(id="category-illustration" style="display: none;")
-			.swiper-wrapper.slide-wrapper
-				each item, index in database.illustration
-					+galleryCard(item, index)
+		//- Fetch data from database
+		each obj,k in database
+			.swiper-container(id=`category-${k}` style="display: none;")
+				.swiper-wrapper.slide-wrapper
+					each item, index in database[`${k}`]
+						+galleryCard(item, index)
+				//- .swiper-pagination
+				//- .swiper-button-prev
+				//- .swiper-button-next
+				//- .swiper-scrollbar
+
 	//- Contact
 	.section.section-contact.mb-0
 		img(src="assets/images/shape/shape-wave-1.svg").shape-wave-1
@@ -242,3 +239,146 @@ block script
 		window.addEventListener('resize', function(event) {
 			theme.workGrid();
 		}, true);
+
+
+		let database = {
+			"web" : [
+				{
+					"title": "Citigym - Hệ thống phòng tập đẳng cấp",
+					"website": "https://citigym.com.vn",
+					"image": "assets/images/projects/web/citigym.jpg",
+					"src": "assets/images/projects/web/full/citigym.jpg"
+				},
+				{
+					"title": "Ayaka - Tả dành cho em bé đến Nhật bản",
+					"website": "https://ayakadiaper.com",
+					"image": "assets/images/projects/web/ayaka.jpg",
+					"src": "assets/images/projects/web/full/ayaka.jpg"
+				},
+				{
+					"title": "Parimilk - Dinh dưỡng cao cấp cho mọi lứa tuổi",
+					"website": "https://www.parimilk.com",
+					"image": "assets/images/projects/web/parimilk.jpg",
+					"src": "assets/images/projects/web/full/parimilk.jpg"
+				},
+				{
+					"title": "IFoss",
+					"website": "http://ifoss.com/",
+					"image": "assets/images/projects/web/ifoss.jpg",
+					"src": "assets/images/projects/web/full/ifoss.jpg"
+				},
+				{
+					"title": "Chợ hoa tươi - Sàng bán hoa sỉ",
+					"website": "http://chohoatuoi.vn",
+					"image": "assets/images/projects/web/chohoatuoi.jpg",
+					"src": "assets/images/projects/web/full/chohoatuoi.jpg"
+				},
+				{
+					"title": "007 Flower - Bán hoa trực tuyến",
+					"website": "http://007flower.com",
+					"image": "assets/images/projects/web/007-flower.jpg",
+					"src": "assets/images/projects/web/full/007-flower.jpg"
+				},
+				{
+					"title": "Khatoco Event",
+					"website": "https://thoitrangkhatoco.vn",
+					"image": "assets/images/projects/web/khatoco-event.jpg",
+					"src": "assets/images/projects/web/full/khatoco-event.jpg"
+				},
+				{
+					"title": "Last Shoes",
+					"website": "http://lastshoes.com.au",
+					"image": "assets/images/projects/web/last-shoes.jpg",
+					"src": "assets/images/projects/web/full/last-shoes.jpg"
+				},
+				{
+					"title": "Mango App",
+					"website": "http://mangoapp.vn",
+					"image": "assets/images/projects/web/mango.jpg",
+					"src": "assets/images/projects/web/full/mango.jpg"
+				},
+				{
+					"title": "Getraco",
+					"website": "",
+					"image": "assets/images/projects/web/getraco.jpg",
+					"src": "assets/images/projects/web/full/getraco.jpg"
+				}
+			],
+			"mobile" : [
+				{
+					"title": "Mango App",
+					"website": "",
+					"image": "assets/images/projects/mobile/mango-app.jpg",
+					"src": "assets/images/projects/mobile/full/mango-app.jpg"
+				}
+			],
+			"branding" : [
+				{
+					"title": "Nhà Ba Thu",
+					"website": "",
+					"image": "assets/images/projects/branding/bathu.jpg",
+					"src": "assets/images/projects/branding/bathu.jpg"
+					//- "src": "assets/images/projects/branding/full/bathu.jpg"
+				},
+				{
+					"title": "Molly Browns",
+					"website": "",
+					"image": "assets/images/projects/branding/molly-browns.jpg",
+					"src": "assets/images/projects/branding/molly-browns.jpg"
+				},
+				{
+					"title": "Last Shoes",
+					"website": "",
+					"image": "assets/images/projects/branding/last-shoes.jpg",
+					"src": "assets/images/projects/branding/last-shoes.jpg"
+				},
+				{
+					"title": "Lion",
+					"website": "",
+					"image": "assets/images/projects/branding/lion.jpg",
+					"src": "assets/images/projects/branding/lion.jpg"
+				},
+				{
+					"title": "Mango",
+					"website": "",
+					"image": "assets/images/projects/branding/mango.jpg",
+					"src": "assets/images/projects/branding/mango.jpg"
+				},
+				{
+					"title": "Long Việt Telecom",
+					"website": "",
+					"image": "assets/images/projects/branding/long-viet-telecom.jpg",
+					"src": "assets/images/projects/branding/long-viet-telecom.jpg"
+				}
+			],
+			"illustration" : [
+				{
+					"title": "Deadline",
+					"website": "",
+					"image": "assets/images/projects/illustration/deadline.jpg",
+					"src": "assets/images/projects/illustration/full/deadline-full.jpg"
+				},
+				{
+					"title": "Saigon Never Sleep",
+					"website": "",
+					"image": "assets/images/projects/illustration/sg-nl.jpg",
+					"src": "assets/images/projects/illustration/sg-nl.jpg"
+				},
+				{
+					"title": "Designer Boy 1",
+					"website": "",
+					"image": "assets/images/projects/illustration/designer-boy-1.jpg",
+					"src": "assets/images/projects/illustration/full/designer-boy-1-full.jpg"
+				},
+				{
+					"title": "Designer Boy 2",
+					"website": "",
+					"image": "assets/images/projects/illustration/designer-boy-2.jpg",
+					"src": "assets/images/projects/illustration/full/designer-boy-2-full.jpg"
+				}
+			]
+		}
+		for(var k in database) {
+			//- console.log(k);
+		}
+		

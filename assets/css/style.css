@@ -11,7 +11,19 @@
   --neutral-1:                    #87969d;
   --neutral-2:                    #B9C1CE;
   --neutral-3:                    #D7DBE3;
-  --neutral-4:                    #F5F6F8; }
+  --neutral-4:                    #F5F6F8;
+  --twitter: 						#55acee;
+  --facebook: 					#4466ae;
+  --google: 						#dd4b39;
+  --dribbble: 					#ea4c89;
+  --behance: 						#1769ff;
+  --linkedin: 					#0077B5;
+  --pinterest: 					#cc2127;
+  --youtube: 					    #e52d27;
+  --tumblr: 					    #35465c;
+  --github-alt: 					#333333;
+  --reddit: 					    #ff4500;
+  --skype: 					    #00aff0; }
 
 body {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

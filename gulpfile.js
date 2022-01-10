@@ -12,6 +12,7 @@ const sourcemaps   		= require('gulp-sourcemaps');
 const notify 		 	= require('gulp-notify');
 const rename 		 	= require('gulp-rename');
 const uglify 		 	= require('gulp-uglify');
+const htmlmin 		 	= require('gulp-htmlmin');
 const iconfont 	 		= require('gulp-iconfont');
 const iconfontCss  		= require('gulp-iconfont-css');
 const browserSync  		= require('browser-sync').create();
@@ -86,6 +87,7 @@ const html = ()=> {
 	// .pipe(rename({
     //     extname: '.php'
 	// }))
+	.pipe(htmlmin({ collapseWhitespace: true }))
 	.pipe(dest('./'))
 	.pipe(browserSync.stream({stream: true}));
 }

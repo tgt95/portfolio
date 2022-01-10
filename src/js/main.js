@@ -135,12 +135,13 @@ class Theme {
 				}
 			}, 500)
 		};
-		
-		humanAnimate();
-		treesAnimate();
-		svgAnimate();
-		lightShapeAnimate();
-		handShakeAnimate();
+		if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+			humanAnimate();
+			treesAnimate();
+			svgAnimate();
+			lightShapeAnimate();
+			handShakeAnimate();
+		}
 	}
 	workGrid(){
 		if (window.innerWidth <= 576){

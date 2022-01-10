@@ -6,15 +6,3 @@
 		let h = dimensions.height
 		return [w,h];
 	}
-
-//- Grid loop
-mixin galleryCard(item, index)
-	.swiper-slide.item
-		.item-thumbnail
-			img(src=item.image)
-			a(href=item.src data-size=`${getImageSize(item.image)[0]}x${getImageSize(item.image)[1]}` data-img-index=index).overlay-content
-				i.icon.ri-zoom-in-line
-		.title= item.title
-		.url-link
-			//- i.icon.ri-global-line
-			a(href=item.website target="_blank" rel="nofollow")= item.website
