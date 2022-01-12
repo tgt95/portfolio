@@ -713,6 +713,9 @@ body {
 .section-contact .shape-tree-2 {
   right: 0;
 }
+.section-contact .content-text {
+  z-index: 999;
+}
 .section-contact .content-text .title {
   font-size: 40px;
   font-weight: 700;

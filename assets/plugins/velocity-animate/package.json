@@ -1,32 +1,22 @@
 {
-  "_args": [
-    [
-      "velocity-animate@2.0.5",
-      "/Users/mac/Documents/Work/Coding/Templates/my-projects/portfolio-v3"
-    ]
+  "name": "velocity-animate",
+  "version": "2.0.6",
+  "description": "Accelerated JavaScript animation.",
+  "keywords": [
+    "velocity",
+    "animation",
+    "jquery",
+    "animate",
+    "ui",
+    "velocity.js",
+    "velocityjs",
+    "javascript"
   ],
-  "_from": "velocity-animate@2.0.5",
-  "_id": "velocity-animate@2.0.5",
-  "_inBundle": false,
-  "_integrity": "sha512-kYdkWu+m9PIwWVJpvNqhzpwinNIb5e6t6vj7j1x2CFwf5UoIE9WU+fBC7v95wXTbc9tPsDv3Ltrh44yP2cyiGg==",
-  "_location": "/velocity-animate",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "velocity-animate@2.0.5",
-    "name": "velocity-animate",
-    "escapedName": "velocity-animate",
-    "rawSpec": "2.0.5",
-    "saveSpec": null,
-    "fetchSpec": "2.0.5"
+  "homepage": "http://velocityjs.org",
+  "bugs": {
+    "url": "http://github.com/julianshapiro/velocity/issues"
   },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/velocity-animate/-/velocity-animate-2.0.5.tgz",
-  "_spec": "2.0.5",
-  "_where": "/Users/mac/Documents/Work/Coding/Templates/my-projects/portfolio-v3",
+  "license": "MIT",
   "authors": [
     {
       "name": "Julian Shapiro",
@@ -37,32 +27,17 @@
       "url": "https://github.com/Rycochet"
     }
   ],
-  "bugs": {
-    "url": "http://github.com/julianshapiro/velocity/issues"
+  "scripts": {
+    "start": "rollup -w -c --environment BUILD,TEST",
+    "build": "rollup -c --environment BUILD,MINIFY,TEST",
+    "lint": "tslint src/**/*.ts src-ui/**/*.ts test/src/**/*.ts",
+    "test": "rollup -c --environment TEST",
+    "version": "npm run build && auto-changelog && git add ."
   },
-  "description": "Accelerated JavaScript animation.",
-  "devDependencies": {
-    "@types/qunit": "^2.5.1",
-    "auto-changelog": "^1.7.1",
-    "babel-core": "^6.26.3",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "qunit": "^2.6.1",
-    "qunit-assert-close": "^2.1.2",
-    "rollup": "^0.59.4",
-    "rollup-plugin-babel": "^3.0.4",
-    "rollup-plugin-license": "^0.6.0",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-strip-banner": "^0.2.0",
-    "rollup-plugin-terser": "^1.0.1",
-    "rollup-plugin-tslint": "^0.1.34",
-    "rollup-plugin-typescript2": "^0.14.0",
-    "rollup-plugin-uglify": "^4.0.0",
-    "tslint": "^5.10.0",
-    "typescript": "^2.9.1",
-    "velocity-animate": "file:./"
-  },
+  "main": "velocity.min.js",
+  "module": "velocity.es5.js",
+  "types": "velocity.d.ts",
+  "repository": "julianshapiro/velocity",
   "files": [
     "velocity.js",
     "velocity.d.ts",
@@ -74,32 +49,28 @@
     "velocity.ui.js.map",
     "velocity.ui.min.js"
   ],
-  "homepage": "http://velocityjs.org",
-  "keywords": [
-    "velocity",
-    "animation",
-    "jquery",
-    "animate",
-    "ui",
-    "velocity.js",
-    "velocityjs",
-    "javascript"
-  ],
-  "license": "MIT",
-  "main": "velocity.min.js",
-  "module": "velocity.es5.js",
-  "name": "velocity-animate",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/julianshapiro/velocity.git"
-  },
-  "scripts": {
-    "build": "rollup -c --environment BUILD,MINIFY,TEST",
-    "lint": "tslint src/**/*.ts src-ui/**/*.ts test/src/**/*.ts",
-    "start": "rollup -w -c --environment BUILD,TEST",
-    "test": "rollup -c --environment TEST",
-    "version": "npm run build && auto-changelog && git add ."
-  },
-  "types": "velocity.d.ts",
-  "version": "2.0.5"
+  "devDependencies": {
+    "@types/qunit": "^2.5.2",
+    "auto-changelog": "^1.8.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "markdown": "^0.5.0",
+    "octonode": "^0.9.3",
+    "qunit": "^2.6.1",
+    "qunit-assert-close": "^2.1.2",
+    "rollup": "^0.63.5",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-license": "^0.7.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-strip-banner": "^0.2.0",
+    "rollup-plugin-terser": "^1.0.1",
+    "rollup-plugin-tslint": "^0.1.34",
+    "rollup-plugin-typescript2": "^0.16.1",
+    "rollup-plugin-uglify": "^4.0.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1",
+    "velocity-animate": "file:./"
+  }
 }

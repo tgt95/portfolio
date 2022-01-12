@@ -85,7 +85,7 @@ block content
 
 	//- Work
 	.section.section-work
-		.container
+		//- .container
 			.section-title Work
 			.navigation-tabs
 				ul
@@ -117,7 +117,19 @@ block content
 						li(class=className)
 							a(href="#" data-tab-target=`#category-${item.slug}`)= item.title
 		
-		.swiper-container(id="category-featured")
+		.container
+			.section-title Work
+			.navigation-tabs
+				ul
+					li.active
+						a(href="#" data-tab-target=`#category-featured`) Featured
+					each obj, name in database
+						//- - let activeClass = index === 0 ? 'active' : ''
+						//- li(class=activeClass)
+						li
+							a(href="#" data-tab-target=`#category-${name}`)= database[`${name}`].fullName
+
+		//- .swiper-container(id="category-featured")
 			.swiper-wrapper.slide-wrapper
 				.swiper-slide.item
 					.item-thumbnail
@@ -136,24 +148,39 @@ block content
 								.text Showcase
 					//- .title BigIn Design System
 
-		//- Mixins Grid details
-		mixin galleryCard(item, index)
-			.swiper-slide.item
-				.item-thumbnail
-					img(src=item.image)
-					a(href=item.src data-size=`${getImageSize(item.image)[0]}x${getImageSize(item.image)[1]}` data-img-index=index).overlay-content
-						i.icon.ri-zoom-in-line
-				.title= item.title
-				.url-link
-					//- i.icon.ri-global-line
-					a(href=item.website target="_blank" rel="nofollow")= item.website
-
 		//- Fetch data from database
-		each obj,k in database
-			.swiper-container(id=`category-${k}` style="display: none;")
+		//- Featured
+		.swiper-container(id="category-featured")
+			.swiper-wrapper.slide-wrapper
+				each obj, name in database
+					each item, index in database[`${name}`].data
+						-
+							let isExternal = database[`${name}`].data[index].external
+							let isFeatured = database[`${name}`].data[index].featured
+						if ((typeof(isFeatured) === 'boolean') && isFeatured)
+							if ((typeof(isExternal) === 'boolean') && isExternal)
+								+galleryCard__External(item, index, guideText)
+							else
+								+galleryCard__Internal(item, index)
+			//- .container
+				.swiper-controls
+					a(href="#").btn-just-icon.btn-brand.slide-button-prev
+						i.ri-arrow-left-s-line
+					a(href="#").btn-just-icon.btn-brand.slide-button-next
+						i.ri-arrow-right-s-line
+					.swiper-pagination
+					//- .swiper-scrollbar
+
+		//- Others project type
+		each obj, name in database
+			.swiper-container(id=`category-${name}` style="display: none;")
 				.swiper-wrapper.slide-wrapper
-					each item, index in database[`${k}`]
-						+galleryCard(item, index)
+					each item, index in database[`${name}`].data
+						- let isExternal = database[`${name}`].data[index].external
+						if ((typeof(isExternal) === 'boolean') && isExternal)
+							+galleryCard__External(item, index, guideText)
+						else
+							+galleryCard__Internal(item, index)
 				//- .container
 					.swiper-controls
 						a(href="#").btn-just-icon.btn-brand.slide-button-prev
@@ -171,7 +198,7 @@ block content
 		img(src="assets/images/shape/tree-2.svg").shape-tree-2
 		.container
 			.row.align-items-center
-				.col-md-7.col-lg-6.content-text(style="z-index: 999;")
+				.col-md-7.col-lg-6.content-text
 					.title Interested in my work?
 					div
 						a(href="ux-ui-designer-trinh-gia-tuan.pdf" download).btn.btn-brand 
@@ -213,24 +240,27 @@ block content
 block script
 	//-  Server side
 	//-  Get Data Image (Not rendered)
+	- let database_featured = []
 	-
 		for(var type in database) {
-			database[type].forEach(function(item, i){
+			database[type].data.forEach((item, i)=> {
 				//- Add new Property for JSON array
 				item['w'] = getImageSize(item.src)[0];
 				item['h'] = getImageSize(item.src)[1];
 				//- Serve for identify which ID to open PSWP overlay
 				item['pid'] = `${type}-${i}`;
 			})
+			database[type].data.forEach((item, i)=> {
+				let isFeatured = database[type].data[i].featured
+				if ((typeof(isFeatured) === 'boolean') && isFeatured)
+					database_featured.push(item)
+			})
 		}
-
 	//- Client side
 	script.
 		// Loop Data from Database
-		let web_data = 				[!{JSON.stringify(database.web)}],
-			mobile_data = 			[!{JSON.stringify(database.mobile)}],
-			branding_data = 		[!{JSON.stringify(database.branding)}],
-			illustration_data = 	[!{JSON.stringify(database.illustration)}];
+		let database = !{JSON.stringify(database)};
+		let database_featured = !{JSON.stringify(database_featured)};
 
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', (e)=> {
@@ -239,10 +269,10 @@ block script
 			setTimeout(()=> {
 				theme.workGrid();
 			}, 1100);
-			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)');
+			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', database, database_featured);
 		});
 
 		// Window Resize
-		window.addEventListener('resize', function(event) {
+		window.addEventListener('resize', (e)=> {
 			theme.workGrid();
 		}, true);

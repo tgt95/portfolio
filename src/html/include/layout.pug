@@ -87,10 +87,10 @@ script(src="assets/plugins/swiper/js/swiper.min.js")
 
 block page-script
 
-script(src="assets/js/style.min.js")
+//- script(src="assets/js/style.min.js")
+script(src="src/js/main.js")
 script.
 	let theme = new Theme();
-	console.log(theme.elements);
 	document.addEventListener('DOMContentLoaded', (e)=> {
 		theme.init();
 		theme.elements.body.css('overflow', 'hidden');

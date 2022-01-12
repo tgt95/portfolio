@@ -252,32 +252,25 @@ var Theme = /*#__PURE__*/function () {
     }
   }, {
     key: "photoswipeInit",
-    value: function photoswipeInit(container, gallerys, thumbnails) {
+    value: function photoswipeInit(container, gallerys, thumbnails, database, database_featured) {
       var $pswp = document.querySelectorAll('.pswp')[0],
           $container = document.querySelectorAll(container)[0],
           $gallerys = $container.querySelectorAll(gallerys); // Get Data
 
-      var getCategory = function getCategory(type) {
+      var getCategory = function getCategory(gid, database) {
         var data;
 
-        switch (type) {
-          case 'category-web':
-            data = web_data[0];
+        for (var name in database) {
+          if (gid == "category-".concat(name)) {
+            data = database[name].data;
             break;
-
-          case 'category-mobile':
-            data = mobile_data[0];
+          } else {
+            data = database_featured;
             break;
-
-          case 'category-branding':
-            data = branding_data[0];
-            break;
-
-          case 'category-illustration':
-            data = illustration_data[0];
-            break;
+          }
         }
 
+        console.log(data);
         return data;
       }; // Open Photoswipe from URL
 
@@ -295,7 +288,7 @@ var Theme = /*#__PURE__*/function () {
             index: parseInt(pid.split('-').pop()),
             galleryUID: gid
           };
-          var gallery = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(gid), options);
+          var gallery = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(gid, database), options);
           gallery.init();
         }
       };
@@ -304,12 +297,12 @@ var Theme = /*#__PURE__*/function () {
         e.preventDefault();
         var $this = e.currentTarget,
             thumbnail = $this,
-            type = $this.closest(gallerys).getAttribute('id'),
+            gid = $this.closest(gallerys).getAttribute('id'),
             options = {
           arrowEl: true,
           bgOpacity: 0.8,
           index: parseInt($this.getAttribute('data-img-index')),
-          galleryUID: type,
+          galleryUID: gid,
           getThumbBoundsFn: function getThumbBoundsFn(index) {
             // get window scroll Y
             var pageYScroll = window.pageYOffset || document.documentElement.scrollTop; // optionally get horizontal scroll
@@ -324,7 +317,7 @@ var Theme = /*#__PURE__*/function () {
             };
           }
         };
-        var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(type), options);
+        var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(gid, database), options);
         lightBox.init();
       }; // Loop Gallerys
 
