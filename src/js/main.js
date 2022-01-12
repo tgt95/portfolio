@@ -25,11 +25,11 @@ class Theme {
 			xxxl: 1600
 		};
 		this.elements = {
-			body :				$('body'),
-			contentPage :		$('.content-page'),
+			body :				document.body,
+			contentPage :		document.querySelectorAll('.content-page')[0],
 			header :			document.querySelectorAll('.header')[0],
 			navigation :		document.querySelectorAll('.header .navigation-menu')[0],
-			loader :			$('.page-loader'),
+			loader :			document.querySelectorAll('.page-loader')[0]
 		};
 	}
 	baseConfig(){
@@ -43,32 +43,24 @@ class Theme {
 	}
 	navigationConfig(){
 		let header = 		this.elements.header;
-		let viewport = 		document.querySelectorAll('html, body')[0];
+		let viewport = 		document.querySelectorAll('html');
 
 		this.elements.navigation.querySelectorAll('ul:first-child a').forEach((element, index)=> {
 			element.addEventListener('click', (e)=> {
 				e.preventDefault();
-				let offsetTop = e.currentTarget.getAttribute('data-offset-top') !== undefined ? e.currentTarget.getAttribute('data-offset-top') : 0;
-				// $('html, body').animate({
-				// 	scrollTop: $($.attr(this, 'href')).offset().top - offsetTop
-				// }, 500);
-				// debugger
-				Velocity(document.querySelectorAll('html, body')[0], { offset : 0 }, { duration: 1000 });
+
+				let $this = e.currentTarget,
+					href = $this.getAttribute('href'),
+					offsetTop = $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
 				
+				$(viewport).animate({
+					scrollTop: $(href).offset().top - offsetTop
+				}, 500);
 			});
 		});
-		
-
-		// this.elements.navigation.find('ul:first-child a').on('click', function(e) {
-		// 	e.preventDefault();
-		// 	let offsetTop = $(this).data('offset-top') !== undefined ? $(this).data('offset-top') : 0;
-		// 	$('html, body').animate({
-		// 		scrollTop: $($.attr(this, 'href')).offset().top - offsetTop
-		// 	}, 500);
-		// });
 
 		window.addEventListener('scroll', function() {
-			viewport.scrollTop > _getHeight(header) ? header.classList.add('has-background') : header.classList.remove('has-background');
+			viewport[0].scrollTop > _getHeight(header) ? header.classList.add('has-background') : header.classList.remove('has-background');
 		});
 	}
 	bannerCofig(){
@@ -113,46 +105,41 @@ class Theme {
 
         // Human
         const humanAnimate = ()=> {
-            let value = 400;
+            let value = 400,
+				el = document.getElementById('banner--human-body').querySelectorAll('g')[0];
 
-			Velocity(document.getElementById('banner--human-body').querySelectorAll('g')[0], {
-				// transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, { duration: 2500 }, { 
-				transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, { duration: 2500 }, { 
-				transform: [`translate(55.216854, ${value}.290468)`, "translate(55.216854, 355.290468)"] }, { duration: 4000, complete: humanAnimate });
-			
-			// getElementById('#banner--human-body')
-			// .velocity({ transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, { duration: 2500 })
-			// .velocity({ transform: [`translate(55.216854, ${value}.290468)`, "translate(55.216854, 355.290468)"] }, { duration: 4000, complete: humanAnimate });
+			el.velocity({ transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, 2500);
+			el.velocity({ transform: [`translate(55.216854, ${value}.290468)`, "translate(55.216854, 355.290468)"] }, 4000, humanAnimate);
 		};
         
         // Trees
         const treesAnimate = ()=> {
             // let value = Math.round(Math.random() * 1000);
-            let valueY = 532;
-            let valueX = 432;
-			$('#Trees > g')
-			.velocity({ transform: ["translate(480.000000, 489.000000)", `translate(${valueX}.000000, ${valueY}.000000)`] }, { duration: 3500 })
-			.velocity({ transform: [`translate(${valueX}.000000, ${valueY}.000000)`, "translate(480.000000, 489.000000)"] }, { duration: 5000, complete: treesAnimate });
+            let valueY = 532, valueX = 432,
+				el = document.getElementById('Trees').querySelectorAll('g')[0];
+
+			el.velocity({ transform: ["translate(480.000000, 489.000000)", `translate(${valueX}.000000, ${valueY}.000000)`] }, 3500);
+			el.velocity({ transform: [`translate(${valueX}.000000, ${valueY}.000000)`, "translate(480.000000, 489.000000)"] }, 5000, treesAnimate);
 		};
 
         // Trees
         const svgAnimate = ()=> {
-            // let value = Math.round(Math.random() * 1000);
-            let value = 1.04;
-			bannerBackground.children('svg')
-			.velocity({ transform: ["scale(1)", `scale(${value})`] }, { duration: 3500 })
-			.velocity({ transform: [`scale(${value})`, "scale(1)"] }, { duration: 5000, complete: svgAnimate });
+            let value = 1,
+				el = bannerBackground.children;
+
+			el.velocity({ transform: ["scale(0.97)", `scale(${value})`] }, 3500);
+			el.velocity({ transform: [`scale(${value})`, "scale(0.97)"] }, 5000, svgAnimate);
 		};
 		
-		$('#DESIGNERDEVELOPER').velocity({ opacity: 0.1 },{ loop: true },);
+		document.getElementById('DESIGNERDEVELOPER').velocity({ opacity: 0.1 },{ loop: true });
 		
         // Light Shape
         const lightShapeAnimate = ()=> {
-			// let value = Math.round(Math.random() * 1000);
-            let value = 1.04;
-			$('#Light-Shape')
-			.velocity({ transform: ["scale(1)", `scale(${value})`] }, { duration: 3500 } )
-			.velocity({ transform: [`scale(${value})`, "scale(1)"] }, { duration: 5000, complete: lightShapeAnimate });
+            let value = 1.04,
+				el = document.getElementById('Light-Shape');
+
+			el.velocity({ transform: ["scale(1)", `scale(${value})`] }, 3500);
+			el.velocity({ transform: [`scale(${value})`, "scale(1)"] }, 5000, lightShapeAnimate);
 		};
 		
 		// Hand Shake
@@ -182,10 +169,10 @@ class Theme {
 
 		if(!detectMobile.isMobile){
 			humanAnimate();
-			// treesAnimate();
-			// svgAnimate();
+			treesAnimate();
+			svgAnimate();
 			// lightShapeAnimate();
-			// handShakeAnimate();
+			handShakeAnimate();
 		}
 	}
 	workGrid(){

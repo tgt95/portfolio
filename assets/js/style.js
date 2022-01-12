@@ -34,11 +34,11 @@ var Theme = /*#__PURE__*/function () {
       xxxl: 1600
     };
     this.elements = {
-      body: $('body'),
-      contentPage: $('.content-page'),
+      body: document.body,
+      contentPage: document.querySelectorAll('.content-page')[0],
       header: document.querySelectorAll('.header')[0],
       navigation: document.querySelectorAll('.header .navigation-menu')[0],
-      loader: $('.page-loader')
+      loader: document.querySelectorAll('.page-loader')[0]
     };
   }
 
@@ -59,31 +59,20 @@ var Theme = /*#__PURE__*/function () {
     key: "navigationConfig",
     value: function navigationConfig() {
       var header = this.elements.header;
-      var viewport = document.querySelectorAll('html, body')[0];
+      var viewport = document.querySelectorAll('html');
       this.elements.navigation.querySelectorAll('ul:first-child a').forEach(function (element, index) {
         element.addEventListener('click', function (e) {
           e.preventDefault();
-          var offsetTop = e.currentTarget.getAttribute('data-offset-top') !== undefined ? e.currentTarget.getAttribute('data-offset-top') : 0; // $('html, body').animate({
-          // 	scrollTop: $($.attr(this, 'href')).offset().top - offsetTop
-          // }, 500);
-          // debugger
-
-          Velocity(document.querySelectorAll('html, body')[0], {
-            offset: 0
-          }, {
-            duration: 1000
-          });
+          var $this = e.currentTarget,
+              href = $this.getAttribute('href'),
+              offsetTop = $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
+          $(viewport).animate({
+            scrollTop: $(href).offset().top - offsetTop
+          }, 500);
         });
-      }); // this.elements.navigation.find('ul:first-child a').on('click', function(e) {
-      // 	e.preventDefault();
-      // 	let offsetTop = $(this).data('offset-top') !== undefined ? $(this).data('offset-top') : 0;
-      // 	$('html, body').animate({
-      // 		scrollTop: $($.attr(this, 'href')).offset().top - offsetTop
-      // 	}, 500);
-      // });
-
+      });
       window.addEventListener('scroll', function () {
-        viewport.scrollTop > _getHeight(header) ? header.classList.add('has-background') : header.classList.remove('has-background');
+        viewport[0].scrollTop > _getHeight(header) ? header.classList.add('has-background') : header.classList.remove('has-background');
       });
     }
   }, {
@@ -129,74 +118,57 @@ var Theme = /*#__PURE__*/function () {
 
 
       var humanAnimate = function humanAnimate() {
-        var value = 400;
-        Velocity(document.getElementById('banner--human-body').querySelectorAll('g')[0], {
-          // transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, { duration: 2500 }, { 
+        var value = 400,
+            el = document.getElementById('banner--human-body').querySelectorAll('g')[0];
+        el.velocity({
           transform: ["translate(55.216854, 355.290468)", "translate(55.216854, ".concat(value, ".290468)")]
-        }, {
-          duration: 2500
-        }, {
+        }, 2500);
+        el.velocity({
           transform: ["translate(55.216854, ".concat(value, ".290468)"), "translate(55.216854, 355.290468)"]
-        }, {
-          duration: 4000,
-          complete: humanAnimate
-        }); // getElementById('#banner--human-body')
-        // .velocity({ transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, { duration: 2500 })
-        // .velocity({ transform: [`translate(55.216854, ${value}.290468)`, "translate(55.216854, 355.290468)"] }, { duration: 4000, complete: humanAnimate });
+        }, 4000, humanAnimate);
       }; // Trees
 
 
       var treesAnimate = function treesAnimate() {
         // let value = Math.round(Math.random() * 1000);
-        var valueY = 532;
-        var valueX = 432;
-        $('#Trees > g').velocity({
+        var valueY = 532,
+            valueX = 432,
+            el = document.getElementById('Trees').querySelectorAll('g')[0];
+        el.velocity({
           transform: ["translate(480.000000, 489.000000)", "translate(".concat(valueX, ".000000, ").concat(valueY, ".000000)")]
-        }, {
-          duration: 3500
-        }).velocity({
+        }, 3500);
+        el.velocity({
           transform: ["translate(".concat(valueX, ".000000, ").concat(valueY, ".000000)"), "translate(480.000000, 489.000000)"]
-        }, {
-          duration: 5000,
-          complete: treesAnimate
-        });
+        }, 5000, treesAnimate);
       }; // Trees
 
 
       var svgAnimate = function svgAnimate() {
-        // let value = Math.round(Math.random() * 1000);
-        var value = 1.04;
-        bannerBackground.children('svg').velocity({
-          transform: ["scale(1)", "scale(".concat(value, ")")]
-        }, {
-          duration: 3500
-        }).velocity({
-          transform: ["scale(".concat(value, ")"), "scale(1)"]
-        }, {
-          duration: 5000,
-          complete: svgAnimate
-        });
+        var value = 1,
+            el = bannerBackground.children;
+        el.velocity({
+          transform: ["scale(0.97)", "scale(".concat(value, ")")]
+        }, 3500);
+        el.velocity({
+          transform: ["scale(".concat(value, ")"), "scale(0.97)"]
+        }, 5000, svgAnimate);
       };
 
-      $('#DESIGNERDEVELOPER').velocity({
+      document.getElementById('DESIGNERDEVELOPER').velocity({
         opacity: 0.1
       }, {
         loop: true
       }); // Light Shape
 
       var lightShapeAnimate = function lightShapeAnimate() {
-        // let value = Math.round(Math.random() * 1000);
-        var value = 1.04;
-        $('#Light-Shape').velocity({
+        var value = 1.04,
+            el = document.getElementById('Light-Shape');
+        el.velocity({
           transform: ["scale(1)", "scale(".concat(value, ")")]
-        }, {
-          duration: 3500
-        }).velocity({
+        }, 3500);
+        el.velocity({
           transform: ["scale(".concat(value, ")"), "scale(1)"]
-        }, {
-          duration: 5000,
-          complete: lightShapeAnimate
-        });
+        }, 5000, lightShapeAnimate);
       }; // Hand Shake
 
 
@@ -230,10 +202,11 @@ var Theme = /*#__PURE__*/function () {
       };
 
       if (!detectMobile.isMobile) {
-        humanAnimate(); // treesAnimate();
-        // svgAnimate();
-        // lightShapeAnimate();
-        // handShakeAnimate();
+        humanAnimate();
+        treesAnimate();
+        svgAnimate(); // lightShapeAnimate();
+
+        handShakeAnimate();
       }
     }
   }, {
