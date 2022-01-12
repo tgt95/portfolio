@@ -420,6 +420,9 @@ body {
   position: relative;
   overflow-x: hidden;
 }
+.section-banner .content-text {
+  z-index: 999;
+}
 .section-banner .content-text .title {
   font-size: 40px;
   font-weight: 700;
