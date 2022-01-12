@@ -191,14 +191,14 @@ class Theme {
 			slidesOffsetBefore: titleElement.position().left,
 			slidesOffsetAfter: titleElement.position().left,
 			spaceBetween: 32,
-			pagination: {
-				el: ".swiper-pagination",
-				type: "fraction",
-			},
-			navigation: {
-				nextEl: ".slide-button-next",
-				prevEl: ".slide-button-prev",
-			}
+			// pagination: {
+			// 	el: ".swiper-pagination",
+			// 	type: "fraction",
+			// },
+			// navigation: {
+			// 	nextEl: ".slide-button-next",
+			// 	prevEl: ".slide-button-prev",
+			// }
 		});
 
 		buttonPrevElement.on('click', (e)=> {

@@ -225,15 +225,15 @@ var Theme = /*#__PURE__*/function () {
         slidesPerView: 'auto',
         slidesOffsetBefore: titleElement.position().left,
         slidesOffsetAfter: titleElement.position().left,
-        spaceBetween: 32,
-        pagination: {
-          el: ".swiper-pagination",
-          type: "fraction"
-        },
-        navigation: {
-          nextEl: ".slide-button-next",
-          prevEl: ".slide-button-prev"
-        }
+        spaceBetween: 32 // pagination: {
+        // 	el: ".swiper-pagination",
+        // 	type: "fraction",
+        // },
+        // navigation: {
+        // 	nextEl: ".slide-button-next",
+        // 	prevEl: ".slide-button-prev",
+        // }
+
       });
       buttonPrevElement.on('click', function (e) {
         e.preventDefault(); // gallerySlider.slidePrev();
