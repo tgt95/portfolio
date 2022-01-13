@@ -1,3 +1,29 @@
 @mixin main-gradient{
     background-image: linear-gradient(to right, #fff7f7 0%, #ffc3bf 100%);
 }
+
+// Button
+@mixin button {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .3s ease;
+    border-radius: $border-theme;
+    &:hover, &:focus, &:active, &.active{
+        text-decoration: none;
+        box-shadow: 0 0 10.28px 1.72px rgba(black, .03);
+    }
+    >i{
+        margin-right: $space-3-xs;
+    }
+}
+@mixin button-md {
+    line-height: $input-height-md;
+    padding: 0 $space-s;
+}
+@mixin button-lg {
+    line-height: $input-height-lg;
+    padding: 0 $space-m;
+}

@@ -27,40 +27,39 @@
 
 .btn-brand{
     &:not(.btn-just-icon){
-        cursor: pointer;
-        display: inline-block;
-        font-weight: 600;
         color: white;
-        padding: 9.5px 16.8px;
-        border-radius: $border-theme;
         background-color: $brand;
-        text-decoration: none;
-        transition: all .3s ease;
+        @include button;
+        @include button-md;
         &:hover, &:focus, &:active, &.active{
             color: white;
-            text-decoration: none;
             background-color: darken($brand, 5%);
-            box-shadow: 0 0 10.28px 1.72px rgba(black, .03);
         }
     }
 }
 
 .btn-secondary{
     &:not(.btn-just-icon){
-        cursor: pointer;
-        display: inline-block;
-        font-weight: 600;
         color: $brand;
-        padding: 9.5px 16.8px;
-        border-radius: $border-theme;
         background-color: lighten($brand, 24%);
-        text-decoration: none;
-        transition: all .3s ease;
+        @include button;
+        @include button-md;
         &:hover, &:focus, &:active, &.active{
             color: white;
-            text-decoration: none;
             background-color: $brand;
-            box-shadow: 0 0 10.28px 1.72px rgba(black, .03);
+        }
+    }
+}
+
+.btn-ghost{
+    &:not(.btn-just-icon){
+        color: $neutral-0;
+        background-color: transparent;
+        @include button;
+        @include button-md;
+        &:hover, &:focus, &:active, &.active{
+            color: $brand;
+            background-color: lighten($brand, 24%);
         }
     }
 }

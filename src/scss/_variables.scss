@@ -52,8 +52,8 @@ $border-color:                	#E5E5E5     			!default;
 // $border-input:                	#ced4da     			!default;
 
 // Input
-$input-height-sm:				30px					!default;
-$input-height-md:				38px				    !default;
+$input-height-sm:				32px					!default;
+$input-height-md:				40px				    !default;
 $input-height-lg:				48px					!default;
 $input-border-color:			$border-color			!default;
 
@@ -65,6 +65,19 @@ $input-placeholder:				$neutral-2					!default;
 
 $input-disabled:				$neutral-2					!default;
 $input-disabled-bg:				$neutral-4					!default;
+
+$space-4-xs :                   2px;
+$space-3-xs :                   4px;
+$space-2-xs :                   8px;
+$space-xs :                     12px;
+$space-s :                      16px;
+$space-m :                      24px;
+$space-l :                      32px;
+$space-xl :                     40px;
+$space-2-xl :                   48px;
+$space-3-xl :                   56px;
+$space-4-xl :                   64px;
+$space-5-xl :                   72px;
 
 
 // Checkbox & Radio

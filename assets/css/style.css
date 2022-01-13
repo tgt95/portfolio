@@ -187,10 +187,10 @@ body {
 
 .btn-just-icon {
   display: inline-block;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 6px;
-  line-height: 38px;
+  line-height: 40px;
   text-align: center;
 }
 .btn-just-icon i {
@@ -215,41 +215,99 @@ body {
 }
 
 .btn-brand:not(.btn-just-icon) {
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
   color: white;
-  padding: 9.5px 16.8px;
-  border-radius: 6px;
   background-color: #EA5D5D;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
   text-decoration: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  border-radius: 6px;
+  line-height: 40px;
+  padding: 0 16px;
+}
+.btn-brand:not(.btn-just-icon):hover, .btn-brand:not(.btn-just-icon):focus, .btn-brand:not(.btn-just-icon):active, .btn-brand:not(.btn-just-icon).active {
+  text-decoration: none;
+  box-shadow: 0 0 10.28px 1.72px rgba(0, 0, 0, 0.03);
+}
+.btn-brand:not(.btn-just-icon) > i {
+  margin-right: 4px;
 }
 .btn-brand:not(.btn-just-icon):hover, .btn-brand:not(.btn-just-icon):focus, .btn-brand:not(.btn-just-icon):active, .btn-brand:not(.btn-just-icon).active {
   color: white;
-  text-decoration: none;
   background-color: #e74646;
-  box-shadow: 0 0 10.28px 1.72px rgba(0, 0, 0, 0.03);
 }
 
 .btn-secondary:not(.btn-just-icon) {
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
   color: #EA5D5D;
-  padding: 9.5px 16.8px;
-  border-radius: 6px;
   background-color: #f8c9c9;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
   text-decoration: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  border-radius: 6px;
+  line-height: 40px;
+  padding: 0 16px;
+}
+.btn-secondary:not(.btn-just-icon):hover, .btn-secondary:not(.btn-just-icon):focus, .btn-secondary:not(.btn-just-icon):active, .btn-secondary:not(.btn-just-icon).active {
+  text-decoration: none;
+  box-shadow: 0 0 10.28px 1.72px rgba(0, 0, 0, 0.03);
+}
+.btn-secondary:not(.btn-just-icon) > i {
+  margin-right: 4px;
 }
 .btn-secondary:not(.btn-just-icon):hover, .btn-secondary:not(.btn-just-icon):focus, .btn-secondary:not(.btn-just-icon):active, .btn-secondary:not(.btn-just-icon).active {
   color: white;
-  text-decoration: none;
   background-color: #EA5D5D;
+}
+
+.btn-ghost:not(.btn-just-icon) {
+  color: #2a3e52;
+  background-color: transparent;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  line-height: 40px;
+  padding: 0 16px;
+}
+.btn-ghost:not(.btn-just-icon):hover, .btn-ghost:not(.btn-just-icon):focus, .btn-ghost:not(.btn-just-icon):active, .btn-ghost:not(.btn-just-icon).active {
+  text-decoration: none;
   box-shadow: 0 0 10.28px 1.72px rgba(0, 0, 0, 0.03);
+}
+.btn-ghost:not(.btn-just-icon) > i {
+  margin-right: 4px;
+}
+.btn-ghost:not(.btn-just-icon):hover, .btn-ghost:not(.btn-just-icon):focus, .btn-ghost:not(.btn-just-icon):active, .btn-ghost:not(.btn-just-icon).active {
+  color: #EA5D5D;
+  background-color: #f8c9c9;
 }
 
 .navigation-tabs ul {
@@ -865,6 +923,7 @@ body {
 .section-work .swiper-container {
   -webkit-animation: fadeIn 0.6s ease;
           animation: fadeIn 0.6s ease;
+  overflow-x: hidden;
 }
 @media (max-width: 576px) {
   .section-work .navigation-tabs ul {

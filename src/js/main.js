@@ -180,8 +180,7 @@ class Theme {
 			});
 		}
 
-		let slider			= document.querySelectorAll('.section-work .swiper-container'),
-			filterButtons	= document.querySelectorAll('.section-work .navigation-tabs a'),
+		let filterButtons	= document.querySelectorAll('.section-work .navigation-tabs a'),
 			filterLi		= document.querySelectorAll('.section-work .navigation-tabs li'),
 			buttonPrev		= document.querySelectorAll('.section-work .slide-button-prev'),
 			buttonNext		= document.querySelectorAll('.section-work .slide-button-next'),
@@ -197,12 +196,7 @@ class Theme {
 					spaceBetween: 32,
 				},
 				320: {
-					mousewheel: true,
-					keyboard: true,
-					// slidesPerView: 1,
 					spaceBetween: 16,
-					allowSlidePrev: true,
-					allowSlideNext: true
 				}
 			}
 			// pagination: {

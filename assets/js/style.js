@@ -219,8 +219,7 @@ var Theme = /*#__PURE__*/function () {
         });
       }
 
-      var slider = document.querySelectorAll('.section-work .swiper-container'),
-          filterButtons = document.querySelectorAll('.section-work .navigation-tabs a'),
+      var filterButtons = document.querySelectorAll('.section-work .navigation-tabs a'),
           filterLi = document.querySelectorAll('.section-work .navigation-tabs li'),
           buttonPrev = document.querySelectorAll('.section-work .slide-button-prev'),
           buttonNext = document.querySelectorAll('.section-work .slide-button-next'),
@@ -235,12 +234,7 @@ var Theme = /*#__PURE__*/function () {
             spaceBetween: 32
           },
           320: {
-            mousewheel: true,
-            keyboard: true,
-            // slidesPerView: 1,
-            spaceBetween: 16,
-            allowSlidePrev: true,
-            allowSlideNext: true
+            spaceBetween: 16
           }
         } // pagination: {
         // 	el: ".swiper-pagination",
