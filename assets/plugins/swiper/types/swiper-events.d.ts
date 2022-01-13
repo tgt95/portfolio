@@ -1,25 +1,28 @@
 import { SwiperOptions } from './swiper-options';
 import Swiper from './swiper-class';
 
-import { A11yEvents } from './components/a11y';
-import { AutoplayEvents } from './components/autoplay';
-import { ControllerEvents } from './components/controller';
-import { CoverflowEffectEvents } from './components/effect-coverflow';
-import { CubeEffectEvents } from './components/effect-cube';
-import { FadeEffectEvents } from './components/effect-fade';
-import { FlipEffectEvents } from './components/effect-flip';
-import { HashNavigationEvents } from './components/hash-navigation';
-import { HistoryEvents } from './components/history';
-import { KeyboardEvents } from './components/keyboard';
-import { LazyEvents } from './components/lazy';
-import { MousewheelEvents } from './components/mousewheel';
-import { NavigationEvents } from './components/navigation';
-import { PaginationEvents } from './components/pagination';
-import { ParallaxEvents } from './components/parallax';
-import { ScrollbarEvents } from './components/scrollbar';
-import { ThumbsEvents } from './components/thumbs';
-import { VirtualEvents } from './components/virtual';
-import { ZoomEvents } from './components/zoom';
+import { A11yEvents } from './modules/a11y';
+import { AutoplayEvents } from './modules/autoplay';
+import { ControllerEvents } from './modules/controller';
+import { CoverflowEffectEvents } from './modules/effect-coverflow';
+import { CubeEffectEvents } from './modules/effect-cube';
+import { FadeEffectEvents } from './modules/effect-fade';
+import { FlipEffectEvents } from './modules/effect-flip';
+import { CreativeEffectEvents } from './modules/effect-creative';
+import { CardsEffectEvents } from './modules/effect-cards';
+import { HashNavigationEvents } from './modules/hash-navigation';
+import { HistoryEvents } from './modules/history';
+import { KeyboardEvents } from './modules/keyboard';
+import { LazyEvents } from './modules/lazy';
+import { MousewheelEvents } from './modules/mousewheel';
+import { NavigationEvents } from './modules/navigation';
+import { PaginationEvents } from './modules/pagination';
+import { ParallaxEvents } from './modules/parallax';
+import { ScrollbarEvents } from './modules/scrollbar';
+import { ThumbsEvents } from './modules/thumbs';
+import { VirtualEvents } from './modules/virtual';
+import { ZoomEvents } from './modules/zoom';
+import { FreeModeEvents } from './modules/free-mode';
 
 export interface SwiperEvents {
   // CORE_EVENTS_START
@@ -30,7 +33,7 @@ export interface SwiperEvents {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   init: false,
    *   // other parameters
    * });
@@ -44,7 +47,7 @@ export interface SwiperEvents {
    * @example
    * ```js
    * // Otherwise use it as the parameter:
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   // other parameters
    *   on: {
    *     init: function () {
@@ -342,6 +345,8 @@ interface SwiperEvents extends CoverflowEffectEvents {}
 interface SwiperEvents extends CubeEffectEvents {}
 interface SwiperEvents extends FadeEffectEvents {}
 interface SwiperEvents extends FlipEffectEvents {}
+interface SwiperEvents extends CreativeEffectEvents {}
+interface SwiperEvents extends CardsEffectEvents {}
 interface SwiperEvents extends HashNavigationEvents {}
 interface SwiperEvents extends HistoryEvents {}
 interface SwiperEvents extends KeyboardEvents {}
@@ -354,3 +359,4 @@ interface SwiperEvents extends ScrollbarEvents {}
 interface SwiperEvents extends ThumbsEvents {}
 interface SwiperEvents extends VirtualEvents {}
 interface SwiperEvents extends ZoomEvents {}
+interface SwiperEvents extends FreeModeEvents {}

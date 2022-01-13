@@ -1,13 +1,16 @@
 import { ChangeDetectorRef, ElementRef, EventEmitter, NgZone, OnInit, QueryList, SimpleChanges } from '@angular/core';
-import Swiper from 'swiper/core';
+import Swiper from 'swiper';
 import { Observable, Subject } from 'rxjs';
 import { SwiperSlideDirective } from './swiper-slide.directive';
 import { SwiperOptions, SwiperEvents, NavigationOptions, PaginationOptions, ScrollbarOptions, VirtualOptions } from 'swiper/types';
+import * as i0 from "@angular/core";
 export declare class SwiperComponent implements OnInit {
     private _ngZone;
     private elementRef;
     private _changeDetectorRef;
     private _platformId;
+    enabled: SwiperOptions['enabled'];
+    on: SwiperOptions['on'];
     direction: SwiperOptions['direction'];
     touchEventsTarget: SwiperOptions['touchEventsTarget'];
     initialSlide: SwiperOptions['initialSlide'];
@@ -25,13 +28,6 @@ export declare class SwiperComponent implements OnInit {
     edgeSwipeDetection: boolean | string;
     edgeSwipeThreshold: number;
     freeMode: SwiperOptions['freeMode'];
-    freeModeMomentum: SwiperOptions['freeModeMomentum'];
-    freeModeMomentumRatio: SwiperOptions['freeModeMomentumRatio'];
-    freeModeMomentumBounce: SwiperOptions['freeModeMomentumBounce'];
-    freeModeMomentumBounceRatio: SwiperOptions['freeModeMomentumBounceRatio'];
-    freeModeMomentumVelocityRatio: SwiperOptions['freeModeMomentumVelocityRatio'];
-    freeModeSticky: SwiperOptions['freeModeSticky'];
-    freeModeMinimumVelocity: SwiperOptions['freeModeMinimumVelocity'];
     autoHeight: SwiperOptions['autoHeight'];
     setWrapperSize: SwiperOptions['setWrapperSize'];
     virtualTranslate: SwiperOptions['virtualTranslate'];
@@ -39,8 +35,7 @@ export declare class SwiperComponent implements OnInit {
     breakpoints: SwiperOptions['breakpoints'];
     spaceBetween: SwiperOptions['spaceBetween'];
     slidesPerView: SwiperOptions['slidesPerView'];
-    slidesPerColumn: SwiperOptions['slidesPerColumn'];
-    slidesPerColumnFill: SwiperOptions['slidesPerColumnFill'];
+    grid: SwiperOptions['grid'];
     slidesPerGroup: SwiperOptions['slidesPerGroup'];
     slidesPerGroupSkip: SwiperOptions['slidesPerGroupSkip'];
     centeredSlides: SwiperOptions['centeredSlides'];
@@ -69,7 +64,6 @@ export declare class SwiperComponent implements OnInit {
     resistance: SwiperOptions['resistance'];
     resistanceRatio: SwiperOptions['resistanceRatio'];
     watchSlidesProgress: SwiperOptions['watchSlidesProgress'];
-    watchSlidesVisibility: SwiperOptions['watchSlidesVisibility'];
     grabCursor: SwiperOptions['grabCursor'];
     preventClicks: SwiperOptions['preventClicks'];
     preventClicksPropagation: SwiperOptions['preventClicksPropagation'];
@@ -81,6 +75,7 @@ export declare class SwiperComponent implements OnInit {
     loopedSlides: SwiperOptions['loopedSlides'];
     loopFillGroupWithBlank: SwiperOptions['loopFillGroupWithBlank'];
     loopPreventsSlide: SwiperOptions['loopPreventsSlide'];
+    rewind: SwiperOptions['rewind'];
     allowSlidePrev: SwiperOptions['allowSlidePrev'];
     allowSlideNext: SwiperOptions['allowSlideNext'];
     swipeHandler: SwiperOptions['swipeHandler'];
@@ -110,6 +105,8 @@ export declare class SwiperComponent implements OnInit {
     cubeEffect: SwiperOptions['cubeEffect'];
     fadeEffect: SwiperOptions['fadeEffect'];
     flipEffect: SwiperOptions['flipEffect'];
+    creativeEffect: SwiperOptions['creativeEffect'];
+    cardsEffect: SwiperOptions['cardsEffect'];
     hashNavigation: SwiperOptions['hashNavigation'];
     history: SwiperOptions['history'];
     keyboard: SwiperOptions['keyboard'];
@@ -120,20 +117,20 @@ export declare class SwiperComponent implements OnInit {
     zoom: SwiperOptions['zoom'];
     class: string;
     id: string;
-    set navigation(val: boolean | NavigationOptions);
-    get navigation(): boolean | NavigationOptions;
+    set navigation(val: boolean | "" | NavigationOptions);
+    get navigation(): boolean | "" | NavigationOptions;
     private _navigation;
     showNavigation: boolean;
-    set pagination(val: boolean | PaginationOptions);
-    get pagination(): boolean | PaginationOptions;
+    set pagination(val: boolean | "" | PaginationOptions);
+    get pagination(): boolean | "" | PaginationOptions;
     private _pagination;
     showPagination: boolean;
-    set scrollbar(val: boolean | ScrollbarOptions);
-    get scrollbar(): boolean | ScrollbarOptions;
+    set scrollbar(val: boolean | "" | ScrollbarOptions);
+    get scrollbar(): boolean | "" | ScrollbarOptions;
     private _scrollbar;
     showScrollbar: boolean;
-    set virtual(val: boolean | VirtualOptions);
-    get virtual(): boolean | VirtualOptions;
+    set virtual(val: boolean | "" | VirtualOptions);
+    get virtual(): boolean | "" | VirtualOptions;
     private _virtual;
     set index(index: number);
     set config(val: SwiperOptions);
@@ -212,6 +209,8 @@ export declare class SwiperComponent implements OnInit {
     s_transitionStart: EventEmitter<SwiperEvents['transitionStart']>;
     s_update: EventEmitter<SwiperEvents['update']>;
     s_zoomChange: EventEmitter<SwiperEvents['zoomChange']>;
+    s_lock: EventEmitter<SwiperEvents['lock']>;
+    s_unlock: EventEmitter<SwiperEvents['unlock']>;
     s_swiper: EventEmitter<any>;
     indexChange: EventEmitter<number>;
     set prevElRef(el: ElementRef);
@@ -231,7 +230,7 @@ export declare class SwiperComponent implements OnInit {
     get activeSlides(): Observable<SwiperSlideDirective[]>;
     get zoomContainerClass(): string;
     containerClasses: string;
-    constructor(_ngZone: NgZone, elementRef: ElementRef, _changeDetectorRef: ChangeDetectorRef, _platformId: any);
+    constructor(_ngZone: NgZone, elementRef: ElementRef, _changeDetectorRef: ChangeDetectorRef, _platformId: Object);
     private _setElement;
     ngOnInit(): void;
     ngAfterViewInit(): void;
@@ -246,7 +245,12 @@ export declare class SwiperComponent implements OnInit {
     updateInitSwiper(changedParams: any): void;
     updateSwiper(changedParams: SimpleChanges | any): void;
     calcLoopedSlides(): number;
-    updateParameter(key: any, value: any): void;
+    updateParameter(key: string, value: any): void;
+    /**
+     * @deprecated will be removed in upcoming versions
+     */
     setIndex(index: number, speed?: number, silent?: boolean): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<SwiperComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SwiperComponent, "swiper, [swiper]", never, { "enabled": "enabled"; "on": "on"; "direction": "direction"; "touchEventsTarget": "touchEventsTarget"; "initialSlide": "initialSlide"; "speed": "speed"; "cssMode": "cssMode"; "updateOnWindowResize": "updateOnWindowResize"; "resizeObserver": "resizeObserver"; "nested": "nested"; "focusableElements": "focusableElements"; "width": "width"; "height": "height"; "preventInteractionOnTransition": "preventInteractionOnTransition"; "userAgent": "userAgent"; "url": "url"; "edgeSwipeDetection": "edgeSwipeDetection"; "edgeSwipeThreshold": "edgeSwipeThreshold"; "freeMode": "freeMode"; "autoHeight": "autoHeight"; "setWrapperSize": "setWrapperSize"; "virtualTranslate": "virtualTranslate"; "effect": "effect"; "breakpoints": "breakpoints"; "spaceBetween": "spaceBetween"; "slidesPerView": "slidesPerView"; "grid": "grid"; "slidesPerGroup": "slidesPerGroup"; "slidesPerGroupSkip": "slidesPerGroupSkip"; "centeredSlides": "centeredSlides"; "centeredSlidesBounds": "centeredSlidesBounds"; "slidesOffsetBefore": "slidesOffsetBefore"; "slidesOffsetAfter": "slidesOffsetAfter"; "normalizeSlideIndex": "normalizeSlideIndex"; "centerInsufficientSlides": "centerInsufficientSlides"; "watchOverflow": "watchOverflow"; "roundLengths": "roundLengths"; "touchRatio": "touchRatio"; "touchAngle": "touchAngle"; "simulateTouch": "simulateTouch"; "shortSwipes": "shortSwipes"; "longSwipes": "longSwipes"; "longSwipesRatio": "longSwipesRatio"; "longSwipesMs": "longSwipesMs"; "followFinger": "followFinger"; "allowTouchMove": "allowTouchMove"; "threshold": "threshold"; "touchMoveStopPropagation": "touchMoveStopPropagation"; "touchStartPreventDefault": "touchStartPreventDefault"; "touchStartForcePreventDefault": "touchStartForcePreventDefault"; "touchReleaseOnEdges": "touchReleaseOnEdges"; "uniqueNavElements": "uniqueNavElements"; "resistance": "resistance"; "resistanceRatio": "resistanceRatio"; "watchSlidesProgress": "watchSlidesProgress"; "grabCursor": "grabCursor"; "preventClicks": "preventClicks"; "preventClicksPropagation": "preventClicksPropagation"; "slideToClickedSlide": "slideToClickedSlide"; "preloadImages": "preloadImages"; "updateOnImagesReady": "updateOnImagesReady"; "loop": "loop"; "loopAdditionalSlides": "loopAdditionalSlides"; "loopedSlides": "loopedSlides"; "loopFillGroupWithBlank": "loopFillGroupWithBlank"; "loopPreventsSlide": "loopPreventsSlide"; "rewind": "rewind"; "allowSlidePrev": "allowSlidePrev"; "allowSlideNext": "allowSlideNext"; "swipeHandler": "swipeHandler"; "noSwiping": "noSwiping"; "noSwipingClass": "noSwipingClass"; "noSwipingSelector": "noSwipingSelector"; "passiveListeners": "passiveListeners"; "containerModifierClass": "containerModifierClass"; "slideClass": "slideClass"; "slideBlankClass": "slideBlankClass"; "slideActiveClass": "slideActiveClass"; "slideDuplicateActiveClass": "slideDuplicateActiveClass"; "slideVisibleClass": "slideVisibleClass"; "slideDuplicateClass": "slideDuplicateClass"; "slideNextClass": "slideNextClass"; "slideDuplicateNextClass": "slideDuplicateNextClass"; "slidePrevClass": "slidePrevClass"; "slideDuplicatePrevClass": "slideDuplicatePrevClass"; "wrapperClass": "wrapperClass"; "runCallbacksOnInit": "runCallbacksOnInit"; "observeParents": "observeParents"; "observeSlideChildren": "observeSlideChildren"; "a11y": "a11y"; "autoplay": "autoplay"; "controller": "controller"; "coverflowEffect": "coverflowEffect"; "cubeEffect": "cubeEffect"; "fadeEffect": "fadeEffect"; "flipEffect": "flipEffect"; "creativeEffect": "creativeEffect"; "cardsEffect": "cardsEffect"; "hashNavigation": "hashNavigation"; "history": "history"; "keyboard": "keyboard"; "lazy": "lazy"; "mousewheel": "mousewheel"; "parallax": "parallax"; "thumbs": "thumbs"; "zoom": "zoom"; "class": "class"; "id": "id"; "navigation": "navigation"; "pagination": "pagination"; "scrollbar": "scrollbar"; "virtual": "virtual"; "index": "index"; "config": "config"; }, { "s__beforeBreakpoint": "_beforeBreakpoint"; "s__containerClasses": "_containerClasses"; "s__slideClass": "_slideClass"; "s__swiper": "_swiper"; "s_activeIndexChange": "activeIndexChange"; "s_afterInit": "afterInit"; "s_autoplay": "autoplay"; "s_autoplayStart": "autoplayStart"; "s_autoplayStop": "autoplayStop"; "s_beforeDestroy": "beforeDestroy"; "s_beforeInit": "beforeInit"; "s_beforeLoopFix": "beforeLoopFix"; "s_beforeResize": "beforeResize"; "s_beforeSlideChangeStart": "beforeSlideChangeStart"; "s_beforeTransitionStart": "beforeTransitionStart"; "s_breakpoint": "breakpoint"; "s_changeDirection": "changeDirection"; "s_click": "click"; "s_doubleTap": "doubleTap"; "s_doubleClick": "doubleClick"; "s_destroy": "destroy"; "s_fromEdge": "fromEdge"; "s_hashChange": "hashChange"; "s_hashSet": "hashSet"; "s_imagesReady": "imagesReady"; "s_init": "init"; "s_keyPress": "keyPress"; "s_lazyImageLoad": "lazyImageLoad"; "s_lazyImageReady": "lazyImageReady"; "s_loopFix": "loopFix"; "s_momentumBounce": "momentumBounce"; "s_navigationHide": "navigationHide"; "s_navigationShow": "navigationShow"; "s_observerUpdate": "observerUpdate"; "s_orientationchange": "orientationchange"; "s_paginationHide": "paginationHide"; "s_paginationRender": "paginationRender"; "s_paginationShow": "paginationShow"; "s_paginationUpdate": "paginationUpdate"; "s_progress": "progress"; "s_reachBeginning": "reachBeginning"; "s_reachEnd": "reachEnd"; "s_realIndexChange": "realIndexChange"; "s_resize": "resize"; "s_scroll": "scroll"; "s_scrollbarDragEnd": "scrollbarDragEnd"; "s_scrollbarDragMove": "scrollbarDragMove"; "s_scrollbarDragStart": "scrollbarDragStart"; "s_setTransition": "setTransition"; "s_setTranslate": "setTranslate"; "s_slideChange": "slideChange"; "s_slideChangeTransitionEnd": "slideChangeTransitionEnd"; "s_slideChangeTransitionStart": "slideChangeTransitionStart"; "s_slideNextTransitionEnd": "slideNextTransitionEnd"; "s_slideNextTransitionStart": "slideNextTransitionStart"; "s_slidePrevTransitionEnd": "slidePrevTransitionEnd"; "s_slidePrevTransitionStart": "slidePrevTransitionStart"; "s_slideResetTransitionStart": "slideResetTransitionStart"; "s_slideResetTransitionEnd": "slideResetTransitionEnd"; "s_sliderMove": "sliderMove"; "s_sliderFirstMove": "sliderFirstMove"; "s_slidesLengthChange": "slidesLengthChange"; "s_slidesGridLengthChange": "slidesGridLengthChange"; "s_snapGridLengthChange": "snapGridLengthChange"; "s_snapIndexChange": "snapIndexChange"; "s_tap": "tap"; "s_toEdge": "toEdge"; "s_touchEnd": "touchEnd"; "s_touchMove": "touchMove"; "s_touchMoveOpposite": "touchMoveOpposite"; "s_touchStart": "touchStart"; "s_transitionEnd": "transitionEnd"; "s_transitionStart": "transitionStart"; "s_update": "update"; "s_zoomChange": "zoomChange"; "s_lock": "lock"; "s_unlock": "unlock"; "s_swiper": "swiper"; "indexChange": "indexChange"; }, ["slidesEl"], ["[slot=container-start]", "[slot=wrapper-start]", "[slot=wrapper-end]", "[slot=container-end]"]>;
 }

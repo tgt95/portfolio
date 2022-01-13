@@ -1,7 +1,6 @@
-import { SwiperOptions } from 'swiper/types';
 export declare const allowedParams: string[];
-export declare function getParams(obj?: {}): {
-    params: SwiperOptions;
+export declare function getParams(obj?: any): {
+    params: any;
     passedParams: {};
     rest: {};
 };

@@ -225,12 +225,15 @@ var Theme = /*#__PURE__*/function () {
           buttonPrev = document.querySelectorAll('.section-work .slide-button-prev'),
           buttonNext = document.querySelectorAll('.section-work .slide-button-next'),
           title = document.querySelector('.section-work .section-title');
-      var gallerySlider = new Swiper(slider, {
+      var gallerySlider = new Swiper('.section-work .swiper-container', {
         slidesPerView: 'auto',
         slidesOffsetBefore: title.getBoundingClientRect().left,
         slidesOffsetAfter: title.getBoundingClientRect().left,
         spaceBetween: 32,
         breakpoints: {
+          576: {
+            spaceBetween: 32
+          },
           320: {
             mousewheel: true,
             keyboard: true,

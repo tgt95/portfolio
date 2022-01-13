@@ -1,27 +1,44 @@
-import { A11yOptions } from './components/a11y';
-import { AutoplayOptions } from './components/autoplay';
-import { ControllerOptions } from './components/controller';
-import { CoverflowEffectOptions } from './components/effect-coverflow';
-import { CubeEffectOptions } from './components/effect-cube';
-import { FadeEffectOptions } from './components/effect-fade';
-import { FlipEffectOptions } from './components/effect-flip';
-import { HashNavigationOptions } from './components/hash-navigation';
-import { HistoryOptions } from './components/history';
-import { KeyboardOptions } from './components/keyboard';
-import { LazyOptions } from './components/lazy';
-import { MousewheelOptions } from './components/mousewheel';
-import { NavigationOptions } from './components/navigation';
-import { PaginationOptions } from './components/pagination';
-import { ParallaxOptions } from './components/parallax';
-import { ScrollbarOptions } from './components/scrollbar';
-import { ThumbsOptions } from './components/thumbs';
-import { VirtualOptions } from './components/virtual';
-import { ZoomOptions } from './components/zoom';
+import { A11yOptions } from './modules/a11y';
+import { AutoplayOptions } from './modules/autoplay';
+import { ControllerOptions } from './modules/controller';
+import { CoverflowEffectOptions } from './modules/effect-coverflow';
+import { CubeEffectOptions } from './modules/effect-cube';
+import { FadeEffectOptions } from './modules/effect-fade';
+import { FlipEffectOptions } from './modules/effect-flip';
+import { CreativeEffectOptions } from './modules/effect-creative';
+import { CardsEffectOptions } from './modules/effect-cards';
+import { HashNavigationOptions } from './modules/hash-navigation';
+import { HistoryOptions } from './modules/history';
+import { KeyboardOptions } from './modules/keyboard';
+import { LazyOptions } from './modules/lazy';
+import { MousewheelOptions } from './modules/mousewheel';
+import { NavigationOptions } from './modules/navigation';
+import { PaginationOptions } from './modules/pagination';
+import { ParallaxOptions } from './modules/parallax';
+import { ScrollbarOptions } from './modules/scrollbar';
+import { ThumbsOptions } from './modules/thumbs';
+import { VirtualOptions } from './modules/virtual';
+import { ZoomOptions } from './modules/zoom';
+import { FreeModeOptions } from './modules/free-mode';
+import { GridOptions } from './modules/grid';
 
-import { CSSSelector } from './shared';
+import { CSSSelector, SwiperModule } from './shared';
 import { SwiperEvents } from './swiper-events';
 
 export interface SwiperOptions {
+  /**
+   * Array with Swiper modules
+   *
+   * @example
+   * ```js
+   * import Swiper, { Navigation, Pagination } from 'swiper';
+   *
+   * const swiper = new Swiper('.swiper', {
+   *    modules: [ Navigation, Pagination ],
+   *  });
+   * ```
+   */
+  modules?: SwiperModule[];
   /**
    * Whether Swiper should be initialised automatically when you create an instance.
    * If disabled, then you need to init it manually by calling `swiper.init()`
@@ -47,7 +64,7 @@ export interface SwiperOptions {
   /**
    * When enabled it will use ResizeObserver (if supported by browser) on swiper container to detect container resize (instead of watching for window resize)
    *
-   * @default false
+   * @default true
    */
   resizeObserver?: boolean;
 
@@ -157,11 +174,11 @@ export interface SwiperOptions {
   uniqueNavElements?: boolean;
 
   /**
-   * Transition effect. Can be `'slide'`, `'fade'`, `'cube'`, `'coverflow'` or `'flip'`
+   * Transition effect. Can be `'slide'`, `'fade'`, `'cube'`, `'coverflow'`, `'flip'` or `'creative'`
    *
    * @default 'slide'
    */
-  effect?: 'slide' | 'fade' | 'cube' | 'coverflow' | 'flip';
+  effect?: 'slide' | 'fade' | 'cube' | 'coverflow' | 'flip' | 'creative' | 'cards';
 
   /**
    * Fire Transition/SlideChange/Start/End events on swiper initialization.
@@ -175,7 +192,7 @@ export interface SwiperOptions {
    * When enabled Swiper will be disabled and hide navigation buttons on
    * case there are not enough slides for sliding.
    *
-   * @default false
+   * @default true
    */
   watchOverflow?: boolean;
 
@@ -205,7 +222,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *    onAny(eventName, ...args) {
    *      console.log('Event: ', eventName);
    *      console.log('Event data: ', args);
@@ -221,14 +238,10 @@ export interface SwiperOptions {
    *
    * This is what is not supported when it is enabled:
    *
-   * - All effects (Fade, Coverflow, Flip, Cube)
-   * - Zoom
-   * - Virtual Slides
-   * - `speed` parameter will have no effect
+   * - Cube and Cards effects
+   * - `speed` parameter may not have no effect
    * - All transition start/end related events (use `slideChange` instead)
    * - `slidesPerGroup` has limited support
-   * - `centeredSlides` is not supported
-   * - Changing slides with anything except touch/swipe and mousewheel will happen without transition in browsers without `scrollTo.behaviour = 'smooth'` support (e.g. in desktop and iOS Safari)
    * - `simulateTouch` doesn't have effect and "dragging" with mouse doesn't work
    * - `resistance` doesn't have any effect
    * - `allowSlidePrev/Next`
@@ -246,34 +259,18 @@ export interface SwiperOptions {
    *
    * @default 0
    *
-   * @note If you use "margin" css property to the elements which go into Swiper in which you pass "spaceBetween" into, navigation might not work property.
+   * @note If you use "margin" css property to the elements which go into Swiper in which you pass "spaceBetween" into, navigation might not work properly.
    */
   spaceBetween?: number;
 
   /**
    * Number of slides per view (slides visible at the same time on slider's container).
    * @note If you use it with "auto" value and along with `loop: true` then you need to specify `loopedSlides` parameter with amount of slides to loop (duplicate)
-   * @note `slidesPerView: 'auto'` is currently not compatible with multirow mode, when `slidesPerColumn` > 1
+   * @note `slidesPerView: 'auto'` is currently not compatible with multirow mode, when `grid.rows` > 1
    *
    * @default 1
    */
   slidesPerView?: number | 'auto';
-
-  /**
-   * Number of slides per column, for multirow layout
-   *
-   * @note `slidesPerColumn` > 1 is currently not compatible with loop mode (`loop: true`)
-   *
-   * @default 1
-   */
-  slidesPerColumn?: number;
-
-  /**
-   * Can be `'column'` or `'row'`. Defines how slides should fill rows, by column or by row
-   *
-   * @default 'column'
-   */
-  slidesPerColumnFill?: 'row' | 'column';
 
   /**
    * Set numbers of slides to define and enable group sliding. Useful to use with slidesPerView > 1
@@ -290,6 +287,13 @@ export interface SwiperOptions {
    * @default 0
    */
   slidesPerGroupSkip?: number;
+
+  /**
+   * This param intended to be used only with `slidesPerView: 'auto'` and `slidesPerGroup: 1`. When enabled, it will skip all slides in view on `.slideNext()` & `.slidePrev()` methods calls, on Navigation "buttons" clicks and in autoplay.
+   *
+   * @default false
+   */
+  slidesPerGroupAuto?: boolean;
 
   /**
    * If `true`, then active slide will be centered, not always on the left side.
@@ -328,7 +332,7 @@ export interface SwiperOptions {
   normalizeSlideIndex?: boolean;
 
   /**
-   * When enabled it center slides if the amount of slides less than `slidesPerView`. Not intended to be used `loop` mode and `slidesPerColumn`
+   * When enabled it center slides if the amount of slides less than `slidesPerView`. Not intended to be used `loop` mode and `grid.rows`
    *
    * @default false
    */
@@ -342,10 +346,10 @@ export interface SwiperOptions {
   grabCursor?: boolean;
 
   /**
-   * Target element to listen touch events on. Can be `'container'` (to listen for touch events on swiper-container) or `'wrapper'`
+   * Target element to listen touch events on. Can be `'container'` (to listen for touch events on swiper) or `'wrapper'`
    * (to listen for touch events on swiper-wrapper)
    *
-   * @default 'container'
+   * @default 'wrapper'
    */
   touchEventsTarget?: 'container' | 'wrapper';
 
@@ -420,14 +424,14 @@ export interface SwiperOptions {
   threshold?: number;
 
   /**
-   * If disabled, `touchstart` (`mousedown`) event won't be prevented
+   * If disabled, `touchstart` (`pointerdown`) event won't be prevented
    *
    * @default true
    */
   touchStartPreventDefault?: boolean;
 
   /**
-   * Force to always prevent default for `touchstart` (`mousedown`) event
+   * Force to always prevent default for `touchstart` (`pointerdown`) event
    *
    * @default false
    */
@@ -558,78 +562,13 @@ export interface SwiperOptions {
    */
   slideToClickedSlide?: boolean;
 
-  // Freemode
-
-  /**
-   * If enabled then slides will not have fixed positions
-   *
-   * @default false
-   */
-  freeMode?: boolean;
-
-  /**
-   * If enabled, then slide will keep moving for a while after you release it
-   *
-   * @default true
-   */
-  freeModeMomentum?: boolean;
-
-  /**
-   * Higher value produces larger momentum distance after you release slider
-   *
-   * @default 1
-   */
-  freeModeMomentumRatio?: number;
-
-  /**
-   * Higher value produces larger momentum velocity after you release slider
-   *
-   * @default 1
-   */
-  freeModeMomentumVelocityRatio?: number;
-
-  /**
-   * Set to `false` if you want to disable momentum bounce in free mode
-   *
-   * @default true
-   */
-  freeModeMomentumBounce?: boolean;
-
-  /**
-   * Higher value produces larger momentum bounce effect
-   *
-   * @default 1
-   */
-  freeModeMomentumBounceRatio?: number;
-
-  /**
-   * Minimum touchmove-velocity required to trigger free mode momentum
-   *
-   * @default 0.02
-   */
-  freeModeMinimumVelocity?: number;
-
-  /**
-   * Set to enabled to enable snap to slides positions in free mode
-   *
-   * @default false
-   */
-  freeModeSticky?: boolean;
-
   // Progress
   /**
-   * Enable this feature to calculate each slides progress
+   * Enable this feature to calculate each slides progress and visibility (slides in viewport will have additional visible class)
    *
    * @default false
    */
   watchSlidesProgress?: boolean;
-
-  /**
-   * `watchSlidesProgress` should be enabled. Enable this option and slides that are in viewport will have additional visible class
-   *
-   * @default false
-   */
-  watchSlidesVisibility?: boolean;
 
   // Images
   /**
@@ -657,9 +596,18 @@ export interface SwiperOptions {
    *
    * @default false
    *
-   * @note If you use it along with `slidesPerView: 'auto'` then you need to specify `loopedSlides` parameter with amount of slides to loop (duplicate)
+   * @note If you use it along with `slidesPerView: 'auto'` then you need to specify `loopedSlides` parameter with amount of slides to loop (duplicate). Should not be used together with `rewind` mode
    */
   loop?: boolean;
+
+  /**
+   * Set to `true` to enable "rewind" mode. When enabled, clicking "next" navigation button (or calling `.slideNext()`) when on last slide will slide back to the first slide. Clicking "prev" navigation button (or calling `.slidePrev()`) when on first slide will slide forward to the last slide.
+   *
+   * @default false
+   *
+   * @note Should not be used together with `loop` mode
+   */
+  rewind?: boolean;
 
   /**
    * Addition number of slides that will be cloned after creating of loop
@@ -689,11 +637,11 @@ export interface SwiperOptions {
   loopPreventsSlide?: boolean;
 
   /**
-   * Allows to set different parameter for different responsive breakpoints (screen sizes). Not all parameters can be changed in breakpoints, only those which are not required different layout and logic, like `slidesPerView`, `slidesPerGroup`, `spaceBetween`, `slidesPerColumn`. Such parameters like `loop` and `effect` won't work
+   * Allows to set different parameter for different responsive breakpoints (screen sizes). Not all parameters can be changed in breakpoints, only those which are not required different layout and logic, like `slidesPerView`, `slidesPerGroup`, `spaceBetween`, `grid.rows`. Such parameters like `loop` and `effect` won't work
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   // Default parameters
    *   slidesPerView: 1,
    *   spaceBetween: 10,
@@ -720,7 +668,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   slidesPerView: 1,
    *   spaceBetween: 10,
    *   // using "ratio" endpoints
@@ -779,7 +727,7 @@ export interface SwiperOptions {
   /**
    * The beginning of the modifier CSS class that can be added to swiper container depending on different parameters
    *
-   * @default 'swiper-container-'
+   * @default 'swiper-'
    */
   containerModifierClass?: string;
 
@@ -910,7 +858,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   a11y: {
    *     prevSlideMessage: 'Previous slide',
    *     nextSlideMessage: 'Next slide',
@@ -925,7 +873,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *  autoplay: {
    *    delay: 5000,
    *  },
@@ -939,7 +887,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   controller: {
    *     inverse: true,
    *   },
@@ -953,7 +901,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   effect: 'coverflow',
    *   coverflowEffect: {
    *     rotate: 30,
@@ -969,7 +917,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   effect: 'cube',
    *   cubeEffect: {
    *     slideShadows: false,
@@ -984,7 +932,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   effect: 'fade',
    *   fadeEffect: {
    *     crossFade: true
@@ -999,7 +947,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   effect: 'flip',
    *   flipEffect: {
    *     slideShadows: false,
@@ -1010,12 +958,49 @@ export interface SwiperOptions {
   flipEffect?: FlipEffectOptions;
 
   /**
+   * Object with Creative-effect parameters
+   *
+   * @example
+   * ```js
+   * const swiper = new Swiper('.swiper', {
+   *   effect: 'creative',
+   *   creativeEffect: {
+   *     prev: {
+   *       // will set `translateZ(-400px)` on previous slides
+   *       translate: [0, 0, -400],
+   *     },
+   *     next: {
+   *       // will set `translateX(100%)` on next slides
+   *       translate: ['100%', 0, 0],
+   *     },
+   *   },
+   * });
+   * ```
+   */
+  creativeEffect?: CreativeEffectOptions;
+
+  /**
+   * Object with Cards-effect parameters
+   *
+   * @example
+   * ```js
+   * const swiper = new Swiper('.swiper', {
+   *   effect: 'cards',
+   *   cardsEffect: {
+   *     // ...
+   *   },
+   * });
+   * ```
+   */
+  cardsEffect?: CardsEffectOptions;
+
+  /**
    * Enables hash url navigation to for slides.
    * Object with hash navigation parameters or boolean `true` to enable with default settings
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   hashNavigation: {
    *     replaceState: true,
    *   },
@@ -1031,7 +1016,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   history: {
    *     replaceState: true,
    *   },
@@ -1051,7 +1036,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   keyboard: {
    *     enabled: true,
    *     onlyInViewport: false,
@@ -1066,7 +1051,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   lazy: {
    *     loadPrevNext: true,
    *   },
@@ -1080,7 +1065,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   mousewheel: {
    *     invert: true,
    *   },
@@ -1094,7 +1079,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   navigation: {
    *     nextEl: '.swiper-button-next',
    *     prevEl: '.swiper-button-prev',
@@ -1109,7 +1094,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   pagination: {
    *     el: '.swiper-pagination',
    *     type: 'bullets',
@@ -1124,7 +1109,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   parallax: true,
    * });
    * ```
@@ -1136,7 +1121,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   scrollbar: {
    *     el: '.swiper-scrollbar',
    *     draggable: true,
@@ -1151,7 +1136,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   ...
    *   thumbs: {
    *     swiper: thumbsSwiper
@@ -1166,7 +1151,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   virtual: {
    *     slides: ['Slide 1', 'Slide 2', 'Slide 3', 'Slide 4', 'Slide 5'],
    *   },
@@ -1180,7 +1165,7 @@ export interface SwiperOptions {
    *
    * @example
    * ```js
-   * const swiper = new Swiper('.swiper-container', {
+   * const swiper = new Swiper('.swiper', {
    *   zoom: {
    *     maxRatio: 5,
    *   },
@@ -1188,6 +1173,39 @@ export interface SwiperOptions {
    * ```
    */
   zoom?: ZoomOptions | boolean;
+
+  /**
+   * Enables free mode functionality. Object with free mode parameters or boolean `true` to enable with default settings.
+   *
+   * @example
+   * ```js
+   * const swiper = new Swiper('.swiper', {
+   *   freeMode: true,
+   * });
+   *
+   * const swiper = new Swiper('.swiper', {
+   *   freeMode: {
+   *     enabled: true,
+   *     sticky: true,
+   *   },
+   * });
+   * ```
+   */
+  freeMode?: FreeModeOptions | boolean;
+
+  /**
+   * Object with grid parameters to enable "multirow" slider.
+   *
+   * @example
+   * ```js
+   * const swiper = new Swiper('.swiper', {
+   *   grid: {
+   *     rows: 2,
+   *   },
+   * });
+   * ```
+   */
+  grid?: GridOptions;
 
   /**
    * !INTERNAL When enabled will emit "_containerClasses" and "_slideClass" events

@@ -1,26 +1,31 @@
 import Swiper from './types/swiper-class';
 import { SwiperOptions } from './types/swiper-options';
-import { SwiperComponent } from './types/shared';
+import { SwiperModule } from './types/shared';
 
-declare const A11y: SwiperComponent;
-declare const Autoplay: SwiperComponent;
-declare const Controller: SwiperComponent;
-declare const EffectCoverflow: SwiperComponent;
-declare const EffectCube: SwiperComponent;
-declare const EffectFade: SwiperComponent;
-declare const EffectFlip: SwiperComponent;
-declare const HashNavigation: SwiperComponent;
-declare const History: SwiperComponent;
-declare const Keyboard: SwiperComponent;
-declare const Lazy: SwiperComponent;
-declare const Mousewheel: SwiperComponent;
-declare const Navigation: SwiperComponent;
-declare const Pagination: SwiperComponent;
-declare const Parallax: SwiperComponent;
-declare const Scrollbar: SwiperComponent;
-declare const Thumbs: SwiperComponent;
-declare const Virtual: SwiperComponent;
-declare const Zoom: SwiperComponent;
+declare const A11y: SwiperModule;
+declare const Autoplay: SwiperModule;
+declare const Controller: SwiperModule;
+declare const EffectCoverflow: SwiperModule;
+declare const EffectCube: SwiperModule;
+declare const EffectFade: SwiperModule;
+declare const EffectFlip: SwiperModule;
+declare const EffectCreative: SwiperModule;
+declare const EffectCards: SwiperModule;
+declare const HashNavigation: SwiperModule;
+declare const History: SwiperModule;
+declare const Keyboard: SwiperModule;
+declare const Lazy: SwiperModule;
+declare const Mousewheel: SwiperModule;
+declare const Navigation: SwiperModule;
+declare const Pagination: SwiperModule;
+declare const Parallax: SwiperModule;
+declare const Scrollbar: SwiperModule;
+declare const Thumbs: SwiperModule;
+declare const Virtual: SwiperModule;
+declare const Zoom: SwiperModule;
+declare const FreeMode: SwiperModule;
+declare const Grid: SwiperModule;
+declare const Manipulation: SwiperModule;
 
 export default Swiper;
 export {
@@ -33,6 +38,8 @@ export {
   EffectCube,
   EffectFade,
   EffectFlip,
+  EffectCreative,
+  EffectCards,
   HashNavigation,
   History,
   Keyboard,
@@ -45,4 +52,7 @@ export {
   Thumbs,
   Virtual,
   Zoom,
+  FreeMode,
+  Grid,
+  Manipulation,
 };
