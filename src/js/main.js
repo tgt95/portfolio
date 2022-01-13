@@ -59,33 +59,26 @@ class Theme {
 			});
 		});
 
-		window.addEventListener('scroll', function() {
+		window.addEventListener('scroll', ()=> {
 			viewport[0].scrollTop > _getHeight(header) ? header.classList.add('has-background') : header.classList.remove('has-background');
 		});
 	}
 	bannerCofig(){
 		let header = 					this.elements.header,
-			spacer = 					this.elements.spacer,
+			spacer = 					this.spacer,
 			breakpoint = 				this.breakpoint,
-			// banner = 					$('.section-banner'),
-            // bannerBackground = 			banner.find('.content-bg'),
-            // bannerText = 				banner.find('.content-text'),
-            // row = 						banner.find('.row');
 			banner = 					document.querySelectorAll('.section-banner')[0],
             bannerBackground = 			banner.querySelectorAll('.content-bg')[0],
             bannerText = 				banner.querySelectorAll('.content-text')[0],
             row = 						banner.querySelectorAll('.row')[0];
 
-			// console.log(row);
-
 		if (window.innerWidth > 991){
-			bannerBackground.style.height = _getHeight(bannerBackground) + this.spacer[4] + 'px';
+			bannerBackground.style.height = _getHeight(bannerBackground) + spacer[4] + 'px';
 			row.style.height = 				_getHeight(bannerBackground) + 'px';
-			// bannerBackground.height(bannerBackground.outerHeight(true) + this.spacer[4]);
 		}
 		
 		if (window.innerWidth <= breakpoint.sm){
-			bannerText.style.marginTop = _getHeight(header) + this.spacer[5] + 'px';
+			bannerText.style.marginTop = _getHeight(header) + spacer[5] + 'px';
 		}
 
 		if (window.innerWidth > breakpoint.xs && window.innerWidth <= breakpoint.sm){
