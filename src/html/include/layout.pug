@@ -59,16 +59,16 @@ html
 
 		include layout/modal.pug
 
-		// Loading
-		.page-loader
-			.loader-content
-				img(src="assets/images/logo.svg", alt="TGT Logo").logo-img|
-				.title.mt-2 Loading...
+		//- // Loading
+		//- .page-loader
+		//- 	.loader-content
+		//- 		img(src="assets/images/logo.svg", alt="TGT Logo").logo-img|
+		//- 		.title.mt-2 Loading...
 
 // Javascript
-script(src="assets/plugins/jquery/dist/jquery.min.js")
-script(src="assets/plugins/popper.js/dist/umd/popper.min.js")
-script(src="assets/plugins/bootstrap/dist/js/bootstrap.min.js")
+//- script(src="assets/plugins/jquery/dist/jquery.min.js")
+//- script(src="assets/plugins/popper.js/dist/umd/popper.min.js")
+//- script(src="assets/plugins/bootstrap/dist/js/bootstrap.min.js")
 
 //- script(src="assets/plugins/slick-carousel/slick/slick.min.js")
 //- script(src="assets/plugins/wowjs/dist/wow.min.js")
@@ -90,16 +90,5 @@ block page-script
 //- script(src="assets/js/style.min.js")
 script(src="src/js/main.js")
 script.
-	let theme = new Theme();
-	document.addEventListener('DOMContentLoaded', (e)=> {
-		theme.init();
-		document.body.style.overflow = 'hidden';
-		setTimeout(()=> {
-			document.body.style.overflow = '';
-			$(theme.elements.loader).addClass('move2Left animated', setTimeout(()=> {
-					//- theme.elements.loader.removeClass('move2Left animated');
-				theme.elements.loader.style.display = 'none';
-			}, 1000));
-		}, 1000);
-	});
+	//- Your Master script
 block script

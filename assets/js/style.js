@@ -245,15 +245,7 @@ var Theme = /*#__PURE__*/function () {
         // 	prevEl: ".slide-button-prev",
         // }
 
-      }); // gallerySlider.slidePrev();
-      // gallerySlider.slideNext();
-      // buttonPrev.on('click', (e)=> {
-      // 	e.preventDefault();
-      // });
-      // buttonNext.on('click', (e)=> {
-      // 	e.preventDefault();
-      // });
-
+      });
       filterButtons.forEach(function (element, index) {
         element.addEventListener('click', function (e) {
           e.preventDefault();
@@ -287,19 +279,7 @@ var Theme = /*#__PURE__*/function () {
             });
           });
         });
-      }); // filterButtons.on('click', (e)=> {
-      // 	let $this = $(e.currentTarget),
-      // 		li = $('.section-work .navigation-tabs li'),
-      // 		$li = $this.parent(),
-      // 		target = $($this.data('tab-target')),
-      // 		containers = $('.section-work .swiper-container');
-      // 	e.preventDefault();
-      // 	li.removeClass('active');
-      // 	$li.addClass('active');
-      // 	containers.hide();
-      // 	target.show();
-      // 	gallerySlider[$li.index()].update();
-      // });
+      });
     }
   }, {
     key: "photoswipeInit",
@@ -383,41 +363,44 @@ var Theme = /*#__PURE__*/function () {
       openFromURL();
     }
   }, {
+    key: "loading",
+    value: function loading() {
+      var timeout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
+      var des = arguments.length > 1 ? arguments[1] : undefined;
+      var src = arguments.length > 2 ? arguments[2] : undefined;
+      src !== undefined ? src : src = 'assets/images/logo.svg';
+      des !== undefined ? des : des = 'Loading...'; // Add loading
+
+      document.body.style.overflow = 'hidden';
+      document.body.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"page-loader\">\n\t\t\t<div class=\"loader-content\"><img class=\"logo-img\" src=\"".concat(src, "\"/>\n\t\t\t\t<div class=\"title mt-2\">").concat(des, "</div>\n\t\t\t</div>\n\t\t</div>\n\t\t"));
+      var loader = document.body.querySelector('.page-loader'); // Show the loading overlay
+
+      var showTime = function showTime(callback) {
+        setTimeout(function () {
+          // Time to show loading - 1s
+          document.body.style.overflow = '';
+          loader.classList.add('move2Left', 'animated');
+          callback();
+        }, timeout);
+      }; // After animated then remove
+      // Set time out for pending the loading do the animation then remove
+
+
+      showTime(function () {
+        return setTimeout(function () {
+          return loader.remove();
+        }, 1000);
+      });
+    }
+  }, {
     key: "init",
     value: function init() {
       this.baseConfig();
+      this.bannerCofig();
       this.navigationConfig();
+      this.loading();
     }
   }]);
 
   return Theme;
-}(); // Add Loading
-// document.querySelector('body').insertAdjacentHTML('beforeend', `
-// 	<div class="page-loader">
-// 		<div class="page-spinner">
-// 			<svg viewBox="25 25 50 50">
-// 		        <circle cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10" />
-// 		    </svg>
-// 		    <div class="page-logo">
-// 		    	<img src="assets/images/logo.png" alt="Payroc Logo">
-// 		    </div>
-// 	    </div>
-//     </div>
-// `);
-// document.addEventListener('DOMContentLoaded', (e)=> {
-// 	let loader = document.querySelector('.page-loader'),
-// 		slideOutTime = 600;
-// 	setTimeout(()=> {
-// 		loader.animate([
-// 		// keyframes
-// 			{ transform: 'translateY(0)' }, 
-// 			{ transform: 'translateY(100%)' }
-// 		], { 
-// 		// timing options
-// 			duration: slideOutTime,
-// 		});
-// 		setTimeout(()=> {
-// 			loader.style.display = 'none';
-// 		}, slideOutTime);
-// 	}, 600);
-// });
+}();
