@@ -12,7 +12,7 @@ const _getWidth = (el)=> {
 }
 
 class Theme {
-	constructor(){
+	constructor(callback){
 		this.spacer = [];
 		this.breakpoint = {
 			xxs: 320,
@@ -25,20 +25,19 @@ class Theme {
 			xxxl: 1600
 		};
 		this.elements = {
-			body :				document.body,
 			contentPage :		document.querySelector('.content-page'),
 			header :			document.querySelector('.header'),
 			navigation :		document.querySelector('.header .navigation-menu'),
-			loader :			document.querySelector('.page-loader')
 		};
 	}
 	baseConfig(){
 		// Push Spacing
 		let temp;
-		for (let i = 1; i <= 16; i++){
+		for (let i = 1; i <= 10; i++){
 			temp = temp === undefined ? 2 : temp + temp;
 			this.spacer.push(temp);
 		}
+		console.log(this.spacer);
 		// $('[data-toggle="tooltip"]').tooltip();
 	}
 	navigationConfig(){
@@ -317,10 +316,8 @@ class Theme {
 		});
 		openFromURL();
 	}
-	loading(timeout = 1000, des, src){
-		src !== undefined ? src : src = 'assets/images/logo.svg';
-		des !== undefined ? des : des = 'Loading...';
-		// Add loading
+	loading(timeout = 1000, des = 'Loading...', src = 'assets/images/logo.svg', callback){
+		// Append loading
 		document.body.style.overflow = 'hidden';
 		document.body.insertAdjacentHTML('beforeend', `
 		<div class="page-loader">
@@ -333,12 +330,12 @@ class Theme {
 		let loader = document.body.querySelector('.page-loader');
 
 		// Show the loading overlay
-		const showTime = (callback)=> {
+		const showTime = (doSomthingAfter)=> {
 			setTimeout(()=> {
 				// Time to show loading - 1s
 				document.body.style.overflow = '';
 				loader.classList.add('move2Left', 'animated');
-				callback();
+				doSomthingAfter();
 			}, timeout);
 		}
 
@@ -348,7 +345,6 @@ class Theme {
 	}
 	init(){
 		this.baseConfig();
-		this.bannerCofig();
 		this.navigationConfig();
 		this.loading();
 	}

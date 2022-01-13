@@ -4,6 +4,12 @@ block meta-title
 	title Trình Gia Tuấn | UX/UI Designer | Portfolio
 
 block custom
+block page-css
+	//- Photoswipte
+	link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/photoswipe.css")
+	link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/default-skin/default-skin.css")
+	//- Swiper
+	link(rel="stylesheet" type="text/css" href="assets/plugins/swiper/swiper-bundle.min.css")
 
 block content
 	//- Banner
@@ -237,6 +243,11 @@ block content
 					.pswp__caption__center
 
 
+block page-script
+	script(src="assets/plugins/photoswipe/dist/photoswipe.min.js")
+	script(src="assets/plugins/photoswipe/dist/photoswipe-ui-default.min.js")
+	script(src="assets/plugins/swiper/swiper-bundle.min.js")
+
 block script
 	//-  Server side
 	//-  Get Data Image (Not rendered)
@@ -266,11 +277,11 @@ block script
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', (e)=> {
 			theme.init();
-			// Waiting for loading end (Fix bug when have scrollbar appear)
-			setTimeout(()=> {
-				theme.workGrid();
-			}, 1100);
+			theme.bannerCofig();
 			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', database, database_featured);
+			
+			// Waiting for loading end (Fix bug when have scrollbar appear)
+			setTimeout(()=> theme.workGrid() , 1100);
 		});
 
 		// Window Resize

@@ -24,18 +24,12 @@ html
 		//- Animate CSS
 		link(rel="stylesheet" type="text/css" href="assets/plugins/animate.css/animate.min.css")
 
-		//- Swiper
-		link(rel="stylesheet" type="text/css" href="assets/plugins/swiper/swiper-bundle.min.css")
-
 		//- Icons
 		link(rel="stylesheet" type="text/css" href="assets/plugins/remixicon/fonts/remixicon.css")
 		//- link(rel="stylesheet" type="text/css" href="assets/plugins/slick-carousel/slick/slick-theme.css")
 		//- link(rel="stylesheet" type="text/css" href="assets/plugins/slick-carousel/slick/slick.css")
 
-		link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/photoswipe.css")
-		link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/default-skin/default-skin.css")
-
-		block page-script
+		block page-css
 		link(rel="stylesheet" type="text/css" href="assets/css/style.min.css")
 
 		// Global site tag (gtag.js) - Google Analytics
@@ -59,12 +53,6 @@ html
 
 		include layout/modal.pug
 
-		//- // Loading
-		//- .page-loader
-		//- 	.loader-content
-		//- 		img(src="assets/images/logo.svg", alt="TGT Logo").logo-img|
-		//- 		.title.mt-2 Loading...
-
 // Javascript
 //- script(src="assets/plugins/jquery/dist/jquery.min.js")
 //- script(src="assets/plugins/popper.js/dist/umd/popper.min.js")
@@ -74,21 +62,19 @@ html
 //- script(src="assets/plugins/wowjs/dist/wow.min.js")
 //- script(src="assets/plugins/metismenu/dist/metisMenu.min.js")
 
-script(src="assets/plugins/photoswipe/dist/photoswipe.min.js")
-script(src="assets/plugins/photoswipe/dist/photoswipe-ui-default.min.js")
-
+//- Velocity
 script(src="assets/plugins/velocity-animate/velocity.min.js")
 script(src="assets/plugins/velocity-animate/velocity.ui.min.js")
 
+//- Snap
 script(src="assets/plugins/snapsvg/dist/snap.svg-min.js")
-
-script(src="assets/plugins/swiper/swiper-bundle.min.js")
-
 
 block page-script
 
-//- script(src="assets/js/style.min.js")
-script(src="src/js/main.js")
+script(src="assets/js/style.min.js")
+//- script(src="src/js/main.js")
+
 script.
 	//- Your Master script
+
 block script

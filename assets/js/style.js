@@ -19,7 +19,7 @@ var _getWidth = function _getWidth(el) {
 };
 
 var Theme = /*#__PURE__*/function () {
-  function Theme() {
+  function Theme(callback) {
     _classCallCheck(this, Theme);
 
     this.spacer = [];
@@ -34,11 +34,9 @@ var Theme = /*#__PURE__*/function () {
       xxxl: 1600
     };
     this.elements = {
-      body: document.body,
       contentPage: document.querySelector('.content-page'),
       header: document.querySelector('.header'),
-      navigation: document.querySelector('.header .navigation-menu'),
-      loader: document.querySelector('.page-loader')
+      navigation: document.querySelector('.header .navigation-menu')
     };
   }
 
@@ -48,11 +46,12 @@ var Theme = /*#__PURE__*/function () {
       // Push Spacing
       var temp;
 
-      for (var i = 1; i <= 16; i++) {
+      for (var i = 1; i <= 10; i++) {
         temp = temp === undefined ? 2 : temp + temp;
         this.spacer.push(temp);
-      } // $('[data-toggle="tooltip"]').tooltip();
+      }
 
+      console.log(this.spacer); // $('[data-toggle="tooltip"]').tooltip();
     }
   }, {
     key: "navigationConfig",
@@ -366,21 +365,20 @@ var Theme = /*#__PURE__*/function () {
     key: "loading",
     value: function loading() {
       var timeout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
-      var des = arguments.length > 1 ? arguments[1] : undefined;
-      var src = arguments.length > 2 ? arguments[2] : undefined;
-      src !== undefined ? src : src = 'assets/images/logo.svg';
-      des !== undefined ? des : des = 'Loading...'; // Add loading
-
+      var des = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Loading...';
+      var src = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'assets/images/logo.svg';
+      var callback = arguments.length > 3 ? arguments[3] : undefined;
+      // Append loading
       document.body.style.overflow = 'hidden';
       document.body.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"page-loader\">\n\t\t\t<div class=\"loader-content\"><img class=\"logo-img\" src=\"".concat(src, "\"/>\n\t\t\t\t<div class=\"title mt-2\">").concat(des, "</div>\n\t\t\t</div>\n\t\t</div>\n\t\t"));
       var loader = document.body.querySelector('.page-loader'); // Show the loading overlay
 
-      var showTime = function showTime(callback) {
+      var showTime = function showTime(doSomthingAfter) {
         setTimeout(function () {
           // Time to show loading - 1s
           document.body.style.overflow = '';
           loader.classList.add('move2Left', 'animated');
-          callback();
+          doSomthingAfter();
         }, timeout);
       }; // After animated then remove
       // Set time out for pending the loading do the animation then remove
@@ -396,7 +394,6 @@ var Theme = /*#__PURE__*/function () {
     key: "init",
     value: function init() {
       this.baseConfig();
-      this.bannerCofig();
       this.navigationConfig();
       this.loading();
     }
