@@ -248,30 +248,26 @@ class Theme {
 			$container = document.querySelector(container),
 			$gallerys = $container.querySelectorAll(gallerys);
 
-		// Get Data
-		const getCategory = (gid, database)=> {
-			let data, database_featured = [];
-
+		// Get data featured
+		const getFeatured = (database)=> {
+			let database_featured = [];
 			for(var type in database) {
-
-				// Get data featured
 				database[type].data.forEach((item, index)=> {
 					let isFeatured = database[type].data[index].featured;
 					(typeof(isFeatured) === 'boolean') && isFeatured ? database_featured.push(item) : 0;
-				})
+				});
+			}
+			return database_featured;
+		}
 
-				if (gid === `category-${type}`){
-					data = database[type].data;
-					break;
-				}
-				else{
-					data = database_featured;
-					break;
-				}
+		// Get Data
+		const getCategory = (gid, database)=> {
+			let data;
+			for(var type in database) {
+				gid === `category-${type}` ? data = database[type].data : data = getFeatured(database);
 			}
 			return data;
 		}
-		
 
 		// Open Photoswipe from URL
 		const openFromURL = ()=> {

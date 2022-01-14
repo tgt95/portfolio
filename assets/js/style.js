@@ -288,26 +288,27 @@ var Theme = /*#__PURE__*/function () {
       this.data = database;
       var $pswp = document.querySelector('.pswp'),
           $container = document.querySelector(container),
-          $gallerys = $container.querySelectorAll(gallerys); // Get Data
+          $gallerys = $container.querySelectorAll(gallerys); // Get data featured
 
-      var getCategory = function getCategory(gid, database) {
-        var data,
-            database_featured = [];
+      var getFeatured = function getFeatured(database) {
+        var database_featured = [];
 
         for (var type in database) {
-          // Get data featured
           database[type].data.forEach(function (item, index) {
             var isFeatured = database[type].data[index].featured;
             typeof isFeatured === 'boolean' && isFeatured ? database_featured.push(item) : 0;
           });
+        }
 
-          if (gid === "category-".concat(type)) {
-            data = database[type].data;
-            break;
-          } else {
-            data = database_featured;
-            break;
-          }
+        return database_featured;
+      }; // Get Data
+
+
+      var getCategory = function getCategory(gid, database) {
+        var data;
+
+        for (var type in database) {
+          gid === "category-".concat(type) ? data = database[type].data : data = getFeatured(database);
         }
 
         return data;
