@@ -49,9 +49,8 @@ var Theme = /*#__PURE__*/function () {
       for (var i = 1; i <= 10; i++) {
         temp = temp === undefined ? 2 : temp + temp;
         this.spacer.push(temp);
-      }
+      } // $('[data-toggle="tooltip"]').tooltip();
 
-      console.log(this.spacer); // $('[data-toggle="tooltip"]').tooltip();
     }
   }, {
     key: "navigationConfig",
@@ -228,6 +227,17 @@ var Theme = /*#__PURE__*/function () {
         slidesOffsetBefore: title.getBoundingClientRect().left,
         slidesOffsetAfter: title.getBoundingClientRect().left,
         spaceBetween: 32,
+        // mousewheel: true,
+        keyboard: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          type: "fraction"
+        },
+        navigation: {
+          nextEl: ".slide-button-next",
+          prevEl: ".slide-button-prev"
+        },
         breakpoints: {
           576: {
             spaceBetween: 32
@@ -235,15 +245,7 @@ var Theme = /*#__PURE__*/function () {
           320: {
             spaceBetween: 16
           }
-        } // pagination: {
-        // 	el: ".swiper-pagination",
-        // 	type: "fraction",
-        // },
-        // navigation: {
-        // 	nextEl: ".slide-button-next",
-        // 	prevEl: ".slide-button-prev",
-        // }
-
+        }
       });
       filterButtons.forEach(function (element, index) {
         element.addEventListener('click', function (e) {
@@ -300,7 +302,6 @@ var Theme = /*#__PURE__*/function () {
           }
         }
 
-        console.log(data);
         return data;
       }; // Open Photoswipe from URL
 

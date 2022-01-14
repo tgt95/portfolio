@@ -37,7 +37,6 @@ class Theme {
 			temp = temp === undefined ? 2 : temp + temp;
 			this.spacer.push(temp);
 		}
-		console.log(this.spacer);
 		// $('[data-toggle="tooltip"]').tooltip();
 	}
 	navigationConfig(){
@@ -190,6 +189,17 @@ class Theme {
 			slidesOffsetBefore: title.getBoundingClientRect().left,
 			slidesOffsetAfter: title.getBoundingClientRect().left,
 			spaceBetween: 32,
+			// mousewheel: true,
+			keyboard: true,
+			pagination: {
+				el: ".swiper-pagination",
+				clickable: true,
+				type: "fraction",
+			},
+			navigation: {
+				nextEl: ".slide-button-next",
+				prevEl: ".slide-button-prev",
+			},
 			breakpoints: {
 				576: {
 					spaceBetween: 32,
@@ -198,14 +208,6 @@ class Theme {
 					spaceBetween: 16,
 				}
 			}
-			// pagination: {
-			// 	el: ".swiper-pagination",
-			// 	type: "fraction",
-			// },
-			// navigation: {
-			// 	nextEl: ".slide-button-next",
-			// 	prevEl: ".slide-button-prev",
-			// }
 		});
 
 		filterButtons.forEach((element, index)=> {
@@ -257,7 +259,6 @@ class Theme {
 					break;
 				}
 			}
-			console.log(data);
 			return data;
 		}
 		

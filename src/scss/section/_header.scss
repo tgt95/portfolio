@@ -53,21 +53,9 @@
 					}
 					&:not(:first-child){
 						a{
-							cursor: pointer;
-					        display: inline-block;
-					        font-weight: 600;
-					        color: $brand;
-					        padding: 9.5px 16.8px;
-					        border-radius: $border-theme;
-					        background-color: transparent;
-					        text-decoration: none;
-					        transition: all .3s ease;
-					        &:hover, &:focus, &:active, &.active{
-					            color: $brand;
-					            text-decoration: none;
-					            background-color: rgba($brand, .2);
-					            box-shadow: 0 0 10.28px 1.72px rgba(black, .03);
-							}
+							@include btn;
+							@include btn-md;
+							@include btn-ghost-brand;
 						}
 			        }
 					// a{
@@ -93,10 +81,10 @@
 					}
 				}
 				a{
-					text-decoration: none;
-					display: flex;
-					align-items: center;
-					justify-content: center;
+					// text-decoration: none;
+					// display: flex;
+					// align-items: center;
+					// justify-content: center;
 				}
 				@media (max-width: 576px) {
 					display: none;

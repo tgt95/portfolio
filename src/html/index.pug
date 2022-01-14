@@ -179,7 +179,7 @@ block content
 
 		//- Others project type
 		each obj, name in database
-			.swiper-container(id=`category-${name}` style="display: none;")
+			.swiper.swiper-container(id=`category-${name}` style="display: none;")
 				.swiper-wrapper.slide-wrapper
 					each item, index in database[`${name}`].data
 						- let isExternal = database[`${name}`].data[index].external
@@ -187,14 +187,14 @@ block content
 							+galleryCard__External(item, index, guideText)
 						else
 							+galleryCard__Internal(item, index)
-				//- .container
+				.container
 					.swiper-controls
-						a(href="#").btn-just-icon.btn-brand.slide-button-prev
+						a(href="#").btn-just-icon.btn-ghost.slide-button-prev
 							i.ri-arrow-left-s-line
-						a(href="#").btn-just-icon.btn-brand.slide-button-next
+						a(href="#").btn-just-icon.btn-ghost.slide-button-next
 							i.ri-arrow-right-s-line
-						.swiper-pagination
-						//- .swiper-scrollbar
+				.swiper-pagination
+				//- .swiper-scrollbar
 
 	//- Contact
 	.section.section-contact.mb-0
@@ -286,6 +286,6 @@ block script
 
 		// Window Resize
 		window.addEventListener('resize', (e)=> {
-			theme.workGrid();
 			theme.bannerCofig();
+			//- theme.workGrid();
 		}, true);
