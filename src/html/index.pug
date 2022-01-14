@@ -13,7 +13,7 @@ block page-css
 
 block content
 	//- Banner
-	.section.section-banner
+	section.section.section-banner
 		.container
 			.row.align-items-center
 				.col-lg-6.content-text
@@ -23,11 +23,11 @@ block content
 
 					//- p My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
 					p My name is Trinh Gia Tuan, a designer with the passion for designing Applications User Interfaces including mobile applications, and websites.
-				.col-lg-6.content-bg(data-responsive-sm="800" data-responsive-xs="600")
+				.col-lg-6.content-bg(data-responsive-sm--height="800" data-responsive-xs--height="500")
 					include svg/banner-bg.svg
 	
 	//- Profile
-	.section.section-profile
+	section.section.section-profile
 		.container
 			.row.align-items-center
 				.col-md-7.col-lg-6.content-bg
@@ -37,7 +37,7 @@ block content
 					.profile-content
 						ul
 							li
-								.title Fullname
+								.title Full name
 								span Trình Gia Tuấn
 							li
 								.title Date of Birth
@@ -63,7 +63,7 @@ block content
 								span District 11, Ho Chi Minh City
 
 	//- Skills
-	//- .section.section-skills
+	//- section.section.section-skills
 		.container
 			.section-title.text-center Skills
 			.row.align-items-center.skills-content
@@ -90,39 +90,7 @@ block content
 						.title= item.title
 
 	//- Work
-	.section.section-work
-		//- .container
-			.section-title Work
-			.navigation-tabs
-				ul
-					-
-						let categories = [
-							{
-								'title': 'Featured',
-								'slug': 'featured'
-							},
-							{
-								'title': 'Web design',
-								'slug': 'web'
-							},
-							{
-								'title': 'Mobile app',
-								'slug': 'mobile'
-							},
-							{
-								'title': 'Branding',
-								'slug': 'branding'
-							},
-							{
-								'title': 'Illustration',
-								'slug': 'illustration'
-							},
-						]
-					each item, index in categories
-						- let className = index === 0 ? 'active' : ''
-						li(class=className)
-							a(href="#" data-tab-target=`#category-${item.slug}`)= item.title
-		
+	section.section.section-work
 		.container
 			.section-title Work
 			.navigation-tabs
@@ -134,25 +102,6 @@ block content
 						//- li(class=activeClass)
 						li
 							a(href="#" data-tab-target=`#category-${name}`)= database[`${name}`].fullName
-
-		//- .swiper-container(id="category-featured")
-			.swiper-wrapper.slide-wrapper
-				.swiper-slide.item
-					.item-thumbnail
-						img(src="assets/images/projects/mobile/agoyu-app.jpg")
-						a(href="https://www.notion.so/Agoyu-e6be289682ac43ebaf22cb9d9ffd2049" target="_blank").overlay-content.external
-							.text-center
-								i.icon.ri-external-link-line
-								.text View case study
-					//- .title Agoyu Moving
-				.swiper-slide.item
-					.item-thumbnail
-						img(src="assets/images/projects/web/bds.jpg")
-						a(href="https://swanky-sunflower-2b5.notion.site/BigIn-Design-System-c2a821fb51fa44b1a379e7504692fc98" target="_blank").overlay-content.external
-							.text-center
-								i.icon.ri-external-link-line
-								.text Showcase
-					//- .title BigIn Design System
 
 		//- Fetch data from database
 		//- Featured
@@ -187,17 +136,17 @@ block content
 							+galleryCard__External(item, index, guideText)
 						else
 							+galleryCard__Internal(item, index)
-				.container
-					.swiper-controls
-						a(href="#").btn-just-icon.btn-ghost.slide-button-prev
-							i.ri-arrow-left-s-line
-						a(href="#").btn-just-icon.btn-ghost.slide-button-next
-							i.ri-arrow-right-s-line
-				.swiper-pagination
+				//- .container
+				//- 	.swiper-controls
+				//- 		a(href="#").btn-just-icon.btn-ghost.slide-button-prev
+				//- 			i.ri-arrow-left-s-line
+				//- 		a(href="#").btn-just-icon.btn-ghost.slide-button-next
+				//- 			i.ri-arrow-right-s-line
+				//- .swiper-pagination
 				//- .swiper-scrollbar
 
 	//- Contact
-	.section.section-contact.mb-0
+	section.section.section-contact.mb-0
 		img(src="assets/images/shape/shape-wave-1.svg").shape-wave-1
 		img(src="assets/images/shape/shape-wave-2.svg").shape-wave-2
 		img(src="assets/images/shape/tree-1.svg").shape-tree-1
@@ -206,11 +155,11 @@ block content
 			.row.align-items-center
 				.col-md-7.col-lg-6.content-text
 					.title#slow-scroll-demo-button Interested in my work?
-					div
+					.actions
 						a(href="ux-ui-designer-trinh-gia-tuan.pdf" download).btn.btn-brand 
 							i.ri-download-2-fill 
 							|  Download Resume
-						a(href="ux-ui-designer-trinh-gia-tuan.pdf" target="_blank").btn.btn-secondary.ml-2 
+						a(href="ux-ui-designer-trinh-gia-tuan.pdf" target="_blank").btn.btn-secondary
 							i.ri-eye-line
 							|  View Resume
 				.col-md-5.col-lg-6.content-bg
@@ -251,7 +200,6 @@ block page-script
 block script
 	//-  Server side
 	//-  Get Data Image (Not rendered)
-	- let database_featured = []
 	-
 		for(var type in database) {
 			database[type].data.forEach((item, i)=> {
@@ -261,24 +209,16 @@ block script
 				//- Serve for identify which ID to open PSWP overlay
 				item['pid'] = `${type}-${i}`;
 			})
-			database[type].data.forEach((item, i)=> {
-				let isFeatured = database[type].data[i].featured
-				if ((typeof(isFeatured) === 'boolean') && isFeatured)
-					database_featured.push(item)
-			})
 		}
 	//- Client side
 	script.
-		// Loop Data from Database
-		let database = !{JSON.stringify(database)};
-		let database_featured = !{JSON.stringify(database_featured)};
 		let theme = new Theme();
 
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', (e)=> {
 			theme.init();
 			theme.bannerCofig();
-			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', database, database_featured);
+			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', !{JSON.stringify(database)});
 			
 			// Waiting for loading end (Fix bug when have scrollbar appear)
 			setTimeout(()=> theme.workGrid() , 1100);
@@ -286,6 +226,6 @@ block script
 
 		// Window Resize
 		window.addEventListener('resize', (e)=> {
-			theme.bannerCofig();
+			//- theme.bannerCofig();
 			//- theme.workGrid();
 		}, true);

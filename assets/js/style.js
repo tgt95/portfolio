@@ -22,6 +22,7 @@ var Theme = /*#__PURE__*/function () {
   function Theme(callback) {
     _classCallCheck(this, Theme);
 
+    this.data;
     this.spacer = [];
     this.breakpoint = {
       xxs: 320,
@@ -98,7 +99,7 @@ var Theme = /*#__PURE__*/function () {
 
       if (window.innerWidth > this.breakpoint.xs && window.innerWidth <= this.breakpoint.sm) {
         // > 414 && < 576 
-        var dataHeight = bannerBackground.getAttribute('data-responsive-sm');
+        var dataHeight = bannerBackground.getAttribute('data-responsive-sm--height');
         bannerBackgroundSvg.setAttribute('width', "".concat(window.innerWidth, "px"));
         bannerBackgroundSvg.setAttribute('height', "".concat(dataHeight, "px"));
         bannerBackgroundSvg.setAttribute('viewBox', "0 0 1024 ".concat(dataHeight));
@@ -106,7 +107,7 @@ var Theme = /*#__PURE__*/function () {
 
       if (window.innerWidth <= this.breakpoint.xs) {
         // < 414
-        var _dataHeight = bannerBackground.getAttribute('data-responsive-xs');
+        var _dataHeight = bannerBackground.getAttribute('data-responsive-xs--height');
 
         bannerBackgroundSvg.setAttribute('width', "".concat(window.innerWidth, "px"));
         bannerBackgroundSvg.setAttribute('height', "".concat(_dataHeight, "px"));
@@ -229,15 +230,14 @@ var Theme = /*#__PURE__*/function () {
         spaceBetween: 32,
         // mousewheel: true,
         keyboard: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-          type: "fraction"
+        pagination: {// el: ".swiper-pagination",
+          // clickable: true,
+          // type: "fraction",
         },
-        navigation: {
-          nextEl: ".slide-button-next",
-          prevEl: ".slide-button-prev"
-        },
+        // navigation: {
+        // nextEl: ".slide-button-next",
+        // prevEl: ".slide-button-prev",
+        // },
         breakpoints: {
           576: {
             spaceBetween: 32
@@ -284,17 +284,25 @@ var Theme = /*#__PURE__*/function () {
     }
   }, {
     key: "photoswipeInit",
-    value: function photoswipeInit(container, gallerys, thumbnails, database, database_featured) {
-      var $pswp = document.querySelectorAll('.pswp')[0],
-          $container = document.querySelectorAll(container)[0],
+    value: function photoswipeInit(container, gallerys, thumbnails, database) {
+      this.data = database;
+      var $pswp = document.querySelector('.pswp'),
+          $container = document.querySelector(container),
           $gallerys = $container.querySelectorAll(gallerys); // Get Data
 
       var getCategory = function getCategory(gid, database) {
-        var data;
+        var data,
+            database_featured = [];
 
-        for (var name in database) {
-          if (gid == "category-".concat(name)) {
-            data = database[name].data;
+        for (var type in database) {
+          // Get data featured
+          database[type].data.forEach(function (item, index) {
+            var isFeatured = database[type].data[index].featured;
+            typeof isFeatured === 'boolean' && isFeatured ? database_featured.push(item) : 0;
+          });
+
+          if (gid === "category-".concat(type)) {
+            data = database[type].data;
             break;
           } else {
             data = database_featured;
@@ -368,7 +376,6 @@ var Theme = /*#__PURE__*/function () {
       var timeout = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
       var des = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Loading...';
       var src = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'assets/images/logo.svg';
-      var callback = arguments.length > 3 ? arguments[3] : undefined;
       // Append loading
       document.body.style.overflow = 'hidden';
       document.body.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"page-loader\">\n\t\t\t<div class=\"loader-content\"><img class=\"logo-img\" src=\"".concat(src, "\"/>\n\t\t\t\t<div class=\"title mt-2\">").concat(des, "</div>\n\t\t\t</div>\n\t\t</div>\n\t\t"));

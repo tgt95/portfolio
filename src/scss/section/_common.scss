@@ -76,7 +76,7 @@
 		@media (max-width: 414px) {
 			margin-top: -496px;
 			svg{
-				margin-top: -128px;
+				// margin-top: -128px;
 			}
 		}
 	}
@@ -288,6 +288,23 @@
 			a{
 				color: $brand;
 				text-decoration: underline;
+			}
+		}
+		@media (min-width: 768px) {
+			.actions{
+				.btn +.btn{
+					margin-left: $space-2-xs;
+				}
+			}
+		}
+		@media (max-width: 414px) {
+			.actions{
+				.btn{
+					width: 100%;
+					&:first-child{
+						margin-bottom: $space-2-xs;
+					}
+				}
 			}
 		}
 	}

@@ -3,16 +3,17 @@ let detectMobile = {
 	isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 };
 
-const _getHeight = (el)=> {
+const _getHeight = el => {
 	return parseFloat(getComputedStyle(el, null).height.replace("px", ""));
 }
 
-const _getWidth = (el)=> {
+const _getWidth = el => {
 	return parseFloat(getComputedStyle(el, null).width.replace("px", ""));
 }
 
 class Theme {
 	constructor(callback){
+		this.data;
 		this.spacer = [];
 		this.breakpoint = {
 			xxs: 320,
@@ -85,14 +86,14 @@ class Theme {
 
 		if (window.innerWidth > this.breakpoint.xs && window.innerWidth <= this.breakpoint.sm){
 			// > 414 && < 576 
-			let dataHeight = bannerBackground.getAttribute('data-responsive-sm');
+			let dataHeight = bannerBackground.getAttribute('data-responsive-sm--height');
 			bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
 			bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
 			bannerBackgroundSvg.setAttribute('viewBox', `0 0 1024 ${dataHeight}`);
 		}
 		if (window.innerWidth <= this.breakpoint.xs){
 			// < 414
-			let dataHeight = bannerBackground.getAttribute('data-responsive-xs');
+			let dataHeight = bannerBackground.getAttribute('data-responsive-xs--height');
 			bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
 			bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
 			bannerBackgroundSvg.setAttribute('viewBox', `0 0 1180 ${dataHeight}`);
@@ -192,14 +193,14 @@ class Theme {
 			// mousewheel: true,
 			keyboard: true,
 			pagination: {
-				el: ".swiper-pagination",
-				clickable: true,
-				type: "fraction",
+				// el: ".swiper-pagination",
+				// clickable: true,
+				// type: "fraction",
 			},
-			navigation: {
-				nextEl: ".slide-button-next",
-				prevEl: ".slide-button-prev",
-			},
+			// navigation: {
+				// nextEl: ".slide-button-next",
+				// prevEl: ".slide-button-prev",
+			// },
 			breakpoints: {
 				576: {
 					spaceBetween: 32,
@@ -225,12 +226,12 @@ class Theme {
 				$li.classList.add('active');
 				containers.forEach((el, i)=> {
 					if (getComputedStyle(el, null).display !== 'none'){
-						el.velocity({ opacity: 0 }, 200, function() { 
+						el.velocity({ opacity: 0 }, 200, ()=> { 
 							el.style.display = 'none';
 						});
 					}
 				});
-				target.velocity({ opacity: 1 }, 200, function() { 
+				target.velocity({ opacity: 1 }, 200, ()=> { 
 					target.style.display = 'block';
 					$ul.querySelectorAll('li').forEach((el, i)=> {
 						if(el.classList.contains('active')){
@@ -241,17 +242,26 @@ class Theme {
 			});
 		});
 	}
-	photoswipeInit(container, gallerys, thumbnails, database, database_featured) {
-		let $pswp = document.querySelectorAll('.pswp')[0],
-			$container = document.querySelectorAll(container)[0],
+	photoswipeInit(container, gallerys, thumbnails, database) {
+		this.data = database;
+		let $pswp = document.querySelector('.pswp'),
+			$container = document.querySelector(container),
 			$gallerys = $container.querySelectorAll(gallerys);
 
 		// Get Data
 		const getCategory = (gid, database)=> {
-			let data;
-			for(var name in database) {
-				if (gid == `category-${name}`){
-					data = database[name].data;
+			let data, database_featured = [];
+
+			for(var type in database) {
+
+				// Get data featured
+				database[type].data.forEach((item, index)=> {
+					let isFeatured = database[type].data[index].featured;
+					(typeof(isFeatured) === 'boolean') && isFeatured ? database_featured.push(item) : 0;
+				})
+
+				if (gid === `category-${type}`){
+					data = database[type].data;
 					break;
 				}
 				else{
@@ -317,7 +327,7 @@ class Theme {
 		});
 		openFromURL();
 	}
-	loading(timeout = 1000, des = 'Loading...', src = 'assets/images/logo.svg', callback){
+	loading(timeout = 1000, des = 'Loading...', src = 'assets/images/logo.svg'){
 		// Append loading
 		document.body.style.overflow = 'hidden';
 		document.body.insertAdjacentHTML('beforeend', `

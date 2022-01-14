@@ -503,9 +503,6 @@ body {
   .section-banner .content-bg {
     margin-top: -496px;
   }
-  .section-banner .content-bg svg {
-    margin-top: -128px;
-  }
 }
 
 .section-profile .profile-content ul {
@@ -756,6 +753,19 @@ body {
 .section-contact .content-text .title a {
   color: #EA5D5D;
   text-decoration: underline;
+}
+@media (min-width: 768px) {
+  .section-contact .content-text .actions .btn + .btn {
+    margin-left: 8px;
+  }
+}
+@media (max-width: 414px) {
+  .section-contact .content-text .actions .btn {
+    width: 100%;
+  }
+  .section-contact .content-text .actions .btn:first-child {
+    margin-bottom: 8px;
+  }
 }
 .section-contact .content-bg svg {
   margin: 0 auto;
