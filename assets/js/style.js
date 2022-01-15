@@ -19,10 +19,9 @@ var _getWidth = function _getWidth(el) {
 };
 
 var Theme = /*#__PURE__*/function () {
-  function Theme(callback) {
+  function Theme() {
     _classCallCheck(this, Theme);
 
-    this.data;
     this.spacer = [];
     this.breakpoint = {
       xxs: 320,
@@ -199,11 +198,12 @@ var Theme = /*#__PURE__*/function () {
         }, 500);
       };
 
-      if (!detectMobile.isMobile) {// humanAnimate();
-        // treesAnimate();
-        // svgAnimate();
-        // lightShapeAnimate();
-        // handShakeAnimate();
+      if (!detectMobile.isMobile) {
+        humanAnimate();
+        treesAnimate();
+        svgAnimate();
+        lightShapeAnimate();
+        handShakeAnimate();
       }
     }
   }, {
@@ -285,12 +285,11 @@ var Theme = /*#__PURE__*/function () {
   }, {
     key: "photoswipeInit",
     value: function photoswipeInit(container, gallerys, thumbnails, database) {
-      this.data = database;
       var $pswp = document.querySelector('.pswp'),
           $container = document.querySelector(container),
           $gallerys = $container.querySelectorAll(gallerys); // Get data featured
 
-      var getFeatured = function getFeatured(database) {
+      var parseDataFeatured = function parseDataFeatured(database) {
         var database_featured = [];
 
         for (var type in database) {
@@ -304,18 +303,13 @@ var Theme = /*#__PURE__*/function () {
       }; // Get Data
 
 
-      var getCategory = function getCategory(gid, database) {
-        var data;
-
-        for (var type in database) {
-          gid === "category-".concat(type) ? data = database[type].data : data = getFeatured(database);
-        }
-
-        return data;
+      var parseData = function parseData(gid, database) {
+        gid = gid.replace('category-', '');
+        return gid === 'featured' ? parseDataFeatured(database) : database[gid].data;
       }; // Open Photoswipe from URL
 
 
-      var openFromURL = function openFromURL() {
+      (function () {
         var hash = window.location.hash.substring(1);
 
         if (hash.includes('gid') && hash.includes('pid')) {
@@ -328,20 +322,19 @@ var Theme = /*#__PURE__*/function () {
             index: parseInt(pid.split('-').pop()),
             galleryUID: gid
           };
-          var gallery = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(gid, database), options);
+          var gallery = new PhotoSwipe($pswp, PhotoSwipeUI_Default, parseData(gid, database), options);
           gallery.init();
         }
-      };
+      })();
 
       var thumbnailsOnClick = function thumbnailsOnClick(e) {
         e.preventDefault();
-        var $this = e.currentTarget,
-            thumbnail = $this,
-            gid = $this.closest(gallerys).getAttribute('id'),
+        var thumbnail = e.currentTarget,
+            gid = thumbnail.closest(gallerys).getAttribute('id'),
             options = {
           arrowEl: true,
           bgOpacity: 0.8,
-          index: parseInt($this.getAttribute('data-img-index')),
+          index: parseInt(thumbnail.getAttribute('data-img-index')),
           galleryUID: gid,
           getThumbBoundsFn: function getThumbBoundsFn(index) {
             // get window scroll Y
@@ -357,19 +350,18 @@ var Theme = /*#__PURE__*/function () {
             };
           }
         };
-        var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(gid, database), options);
+        var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, parseData(gid, database), options);
         lightBox.init();
-      }; // Loop Gallerys
+      }; // Thumbnails on click
 
 
       $gallerys.forEach(function (el, i) {
-        el.querySelectorAll(thumbnails).forEach(function (thumbnail, thumbnailIndex) {
-          thumbnail.onclick = function (e) {
+        el.querySelectorAll(thumbnails).forEach(function (element, index) {
+          element.onclick = function (e) {
             thumbnailsOnClick(e);
           };
         });
       });
-      openFromURL();
     }
   }, {
     key: "loading",

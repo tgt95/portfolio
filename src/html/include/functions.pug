@@ -1,7 +1,7 @@
 -
 	//- Utilities functions
 	const varToString = varObj => Object.keys(varObj)[0];
-	function getImageSize(file){
+	const getImageSize = file => {
 		let dimensions = imageSize(file);
 		let w = dimensions.width
 		let h = dimensions.height
@@ -13,7 +13,10 @@ mixin galleryCard__Internal(item, index, category)
 	.swiper-slide.item
 		.item-thumbnail
 			img(src=item.image)
-			a(href=item.src data-filter=category data-size=`${getImageSize(item.image)[0]}x${getImageSize(item.image)[1]}` data-img-index=index data-full=JSON.stringify(item)).overlay-content
+			a(href=item.src 
+				data-filter=category 
+				data-size=`${getImageSize(item.image)[0]}x${getImageSize(item.image)[1]}` 
+				data-img-index=index data-full=JSON.stringify(item)).overlay-content
 				i.icon.ri-zoom-in-line
 		.title= item.title
 		.url-link

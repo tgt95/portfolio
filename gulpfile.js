@@ -83,7 +83,7 @@ const clean = ()=> del(['dist']);
 const html = ()=> {
 	return src([paths.src.html + '/*.pug'])
 	.pipe(plumber({
-    	errorHandler: function (error) {
+    	errorHandler: error => {
 		notify.onError({
 			title: 'Pug Error',
 			message: 'Error: <%= error.message %>',
@@ -94,9 +94,12 @@ const html = ()=> {
 	.pipe(pug({
 		doctype: 'html',
 		pretty: true,
-		locals : {imageSize : require("image-size")}
+		locals : {
+			imageSize : require("image-size"),
+			require: require,
+		}
 	}))
-	.on('data', function(file) {
+	.on('data', file => {
 		const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), htmlMinifyOptions))
 		return file.contents = buferFile
 	})
@@ -132,7 +135,7 @@ const fonts = ()=> {
 const scss = ()=> {
     return src(paths.src.scss + '/style.scss')
 	    .pipe(plumber({
-    	errorHandler: function (error) {
+    	errorHandler: error => {
     		notify.onError({
     			title: 'Build CSS',
     			message: 'Error: <%= error.message %>',
@@ -167,7 +170,7 @@ const js = ()=> {
             paths.src.js + '/main.js'
 		])
 	.pipe(plumber({
-	errorHandler: function (error) {
+	errorHandler: error => {
 		notify.onError({
 			title: 'Build JS',
 			message: 'Error: <%= error.message %>',

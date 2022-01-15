@@ -12,8 +12,7 @@ const _getWidth = el => {
 }
 
 class Theme {
-	constructor(callback){
-		this.data;
+	constructor(){
 		this.spacer = [];
 		this.breakpoint = {
 			xxs: 320,
@@ -164,11 +163,11 @@ class Theme {
 		};
 
 		if(!detectMobile.isMobile){
-			// humanAnimate();
-			// treesAnimate();
-			// svgAnimate();
-			// lightShapeAnimate();
-			// handShakeAnimate();
+			humanAnimate();
+			treesAnimate();
+			svgAnimate();
+			lightShapeAnimate();
+			handShakeAnimate();
 		}
 	}
 	workGrid(){
@@ -243,13 +242,12 @@ class Theme {
 		});
 	}
 	photoswipeInit(container, gallerys, thumbnails, database) {
-		this.data = database;
 		let $pswp = document.querySelector('.pswp'),
 			$container = document.querySelector(container),
 			$gallerys = $container.querySelectorAll(gallerys);
 
 		// Get data featured
-		const getFeatured = (database)=> {
+		const parseDataFeatured = (database)=> {
 			let database_featured = [];
 			for(var type in database) {
 				database[type].data.forEach((item, index)=> {
@@ -261,16 +259,13 @@ class Theme {
 		}
 
 		// Get Data
-		const getCategory = (gid, database)=> {
-			let data;
-			for(var type in database) {
-				gid === `category-${type}` ? data = database[type].data : data = getFeatured(database);
-			}
-			return data;
+		const parseData = (gid, database)=> {
+			gid = gid.replace('category-','');
+			return gid === 'featured' ? parseDataFeatured(database) : database[gid].data;
 		}
 
 		// Open Photoswipe from URL
-		const openFromURL = ()=> {
+		(()=> {
 			let hash = window.location.hash.substring(1);
 			if (hash.includes('gid') && hash.includes('pid')){
 				let vars = hash.split('&').slice(1,3),
@@ -282,21 +277,20 @@ class Theme {
 						index: parseInt(pid.split('-').pop()),
 						galleryUID: gid,
 					};
-
-				let gallery = new PhotoSwipe( $pswp, PhotoSwipeUI_Default, getCategory(gid, database), options);
+				let gallery = new PhotoSwipe($pswp, PhotoSwipeUI_Default, parseData(gid, database), options);
 				gallery.init();
 			}
-		}
+		})();
 
 		const thumbnailsOnClick = (e)=> {
 			e.preventDefault();
-			let $this = e.currentTarget,
-				thumbnail = $this,
-				gid = $this.closest(gallerys).getAttribute('id'),
+			
+			let thumbnail = e.currentTarget,
+				gid = thumbnail.closest(gallerys).getAttribute('id'),
 				options = {
 					arrowEl: true,
 					bgOpacity: 0.8,
-					index:  parseInt($this.getAttribute('data-img-index')),
+					index:  parseInt(thumbnail.getAttribute('data-img-index')),
 					galleryUID: gid,
 					getThumbBoundsFn: (index)=> {
 						// get window scroll Y
@@ -311,17 +305,16 @@ class Theme {
 					}
 				};
 
-			let lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, getCategory(gid, database), options);
+			let lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, parseData(gid, database), options);
 			lightBox.init();
 		}
 
-		// Loop Gallerys
+		// Thumbnails on click
 		$gallerys.forEach((el, i)=> {
-			el.querySelectorAll(thumbnails).forEach((thumbnail, thumbnailIndex)=> {
-				thumbnail.onclick = (e)=> { thumbnailsOnClick(e) }
+			el.querySelectorAll(thumbnails).forEach((element, index)=> {
+				element.onclick = (e)=> { thumbnailsOnClick(e) }
 			});
 		});
-		openFromURL();
 	}
 	loading(timeout = 1000, des = 'Loading...', src = 'assets/images/logo.svg'){
 		// Append loading

@@ -96,7 +96,7 @@ block content
 			.navigation-tabs
 				ul
 					li.active
-						a(href="#" data-tab-target=`#category-featured`) Featured
+						a(href="#" data-tab-target="#category-featured") Featured
 					each obj, name in database
 						//- - let activeClass = index === 0 ? 'active' : ''
 						//- li(class=activeClass)
@@ -114,9 +114,9 @@ block content
 							let isFeatured = database[`${name}`].data[index].featured
 						if ((typeof(isFeatured) === 'boolean') && isFeatured)
 							if ((typeof(isExternal) === 'boolean') && isExternal)
-								+galleryCard__External(item, index, guideText)
+								+galleryCard__External(item, index, `category-featured`)
 							else
-								+galleryCard__Internal(item, index)
+								+galleryCard__Internal(item, index, `category-featured`)
 			//- .container
 				.swiper-controls
 					a(href="#").btn-just-icon.btn-brand.slide-button-prev
@@ -215,17 +215,26 @@ block script
 		let theme = new Theme();
 
 		// Window Onload
-		document.addEventListener('DOMContentLoaded', (e)=> {
+		document.addEventListener('DOMContentLoaded', e => {
 			theme.init();
 			theme.bannerCofig();
 			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', !{JSON.stringify(database)});
-			
+
 			// Waiting for loading end (Fix bug when have scrollbar appear)
 			setTimeout(()=> theme.workGrid() , 1100);
 		});
 
 		// Window Resize
-		window.addEventListener('resize', (e)=> {
-			//- theme.bannerCofig();
-			//- theme.workGrid();
+		window.addEventListener('resize', e => {
+			!detectMobile.isMobile ? theme.workGrid() : 0;
 		}, true);
+
+		var currentdate = new Date();
+		var datetime = "Last Sync: " + currentdate.getDay() + "/" + currentdate.getMonth() 
+		+ "/" + currentdate.getFullYear() + " @ " 
+		+ currentdate.getHours() + ":" 
+		+ currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+		console.log(currentdate);
+		console.log(datetime);
+		setInterval(()=> console.log(datetime), 1000);
