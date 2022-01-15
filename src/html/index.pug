@@ -133,9 +133,9 @@ block content
 					each item, index in database[`${name}`].data
 						- let isExternal = database[`${name}`].data[index].external
 						if ((typeof(isExternal) === 'boolean') && isExternal)
-							+galleryCard__External(item, index, guideText)
+							+galleryCard__External(item, index, `category-${name}`)
 						else
-							+galleryCard__Internal(item, index)
+							+galleryCard__Internal(item, index, `category-${name}`)
 				//- .container
 				//- 	.swiper-controls
 				//- 		a(href="#").btn-just-icon.btn-ghost.slide-button-prev
