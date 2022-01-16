@@ -37,3 +37,9 @@
         }
     }
 }
+
+body{
+    &.is-mobile[data-nav-height]{
+        // padding-bottom: attr(data-nav-height);
+    }
+}

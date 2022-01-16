@@ -2,14 +2,18 @@
 	transition: background-color .3s ease, box-shadow .3s ease;
 	&.is-sticky{
 		position: fixed;
-		top: 0;
 		left: 0;
 		right: 0;
 		z-index: 1000;
 	}
-	&.has-background{
-		background-color: white;
-		box-shadow: 0 2px 42px 0 rgba(0,0,0,.08);
+	@media (min-width: 992px) {
+		&.is-sticky{
+			top: 0;
+		}
+		&.has-background{
+			background-color: white;
+			box-shadow: 0 2px 42px 0 rgba(black, .08);
+		}
 	}
 	.navigation-menu{
 		padding-top: 8px;
@@ -93,6 +97,17 @@
 		}
 		&-right{
 
+		}
+	}
+}
+
+.is-mobile{
+	.header{
+		&.is-sticky{
+			top: unset;
+			bottom: 0;
+			box-shadow: 0 -2px 42px 0 rgba(black, .08);
+			background-color: white;
 		}
 	}
 }

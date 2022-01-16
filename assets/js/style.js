@@ -36,6 +36,7 @@ var Theme = /*#__PURE__*/function () {
     this.elements = {
       contentPage: document.querySelector('.content-page'),
       header: document.querySelector('.header'),
+      footer: document.querySelector('.footer'),
       navigation: document.querySelector('.header .navigation-menu')
     };
   }
@@ -53,15 +54,16 @@ var Theme = /*#__PURE__*/function () {
 
     }
   }, {
-    key: "navigationConfig",
-    value: function navigationConfig() {
-      var header = this.elements.header;
+    key: "navigation",
+    value: function navigation() {
+      var header = this.elements.header,
+          footer = this.elements.footer;
       this.elements.navigation.querySelectorAll('ul:first-child a').forEach(function (element, index) {
         element.addEventListener('click', function (e) {
           e.preventDefault();
           var $this = e.currentTarget,
               href = $this.getAttribute('href'),
-              el = document.querySelectorAll(href)[0],
+              el = document.querySelector(href),
               elRect = el.getBoundingClientRect(),
               offsetTop = $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
           window.scrollTo({
@@ -71,108 +73,85 @@ var Theme = /*#__PURE__*/function () {
         });
       });
       window.addEventListener('scroll', function () {
-        document.querySelector('html').scrollTop > _getHeight(header) ? header.classList.add('has-background') : header.classList.remove('has-background');
+        !detectMobile.isMobile && document.querySelector('html').scrollTop > _getHeight(header) ? header.classList.add('has-background') : header.classList.remove('has-background');
       });
     }
   }, {
-    key: "bannerCofig",
-    value: function bannerCofig() {
-      var banner = document.querySelector('.section-banner'),
-          bannerBackground = banner.querySelector('.content-bg'),
-          bannerText = banner.querySelector('.content-text'),
-          row = banner.querySelector('.row'),
-          bannerBackgroundSvg = bannerBackground.querySelector('svg');
+    key: "animation",
+    value: function animation() {
+      var _this = this;
 
-      if (window.innerWidth > this.breakpoint.lg) {
-        // > 992
-        bannerBackground.style.height = _getHeight(bannerBackground) + this.spacer[4] + 'px';
-        row.style.height = _getHeight(bannerBackground) + 'px';
-        bannerBackgroundSvg.setAttribute('width', "1374px");
-        bannerBackgroundSvg.setAttribute('height', "1093px");
-        bannerBackgroundSvg.setAttribute('viewBox', '0 0 1374 1093');
-      }
+      var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
-      if (window.innerWidth <= this.breakpoint.sm) {
-        bannerText.style.marginTop = _getHeight(this.elements.header) + this.spacer[5] + 'px';
-      }
-
-      if (window.innerWidth > this.breakpoint.xs && window.innerWidth <= this.breakpoint.sm) {
-        // > 414 && < 576 
-        var dataHeight = bannerBackground.getAttribute('data-responsive-sm--height');
-        bannerBackgroundSvg.setAttribute('width', "".concat(window.innerWidth, "px"));
-        bannerBackgroundSvg.setAttribute('height', "".concat(dataHeight, "px"));
-        bannerBackgroundSvg.setAttribute('viewBox', "0 0 1024 ".concat(dataHeight));
-      }
-
-      if (window.innerWidth <= this.breakpoint.xs) {
-        // < 414
-        var _dataHeight = bannerBackground.getAttribute('data-responsive-xs--height');
-
-        bannerBackgroundSvg.setAttribute('width', "".concat(window.innerWidth, "px"));
-        bannerBackgroundSvg.setAttribute('height', "".concat(_dataHeight, "px"));
-        bannerBackgroundSvg.setAttribute('viewBox', "0 0 1180 ".concat(_dataHeight));
-      } // Human
-
-
-      var humanAnimate = function humanAnimate() {
+      // Section Banner
+      // Human
+      this.animation.human = function () {
+        var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
         var value = 400,
-            el = document.getElementById('banner--human-body').querySelector('g');
-        el.velocity({
+            element = document.getElementById('banner--human-body').querySelector('g');
+        if (status) element.velocity({
           transform: ["translate(55.216854, 355.290468)", "translate(55.216854, ".concat(value, ".290468)")]
-        }, 2500);
-        el.velocity({
+        }, 2500).velocity({
           transform: ["translate(55.216854, ".concat(value, ".290468)"), "translate(55.216854, 355.290468)"]
-        }, 4000, humanAnimate);
+        }, 4000, _this.animation.human);else element.velocity('stop');
       }; // Trees
 
 
-      var treesAnimate = function treesAnimate() {
-        // let value = Math.round(Math.random() * 1000);
+      this.animation.trees = function () {
+        var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
         var valueY = 532,
             valueX = 432,
-            el = document.getElementById('Trees').querySelector('g');
-        el.velocity({
+            element = document.getElementById('Trees').querySelector('g');
+        if (status) element.velocity({
           transform: ["translate(480.000000, 489.000000)", "translate(".concat(valueX, ".000000, ").concat(valueY, ".000000)")]
-        }, 3500);
-        el.velocity({
+        }, 3500).velocity({
           transform: ["translate(".concat(valueX, ".000000, ").concat(valueY, ".000000)"), "translate(480.000000, 489.000000)"]
-        }, 5000, treesAnimate);
+        }, 5000, _this.animation.trees);else element.velocity('stop');
       }; // Trees
 
 
-      var svgAnimate = function svgAnimate() {
+      this.animation.svg = function () {
+        var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
         var value = 1,
-            el = bannerBackground.children;
-        el.velocity({
+            element = document.querySelector('.section-banner svg');
+        if (status) element.velocity({
           transform: ["scale(0.97)", "scale(".concat(value, ")")]
-        }, 3500);
-        el.velocity({
+        }, 3500).velocity({
           transform: ["scale(".concat(value, ")"), "scale(0.97)"]
-        }, 5000, svgAnimate);
-      };
+        }, 5000, _this.animation.svg);else element.velocity('stop');
+      }; // Light Shape
 
-      document.getElementById('DESIGNERDEVELOPER').velocity({
-        opacity: 0.1
-      }, {
-        loop: true
-      }); // Light Shape
 
-      var lightShapeAnimate = function lightShapeAnimate() {
+      this.animation.lightShape = function () {
+        var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
         var value = 1.04,
-            el = document.getElementById('Light-Shape');
-        el.velocity({
+            element = document.getElementById('Light-Shape');
+        if (status) element.velocity({
           transform: ["scale(1)", "scale(".concat(value, ")")]
-        }, 3500);
-        el.velocity({
+        }, 3500).velocity({
           transform: ["scale(".concat(value, ")"), "scale(1)"]
-        }, 5000, lightShapeAnimate);
-      }; // Hand Shake
+        }, 5000, _this.animation.lightShape);else element.velocity('stop');
+      }; // Section Profile
+      // Profile
 
 
-      var handShakeAnimate = function handShakeAnimate() {
+      this.animation.profile = function () {
+        var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+        var element = document.getElementById('DESIGNERDEVELOPER');
+        if (status) element.velocity({
+          opacity: 0.1
+        }, {
+          loop: true
+        });else element.velocity('stop');
+      }; // Section Contact
+      // Hand Shake
+
+
+      this.animation.handShake = function () {
+        var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
         var hand = Snap.select('#Hand'),
             handBBbox = hand.getBBox();
-        var status = true;
+        var state = true;
 
         var waveLeft = function waveLeft() {
           hand.animate({
@@ -188,33 +167,32 @@ var Theme = /*#__PURE__*/function () {
 
         waveRight();
         setInterval(function () {
-          if (status) {
+          if (state) {
             waveLeft();
-            status = false;
+            state = false;
           } else {
             waveRight();
-            status = true;
+            state = true;
           }
         }, 500);
       };
 
-      if (!detectMobile.isMobile) {
-        humanAnimate();
-        treesAnimate();
-        svgAnimate();
-        lightShapeAnimate();
-        handShakeAnimate();
-      }
+      this.animation.human(status);
+      this.animation.trees(status);
+      this.animation.svg(status);
+      this.animation.lightShape(status);
+      this.animation.profile(status);
+      this.animation.handShake(status);
     }
   }, {
     key: "workGrid",
     value: function workGrid() {
-      var _this = this;
+      var _this2 = this;
 
       if (window.innerWidth <= this.breakpoint.sm) {
         // < 576
         document.querySelectorAll('.section-work .item').forEach(function (el, i) {
-          el.style.maxWidth = window.innerWidth - _this.spacer[6] - _this.spacer[5] + 'px';
+          el.style.maxWidth = window.innerWidth - _this2.spacer[6] - _this2.spacer[5] + 'px';
         });
       }
 
@@ -392,11 +370,95 @@ var Theme = /*#__PURE__*/function () {
       });
     }
   }, {
+    key: "mobileResponsive",
+    value: function mobileResponsive() {
+      if (detectMobile.isMobile) {
+        document.body.classList.add('is-mobile'); // Fix bug for use Navigation bottom
+
+        document.body.style.paddingBottom = _getHeight(this.elements.header) + 'px'; // Turn off animation
+
+        this.animation(false);
+      } else {
+        this.animation();
+      }
+
+      var container = document.querySelector('.section-banner'),
+          row = container.querySelector('.row'),
+          background = container.querySelector('.content-bg'),
+          text = container.querySelector('.content-text'),
+          svg = container.querySelector('svg'); // (Desktop: >= 992px)
+
+      if (window.innerWidth >= this.breakpoint.lg) {
+        // background.style.height	= _getHeight(container) + this.spacer[4] + 'px';
+        row.style.height = _getHeight(svg) + 'px';
+      } // (Tablet: >= 768px and < 992px)
+
+
+      if (window.innerWidth >= this.breakpoint.md && window.innerWidth < this.breakpoint.lg) {
+        var width = parseInt(_getWidth(svg) + this.spacer[4]),
+            mt = 320;
+        svg.setAttribute('width', "".concat(width, "px"));
+        svg.setAttribute('viewBox', "0 0 ".concat(width, " 1093"));
+        svg.style.transform = "translate(-164px, -".concat(mt, "px)");
+        text.style.marginTop = "".concat(this.spacer[5], "px");
+        background.style.height = "".concat(_getHeight(svg) - mt, "px");
+      } // (Mobile Large: >= 576 and < 768px)
+
+
+      if (window.innerWidth >= this.breakpoint.sm && window.innerWidth < this.breakpoint.md) {
+        var _width = parseInt(window.innerWidth + this.spacer[5] + 480),
+            height = 800;
+
+        svg.setAttribute('width', "".concat(_width, "px"));
+        svg.setAttribute('height', "".concat(height, "px"));
+        svg.setAttribute('viewBox', "0 0 ".concat(_width, " ").concat(height));
+        svg.style.transform = "translateX(-184px)";
+        text.style.marginTop = "".concat(this.spacer[5], "px");
+        svg.style.marginTop = "-".concat(this.spacer[7] + this.spacer[5], "px");
+      } // (Mobile Small: < 576)
+
+
+      if (window.innerWidth >= this.breakpoint.xxs && window.innerWidth < this.breakpoint.sm) {
+        var _width2 = parseInt(window.innerWidth + this.spacer[5] + 480),
+            _height = 800;
+
+        svg.setAttribute('width', "".concat(_width2, "px"));
+        svg.setAttribute('height', "".concat(_height, "px"));
+        svg.setAttribute('viewBox', "0 0 ".concat(1200, " ", _height));
+        svg.style.transform = "translateX(-184px)";
+        text.style.marginTop = "".concat(this.spacer[5], "px");
+        svg.style.marginTop = "-".concat(this.spacer[7] + this.spacer[5], "px");
+      } // if (window.innerWidth <= this.breakpoint.lg){
+      // 	bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
+      // 	bannerBackgroundSvg.setAttribute('viewBox', `0 0 ${window.innerWidth} 1093`);
+      // 	// bannerBackgroundSvg.style.marginLeft = `calc(${window.innerWidth}px - 50%)`;
+      // }
+      // if (window.innerWidth <= this.breakpoint.sm){
+      // 	bannerText.style.marginTop = this.spacer[5] + 'px';
+      // }
+      // if (window.innerWidth > this.breakpoint.xs && window.innerWidth <= this.breakpoint.sm){
+      // 	// > 414 && < 576 
+      // 	let dataHeight = bannerBackground.getAttribute('data-responsive-sm--height');
+      // 	bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
+      // 	bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
+      // 	bannerBackgroundSvg.setAttribute('viewBox', `0 0 1024 ${dataHeight}`);
+      // }
+      // if (window.innerWidth <= this.breakpoint.xs){
+      // 	// < 414
+      // 	let dataHeight = bannerBackground.getAttribute('data-responsive-xs--height');
+      // 	bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
+      // 	bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
+      // 	bannerBackgroundSvg.setAttribute('viewBox', `0 0 1180 ${dataHeight}`);
+      // }
+
+    }
+  }, {
     key: "init",
     value: function init() {
       this.baseConfig();
-      this.navigationConfig();
+      this.navigation();
       this.loading();
+      this.mobileResponsive();
     }
   }]);
 

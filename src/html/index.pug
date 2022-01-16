@@ -23,6 +23,7 @@ block content
 
 					//- p My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
 					p My name is Trinh Gia Tuan, a designer with the passion for designing Applications User Interfaces including mobile applications, and websites.
+					//- h3 <script>document.write(window.innerWidth)</script>
 				.col-lg-6.content-bg(data-responsive-sm--height="800" data-responsive-xs--height="500")
 					include svg/banner-bg.svg
 	
@@ -46,7 +47,7 @@ block content
 								.title Email
 								.d-inline-flex.align-items-center
 									a.mr-1(href="mailto:giatuantrinh@gmail.com" style="text-decoration: underline;") giatuantrinh@gmail.com
-									i.ri-send-plane-fill(style="font-size: 20px; color: var(--neutral-1);")
+									i.ri-mail-open-line(style="font-size: 20px; color: var(--gray-700);")
 							//- li
 								.title Phone
 								a(href="tel:+84703000876") 0703 000 876
@@ -217,11 +218,11 @@ block script
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', e => {
 			theme.init();
-			theme.bannerCofig();
 			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', !{JSON.stringify(database)});
 
 			// Waiting for loading end (Fix bug when have scrollbar appear)
 			setTimeout(()=> theme.workGrid() , 1100);
+			console.log(theme);
 		});
 
 		// Window Resize
@@ -229,12 +230,5 @@ block script
 			!detectMobile.isMobile ? theme.workGrid() : 0;
 		}, true);
 
-		var currentdate = new Date();
-		var datetime = "Last Sync: " + currentdate.getDay() + "/" + currentdate.getMonth() 
-		+ "/" + currentdate.getFullYear() + " @ " 
-		+ currentdate.getHours() + ":" 
-		+ currentdate.getMinutes() + ":" + currentdate.getSeconds();
-
-		console.log(currentdate);
-		console.log(datetime);
-		setInterval(()=> console.log(datetime), 1000);
+		//- new Date().getHours() >= 19 ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
+		//- setInterval(()=> console.log(new Date().getHours() + ' ' + new Date().getMinutes() + ' ' + new Date().getSeconds()), 1000);

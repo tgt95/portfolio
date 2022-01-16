@@ -11,11 +11,18 @@ $yellow: 						#FFD836 				!default;
 
 
 // Neutral
-$neutral-0: 						#2a3e52 				!default;
-$neutral-1: 						#87969d 				!default;
-$neutral-2: 						#B9C1CE 				!default;
-$neutral-3: 						#D7DBE3 				!default;
-$neutral-4: 						#F5F6F8 				!default;
+$gray-900: 						#101840 				!default;
+$gray-800: 						#474d66 				!default;
+$gray-700: 						#696f8c 				!default;
+$gray-600: 						#8f95b2 				!default;
+$gray-500: 						#c1c4d6 				!default;
+$gray-400: 						#d8dae5 				!default;
+$gray-300: 						#E6E8F0 				!default;
+$gray-200: 						#edeff5 				!default;
+$gray-100: 						#F4F5F9 				!default;
+$gray-90: 						#F4F6FA 				!default;
+$gray-75: 						#F9FAFC 				!default;
+$gray-50: 						#FAFBFF 				!default;
 
 
 // Heading
@@ -57,14 +64,14 @@ $input-height-md:				40px				    !default;
 $input-height-lg:				48px					!default;
 $input-border-color:			$border-color			!default;
 
-$input-bg:                		white					!default;
-$input-color:                	$neutral-0					!default;
-$input-color-active:			$brand					!default;
+// $input-bg:                		white					!default;
+// $input-color:                	$gray-900					!default;
+// $input-color-active:			$brand					!default;
 
-$input-placeholder:				$neutral-2					!default;
+// $input-placeholder:				$neutral-2					!default;
 
-$input-disabled:				$neutral-2					!default;
-$input-disabled-bg:				$neutral-4					!default;
+// $input-disabled:				$neutral-2					!default;
+// $input-disabled-bg:				$neutral-4					!default;
 
 $space-4-xs :                   2px;
 $space-3-xs :                   4px;
@@ -101,11 +108,18 @@ $font-base: 14px;
     --red: 					        #{$red};
     --yellow: 					    #{$yellow};
 
-    --neutral-0:                    #{$neutral-0};
-    --neutral-1:                    #{$neutral-1};
-    --neutral-2:                    #{$neutral-2};
-    --neutral-3:                    #{$neutral-3};
-    --neutral-4:                    #{$neutral-4};
+    --gray-900:                    #{$gray-900};
+    --gray-800:                    #{$gray-800};
+    --gray-700:                    #{$gray-700};
+    --gray-600:                    #{$gray-600};
+    --gray-500:                    #{$gray-500};
+    --gray-400:                    #{$gray-400};
+    --gray-300:                    #{$gray-300};
+    --gray-200:                    #{$gray-200};
+    --gray-100:                    #{$gray-100};
+    --gray-90:                     #{$gray-90};
+    --gray-75:                     #{$gray-75};
+    --gray-50:                     #{$gray-50};
 
     // Social
     --twitter: 						#{$twitter};

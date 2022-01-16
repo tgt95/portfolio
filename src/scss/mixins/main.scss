@@ -72,7 +72,7 @@
     }
 }
 @mixin btn-ghost {
-    color: $neutral-0;
+    color: $gray-900;
     background-color: transparent;
     &:hover{
         color: $brand;

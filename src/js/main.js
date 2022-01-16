@@ -27,6 +27,7 @@ class Theme {
 		this.elements = {
 			contentPage :		document.querySelector('.content-page'),
 			header :			document.querySelector('.header'),
+			footer :			document.querySelector('.footer'),
 			navigation :		document.querySelector('.header .navigation-menu'),
 		};
 	}
@@ -39,8 +40,9 @@ class Theme {
 		}
 		// $('[data-toggle="tooltip"]').tooltip();
 	}
-	navigationConfig(){
-		let header = this.elements.header;
+	navigation(){
+		let header = this.elements.header,
+			footer = this.elements.footer;
 
 		this.elements.navigation.querySelectorAll('ul:first-child a').forEach((element, index)=> {
 			element.addEventListener('click', (e)=> {
@@ -48,7 +50,7 @@ class Theme {
 
 				let $this 		= e.currentTarget,
 					href		= $this.getAttribute('href'),
-					el 			= document.querySelectorAll(href)[0],
+					el 			= document.querySelector(href),
 					elRect		= el.getBoundingClientRect(),
 					offsetTop 	= $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
 
@@ -60,89 +62,81 @@ class Theme {
 		});
 
 		window.addEventListener('scroll', ()=> {
-			document.querySelector('html').scrollTop > _getHeight(header) ? header.classList.add('has-background') : header.classList.remove('has-background');
+			!detectMobile.isMobile && (document.querySelector('html').scrollTop > _getHeight(header)) ? header.classList.add('has-background') : header.classList.remove('has-background');
 		});
 	}
-	bannerCofig(){
-		let banner				= document.querySelector('.section-banner'),
-            bannerBackground 	= banner.querySelector('.content-bg'),
-            bannerText			= banner.querySelector('.content-text'),
-            row					= banner.querySelector('.row'),
-            bannerBackgroundSvg = bannerBackground.querySelector('svg');
-
-		if (window.innerWidth > this.breakpoint.lg){
-			// > 992
-			bannerBackground.style.height	= _getHeight(bannerBackground) + this.spacer[4] + 'px';
-			row.style.height				= _getHeight(bannerBackground) + 'px';
-			bannerBackgroundSvg.setAttribute('width', `1374px`);
-			bannerBackgroundSvg.setAttribute('height', `1093px`);
-			bannerBackgroundSvg.setAttribute('viewBox', '0 0 1374 1093');
-		}
-		
-		if (window.innerWidth <= this.breakpoint.sm){
-			bannerText.style.marginTop = _getHeight(this.elements.header) + this.spacer[5] + 'px';
-		}
-
-		if (window.innerWidth > this.breakpoint.xs && window.innerWidth <= this.breakpoint.sm){
-			// > 414 && < 576 
-			let dataHeight = bannerBackground.getAttribute('data-responsive-sm--height');
-			bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
-			bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
-			bannerBackgroundSvg.setAttribute('viewBox', `0 0 1024 ${dataHeight}`);
-		}
-		if (window.innerWidth <= this.breakpoint.xs){
-			// < 414
-			let dataHeight = bannerBackground.getAttribute('data-responsive-xs--height');
-			bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
-			bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
-			bannerBackgroundSvg.setAttribute('viewBox', `0 0 1180 ${dataHeight}`);
-		}
-
+	animation(status = true){
+		// Section Banner
         // Human
-        const humanAnimate = ()=> {
-            let value = 400,
-				el = document.getElementById('banner--human-body').querySelector('g');
-
-			el.velocity({ transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, 2500);
-			el.velocity({ transform: [`translate(55.216854, ${value}.290468)`, "translate(55.216854, 355.290468)"] }, 4000, humanAnimate);
-		};
-        
-        // Trees
-        const treesAnimate = ()=> {
-            // let value = Math.round(Math.random() * 1000);
-            let valueY = 532, valueX = 432,
-				el = document.getElementById('Trees').querySelector('g');
-
-			el.velocity({ transform: ["translate(480.000000, 489.000000)", `translate(${valueX}.000000, ${valueY}.000000)`] }, 3500);
-			el.velocity({ transform: [`translate(${valueX}.000000, ${valueY}.000000)`, "translate(480.000000, 489.000000)"] }, 5000, treesAnimate);
-		};
-
-        // Trees
-        const svgAnimate = ()=> {
-            let value = 1,
-				el = bannerBackground.children;
-
-			el.velocity({ transform: ["scale(0.97)", `scale(${value})`] }, 3500);
-			el.velocity({ transform: [`scale(${value})`, "scale(0.97)"] }, 5000, svgAnimate);
+        this.animation.human = (status = true)=> {
+			let value = 400,
+				element = document.getElementById('banner--human-body').querySelector('g');
+			
+			if(status)
+				element
+				.velocity({ transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, 2500)
+				.velocity({ transform: [`translate(55.216854, ${value}.290468)`, "translate(55.216854, 355.290468)"] }, 4000, this.animation.human);
+			else
+				element.velocity('stop');
 		};
 		
-		document.getElementById('DESIGNERDEVELOPER').velocity({ opacity: 0.1 },{ loop: true });
+        // Trees
+        this.animation.trees = (status = true)=> {
+			let valueY = 532, valueX = 432,
+				element = document.getElementById('Trees').querySelector('g');
+			
+			if(status)
+				element
+				.velocity({ transform: ["translate(480.000000, 489.000000)", `translate(${valueX}.000000, ${valueY}.000000)`] }, 3500)
+				.velocity({ transform: [`translate(${valueX}.000000, ${valueY}.000000)`, "translate(480.000000, 489.000000)"] }, 5000, this.animation.trees);
+			else
+				element.velocity('stop');
+		};
+
+        // Trees
+		this.animation.svg = (status = true)=> {
+            let value = 1,
+				element = document.querySelector('.section-banner svg');
+			
+			if(status)
+				element
+				.velocity({ transform: ["scale(0.97)", `scale(${value})`] }, 3500)
+				.velocity({ transform: [`scale(${value})`, "scale(0.97)"] }, 5000, this.animation.svg);
+			else
+				element.velocity('stop');
+		};
 		
         // Light Shape
-        const lightShapeAnimate = ()=> {
+		this.animation.lightShape = (status = true)=> {
             let value = 1.04,
-				el = document.getElementById('Light-Shape');
+				element = document.getElementById('Light-Shape');
+			
+			if(status)
+				element
+				.velocity({ transform: ["scale(1)", `scale(${value})`] }, 3500)
+				.velocity({ transform: [`scale(${value})`, "scale(1)"] }, 5000, this.animation.lightShape);
+			else
+				element.velocity('stop');
+		};
 
-			el.velocity({ transform: ["scale(1)", `scale(${value})`] }, 3500);
-			el.velocity({ transform: [`scale(${value})`, "scale(1)"] }, 5000, lightShapeAnimate);
+		// Section Profile
+        // Profile
+		this.animation.profile = (status = true)=> {
+            let element = document.getElementById('DESIGNERDEVELOPER')
+			
+			if(status)
+				element.velocity({ opacity: 0.1 },{ loop: true });
+			else
+				element.velocity('stop');
 		};
 		
+		// Section Contact
 		// Hand Shake
-		const handShakeAnimate = ()=> {
+		this.animation.handShake = (status = true)=> {
 			let hand = Snap.select('#Hand'),
 			handBBbox = hand.getBBox();
 			
-			let status = true;
+			let state = true;
 			const waveLeft = ()=> {
 				hand.animate({ transform: `r8, ${handBBbox.cx}, ${handBBbox.y2}` }, 500);
 			}
@@ -151,24 +145,25 @@ class Theme {
 			}
 			waveRight();
 			setInterval(()=> {
-				if(status){
+				if(state){
 					waveLeft();
-					status = false;
+					state = false;
 				}
 				else{
 					waveRight();
-					status = true;
+					state = true;
 				}
 			}, 500)
 		};
 
-		if(!detectMobile.isMobile){
-			humanAnimate();
-			treesAnimate();
-			svgAnimate();
-			lightShapeAnimate();
-			handShakeAnimate();
-		}
+		this.animation.human(status);
+		this.animation.trees(status);
+		this.animation.svg(status);
+		this.animation.lightShape(status);
+
+		this.animation.profile(status);
+		
+		this.animation.handShake(status);
 	}
 	workGrid(){
 		if (window.innerWidth <= this.breakpoint.sm) {
@@ -343,9 +338,101 @@ class Theme {
 		// Set time out for pending the loading do the animation then remove
 		showTime(()=> setTimeout(()=> loader.remove(), 1000));
 	}
+	mobileResponsive(){
+		if(detectMobile.isMobile) {
+			document.body.classList.add('is-mobile');
+
+			// Fix bug for use Navigation bottom
+			document.body.style.paddingBottom = _getHeight(this.elements.header) + 'px';
+
+			// Turn off animation
+			this.animation(false);
+		}
+		else{
+			this.animation();
+		}
+
+		let container			= document.querySelector('.section-banner'),
+			row					= container.querySelector('.row'),
+            background			= container.querySelector('.content-bg'),
+            text				= container.querySelector('.content-text'),
+            svg					= container.querySelector('svg');
+
+		// (Desktop: >= 992px)
+		if (window.innerWidth >= this.breakpoint.lg){
+			// background.style.height	= _getHeight(container) + this.spacer[4] + 'px';
+			row.style.height = _getHeight(svg) + 'px';
+		}
+
+		// (Tablet: >= 768px and < 992px)
+		if (window.innerWidth >= this.breakpoint.md && window.innerWidth < this.breakpoint.lg){
+			let width = parseInt(_getWidth(svg) + this.spacer[4]),
+				mt = 320;
+				
+			svg.setAttribute('width', `${width}px`);
+			svg.setAttribute('viewBox', `0 0 ${width} 1093`);
+			svg.style.transform = `translate(-164px, -${mt}px)`;
+			
+			text.style.marginTop = `${this.spacer[5]}px`;
+			background.style.height = `${_getHeight(svg) - mt}px`;
+		}
+
+		// (Mobile Large: >= 576 and < 768px)
+		if (window.innerWidth >= this.breakpoint.sm && window.innerWidth < this.breakpoint.md){
+			let width = parseInt(window.innerWidth + this.spacer[5] + 480),
+				height = 800;
+				
+			svg.setAttribute('width', `${width}px`);
+			svg.setAttribute('height', `${height}px`);
+			svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+			svg.style.transform = `translateX(-184px)`;
+
+			text.style.marginTop = `${this.spacer[5]}px`;
+			svg.style.marginTop = `-${this.spacer[7] + this.spacer[5]}px`;
+		}
+
+		// (Mobile Small: < 576)
+		if (window.innerWidth >= this.breakpoint.xxs && window.innerWidth < this.breakpoint.sm){
+			let width = parseInt(window.innerWidth + this.spacer[5] + 480),
+				height = 800;
+				
+			svg.setAttribute('width', `${width}px`);
+			svg.setAttribute('height', `${height}px`);
+			svg.setAttribute('viewBox', `0 0 ${1200} ${height}`);
+			svg.style.transform = `translateX(-184px)`;
+
+			text.style.marginTop = `${this.spacer[5]}px`;
+			svg.style.marginTop = `-${this.spacer[7] + this.spacer[5]}px`;
+		}
+		// if (window.innerWidth <= this.breakpoint.lg){
+		// 	bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
+		// 	bannerBackgroundSvg.setAttribute('viewBox', `0 0 ${window.innerWidth} 1093`);
+		// 	// bannerBackgroundSvg.style.marginLeft = `calc(${window.innerWidth}px - 50%)`;
+		// }
+
+		// if (window.innerWidth <= this.breakpoint.sm){
+		// 	bannerText.style.marginTop = this.spacer[5] + 'px';
+		// }
+
+		// if (window.innerWidth > this.breakpoint.xs && window.innerWidth <= this.breakpoint.sm){
+		// 	// > 414 && < 576 
+		// 	let dataHeight = bannerBackground.getAttribute('data-responsive-sm--height');
+		// 	bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
+		// 	bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
+		// 	bannerBackgroundSvg.setAttribute('viewBox', `0 0 1024 ${dataHeight}`);
+		// }
+		// if (window.innerWidth <= this.breakpoint.xs){
+		// 	// < 414
+		// 	let dataHeight = bannerBackground.getAttribute('data-responsive-xs--height');
+		// 	bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
+		// 	bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
+		// 	bannerBackgroundSvg.setAttribute('viewBox', `0 0 1180 ${dataHeight}`);
+		// }
+	}
 	init(){
 		this.baseConfig();
-		this.navigationConfig();
+		this.navigation();
 		this.loading();
+		this.mobileResponsive();
 	}
 }
