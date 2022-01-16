@@ -65,10 +65,16 @@ var Theme = /*#__PURE__*/function () {
               href = $this.getAttribute('href'),
               el = document.querySelector(href),
               elRect = el.getBoundingClientRect(),
-              offsetTop = $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
-          window.scrollTo({
-            top: elRect.top - document.body.getBoundingClientRect().top - offsetTop,
-            behavior: 'smooth'
+              offsetTop = $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0; // Native smooth scroll of Browser
+          // window.scrollTo({
+          // 	top: (elRect.top - document.body.getBoundingClientRect().top - offsetTop), 
+          // 	behavior: 'smooth'
+          // });
+
+          document.querySelector('html').velocity({
+            scrollTop: elRect.top - document.body.getBoundingClientRect().top - offsetTop + 'px'
+          }, {
+            duration: 400
           });
         });
       });
@@ -200,8 +206,8 @@ var Theme = /*#__PURE__*/function () {
           filterLi = document.querySelectorAll('.section-work .navigation-tabs li'),
           buttonPrev = document.querySelectorAll('.section-work .slide-button-prev'),
           buttonNext = document.querySelectorAll('.section-work .slide-button-next'),
-          title = document.querySelector('.section-work .section-title');
-      var gallerySlider = new Swiper('.section-work .swiper-container', {
+          title = document.querySelector('.section-work .section-title'),
+          gallerySlider = new Swiper('.section-work .swiper-container', {
         slidesPerView: 'auto',
         slidesOffsetBefore: title.getBoundingClientRect().left,
         slidesOffsetAfter: title.getBoundingClientRect().left,

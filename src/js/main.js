@@ -54,10 +54,15 @@ class Theme {
 					elRect		= el.getBoundingClientRect(),
 					offsetTop 	= $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
 
-				window.scrollTo({
-					top: (elRect.top - document.body.getBoundingClientRect().top - offsetTop), 
-					behavior: 'smooth'
-				});
+				// Native smooth scroll of Browser
+				// window.scrollTo({
+				// 	top: (elRect.top - document.body.getBoundingClientRect().top - offsetTop), 
+				// 	behavior: 'smooth'
+				// });
+				
+				document.querySelector('html').velocity({
+					scrollTop: (elRect.top - document.body.getBoundingClientRect().top - offsetTop) + 'px'
+				}, { duration: 400 });
 			});
 		});
 
@@ -177,33 +182,32 @@ class Theme {
 			filterLi		= document.querySelectorAll('.section-work .navigation-tabs li'),
 			buttonPrev		= document.querySelectorAll('.section-work .slide-button-prev'),
 			buttonNext		= document.querySelectorAll('.section-work .slide-button-next'),
-			title			= document.querySelector('.section-work .section-title');
-
-		let gallerySlider = new Swiper('.section-work .swiper-container',{
-			slidesPerView: 'auto',
-			slidesOffsetBefore: title.getBoundingClientRect().left,
-			slidesOffsetAfter: title.getBoundingClientRect().left,
-			spaceBetween: 32,
-			// mousewheel: true,
-			keyboard: true,
-			pagination: {
-				// el: ".swiper-pagination",
-				// clickable: true,
-				// type: "fraction",
-			},
-			// navigation: {
-				// nextEl: ".slide-button-next",
-				// prevEl: ".slide-button-prev",
-			// },
-			breakpoints: {
-				576: {
-					spaceBetween: 32,
+			title			= document.querySelector('.section-work .section-title'),
+			gallerySlider 	= new Swiper('.section-work .swiper-container',{
+				slidesPerView: 'auto',
+				slidesOffsetBefore: title.getBoundingClientRect().left,
+				slidesOffsetAfter: title.getBoundingClientRect().left,
+				spaceBetween: 32,
+				// mousewheel: true,
+				keyboard: true,
+				pagination: {
+					// el: ".swiper-pagination",
+					// clickable: true,
+					// type: "fraction",
 				},
-				320: {
-					spaceBetween: 16,
+				// navigation: {
+					// nextEl: ".slide-button-next",
+					// prevEl: ".slide-button-prev",
+				// },
+				breakpoints: {
+					576: {
+						spaceBetween: 32,
+					},
+					320: {
+						spaceBetween: 16,
+					}
 				}
-			}
-		});
+			});
 
 		filterButtons.forEach((element, index)=> {
 			element.addEventListener('click', (e)=> {
