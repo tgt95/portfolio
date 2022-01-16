@@ -473,6 +473,12 @@ body {
     top: -10%;
   }
 }
+@media (min-width: 992px) {
+  .section-banner .content-text p {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
 .section-banner .content-bg {
   position: absolute;
   right: 0;
@@ -1123,8 +1129,4 @@ body {
   .footer .author-content {
     margin-bottom: 8px;
   }
-}
-
-body.dark-mode {
-  background-color: #101840;
 }

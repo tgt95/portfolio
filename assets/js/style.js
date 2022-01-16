@@ -88,9 +88,20 @@ var Theme = /*#__PURE__*/function () {
       var _this = this;
 
       var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
       // Section Banner
-      // Human
+      var hello = new Typewriter('#hello-world', {
+        loop: true,
+        delay: 75
+      });
+      hello.paragraph = {
+        text_1: "Hello everyone!",
+        text_2: "I'm a UX/UI Designer",
+        text_3: "based in HCMC/VN"
+      };
+      hello.pauseFor(2200).typeString(hello.paragraph.text_1).pauseFor(300).deleteChars(hello.paragraph.text_1.length).typeString(hello.paragraph.text_2) // .pauseFor(100)
+      // .typeString(hello.paragraph.text_3)
+      .pauseFor(1000).start(); // Human
+
       this.animation.human = function () {
         var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
         var value = 400,

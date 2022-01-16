@@ -17,14 +17,9 @@ block content
 		.container
 			.row.align-items-center
 				.col-lg-6.content-text
-					.title Hello, <br> I'm a UX/UI Designer
-					//- .title Hello, <br> I'm a 
-					//- 	a(href="https://medium.muz.li/what-is-a-full-stack-designer-in-2017-will-you-be-one-7933a7145fb7" ref="nofollow" data-toggle="tooltip" title="What's a Fullstack Designer?") Fullstack Designer
-
-					//- p My name is Trinh Gia Tuan, the <script>document.write((new Date().getFullYear()) -1995)</script>-year-old guy with a confident background of developing Applications User Interface including website, mobile, and desktop.
+					.title(id="hello-world") Hello, <br> I'm a UX/UI Designer
 					p My name is Trinh Gia Tuan, a designer with the passion for designing Applications User Interfaces including mobile applications, and websites.
-					//- h3 <script>document.write(window.innerWidth)</script>
-				.col-lg-6.content-bg(data-responsive-sm--height="800" data-responsive-xs--height="500")
+				.col-lg-6.content-bg
 					include svg/banner-bg.svg
 	
 	//- Profile
@@ -42,7 +37,7 @@ block content
 								span Trình Gia Tuấn
 							li
 								.title Date of Birth
-								span 11th October, 1995
+								span 11th October, 1995 (age&nbsp;<script>document.write((new Date().getFullYear()) -1995)</script>)
 							li
 								.title Email
 								.d-inline-flex.align-items-center
@@ -221,8 +216,7 @@ block script
 			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', !{JSON.stringify(database)});
 
 			// Waiting for loading end (Fix bug when have scrollbar appear)
-			setTimeout(()=> theme.workGrid() , 1100);
-			console.log(theme);
+			setTimeout(()=> theme.workGrid(), 1100);
 		});
 
 		// Window Resize

@@ -217,6 +217,8 @@ const plugins = ()=>{
 
 		paths.node_modules + '/photoswipe' + '/**/*',
 
+		paths.node_modules + '/typewriter-effect' + '/**/*',
+
 		// paths.node_modules + '/datatables.net' + '/**/*',
 		// paths.node_modules + '/datatables.net-bs4' + '/**/*',
 		// paths.node_modules + '/datatables.net-responsive' + '/**/*',
