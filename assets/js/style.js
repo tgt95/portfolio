@@ -168,6 +168,7 @@ var Theme = /*#__PURE__*/function () {
         var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
         var hand = Snap.select('#Hand'),
             handBBbox = hand.getBBox();
+        console.log(hand);
         var state = true;
 
         var waveLeft = function waveLeft() {
@@ -396,7 +397,7 @@ var Theme = /*#__PURE__*/function () {
 
         this.animation(false);
       } else {
-        this.animation();
+        this.animation(false); // this.animation();
       }
 
       var container = document.querySelector('.section-banner'),
@@ -406,7 +407,6 @@ var Theme = /*#__PURE__*/function () {
           svg = container.querySelector('svg'); // (Desktop: >= 992px)
 
       if (window.innerWidth >= this.breakpoint.lg) {
-        // background.style.height	= _getHeight(container) + this.spacer[4] + 'px';
         row.style.height = _getHeight(svg) + 'px';
       } // (Tablet: >= 768px and < 992px)
 

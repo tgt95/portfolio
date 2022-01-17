@@ -155,13 +155,16 @@ class Theme {
 				element.velocity({ opacity: 0.1 },{ loop: true });
 			else
 				element.velocity('stop');
-		};
-		
+			};
+			
+
 		// Section Contact
 		// Hand Shake
 		this.animation.handShake = (status = true)=> {
 			let hand = Snap.select('#Hand'),
 			handBBbox = hand.getBBox();
+
+			console.log(hand);
 			
 			let state = true;
 			const waveLeft = ()=> {
@@ -386,7 +389,6 @@ class Theme {
 
 		// (Desktop: >= 992px)
 		if (window.innerWidth >= this.breakpoint.lg){
-			// background.style.height	= _getHeight(container) + this.spacer[4] + 'px';
 			row.style.height = _getHeight(svg) + 'px';
 		}
 
