@@ -396,7 +396,8 @@ var Theme = /*#__PURE__*/function () {
         document.body.style.paddingBottom = _getHeight(this.elements.header) + 'px'; // Turn off animation
 
         this.animation(false);
-      } else {// this.animation();
+      } else {
+        this.animation();
       }
 
       var container = document.querySelector('.section-banner'),

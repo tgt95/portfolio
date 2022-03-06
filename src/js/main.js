@@ -378,7 +378,7 @@ class Theme {
 			this.animation(false);
 		}
 		else{
-			// this.animation();
+			this.animation();
 		}
 
 		let container			= document.querySelector('.section-banner'),
