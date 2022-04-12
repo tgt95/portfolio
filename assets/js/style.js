@@ -397,7 +397,7 @@ var Theme = /*#__PURE__*/function () {
 
         this.animation(false);
       } else {
-        this.animation(false); // this.animation();
+        this.animation();
       }
 
       var container = document.querySelector('.section-banner'),
