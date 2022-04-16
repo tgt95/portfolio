@@ -942,6 +942,7 @@ body {
 }
 .section-work .slide-wrapper.row .item {
   margin-bottom: 32px;
+  max-width: 100% !important;
 }
 .section-work .swiper-controls {
   display: -webkit-box;

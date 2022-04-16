@@ -194,7 +194,7 @@ class Theme {
 		this.animation.handShake(status);
 	}
 	workGrid(){
-		if (window.innerWidth <= this.breakpoint.sm) {
+		if (window.innerWidth <= this.breakpoint.sm && !this.listView) {
 			// < 576
 			document.querySelectorAll('.section-work .item').forEach((el, i)=> {
 				el.style.maxWidth = window.innerWidth - this.spacer[6] - this.spacer[5] + 'px';
@@ -238,7 +238,8 @@ class Theme {
 				}
 			},
 			gallerySlider 	= new Swiper('.section-work .swiper-container', setttings);
-
+		
+		// Grid view
 		switchGirdButton.addEventListener('click', (e)=> {
 			e.preventDefault();
 
@@ -278,7 +279,6 @@ class Theme {
 					});
 				}
 			});
-			
 		});
 
 		filterButtons.forEach((element, index)=> {

@@ -364,6 +364,7 @@
 			width: initial;
 			.item{
 				margin-bottom: $space-l;
+				max-width: 100% !important;
 			}
 		}
 	}

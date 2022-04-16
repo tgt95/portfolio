@@ -206,7 +206,7 @@ var Theme = /*#__PURE__*/function () {
     value: function workGrid() {
       var _this2 = this;
 
-      if (window.innerWidth <= this.breakpoint.sm) {
+      if (window.innerWidth <= this.breakpoint.sm && !this.listView) {
         // < 576
         document.querySelectorAll('.section-work .item').forEach(function (el, i) {
           el.style.maxWidth = window.innerWidth - _this2.spacer[6] - _this2.spacer[5] + 'px';
@@ -248,7 +248,8 @@ var Theme = /*#__PURE__*/function () {
           }
         }
       },
-          gallerySlider = new Swiper('.section-work .swiper-container', setttings);
+          gallerySlider = new Swiper('.section-work .swiper-container', setttings); // Grid view
+
       switchGirdButton.addEventListener('click', function (e) {
         e.preventDefault();
         var $this = e.currentTarget;
