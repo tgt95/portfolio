@@ -359,6 +359,7 @@
 .section-work{
 	.slide-wrapper{
 		padding: 32px 0;
+		transition: all .3s ease;
 		&.row{
 			width: initial;
 			.item{
@@ -379,6 +380,7 @@
 	}
 	.item{
 		width: 100%;
+		transition: all .3s ease;
 		&:not([class*="col-"]){
 			max-width: 550px;
 		}
