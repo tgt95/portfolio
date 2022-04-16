@@ -49,11 +49,11 @@ block content
 								.mx-1 -
 								a(href="skype:live:giatuantrinh?chat")
 									i.ri-skype-fill(style="font-size: 20px; color: #00aff0;")
-							li
-								.title Skype
-								.d-inline-flex.align-items-center
-									a.mr-1(href="skype:live:giatuantrinh?chat" style="text-decoration: underline;") live:giatuantrinh
-									i.ri-skype-fill(style="font-size: 20px; color: var(--skype);")
+							//- li
+							//- 	.title Skype
+							//- 	.d-inline-flex.align-items-center
+							//- 		a.mr-1(href="skype:live:giatuantrinh?chat" style="text-decoration: underline;") live:giatuantrinh
+							//- 		i.ri-skype-fill(style="font-size: 20px; color: var(--skype);")
 							li
 								.title Address
 								span District 11, Ho Chi Minh City
@@ -93,11 +93,21 @@ block content
 				ul
 					li.active
 						a(href="#" data-tab-target="#category-featured") Featured
+					//- li.active
+					//- 	a(href="#" data-tab-target="#category-featured") 
+					//- 		i.ri-star-smile-fill(style="color: var(--yellow)")
+					//- 		|  Featured
 					each obj, name in database
 						//- - let activeClass = index === 0 ? 'active' : ''
 						//- li(class=activeClass)
 						li
 							a(href="#" data-tab-target=`#category-${name}`)= database[`${name}`].fullName
+				.switch-view
+					a.btn-just-icon(href="#" action="grid").active
+						i.ri-function-line
+					a.btn-just-icon(href="#" action="list")
+						i.ri-list-check-2
+
 
 		//- Fetch data from database
 		//- Featured
@@ -208,7 +218,10 @@ block script
 		}
 	//- Client side
 	script.
-		let theme = new Theme();
+		let theme = new Theme(),
+			data = !{JSON.stringify(database)};
+
+		console.log(data);
 
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', e => {

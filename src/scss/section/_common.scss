@@ -359,6 +359,12 @@
 .section-work{
 	.slide-wrapper{
 		padding: 32px 0;
+		&.row{
+			width: initial;
+			.item{
+				margin-bottom: $space-l;
+			}
+		}
 	}
 	.swiper-controls{
 		display: flex;
@@ -373,7 +379,9 @@
 	}
 	.item{
 		width: 100%;
-		max-width: 550px;
+		&:not([class*="col-"]){
+			max-width: 550px;
+		}
 		> .title{
 			margin-top: 16px;
 			font-size: $h6;

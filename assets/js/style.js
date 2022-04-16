@@ -168,7 +168,6 @@ var Theme = /*#__PURE__*/function () {
         var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
         var hand = Snap.select('#Hand'),
             handBBbox = hand.getBBox();
-        console.log(hand);
         var state = true;
 
         var waveLeft = function waveLeft() {
@@ -214,12 +213,18 @@ var Theme = /*#__PURE__*/function () {
         });
       }
 
-      var filterButtons = document.querySelectorAll('.section-work .navigation-tabs a'),
+      var filterButtons = document.querySelectorAll('.section-work .navigation-tabs ul a'),
+          switchViewButtons = document.querySelectorAll('.section-work .navigation-tabs .switch-view a'),
+          switchGirdButton = document.querySelector('.section-work .navigation-tabs .switch-view a[action="grid"]'),
+          switchListButton = document.querySelector('.section-work .navigation-tabs .switch-view a[action="list"]'),
           filterLi = document.querySelectorAll('.section-work .navigation-tabs li'),
           buttonPrev = document.querySelectorAll('.section-work .slide-button-prev'),
           buttonNext = document.querySelectorAll('.section-work .slide-button-next'),
+          container = document.querySelectorAll('.section-work .swiper-container'),
+          row = document.querySelectorAll('.section-work .swiper-container .slide-wrapper'),
+          item = document.querySelectorAll('.section-work .swiper-container .slide-wrapper .item'),
           title = document.querySelector('.section-work .section-title'),
-          gallerySlider = new Swiper('.section-work .swiper-container', {
+          setttings = {
         slidesPerView: 'auto',
         slidesOffsetBefore: title.getBoundingClientRect().left,
         slidesOffsetAfter: title.getBoundingClientRect().left,
@@ -242,6 +247,53 @@ var Theme = /*#__PURE__*/function () {
             spaceBetween: 16
           }
         }
+      },
+          gallerySlider = new Swiper('.section-work .swiper-container', setttings);
+      switchGirdButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        var $this = e.currentTarget;
+        switchViewButtons.forEach(function (element, index) {
+          return element.classList.remove('active');
+        });
+        $this.classList.add('active');
+        console.log(container);
+        container.forEach(function (element, index) {
+          return element.classList.remove('container');
+        });
+        row.forEach(function (element, index) {
+          return element.classList.remove('row');
+        });
+        item.forEach(function (element, index) {
+          return element.classList.remove('col-md-6');
+        });
+        gallerySlider = new Swiper('.section-work .swiper-container', setttings);
+      }); // List view
+
+      switchListButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        var $this = e.currentTarget;
+        switchViewButtons.forEach(function (element, index) {
+          return element.classList.remove('active');
+        });
+        gallerySlider.forEach(function (element, index) {
+          element.destroy();
+        });
+        $this.classList.add('active');
+        filterLi.forEach(function (element, index) {
+          if (element.classList[0] == 'active') {
+            var target = element.children[0].getAttribute('data-tab-target').substring(1);
+            container.forEach(function (element, index) {
+              element.getAttribute('id') != target ? element.style.display = 'none' : 0;
+              element.classList.add('container');
+              row.forEach(function (element, index) {
+                return element.classList.add('row');
+              });
+              item.forEach(function (element, index) {
+                return element.classList.add('col-md-6');
+              });
+            });
+          }
+        });
       });
       filterButtons.forEach(function (element, index) {
         element.addEventListener('click', function (e) {
