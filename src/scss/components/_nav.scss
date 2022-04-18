@@ -34,14 +34,14 @@
         }
     }
     .switch-view{
+        border-radius: $border-rounded;
+        background-color: lighten($brand, 32%);
         a{
             @include btn;
             @include btn-md;
-            color: $gray-900;
-            // border-bottom: 2px solid transparent;
-            // border-radius: 0;
+            color: $gray-800;
             position: relative;
-            &:after{
+            &:before{
                 content: "";
                 position: absolute;
                 bottom: 0px;
@@ -54,8 +54,23 @@
                 transition: all .3s ease;
                 border-radius: 8px;
             }
-            &:hover, &:focus, &:active, &.active{
+            &:first-child{
                 &:after{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    bottom: 0;
+                    right: 0;
+                    width: 1px;
+                    transform: translateY(-50%);
+                    height: calc(100% - 28px);
+                    background: lighten($brand, 24%);
+                    transition: all .3s ease;
+                    border-radius: 8px;
+                }
+            }
+            &:hover, &:focus, &:active, &.active{
+                &:before{
                     background: $brand;
                 }
                 color: $brand;
@@ -65,8 +80,6 @@
         @media (max-width: 768px) {
             order: 0;
             width: 100%;
-            border-radius: $border-rounded;
-            background-color: lighten($brand, 32%);
             margin-bottom: $space-s;
             a{
                 &.btn-just-icon{

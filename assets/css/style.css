@@ -354,6 +354,10 @@ body {
   border-color: #EA5D5D;
   text-decoration: none;
 }
+.navigation-tabs .switch-view {
+  border-radius: 32px;
+  background-color: #fdeded;
+}
 .navigation-tabs .switch-view a {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -373,7 +377,7 @@ body {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   border-radius: 12px;
-  color: #454545;
+  color: #636363;
   position: relative;
 }
 .navigation-tabs .switch-view a:hover, .navigation-tabs .switch-view a:focus, .navigation-tabs .switch-view a:active, .navigation-tabs .switch-view a.active {
@@ -401,7 +405,7 @@ body {
 .navigation-tabs .switch-view a.icon-right :not(.btn-just-icon) > i {
   margin-left: 8px;
 }
-.navigation-tabs .switch-view a:after {
+.navigation-tabs .switch-view a:before {
   content: "";
   position: absolute;
   bottom: 0px;
@@ -417,10 +421,26 @@ body {
   transition: all 0.3s ease;
   border-radius: 8px;
 }
+.navigation-tabs .switch-view a:first-child:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 0;
+  width: 1px;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  height: calc(100% - 28px);
+  background: #f8c9c9;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
 .navigation-tabs .switch-view a:hover, .navigation-tabs .switch-view a:focus, .navigation-tabs .switch-view a:active, .navigation-tabs .switch-view a.active {
   color: #EA5D5D;
 }
-.navigation-tabs .switch-view a:hover:after, .navigation-tabs .switch-view a:focus:after, .navigation-tabs .switch-view a:active:after, .navigation-tabs .switch-view a.active:after {
+.navigation-tabs .switch-view a:hover:before, .navigation-tabs .switch-view a:focus:before, .navigation-tabs .switch-view a:active:before, .navigation-tabs .switch-view a.active:before {
   background: #EA5D5D;
 }
 @media (max-width: 768px) {
@@ -430,8 +450,6 @@ body {
         -ms-flex-order: 0;
             order: 0;
     width: 100%;
-    border-radius: 32px;
-    background-color: #fdeded;
     margin-bottom: 16px;
   }
   .navigation-tabs .switch-view a.btn-just-icon {
