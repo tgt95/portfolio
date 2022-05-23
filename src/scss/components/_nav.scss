@@ -1,4 +1,11 @@
 .navigation-tabs{
+    @include flex-center-y-between;
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        ul{
+            order: 1;
+        }
+    }
     ul{
         list-style-type: none;
         padding-left: 0;
@@ -10,6 +17,7 @@
                 margin-right: 32px;
             }
             a{
+                font-size: $h6;
                 font-weight: 600;
                 color: $gray-900;
                 border-bottom: 2px solid transparent;
@@ -21,6 +29,61 @@
                     color: $brand;
                     border-color: $brand;
                     text-decoration: none;
+                }
+            }
+        }
+    }
+    .switch-view{
+        border-radius: $border-rounded;
+        background-color: lighten($brand, 32%);
+        a{
+            @include btn;
+            @include btn-md;
+            color: $gray-800;
+            position: relative;
+            &:before{
+                content: "";
+                position: absolute;
+                bottom: 0px;
+                left: 50%;
+                right: 0;
+                width: 12px;
+                height: 2px;
+                transform: translateX(calc(-50% - 1px));
+                background: transparent;
+                transition: all .3s ease;
+                border-radius: 8px;
+            }
+            &:first-child{
+                &:after{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    bottom: 0;
+                    right: 0;
+                    width: 1px;
+                    transform: translateY(-50%);
+                    height: calc(100% - 28px);
+                    background: lighten($brand, 24%);
+                    transition: all .3s ease;
+                    border-radius: 8px;
+                }
+            }
+            &:hover, &:focus, &:active, &.active{
+                &:before{
+                    background: $brand;
+                }
+                color: $brand;
+                // border-bottom: 2px solid $brand;
+            }
+        }
+        @media (max-width: 768px) {
+            order: 0;
+            width: 100%;
+            margin-bottom: $space-s;
+            a{
+                &.btn-just-icon{
+                    width: 50%;
                 }
             }
         }
