@@ -389,7 +389,11 @@ class Theme {
 	}
 	loading(timeout = 1000, des = 'Loading...', src = 'assets/images/logo.svg'){
 		// Append loading
-		document.body.style.overflow = 'hidden';
+		document.body.style.overflow 			= 'hidden';
+		document.body.style.display 			= '';
+		document.body.style.backgroundColor 	= '';
+		
+		console.log(document.body.style.display);
 		document.body.insertAdjacentHTML('beforeend', `
 		<div class="page-loader">
 			<div class="loader-content"><img class="logo-img" src="${src}"/>

@@ -420,6 +420,9 @@ var Theme = /*#__PURE__*/function () {
       var src = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'assets/images/logo.svg';
       // Append loading
       document.body.style.overflow = 'hidden';
+      document.body.style.display = '';
+      document.body.style.backgroundColor = '';
+      console.log(document.body.style.display);
       document.body.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"page-loader\">\n\t\t\t<div class=\"loader-content\"><img class=\"logo-img\" src=\"".concat(src, "\"/>\n\t\t\t\t<div class=\"title mt-2\">").concat(des, "</div>\n\t\t\t</div>\n\t\t</div>\n\t\t"));
       var loader = document.body.querySelector('.page-loader'); // Show the loading overlay
 
