@@ -79,7 +79,7 @@ class Theme {
 
 		hello.paragraph = {
 			text_1 : `Hello everyone!`,
-			text_2 : `I'm a UX/UI Designer`,
+			text_2 : `I'm a Product Designer`,
 			text_3 : `based in HCMC/VN`,
 		}
 		

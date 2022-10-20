@@ -95,7 +95,7 @@ var Theme = /*#__PURE__*/function () {
       });
       hello.paragraph = {
         text_1: "Hello everyone!",
-        text_2: "I'm a UX/UI Designer",
+        text_2: "I'm a Product Designer",
         text_3: "based in HCMC/VN"
       };
       hello.pauseFor(2200).typeString(hello.paragraph.text_1).pauseFor(300).deleteChars(hello.paragraph.text_1.length).typeString(hello.paragraph.text_2) // .pauseFor(100)
