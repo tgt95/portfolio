@@ -11,8 +11,11 @@
 			top: 0;
 		}
 		&.has-background{
-			background-color: white;
+			// background-color: white;
 			box-shadow: 0 2px 42px 0 rgba(black, .08);
+			background-image: radial-gradient(transparent 1px,white 1px);
+			backdrop-filter: saturate(50%) blur(4px);
+			background-size: 6px 6px;
 		}
 	}
 	.navigation-menu{

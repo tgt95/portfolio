@@ -91,8 +91,12 @@ $space-5-xl :                   72px;
 $custom-control-size: 20px;
 
 // Fonts
-// @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap);
-// $font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+// @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap);
+// $font-primary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+// @import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap);
+// $font-primary: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
 @import url(https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap);
 $font-primary: 'Noto Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 $font-base: 14px;

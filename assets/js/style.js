@@ -96,11 +96,12 @@ var Theme = /*#__PURE__*/function () {
       hello.paragraph = {
         text_1: "Hello everyone!",
         text_2: "I'm a Product Designer",
-        text_3: "based in HCMC/VN"
+        text_3: "based in HCMC,VN"
       };
-      hello.pauseFor(2200).typeString(hello.paragraph.text_1).pauseFor(300).deleteChars(hello.paragraph.text_1.length).typeString(hello.paragraph.text_2) // .pauseFor(100)
-      // .typeString(hello.paragraph.text_3)
-      .pauseFor(1000).start(); // Human
+      hello.pauseFor(2200) // .typeString(hello.paragraph.text_1)
+      // .pauseFor(300)
+      // .deleteChars(hello.paragraph.text_1.length)
+      .typeString(hello.paragraph.text_2).pauseFor(100).deleteChars(hello.paragraph.text_2.length).typeString(hello.paragraph.text_3).pauseFor(1000).start(); // Human
 
       this.animation.human = function () {
         var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
