@@ -1092,17 +1092,19 @@ body {
   right: 0;
   z-index: 1000;
 }
+.header.has-background {
+  background-image: -webkit-radial-gradient(transparent 1px, white 1px);
+  background-image: radial-gradient(transparent 1px, white 1px);
+  -webkit-backdrop-filter: saturate(50%) blur(4px);
+          backdrop-filter: saturate(50%) blur(4px);
+  background-size: 6px 6px;
+}
 @media (min-width: 992px) {
   .header.is-sticky {
     top: 0;
   }
   .header.has-background {
     box-shadow: 0 2px 42px 0 rgba(0, 0, 0, 0.08);
-    background-image: -webkit-radial-gradient(transparent 1px, white 1px);
-    background-image: radial-gradient(transparent 1px, white 1px);
-    -webkit-backdrop-filter: saturate(50%) blur(4px);
-            backdrop-filter: saturate(50%) blur(4px);
-    background-size: 6px 6px;
   }
 }
 .header .navigation-menu {
@@ -1227,7 +1229,11 @@ body {
   top: unset;
   bottom: 0;
   box-shadow: 0 -2px 42px 0 rgba(0, 0, 0, 0.08);
-  background-color: white;
+  background-image: -webkit-radial-gradient(transparent 1px, white 1px);
+  background-image: radial-gradient(transparent 1px, white 1px);
+  -webkit-backdrop-filter: saturate(50%) blur(4px);
+          backdrop-filter: saturate(50%) blur(4px);
+  background-size: 8px 8px;
 }
 
 .footer {
