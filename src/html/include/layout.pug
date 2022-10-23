@@ -15,6 +15,7 @@ html
 		block meta-title
 		
 		//- CSS
+		link(rel="image_src" href="assets/images/favicon.png")
 		link(rel="icon" type="image/png" href="assets/images/favicon.png")
 
 		//- Bootstrap
@@ -43,7 +44,7 @@ html
 
 			gtag('config', 'UA-79549330-2');
 			
-	body(style="display: none; background-color: #ea5d5d;")
+	body(style="display: none; background-color: var(--brand);")
 		// Header
 		include section/header.pug
 		block content
