@@ -185,14 +185,16 @@ class Theme {
 			}, 500)
 		};
 
-		this.animation.human(status);
-		this.animation.trees(status);
-		this.animation.svg(status);
-		this.animation.lightShape(status);
 
-		this.animation.profile(status);
+
+		// this.animation.human(status);
+		// this.animation.trees(status);
+		// this.animation.svg(status);
+		// this.animation.lightShape(status);
+
+		// this.animation.profile(status);
 		
-		this.animation.handShake(status);
+		// this.animation.handShake(status);
 	}
 	workGrid(){
 		if (window.innerWidth <= this.breakpoint.sm && !this.listView) {

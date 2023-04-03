@@ -115,9 +115,14 @@
 				&:not(:last-child){
 					margin-bottom: 24px;
 				}
+				&.divider{
+					@media (min-width: 415px) {
+						max-width: 344px;
+					}
+				}
 				.personality-progress{
-					padding: 16px;
-					background-color: $gray-100;
+					// padding: 16px;
+					// background-color: $gray-100;
 					// border: 1px solid $gray-200;
 					border-radius: $border-theme;
 					// display: inline-flex;
@@ -131,13 +136,14 @@
 						position: relative;
 						width: 100%;
 						height: 8px;
-						background-color: white;
+						background-color: $gray-100;
 						border-radius: $border-rounded;
 						@include flex-center-y;
 						.represent{
 							font-size: 24px;
 							line-height: 24px;
 							transform: translateX(-8px);
+							animation: personalityProgressText 1.5s ease infinite;
 						}
 					}
 					.active{
@@ -151,6 +157,7 @@
 						width: 15%;
 						height: 100%;
 						background-color: $gray-300;
+						animation: personalityProgressTracker 3s ease infinite;
 						// @include flex-center-y;
 						// left: 50%;
 						// transform: translate(-425%,-50%);

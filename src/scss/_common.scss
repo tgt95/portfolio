@@ -4,6 +4,12 @@ body{
 	font-size: $font-base;
 }
 
+.divider{
+	width: 100%;
+	height: 1px;
+	background-color: $border-color;
+}
+
 // Loading
 .page-loader{
 	position: fixed;
@@ -38,6 +44,33 @@ body{
 
   to {
     transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes personalityProgressTracker {
+  0% {
+    width: 15%;
+  }
+  50% {
+    width: 13%;
+  }
+  100% {
+    width: 15%;
+  }
+}
+
+@keyframes personalityProgressText {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+	transform: rotate(3deg);
+  }
+  50% {
+	transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 

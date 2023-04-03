@@ -193,14 +193,13 @@ var Theme = /*#__PURE__*/function () {
             state = true;
           }
         }, 500);
-      };
+      }; // this.animation.human(status);
+      // this.animation.trees(status);
+      // this.animation.svg(status);
+      // this.animation.lightShape(status);
+      // this.animation.profile(status);
+      // this.animation.handShake(status);
 
-      this.animation.human(status);
-      this.animation.trees(status);
-      this.animation.svg(status);
-      this.animation.lightShape(status);
-      this.animation.profile(status);
-      this.animation.handShake(status);
     }
   }, {
     key: "workGrid",
