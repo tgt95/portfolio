@@ -187,14 +187,14 @@ class Theme {
 
 
 
-		// this.animation.human(status);
-		// this.animation.trees(status);
-		// this.animation.svg(status);
-		// this.animation.lightShape(status);
+		this.animation.human(status);
+		this.animation.trees(status);
+		this.animation.svg(status);
+		this.animation.lightShape(status);
 
-		// this.animation.profile(status);
+		this.animation.profile(status);
 		
-		// this.animation.handShake(status);
+		this.animation.handShake(status);
 	}
 	workGrid(){
 		if (window.innerWidth <= this.breakpoint.sm && !this.listView) {
@@ -427,11 +427,12 @@ class Theme {
 
 			// Fix bug for use Navigation bottom
 			document.body.style.paddingBottom = _getHeight(this.elements.header) + 'px';
-
+			
 			// Turn off animation
 			this.animation(false);
 		}
 		else{
+			// Turn on animation
 			this.animation();
 		}
 

@@ -765,7 +765,7 @@ body {
     max-width: 344px;
   }
 }
-.section-profile .profile-content ul li .personality-progress .tracker {
+.section-profile .profile-content ul li .personality-progress .holder {
   position: relative;
   width: 100%;
   height: 8px;
@@ -780,7 +780,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
 }
-.section-profile .profile-content ul li .personality-progress .tracker .represent {
+.section-profile .profile-content ul li .personality-progress .holder .emoji {
   font-size: 24px;
   line-height: 24px;
   -webkit-transform: translateX(-8px);
@@ -789,7 +789,7 @@ body {
   -webkit-animation: personalityProgressText 1.5s ease infinite;
           animation: personalityProgressText 1.5s ease infinite;
 }
-.section-profile .profile-content ul li .personality-progress .active {
+.section-profile .profile-content ul li .personality-progress .tracker {
   border-radius: 32px;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;

@@ -132,21 +132,21 @@
 						max-width: 344px;
 						// width: calc(100% - 132px);
 					}
-					.tracker{
+					.holder{
 						position: relative;
 						width: 100%;
 						height: 8px;
 						background-color: $gray-100;
 						border-radius: $border-rounded;
 						@include flex-center-y;
-						.represent{
+						.emoji{
 							font-size: 24px;
 							line-height: 24px;
 							transform: translateX(-8px);
 							animation: personalityProgressText 1.5s ease infinite;
 						}
 					}
-					.active{
+					.tracker{
 						// position: absolute;
 						// top: 50%;
 						// left: 0;
