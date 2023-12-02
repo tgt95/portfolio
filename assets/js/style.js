@@ -18,6 +18,17 @@ var _getWidth = function _getWidth(el) {
   return parseFloat(getComputedStyle(el, null).width.replace("px", ""));
 };
 
+var trigger = function trigger(el, eventType) {
+  if (typeof eventType === 'string' && typeof el[eventType] === 'function') {
+    el[eventType]();
+  } else {
+    var event = typeof eventType === 'string' ? new Event(eventType, {
+      bubbles: true
+    }) : eventType;
+    el.dispatchEvent(event);
+  }
+};
+
 var Theme = /*#__PURE__*/function () {
   function Theme() {
     _classCallCheck(this, Theme);
@@ -229,17 +240,19 @@ var Theme = /*#__PURE__*/function () {
         slidesPerView: 'auto',
         slidesOffsetBefore: title.getBoundingClientRect().left,
         slidesOffsetAfter: title.getBoundingClientRect().left,
-        spaceBetween: 32,
         // mousewheel: true,
         keyboard: true,
+        observer: true,
+        observeParents: true,
+        parallax: true,
         pagination: {// el: ".swiper-pagination",
           // clickable: true,
           // type: "fraction",
         },
-        // navigation: {
-        // nextEl: ".slide-button-next",
-        // prevEl: ".slide-button-prev",
-        // },
+        navigation: {
+          nextEl: ".slide-button-next",
+          prevEl: ".slide-button-prev"
+        },
         breakpoints: {
           576: {
             spaceBetween: 32
@@ -260,7 +273,8 @@ var Theme = /*#__PURE__*/function () {
         $this.classList.add('active');
         console.log(container);
         container.forEach(function (element, index) {
-          return element.classList.remove('container');
+          element.classList.remove('container');
+          element.querySelector('.swiper-controls').style.display = 'block';
         });
         row.forEach(function (element, index) {
           return element.classList.remove('row');
@@ -286,6 +300,7 @@ var Theme = /*#__PURE__*/function () {
             var target = element.children[0].getAttribute('data-tab-target').substring(1);
             container.forEach(function (element, index) {
               element.getAttribute('id') != target ? element.style.display = 'none' : 0;
+              element.querySelector('.swiper-controls').style.display = 'none';
               element.classList.add('container');
               row.forEach(function (element, index) {
                 return element.classList.add('row');
@@ -293,10 +308,17 @@ var Theme = /*#__PURE__*/function () {
               item.forEach(function (element, index) {
                 return element.classList.add('col-md-6');
               });
+              debugger; // console.log(row.querySelectorAll('.slide-button-prev'));
+
+              console.log(element.querySelector('.swiper-controls')); // item.querySelectorAll('.slide-button-prev').forEach((el, i)=> {
+              // 	console.log(el);
+              // });
             });
           }
         });
-      });
+      }); // Cheat for open list view by default
+
+      trigger(switchListButton, 'click');
       filterButtons.forEach(function (element, index) {
         element.addEventListener('click', function (e) {
           e.preventDefault();

@@ -11,6 +11,18 @@ const _getWidth = el => {
 	return parseFloat(getComputedStyle(el, null).width.replace("px", ""));
 }
 
+const trigger  = (el, eventType) => {
+	if (typeof eventType === 'string' && typeof el[eventType] === 'function') {
+	  el[eventType]();
+	} else {
+	  const event =
+		typeof eventType === 'string'
+		  ? new Event(eventType, {bubbles: true})
+		  : eventType;
+	  el.dispatchEvent(event);
+	}
+}
+
 class Theme {
 	constructor(){
 		this.spacer = [];
@@ -219,18 +231,20 @@ class Theme {
 				slidesPerView: 'auto',
 				slidesOffsetBefore: title.getBoundingClientRect().left,
 				slidesOffsetAfter: title.getBoundingClientRect().left,
-				spaceBetween: 32,
 				// mousewheel: true,
 				keyboard: true,
+				observer: true,
+				observeParents: true,
+				parallax:true,
 				pagination: {
 					// el: ".swiper-pagination",
 					// clickable: true,
 					// type: "fraction",
 				},
-				// navigation: {
-					// nextEl: ".slide-button-next",
-					// prevEl: ".slide-button-prev",
-				// },
+				navigation: {
+					nextEl: ".slide-button-next",
+					prevEl: ".slide-button-prev",
+				},
 				breakpoints: {
 					576: {
 						spaceBetween: 32,
@@ -253,7 +267,10 @@ class Theme {
 
 			console.log(container);
 			
-			container.forEach((element, index)=> element.classList.remove('container'));
+			container.forEach((element, index)=> {
+				element.classList.remove('container')
+				element.querySelector('.swiper-controls').style.display = 'block';
+			});
 			row.forEach((element, index)=> element.classList.remove('row'));
 			item.forEach((element, index)=> element.classList.remove('col-md-6'));
 
@@ -276,13 +293,24 @@ class Theme {
 
 					container.forEach((element, index)=> { 
 						element.getAttribute('id') != target ? element.style.display = 'none' : 0;
+						element.querySelector('.swiper-controls').style.display = 'none';
 						element.classList.add('container');
 						row.forEach((element, index)=> element.classList.add('row') );
 						item.forEach((element, index)=> element.classList.add('col-md-6') );
+						debugger
+						// console.log(row.querySelectorAll('.slide-button-prev'));
+						console.log(element.querySelector('.swiper-controls'));
+						// item.querySelectorAll('.slide-button-prev').forEach((el, i)=> {
+						// 	console.log(el);
+						// });
 					});
 				}
 			});
 		});
+		
+
+		// Cheat for open list view by default
+		trigger(switchListButton, 'click');
 
 		filterButtons.forEach((element, index)=> {
 			element.addEventListener('click', (e)=> {
@@ -294,7 +322,7 @@ class Theme {
 					dataTarget		= $this.getAttribute('data-tab-target'),
 					target			= document.querySelector(dataTarget),
 					containers		= document.querySelectorAll('.section-work .swiper-container');
-				
+
 				filterLi.forEach((el, i)=> el.classList.remove('active'));
 				$li.classList.add('active');
 				containers.forEach((el, i)=> {

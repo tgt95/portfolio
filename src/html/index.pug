@@ -105,12 +105,12 @@ block content
 			.section-title Work
 			.navigation-tabs
 				ul
-					li.active
-						a(href="#" data-tab-target="#category-featured") Featured
 					//- li.active
-					//- 	a(href="#" data-tab-target="#category-featured") 
-					//- 		i.ri-star-smile-fill(style="color: var(--yellow)")
-					//- 		|  Featured
+					//- 	a(href="#" data-tab-target="#category-featured") Featured
+					li.active
+						a(href="#" data-tab-target="#category-featured") 
+							i.ri-star-smile-fill(style="color: var(--yellow)")
+							|  Featured
 					each obj, name in database
 						//- - let activeClass = index === 0 ? 'active' : ''
 						//- li(class=activeClass)
@@ -137,11 +137,11 @@ block content
 								+galleryCard__External(item, index, `category-featured`)
 							else
 								+galleryCard__Internal(item, index, `category-featured`)
-			//- .container
+			.container
 				.swiper-controls
-					a(href="#").btn-just-icon.btn-brand.slide-button-prev
+					a(href="#").btn.btn-just-icon.btn-secondary.slide-button-prev.mr-2
 						i.ri-arrow-left-s-line
-					a(href="#").btn-just-icon.btn-brand.slide-button-next
+					a(href="#").btn.btn-just-icon.btn-secondary.slide-button-next
 						i.ri-arrow-right-s-line
 					.swiper-pagination
 					//- .swiper-scrollbar
@@ -156,14 +156,14 @@ block content
 							+galleryCard__External(item, index, `category-${name}`)
 						else
 							+galleryCard__Internal(item, index, `category-${name}`)
-				//- .container
-				//- 	.swiper-controls
-				//- 		a(href="#").btn-just-icon.btn-ghost.slide-button-prev
-				//- 			i.ri-arrow-left-s-line
-				//- 		a(href="#").btn-just-icon.btn-ghost.slide-button-next
-				//- 			i.ri-arrow-right-s-line
-				//- .swiper-pagination
-				//- .swiper-scrollbar
+				.container
+					.swiper-controls
+						a(href="#").btn.btn-just-icon.btn-secondary.slide-button-prev.mr-2
+							i.ri-arrow-left-s-line
+						a(href="#").btn.btn-just-icon.btn-secondary.slide-button-next
+							i.ri-arrow-right-s-line
+						.swiper-pagination
+						//- .swiper-scrollbar
 
 	//- Contact
 	section.section.section-contact.mb-0
@@ -243,7 +243,9 @@ block script
 			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', !{JSON.stringify(database)});
 
 			// Waiting for loading end (Fix bug when have scrollbar appear)
-			setTimeout(()=> theme.workGrid(), 1100);
+			setTimeout(()=> {
+				theme.workGrid();
+			}, 1100);
 		});
 
 		// Window Resize
