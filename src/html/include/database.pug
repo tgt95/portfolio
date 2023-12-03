@@ -1,17 +1,20 @@
 -
 	let database = {
+		"featured" : {
+			"fullName" : "Featured",
+			"data": []
+		},
 		"mobile" : {
-			"fullName" : "Mobile app",
+			"fullName" : "Mobile",
 			"data": [
 				{
 					"title":			"Weepaz — Employee Experience Enhancement",
 					"website":			"",
-					//- "website":			"https://agoyu.com/",
 					"image":			"assets/images/projects/mobile/weepaz.jpg",
 					"src":				"assets/images/projects/mobile/weepaz.jpg",
+					"position":			1,
 					"featured":			true,
 					"external":			true,
-					//- "externalURL":		"https://www.notion.so/Agoyu-e6be289682ac43ebaf22cb9d9ffd2049",
 					//- "externalURL":		"https://tgt95.notion.site/Weepaz-Employee-Experience-Enhancement-6ecb814445ff41d8bd0c7c0de3104e64",
 					"externalURL":		"https://tgt95.notion.site/Weepaz-Employee-Experience-Enhancement-V2-c64fc0c464934614805bad1f3e96f844?pvs=4",
 					"guideText":		"Show case"
@@ -19,12 +22,11 @@
 				{
 					"title":			"🦄 MoMo — Improved payment speed of Pay QR feature",
 					"website":			"",
-					//- "website":			"https://agoyu.com/",
 					"image":			"assets/images/projects/mobile/momo.jpg",
 					"src":				"assets/images/projects/mobile/momo.jpg",
+					"position":			2,
 					"featured":			true,
 					"external":			true,
-					//- "externalURL":		"https://www.notion.so/Agoyu-e6be289682ac43ebaf22cb9d9ffd2049",
 					"externalURL":		"https://tgt95.notion.site/MoMo-M-QR-Improvement-c48d1dc97a3a4568b3b24f763f0e20a4",
 					"guideText":		"Show case"
 				},
@@ -36,13 +38,12 @@
 					"src":				"assets/images/projects/mobile/agoyu-app.jpg",
 					"featured":			false,
 					"external":			true,
-					//- "externalURL":		"https://www.notion.so/Agoyu-e6be289682ac43ebaf22cb9d9ffd2049",
 					"externalURL":		"https://tgt95.notion.site/Relo-Moving-Mobile-app-b25ec2c7e9f0459496f57d7d8f36e2d4",
 					"guideText":		"Show case"
 				},
 				{
 					"title":			"Fresh & Deli — Food Ordering Application",
-					//- "website":			"https://agoyu.com/",
+					"website":			"",
 					"image":			"assets/images/projects/mobile/freshndeli.jpg",
 					"src":				"assets/images/projects/mobile/freshndeli.jpg",
 					"featured":			false,
@@ -59,16 +60,33 @@
 			]
 		},
 		"webApp" : {
-			"fullName" : "Web App",
+			"fullName" : "Web",
 			"data": [
 				{
 					"title":			"SkyPay — UX Challenge: Salary Payment by Cryptocurrencies",
 					"website":			"",
 					"image":			"assets/images/projects/web/skypay.jpg",
 					"src":				"assets/images/projects/web/skypay.jpg",
+					"position":			3,
 					"featured":			true,
 					"external":			true,
 					"externalURL":		"https://tgt95.notion.site/SkyPay-UX-Challenge-Salary-Payment-by-Cryptocurrencies-1e21d774152f4918bfdf5d2c06564184?pvs=4",
+					"guideText":		"Show case",
+				},
+			]
+		},
+		"designSystem" : {
+			"fullName" : "Design System",
+			"data": [
+				{
+					"title":			"BigIn Design System",
+					"website":			"",
+					"image":			"assets/images/projects/web/bds.jpg",
+					"src":				"assets/images/projects/web/bds.jpg",
+					"position":			4,
+					"featured":			true,
+					"external":			true,
+					"externalURL":		"https://tgt95.notion.site/BigIn-Design-System-c2a821fb51fa44b1a379e7504692fc98",
 					"guideText":		"Show case",
 				},
 			]
@@ -81,16 +99,6 @@
 					"website":			"https://citigym.com.vn",
 					"image":			"assets/images/projects/web/citigym.jpg",
 					"src":				"assets/images/projects/web/full/citigym.jpg",
-				},
-				{
-					"title":			"BigIn Design System",
-					"website":			"",
-					"image":			"assets/images/projects/web/bds.jpg",
-					"src":				"assets/images/projects/web/bds.jpg",
-					"featured":			true,
-					"external":			true,
-					"externalURL":		"https://tgt95.notion.site/BigIn-Design-System-c2a821fb51fa44b1a379e7504692fc98",
-					"guideText":		"Show case",
 				},
 				{
 					"title":			"Ayaka — Tả dành cho em bé đến Nhật bản",
@@ -230,3 +238,17 @@
 			]
 		}
 	}
+
+	//- Filter the Featured pool
+	for(let type in database) {
+		if (database[type].data.length != 0) {
+			database[type].data.forEach((item, i)=> {
+				if (database[type].data[i].featured) {
+					database.featured.data.push(item);
+				}
+			})
+		}
+	}
+
+	//- Sorting the Featured pool by Numeric
+	database.featured.data = database.featured.data.sort((a, b) => a.position - b.position)

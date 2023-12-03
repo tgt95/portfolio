@@ -271,10 +271,11 @@ var Theme = /*#__PURE__*/function () {
           return element.classList.remove('active');
         });
         $this.classList.add('active');
-        console.log(container);
         container.forEach(function (element, index) {
+          // Show Swiper navigation
+          element.querySelector('.swiper-controls').style.display = 'block'; // Remove list view property classes
+
           element.classList.remove('container');
-          element.querySelector('.swiper-controls').style.display = 'block';
         });
         row.forEach(function (element, index) {
           return element.classList.remove('row');
@@ -299,8 +300,10 @@ var Theme = /*#__PURE__*/function () {
           if (element.classList[0] == 'active') {
             var target = element.children[0].getAttribute('data-tab-target').substring(1);
             container.forEach(function (element, index) {
-              element.getAttribute('id') != target ? element.style.display = 'none' : 0;
-              element.querySelector('.swiper-controls').style.display = 'none';
+              element.getAttribute('id') != target ? element.style.display = 'none' : 0; // Hide Swiper navigation
+
+              element.querySelector('.swiper-controls').style.display = 'none'; // Add list view property classes
+
               element.classList.add('container');
               row.forEach(function (element, index) {
                 return element.classList.add('row');
@@ -308,11 +311,6 @@ var Theme = /*#__PURE__*/function () {
               item.forEach(function (element, index) {
                 return element.classList.add('col-md-6');
               });
-              debugger; // console.log(row.querySelectorAll('.slide-button-prev'));
-
-              console.log(element.querySelector('.swiper-controls')); // item.querySelectorAll('.slide-button-prev').forEach((el, i)=> {
-              // 	console.log(el);
-              // });
             });
           }
         });
@@ -445,7 +443,6 @@ var Theme = /*#__PURE__*/function () {
       document.body.style.overflow = 'hidden';
       document.body.style.display = '';
       document.body.style.backgroundColor = '';
-      console.log(document.body.style.display);
       document.body.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"page-loader\">\n\t\t\t<div class=\"loader-content\"><img class=\"logo-img\" src=\"".concat(src, "\"/>\n\t\t\t\t<div class=\"title mt-2\">").concat(des, "</div>\n\t\t\t</div>\n\t\t</div>\n\t\t"));
       var loader = document.body.querySelector('.page-loader'); // Show the loading overlay
 

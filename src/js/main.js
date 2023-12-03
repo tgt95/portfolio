@@ -265,11 +265,12 @@ class Theme {
 			switchViewButtons.forEach((element, index)=> element.classList.remove('active'));
 			$this.classList.add('active');
 
-			console.log(container);
-			
 			container.forEach((element, index)=> {
-				element.classList.remove('container')
+				// Show Swiper navigation
 				element.querySelector('.swiper-controls').style.display = 'block';
+
+				// Remove list view property classes
+				element.classList.remove('container')
 			});
 			row.forEach((element, index)=> element.classList.remove('row'));
 			item.forEach((element, index)=> element.classList.remove('col-md-6'));
@@ -293,16 +294,14 @@ class Theme {
 
 					container.forEach((element, index)=> { 
 						element.getAttribute('id') != target ? element.style.display = 'none' : 0;
+
+						// Hide Swiper navigation
 						element.querySelector('.swiper-controls').style.display = 'none';
+
+						// Add list view property classes
 						element.classList.add('container');
 						row.forEach((element, index)=> element.classList.add('row') );
 						item.forEach((element, index)=> element.classList.add('col-md-6') );
-						debugger
-						// console.log(row.querySelectorAll('.slide-button-prev'));
-						console.log(element.querySelector('.swiper-controls'));
-						// item.querySelectorAll('.slide-button-prev').forEach((el, i)=> {
-						// 	console.log(el);
-						// });
 					});
 				}
 			});
@@ -424,7 +423,6 @@ class Theme {
 		document.body.style.display 			= '';
 		document.body.style.backgroundColor 	= '';
 		
-		console.log(document.body.style.display);
 		document.body.insertAdjacentHTML('beforeend', `
 		<div class="page-loader">
 			<div class="loader-content"><img class="logo-img" src="${src}"/>

@@ -106,15 +106,15 @@ block content
 			.navigation-tabs
 				ul
 					//- li.active
-					//- 	a(href="#" data-tab-target="#category-featured") Featured
-					li.active
-						a(href="#" data-tab-target="#category-featured") 
-							i.ri-star-smile-fill(style="color: var(--yellow)")
-							|  Featured
+					//- 	a(href="#" data-tab-target="#category-featured") 
+					//- 		i.ri-star-smile-fill(style="color: var(--yellow)")
+					//- 		|  Featured
+					- databaseIndex = 0
 					each obj, name in database
-						//- - let activeClass = index === 0 ? 'active' : ''
-						//- li(class=activeClass)
-						li
+						-
+							let activeClass = databaseIndex === 0 ? 'active' : ''
+							databaseIndex = databaseIndex+1
+						li(class=activeClass)
 							a(href="#" data-tab-target=`#category-${name}`)= database[`${name}`].fullName
 				.switch-view
 					a.btn-just-icon(href="#" action="grid").active
@@ -124,29 +124,6 @@ block content
 
 
 		//- Fetch data from database
-		//- Featured
-		.swiper-container(id="category-featured")
-			.swiper-wrapper.slide-wrapper
-				each obj, name in database
-					each item, index in database[`${name}`].data
-						-
-							let isExternal = database[`${name}`].data[index].external
-							let isFeatured = database[`${name}`].data[index].featured
-						if ((typeof(isFeatured) === 'boolean') && isFeatured)
-							if ((typeof(isExternal) === 'boolean') && isExternal)
-								+galleryCard__External(item, index, `category-featured`)
-							else
-								+galleryCard__Internal(item, index, `category-featured`)
-			.container
-				.swiper-controls
-					a(href="#").btn.btn-just-icon.btn-secondary.slide-button-prev.mr-2
-						i.ri-arrow-left-s-line
-					a(href="#").btn.btn-just-icon.btn-secondary.slide-button-next
-						i.ri-arrow-right-s-line
-					.swiper-pagination
-					//- .swiper-scrollbar
-
-		//- Others project type
 		each obj, name in database
 			.swiper.swiper-container(id=`category-${name}` style="display: none;")
 				.swiper-wrapper.slide-wrapper
@@ -235,7 +212,7 @@ block script
 		let theme = new Theme(),
 			data = !{JSON.stringify(database)};
 
-		console.log(data);
+		console.log(data.featured)
 
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', e => {
