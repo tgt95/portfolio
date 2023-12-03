@@ -208,6 +208,20 @@ class Theme {
 		
 		this.animation.handShake(status);
 	}
+	testimonialsGrid(){
+		let testimonialsSlider = new Swiper('.section-testimonials .swiper-container', {
+			//- slidesPerView: 'auto',
+			keyboard: true,
+			parallax: true,
+			grabCursor: true,
+			loop: true,
+			pagination: {
+				el: ".swiper-pagination",
+				clickable: true,
+				//- dynamicBullets: true,
+			}
+		});
+	}
 	workGrid(){
 		if (window.innerWidth <= this.breakpoint.sm && !this.listView) {
 			// < 576
@@ -233,8 +247,6 @@ class Theme {
 				slidesOffsetAfter: title.getBoundingClientRect().left,
 				// mousewheel: true,
 				keyboard: true,
-				observer: true,
-				observeParents: true,
 				parallax:true,
 				pagination: {
 					// el: ".swiper-pagination",
@@ -256,7 +268,7 @@ class Theme {
 			},
 			gallerySlider 	= new Swiper('.section-work .swiper-container', setttings);
 		
-		// Grid view
+		// Click Grid view event
 		switchGirdButton.addEventListener('click', (e)=> {
 			e.preventDefault();
 
@@ -278,7 +290,7 @@ class Theme {
 			gallerySlider 	= new Swiper('.section-work .swiper-container', setttings);
 		});
 
-		// List view
+		// Click List view event
 		switchListButton.addEventListener('click', (e)=> {
 			e.preventDefault();
 
@@ -307,10 +319,7 @@ class Theme {
 			});
 		});
 		
-
-		// Cheat for open list view by default
-		trigger(switchListButton, 'click');
-
+		// Click Filter tab navigation event
 		filterButtons.forEach((element, index)=> {
 			element.addEventListener('click', (e)=> {
 				e.preventDefault();
@@ -341,6 +350,9 @@ class Theme {
 				});
 			});
 		});
+
+		// Cheat for open list view by default
+		trigger(switchListButton, 'click');
 	}
 	photoswipeInit(container, gallerys, thumbnails, database) {
 		let $pswp = document.querySelector('.pswp'),

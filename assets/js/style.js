@@ -214,6 +214,22 @@ var Theme = /*#__PURE__*/function () {
       this.animation.handShake(status);
     }
   }, {
+    key: "testimonialsGrid",
+    value: function testimonialsGrid() {
+      var testimonialsSlider = new Swiper('.section-testimonials .swiper-container', {
+        //- slidesPerView: 'auto',
+        keyboard: true,
+        parallax: true,
+        grabCursor: true,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true //- dynamicBullets: true,
+
+        }
+      });
+    }
+  }, {
     key: "workGrid",
     value: function workGrid() {
       var _this2 = this;
@@ -242,8 +258,6 @@ var Theme = /*#__PURE__*/function () {
         slidesOffsetAfter: title.getBoundingClientRect().left,
         // mousewheel: true,
         keyboard: true,
-        observer: true,
-        observeParents: true,
         parallax: true,
         pagination: {// el: ".swiper-pagination",
           // clickable: true,
@@ -262,7 +276,7 @@ var Theme = /*#__PURE__*/function () {
           }
         }
       },
-          gallerySlider = new Swiper('.section-work .swiper-container', setttings); // Grid view
+          gallerySlider = new Swiper('.section-work .swiper-container', setttings); // Click Grid view event
 
       switchGirdButton.addEventListener('click', function (e) {
         e.preventDefault();
@@ -284,7 +298,7 @@ var Theme = /*#__PURE__*/function () {
           return element.classList.remove('col-md-6');
         });
         gallerySlider = new Swiper('.section-work .swiper-container', setttings);
-      }); // List view
+      }); // Click List view event
 
       switchListButton.addEventListener('click', function (e) {
         e.preventDefault();
@@ -314,9 +328,8 @@ var Theme = /*#__PURE__*/function () {
             });
           }
         });
-      }); // Cheat for open list view by default
+      }); // Click Filter tab navigation event
 
-      trigger(switchListButton, 'click');
       filterButtons.forEach(function (element, index) {
         element.addEventListener('click', function (e) {
           e.preventDefault();
@@ -350,7 +363,9 @@ var Theme = /*#__PURE__*/function () {
             });
           });
         });
-      });
+      }); // Cheat for open list view by default
+
+      trigger(switchListButton, 'click');
     }
   }, {
     key: "photoswipeInit",

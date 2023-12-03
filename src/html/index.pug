@@ -1,7 +1,7 @@
 extends include/layout.pug
 
 block meta-title
-	title Trình Gia Tuấn | Product Designer | UX/UI | Portfolio
+	title Trình Gia Tuấn | Senior Product Designer | UX/UI | Portfolio
 
 block custom
 block page-css
@@ -30,7 +30,8 @@ block content
 				.col-md-7.col-lg-6.content-bg
 					include svg/profile-illustration.svg
 				.col-md-5.col-lg-6.content-text
-					.section-title Profile
+					.section-heading
+						.section-title Profile
 					.profile-content
 						ul
 							li
@@ -75,7 +76,8 @@ block content
 	//- Skills
 	//- section.section.section-skills
 		.container
-			.section-title.text-center Skills
+			.section-heading
+				.section-title.text-center Skills
 			.row.align-items-center.skills-content
 				-
 					let skills = [
@@ -92,17 +94,18 @@ block content
 							'icon': 'develop.svg'
 						},
 					]
-
 				each item, index in skills
 					.col-md-4.col-sm-6.item
 						.icon
-							img(src!=`assets/images/icons/${item.icon}`)/
+							img(src!=`assets/images/icons/${item.icon}`)
 						.title= item.title
+		
 
 	//- Work
 	section.section.section-work
 		.container
-			.section-title Work
+			.section-heading
+				.section-title Work
 			.navigation-tabs
 				ul
 					//- li.active
@@ -141,6 +144,46 @@ block content
 							i.ri-arrow-right-s-line
 						.swiper-pagination
 						//- .swiper-scrollbar
+
+	section.section.section-testimonials
+		.container
+			.section-heading.text-center
+				.section-title Hear the messages
+				.section-description Things that keep my colleagues love working with me 🫶
+		.container
+			.col-md-8.swiper.swiper-container.px-0
+				.swiper-wrapper.testimonials-content
+					-
+						let testimonials = [
+							{
+								'avatar': 'assets/images/testimonials/1630071259712.jpeg',
+								'message': '"Tuan is an excellent UX/UI Designer. His passion for quality and purpose behind his job shines through every interactive design he has made. He is super dedicated and always aims toward higher levels in his career. His learning mindset is amazing. He earned Rising Star and Most Dedicated awards of the company in 2 consecutive years. It would be valuable to have him in a team."',
+								'author': 'Long Van',
+								'role': 'Chief Executive Officer at BigIn',
+								'linkedin': 'https://www.linkedin.com/in/long-van?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bx7m5Uk12Sp2dlbg618KfhA%3D%3D',
+							},
+							{
+								'avatar': 'assets/images/testimonials/1545035045296.jpeg',
+								'message': '"Tuan here to speed up very fast your idea from draft to high-end design. But also input more than expected with Lean Experience for end-users"',
+								'author': 'Danh Nguyen',
+								'role': 'Head of Design at BigIn',
+								'linkedin': 'https://www.linkedin.com/in/danhnguyenhoang?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bx7m5Uk12Sp2dlbg618KfhA%3D%3D',
+							},
+						]
+
+					each item, index in testimonials
+						.swiper-slide
+							i.icon-quotes.ri-double-quotes-l(style="color: var(--gray-300);")
+							.testimonials-description= item.message
+							.testimonials-author-content
+								.testimonials-author-content-left
+									img.testimonials-author-avatar(src=item.avatar)
+								.testimonials-author-content-right
+									.testimonials-author-name= item.author
+										a(href=item.linkedin)
+											i.ri-linkedin-box-fill 
+									.testimonials-author-role= item.role
+				.swiper-pagination
 
 	//- Contact
 	section.section.section-contact.mb-0
@@ -212,7 +255,7 @@ block script
 		let theme = new Theme(),
 			data = !{JSON.stringify(database)};
 
-		console.log(data.featured)
+		//- console.log(data.featured)
 
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', e => {
@@ -222,6 +265,7 @@ block script
 			// Waiting for loading end (Fix bug when have scrollbar appear)
 			setTimeout(()=> {
 				theme.workGrid();
+				theme.testimonialsGrid();
 			}, 1100);
 		});
 

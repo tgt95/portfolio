@@ -25,7 +25,7 @@
   --google:	#dd4b39;
   --dribbble:	#ea4c89;
   --behance:	#1769ff;
-  --linkedin:	#0077B5;
+  --linkedin:	#0a66c2;
   --pinterest:	#cc2127;
   --youtube: #e52d27;
   --tumblr: #35465c;
@@ -43,7 +43,7 @@ body {
 .divider {
   width: 100%;
   height: 1px;
-  background-color: #E5E5E5;
+  background-color: #E8E8E8;
 }
 
 .page-loader {
@@ -173,11 +173,11 @@ body {
   margin-bottom: 2px;
 }
 
-.m-b-2 {
+.m-b-2, .section-testimonials .testimonials-content .testimonials-author-name {
   margin-bottom: 4px;
 }
 
-.m-b-3 {
+.m-b-3, .section-testimonials .section-title {
   margin-bottom: 8px;
 }
 
@@ -189,7 +189,7 @@ body {
   margin-bottom: 16px;
 }
 
-.m-b-6 {
+.m-b-6, .section-testimonials .testimonials-content .testimonials-description {
   margin-bottom: 20px;
 }
 
@@ -197,11 +197,11 @@ body {
   margin-bottom: 24px;
 }
 
-.m-b-8, .section-contact .content-text .title, .section-banner .content-text .title {
+.m-b-8, .section-contact .content-text .title, .section-banner .content-text .title, .section-heading {
   margin-bottom: 32px;
 }
 
-.m-b-9 {
+.m-b-9, .section-testimonials .testimonials-content .testimonials-author-content {
   margin-bottom: 40px;
 }
 
@@ -420,7 +420,7 @@ body {
   text-decoration: none;
 }
 .navigation-tabs .switch-view {
-  border-radius: 32px;
+  border-radius: 128px;
   background-color: #fdeded;
 }
 .navigation-tabs .switch-view a {
@@ -649,12 +649,15 @@ body {
   font-weight: 700;
   font-size: 40px;
   color: #EA5D5D;
-  margin-bottom: 32px;
 }
 @media (max-width: 576px) {
   .section-title {
     font-size: 32px;
   }
+}
+.section-description {
+  font-size: 16px;
+  color: #636363;
 }
 
 .section-banner {
@@ -770,7 +773,7 @@ body {
   width: 100%;
   height: 8px;
   background-color: #F4F5F9;
-  border-radius: 32px;
+  border-radius: 128px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -790,7 +793,7 @@ body {
           animation: personalityProgressText 1.5s ease infinite;
 }
 .section-profile .profile-content ul li .personality-progress .tracker {
-  border-radius: 32px;
+  border-radius: 128px;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   width: 15%;
@@ -847,7 +850,7 @@ body {
   content: "";
   width: 50%;
   height: 1px;
-  background-color: #E5E5E5;
+  background-color: #E8E8E8;
 }
 .section-skills:before {
   top: 0;
@@ -934,6 +937,75 @@ body {
     padding-top: 60px;
     padding-bottom: 60px;
   }
+}
+
+.section-testimonials {
+  padding-top: 120px;
+  position: relative;
+}
+.section-testimonials:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #E8E8E8;
+}
+.section-testimonials:before {
+  top: 0;
+  right: 0;
+}
+.section-testimonials:after {
+  bottom: 0;
+  left: 0;
+}
+.section-testimonials .testimonials-content .icon-quotes {
+  font-size: 56px;
+}
+.section-testimonials .testimonials-content .testimonials-description {
+  font-size: 20px;
+  line-height: 32px;
+}
+@media (max-width: 576px) {
+  .section-testimonials .testimonials-content .testimonials-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+.section-testimonials .testimonials-content .testimonials-author-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+.section-testimonials .testimonials-content .testimonials-author-name > a {
+  color: #0a66c2;
+  font-size: 18px;
+  vertical-align: bottom;
+  margin-left: 4px;
+}
+.section-testimonials .testimonials-content .testimonials-author-role {
+  color: #636363;
+}
+.section-testimonials .testimonials-content .testimonials-author-avatar {
+  width: 72px;
+  height: 72px;
+  border: 1px solid #E8E8E8;
+  border-radius: 128px;
+  background-color: #F4F5F9;
+}
+.section-testimonials .testimonials-content .testimonials-author-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.section-testimonials .testimonials-content .testimonials-author-content-left {
+  margin-right: 16px;
+}
+.swiper-pagination-bullet-active {
+  background: #EA5D5D;
 }
 
 @-webkit-keyframes line-blow-up {
@@ -1365,7 +1437,7 @@ body {
 .footer {
   margin-top: 16px;
   padding: 16px 0;
-  border-top: 1px solid #E5E5E5;
+  border-top: 1px solid #E8E8E8;
 }
 .footer .author-content {
   display: -webkit-box;
