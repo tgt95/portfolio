@@ -264,14 +264,14 @@ block script
 
 			// Waiting for loading end (Fix bug when have scrollbar appear)
 			setTimeout(()=> {
-				theme.workGrid();
-				theme.testimonialsGrid();
+				theme.workSwiper();
+				theme.testimonialSwiper();
 			}, 1100);
 		});
 
 		// Window Resize
 		window.addEventListener('resize', e => {
-			!detectMobile.isMobile ? theme.workGrid() : 0;
+			!detectMobile.isMobile ? theme.workSwiper() : 0;
 		}, true);
 
 		//- new Date().getHours() >= 19 ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');

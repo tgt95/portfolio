@@ -91,7 +91,7 @@ class Theme {
 
 		hello.paragraph = {
 			text_1 : `Hello everyone!`,
-			text_2 : `I'm a Product Designer`,
+			text_2 : `I'm a Senior Product Designer`,
 			text_3 : `based in HCMC,VN`,
 		}
 		
@@ -208,13 +208,14 @@ class Theme {
 		
 		this.animation.handShake(status);
 	}
-	testimonialsGrid(){
+	testimonialSwiper(){
 		let testimonialsSlider = new Swiper('.section-testimonials .swiper-container', {
-			//- slidesPerView: 'auto',
+			mousewheel: true,
 			keyboard: true,
 			parallax: true,
 			grabCursor: true,
 			loop: true,
+			speed: 600,
 			pagination: {
 				el: ".swiper-pagination",
 				clickable: true,
@@ -222,7 +223,7 @@ class Theme {
 			}
 		});
 	}
-	workGrid(){
+	workSwiper(){
 		if (window.innerWidth <= this.breakpoint.sm && !this.listView) {
 			// < 576
 			document.querySelectorAll('.section-work .item').forEach((el, i)=> {

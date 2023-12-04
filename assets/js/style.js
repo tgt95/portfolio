@@ -106,7 +106,7 @@ var Theme = /*#__PURE__*/function () {
       });
       hello.paragraph = {
         text_1: "Hello everyone!",
-        text_2: "I'm a Product Designer",
+        text_2: "I'm a Senior Product Designer",
         text_3: "based in HCMC,VN"
       };
       hello.pauseFor(2200) // .typeString(hello.paragraph.text_1)
@@ -214,14 +214,15 @@ var Theme = /*#__PURE__*/function () {
       this.animation.handShake(status);
     }
   }, {
-    key: "testimonialsGrid",
-    value: function testimonialsGrid() {
+    key: "testimonialSwiper",
+    value: function testimonialSwiper() {
       var testimonialsSlider = new Swiper('.section-testimonials .swiper-container', {
-        //- slidesPerView: 'auto',
+        mousewheel: true,
         keyboard: true,
         parallax: true,
         grabCursor: true,
         loop: true,
+        speed: 600,
         pagination: {
           el: ".swiper-pagination",
           clickable: true //- dynamicBullets: true,
@@ -230,8 +231,8 @@ var Theme = /*#__PURE__*/function () {
       });
     }
   }, {
-    key: "workGrid",
-    value: function workGrid() {
+    key: "workSwiper",
+    value: function workSwiper() {
       var _this2 = this;
 
       if (window.innerWidth <= this.breakpoint.sm && !this.listView) {
