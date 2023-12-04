@@ -14,12 +14,12 @@
         flex-wrap: wrap;
         li{
             &:not(:last-child){
-                margin-right: 32px;
+                margin-right: $space-l;
             }
             a{
-                font-size: $h6;
+                font-size: $body-large;
                 font-weight: 600;
-                color: $gray-900;
+                color: $neutral-900;
                 border-bottom: 2px solid transparent;
                 transition: border .3s ease, color .3s ease;
                 text-decoration: none;
@@ -34,12 +34,12 @@
         }
     }
     .switch-view{
-        border-radius: $border-rounded;
+        border-radius: $radius-rounded;
         background-color: lighten($brand, 32%);
         a{
             @include btn;
             @include btn-md;
-            color: $gray-800;
+            color: $neutral-800;
             position: relative;
             &:before{
                 content: "";

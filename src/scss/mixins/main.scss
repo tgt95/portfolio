@@ -11,7 +11,7 @@
     cursor: pointer;
     text-decoration: none;
     transition: all .3s ease;
-    border-radius: $border-theme;
+    border-radius: $radius-xs;
     &:hover, &:focus, &:active, &.active{
         text-decoration: none;
     }
@@ -24,7 +24,7 @@
 // Sizes
 @mixin btn-md {
     >i{
-        font-size: 20px;
+        font-size: $h5;
     }
     &.btn-just-icon{
         width: $input-height-md;
@@ -72,7 +72,7 @@
     }
 }
 @mixin btn-ghost {
-    color: $gray-900;
+    color: $neutral-900;
     background-color: transparent;
     &:hover{
         color: $brand;

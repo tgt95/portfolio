@@ -1,105 +1,123 @@
 // Colors
-$brand: 						#EA5D5D 				!default;
-$brand-bg: 						#FFFAFA 				!default;
+$brand: 						    #EA5D5D                       !default;
+$brand-bg: 						    #FFFAFA                       !default;
 
 // Semantic
-$blue: 							#1896FF 				!default;
-$green: 						#7AD610 				!default;
-$orange: 						#FFA65E 				!default;
-$red: 							#FF5E5E 				!default;
-$yellow: 						#FFD836 				!default;
+$blue: 							    #1896FF                       !default;
+$green: 						    #7AD610                       !default;
+$orange: 						    #FFA65E                       !default;
+$red: 							    #FF5E5E                       !default;
+$yellow: 						    #FFD836                       !default;
 
 
 // Neutral
-$gray-900: 						#454545 				!default;
-$gray-800: 						#636363 				!default;
-$gray-700: 						#828282 				!default;
-$gray-600: 						#969696 				!default;
-$gray-500: 						#ABABAB 				!default;
-$gray-400: 						#BFBFBF 				!default;
-$gray-300: 						#D4D4D4 				!default;
-$gray-200: 						#E8E8E8 				!default;
-$gray-100: 						#F4F5F9 				!default;
-$gray-90: 						#F4F6FA 				!default;
-$gray-75: 						#F9FAFC 				!default;
-$gray-50: 						#FAFBFF 				!default;
+$neutral-900:                           #454545                       !default;
+$neutral-800:                           #636363                       !default;
+$neutral-700:                           #828282                       !default;
+$neutral-600:                           #969696                       !default;
+$neutral-500:                           #ABABAB                       !default;
+$neutral-400:                           #BFBFBF                       !default;
+$neutral-300:                           #D4D4D4                       !default;
+$neutral-200:                           #E8E8E8                       !default;
+$neutral-100:                           #F4F5F9                       !default;
+$neutral-90:                            #F4F6FA                       !default;
+$neutral-75:                            #F9FAFC                       !default;
+$neutral-50:                            #FAFBFF                       !default;
 
+// Canvas
+$canvas-1:                              white                           !default;
+$canvas-2:                              #f3f6f8                         !default;
 
+// Border
+$border-color:                          $neutral-200                    !default;
+
+// |----- Typography -------------------------------------------------------|
 // Heading
-$h1: 							40px					!default;
-$h2: 							32px					!default;
-$h3: 							28px					!default;
-$h4: 							24px					!default;
-$h5: 							20px					!default;
-$h6: 							16px					!default;
+$h1:                                    40px                            !default;
+$h2:                                    32px                            !default;
+$h3:                                    28px                            !default;
+$h4:                                    24px                            !default;
+$h5:                                    20px                            !default;
+$h6:                                    18px                            !default;
+
+// Body
+$body-medium:                           14px                        !default;
+$body-small:                            12px                        !default;
+$body-large:                            16px                        !default;
+
+// Display
+$display-1:                             96px                        !default;
+$display-2:                             64px                        !default;
+$display-3:                             48px                        !default;
 
 
 // Social
-$twitter: 						#55acee					!default;
-$facebook: 						#4466ae					!default;
-$google: 						#dd4b39					!default;
-$dribbble: 						#ea4c89					!default;
-$behance: 						#1769ff					!default;
-$linkedin: 						#0a66c2					!default;
-$pinterest: 					#cc2127					!default;
-$youtube: 						#e52d27					!default;
-$tumblr: 						#35465c					!default;
-$github-alt: 					#333333					!default;
-$reddit: 						#ff4500					!default;
-$skype: 						#00aff0					!default;
-
-// Body Background
-$bg-body: #f3f6f8;
+$twitter: 						        #55acee					!default;
+$facebook: 						        #4466ae					!default;
+$google: 						        #dd4b39					!default;
+$dribbble: 						        #ea4c89					!default;
+$behance: 						        #1769ff					!default;
+$linkedin: 						        #0a66c2					!default;
+$pinterest: 					        #cc2127					!default;
+$youtube: 						        #e52d27					!default;
+$tumblr: 						        #35465c					!default;
+$github-alt: 					        #333333					!default;
+$reddit: 						        #ff4500					!default;
+$skype: 						        #00aff0					!default;
 
 
-// Border
-$border-theme:                  12px        			!default;
-$border-rounded:                128px        			!default;
-$border-color:                  $gray-200     			!default;
+// Radius
+$radius-4-xs:                           2px                         !default;
+$radius-3-xs:                           4px                         !default;
+$radius-2-xs:                           8px                         !default;
+$radius-xs:                             12px        			    !default;
+$radius-s:                              16px                        !default;
+$radius-m:                              24px                        !default;
+$radius-l:                              32px                        !default;
+$radius-xl:                             40px                        !default;
+$radius-rounded:                        128px        			    !default;
+
+
 // $border-input:                	#ced4da     			!default;
 
 // Input
-$input-height-sm:				32px					!default;
-$input-height-md:				40px				    !default;
-$input-height-lg:				48px					!default;
-$input-border-color:			$border-color			!default;
+$input-height-sm:				        32px					    !default;
+$input-height-md:				        40px				        !default;
+$input-height-lg:				        48px					    !default;
+$input-border-color:			        $border-color			    !default;
 
 // $input-bg:                		white					!default;
-// $input-color:                	$gray-900					!default;
+// $input-color:                	$neutral-900					!default;
 // $input-color-active:			$brand					!default;
 
-// $input-placeholder:				$neutral-2					!default;
+// $input-placeholder:				$neutral--2					!default;
 
-// $input-disabled:				$neutral-2					!default;
-// $input-disabled-bg:				$neutral-4					!default;
+// $input-disabled:				$neutral--2					!default;
+// $input-disabled-bg:				$neutral--4					!default;
 
-$space-4-xs :                   2px;
-$space-3-xs :                   4px;
-$space-2-xs :                   8px;
-$space-xs :                     12px;
-$space-s :                      16px;
-$space-m :                      24px;
-$space-l :                      32px;
-$space-xl :                     40px;
-$space-2-xl :                   48px;
-$space-3-xl :                   56px;
-$space-4-xl :                   64px;
-$space-5-xl :                   72px;
+$space-4-xs:                            2px;
+$space-3-xs:                            4px;
+$space-2-xs:                            8px;
+$space-xs:                              12px;
+$space-s:                               16px;
+$space-m:                               24px;
+$space-l:                               32px;
+$space-xl:                              40px;
+$space-2-xl:                            48px;
+$space-3-xl:                            56px;
+$space-4-xl:                            64px;
+$space-5-xl:                            72px;
 
 
 // Checkbox & Radio
 $custom-control-size: 20px;
 
+// Shadow
+$level-1:                       0 0 10.28px 1.72px rgba(0,0,0,.03);
+
 // Fonts
-// @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap);
-// $font-primary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-
-// @import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap);
-// $font-primary: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-
 @import url(https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap);
 $font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-$font-base: 14px;
 
 
 :root{
@@ -112,18 +130,18 @@ $font-base: 14px;
     --red: 					        #{$red};
     --yellow: 					    #{$yellow};
 
-    --gray-900:                    #{$gray-900};
-    --gray-800:                    #{$gray-800};
-    --gray-700:                    #{$gray-700};
-    --gray-600:                    #{$gray-600};
-    --gray-500:                    #{$gray-500};
-    --gray-400:                    #{$gray-400};
-    --gray-300:                    #{$gray-300};
-    --gray-200:                    #{$gray-200};
-    --gray-100:                    #{$gray-100};
-    --gray-90:                     #{$gray-90};
-    --gray-75:                     #{$gray-75};
-    --gray-50:                     #{$gray-50};
+    --neutral-900:                    #{$neutral-900};
+    --neutral-800:                    #{$neutral-800};
+    --neutral-700:                    #{$neutral-700};
+    --neutral-600:                    #{$neutral-600};
+    --neutral-500:                    #{$neutral-500};
+    --neutral-400:                    #{$neutral-400};
+    --neutral-300:                    #{$neutral-300};
+    --neutral-200:                    #{$neutral-200};
+    --neutral-100:                    #{$neutral-100};
+    --neutral-90:                     #{$neutral-90};
+    --neutral-75:                     #{$neutral-75};
+    --neutral-50:                     #{$neutral-50};
 
     // Social
     --twitter: 						#{$twitter};
@@ -138,4 +156,11 @@ $font-base: 14px;
     --github-alt: 					#{$github-alt};
     --reddit: 					    #{$reddit};
     --skype: 					    #{$skype};
+
+    --h1:                           #{$h1};
+    --h2:                           #{$h2};
+    --h3:                           #{$h3};
+    --h4:                           #{$h4};
+    --h5:                           #{$h5};
+    --h6:                           #{$h6};
 }
