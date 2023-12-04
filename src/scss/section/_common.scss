@@ -4,12 +4,12 @@
 		margin-bottom: 60px;
 	}
 	&-heading{
-		@extend .m-b-8;
+		margin-bottom: $space-l;
 	}
 	&-title{
 		font-weight: 700;
 		font-size: $h1;
-		color: $brand;
+		color: $neutral-900;
 		@media (max-width: 576px) {
 			font-size: $h2;
 		}
@@ -146,7 +146,7 @@
 						border-radius: $radius-rounded;
 						@include flex-center-y;
 						.emoji{
-							font-size: 24px;
+							font-size: $h4;
 							line-height: 24px;
 							transform: translateX(-8px);
 							animation: personalityProgressText 1.5s ease infinite;
@@ -191,7 +191,7 @@
 	@media (max-width: 576px) {
 		.content-text{
 			order: 0;
-			margin-bottom: 32px;
+			margin-bottom: $space-l;
 		}
 		.content-bg{
 			order: 1;
@@ -226,14 +226,14 @@
 			.icon{
 				width: 128px;
 				height: 128px;
-				padding: 32px;
-				border-radius: 50%;
+				padding: $space-l;
+				border-radius: $radius-rounded;
 				margin: 0 auto;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				@include main-gradient;
-				margin-bottom: 24px;
+				margin-bottom: $space-m;
 				position: relative;
 				&:after{
 					content: '';
@@ -243,7 +243,7 @@
 					bottom: 0;
 					right: 0;
 					animation: line-blow-up 3s ease infinite;
-					border-radius: 50%;
+					border-radius: $radius-rounded;
 					border: 1px solid rgba($brand, .2);
 				}
 				img{
@@ -261,7 +261,7 @@
 			    .icon{
 					width: 64px;
 					height: 64px;
-					margin-bottom: 16px;
+					margin-bottom: $space-s;
 					img{
 					    width: 32px;
 					}
@@ -276,7 +276,7 @@
 		.skills-content{
 			justify-content: center;
 			.item{
-				margin-bottom: 24px;
+				margin-bottom: $space-m;
 			}
 		}
 	}
@@ -289,7 +289,7 @@
 // Work
 .section-work{
 	.slide-wrapper{
-		padding: 32px 0;
+		padding: $space-l 0;
 		transition: all .3s ease;
 		&.row{
 			width: initial;
@@ -303,7 +303,7 @@
 		display: flex;
 		.slide-button-prev, .slide-button-next{
 			>i{
-				font-size: 32px;
+				font-size: $h2;
 			}
 			&.swiper-button-disabled{
 				opacity: 0.5;
@@ -373,7 +373,7 @@
 				text-decoration: none;
 				border-radius: $radius-xs;
 				.icon{
-					font-size: 64px;
+					font-size: $display-2;
 					color: white;
 				}
 				.text{
@@ -403,8 +403,8 @@
 				width: 100%;
 				li{
 					width: calc(50% - 24px);
-					margin-right: 24px;
-					margin-bottom: 16px;
+					margin-right: $space-m;
+					margin-bottom: $space-s;
 				}
 				li:first-child{
 					width: 100%;
@@ -481,7 +481,7 @@
 				@include flex-center-y;
 				@extend .m-b-9;
 				&-left{
-					margin-right: 16px;
+					margin-right: $space-s;
 				}
 				&-right{
 					

@@ -71,6 +71,14 @@
         background-color: $brand;
     }
 }
+@mixin btn-default {
+    color: $neutral-900;
+    background-color: $neutral-200;
+    &:hover, &:focus, &:active, &.active{
+        color: $neutral-900;;
+        background-color: $neutral-300;
+    }
+}
 @mixin btn-ghost {
     color: $neutral-900;
     background-color: transparent;
