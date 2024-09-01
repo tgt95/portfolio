@@ -77,13 +77,16 @@ $radius-l:                              32px                        !default;
 $radius-xl:                             40px                        !default;
 $radius-rounded:                        128px        			    !default;
 
+// Global UI control
+$ui-size-md:                            40px				        !default;
+$ui-size-lg:                            48px				        !default;
 
 // $border-input:                	#ced4da     			!default;
 
 // Input
 $input-height-sm:				        32px					    !default;
-$input-height-md:				        40px				        !default;
-$input-height-lg:				        48px					    !default;
+$input-height-md:				        $ui-size-md;
+$input-height-lg:				        $ui-size-lg;
 $input-border-color:			        $border-color			    !default;
 
 // $input-bg:                		white					!default;
@@ -132,18 +135,18 @@ $font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI
     --red: 					        #{$red};
     --yellow: 					    #{$yellow};
 
-    --neutral-900:                    #{$neutral-900};
-    --neutral-800:                    #{$neutral-800};
-    --neutral-700:                    #{$neutral-700};
-    --neutral-600:                    #{$neutral-600};
-    --neutral-500:                    #{$neutral-500};
-    --neutral-400:                    #{$neutral-400};
-    --neutral-300:                    #{$neutral-300};
-    --neutral-200:                    #{$neutral-200};
-    --neutral-100:                    #{$neutral-100};
-    --neutral-90:                     #{$neutral-90};
-    --neutral-75:                     #{$neutral-75};
-    --neutral-50:                     #{$neutral-50};
+    --neutral-900:                  #{$neutral-900};
+    --neutral-800:                  #{$neutral-800};
+    --neutral-700:                  #{$neutral-700};
+    --neutral-600:                  #{$neutral-600};
+    --neutral-500:                  #{$neutral-500};
+    --neutral-400:                  #{$neutral-400};
+    --neutral-300:                  #{$neutral-300};
+    --neutral-200:                  #{$neutral-200};
+    --neutral-100:                  #{$neutral-100};
+    --neutral-90:                   #{$neutral-90};
+    --neutral-75:                   #{$neutral-75};
+    --neutral-50:                   #{$neutral-50};
 
     // Social
     --twitter: 						#{$twitter};
@@ -170,11 +173,38 @@ $font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI
     --fg-subtle:                    #{$neutral-800};
     --fg-subtlest:                  #{$neutral-700};
     --fg-disabled:                  #{$neutral-500};
+    --fg-decor:                     #{$neutral-300};
     --fg-inverse:                   #{white};
 
-    --fg-brand-rest:                #{$brand};
-    --fg-brand-hover:               #{$brand};
+    --fg-brand:                     #{$brand};
+    // --fg-brand-light:               #{$brand};
+    // --fg-brand-strong:              #{$brand};
 
-    --surface-1:                  #{$surface-1};
-    --surface-2:                  #{$surface-2};
+
+    // --bg-neutral:                   #{$brand};
+    // --bg-neutral-hover:             #{darken($brand, 5%)};
+    // --bg-neutral-pressed:           #{darken($brand, 10%)};
+
+
+    --bg-brand:                     #{$brand};
+    --bg-brand-hover:               #{darken($brand, 5%)};
+    --bg-brand-pressed:             #{darken($brand, 10%)};
+
+    --bg-secondary:                 #{lighten($brand, 32%)};
+    --bg-secondary-hover:           #{$brand};
+    --bg-secondary-pressed:         #{darken($brand, 5%)};
+
+    --bg-ghost-brand:               #{transparent};
+    --bg-ghost-brand-hover:         #{lighten($brand, 30%)};
+    --bg-ghost-brand-pressed:       #{lighten($brand, 26%)};
+
+    --bg-ghost-neutral:             #{$neutral-100};
+    --bg-ghost-neutral-hover:       #{$neutral-200};
+    --bg-ghost-neutral-pressed:     #{$neutral-300};
+
+    --surface-1:                    #{$surface-1};
+    --surface-2:                    #{$surface-2};
+
+    --border-light:                 #{$border-color};
+    --border-strong:                #{$neutral-300};
 }

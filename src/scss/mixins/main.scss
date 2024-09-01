@@ -1,5 +1,5 @@
 @mixin main-gradient{
-    background-image: linear-gradient(to right, #fff7f7 0%, #ffc3bf 100%);
+    background-image: linear-gradient(to right, white 0%, #ffc3bf 100%);
 }
 
 // Button
@@ -27,13 +27,13 @@
         font-size: $h5;
     }
     &.btn-just-icon{
-        width: $input-height-md;
-        height: $input-height-md;
+        width: $ui-size-md;
+        height: $ui-size-md;
         padding: $space-s;
     }
     &:not(.btn-just-icon){
         padding: 0 $space-s;
-        line-height: $input-height-md;
+        line-height: $ui-size-md;
     }
     &:not(.icon-right):not(.btn-just-icon){
         >i{
@@ -49,33 +49,37 @@
     }
 }
 @mixin btn-lg {
-    line-height: $input-height-lg;
+    line-height: $ui-size-lg;
     padding: 0 $space-m;
 }
 
 // Variant
 @mixin btn-brand {
     color: var(--fg-inverse);
-    background-color: $brand;
+    background-color: var(--bg-brand);
     box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
-    &:hover, &:focus, &:active, &.active{
+    &:hover{
         color: var(--fg-inverse);
-        background-color: darken($brand, 5%);
+        background-color: var(--bg-brand-hover);
+    }
+    &:focus, &:active, &.active{
+        color: var(--fg-inverse);
+        background-color: var(--bg-brand-pressed);
     }
 }
 @mixin btn-secondary {
-    color: $brand;
-    background-color: lighten($brand, 32%);
+    color: var(--fg-brand);;
+    background-color: var(--bg-secondary);
     &:hover, &:focus, &:active, &.active{
         color: var(--fg-inverse);
-        background-color: $brand;
+        background-color: var(--bg-secondary-hover);
     }
 }
 @mixin btn-default {
     color: var(--fg-main);
     background-color: $neutral-200;
     &:hover, &:focus, &:active, &.active{
-        color: var(--fg-main);;
+        color: var(--fg-main);
         background-color: $neutral-300;
     }
 }
@@ -83,23 +87,38 @@
     color: var(--fg-main);
     background-color: transparent;
     &:hover{
-        color: $brand;
-        background-color: lighten($brand, 30%);
+        color: var(--fg-brand);
+        background-color: var(--bg-ghost-brand-hover);
     }
     &:focus, &:active, &.active{
-        color: $brand;
-        background-color: lighten($brand, 26%);
+        color: var(--fg-brand);
+        background-color: var(--bg-ghost-brand-pressed);
     }
 }
 @mixin btn-ghost-brand {
-    color: $brand;
-    background-color: transparent;
+    color: var(--fg-brand);
+    background-color: var(--bg-ghost-brand);
     &:hover{
-        color: $brand;
-        background-color: lighten($brand, 30%);
+        color: var(--fg-brand);
+        background-color: var(--bg-ghost-brand-hover);
     }
     &:focus, &:active, &.active{
-        color: $brand;
-        background-color: lighten($brand, 26%);
+        color: var(--fg-brand);
+        background-color: var(--bg-ghost-brand-pressed);
+    }
+}
+@mixin btn-outline {
+    color: var(--fg-main);
+    background-color: white;
+    border: 1px solid var(--border-light);
+    &:hover{
+        color: var(--fg-main);
+        background-color: var(--bg-ghost-neutral-hover);
+        border: 1px solid var(--border-light);
+    }
+    &:focus, &:active, &.active{
+        color: var(--fg-main);
+        background-color: var(--bg-ghost-neutral-pressed);
+        border: 1px solid var(--border-light);
     }
 }
