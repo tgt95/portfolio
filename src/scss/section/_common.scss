@@ -119,7 +119,7 @@
 					}
 				}
 				&:not(:last-child){
-					margin-bottom: 24px;
+					margin-bottom: $space-m;
 				}
 				&.divider{
 					@media (min-width: 415px) {
@@ -180,7 +180,7 @@
 			}
 		}
 		a{
-			color: $neutral-900;
+			color: var(--fg-main);
 		}
 	}
 	@media (max-width: 991px) {
@@ -330,7 +330,7 @@
 				margin-right: $space-3-xs;
 			}
 			a{
-				color: $neutral-900;
+				color: var(--fg-main);
 				text-decoration: underline;
 				transition: all .3s ease;
 				&:hover{
@@ -374,12 +374,12 @@
 				border-radius: $radius-xs;
 				.icon{
 					font-size: $display-2;
-					color: white;
+					color: var(--fg-inverse);
 				}
 				.text{
 					font-size: $body-large;
 					font-weight: 600;
-					color: white;
+					color: var(--fg-inverse);
 				}
 			}
 		}

@@ -55,11 +55,11 @@
 
 // Variant
 @mixin btn-brand {
-    color: white;
+    color: var(--fg-inverse);
     background-color: $brand;
     box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
     &:hover, &:focus, &:active, &.active{
-        color: white;
+        color: var(--fg-inverse);
         background-color: darken($brand, 5%);
     }
 }
@@ -67,20 +67,20 @@
     color: $brand;
     background-color: lighten($brand, 32%);
     &:hover, &:focus, &:active, &.active{
-        color: white;
+        color: var(--fg-inverse);
         background-color: $brand;
     }
 }
 @mixin btn-default {
-    color: $neutral-900;
+    color: var(--fg-main);
     background-color: $neutral-200;
     &:hover, &:focus, &:active, &.active{
-        color: $neutral-900;;
+        color: var(--fg-main);;
         background-color: $neutral-300;
     }
 }
 @mixin btn-ghost {
-    color: $neutral-900;
+    color: var(--fg-main);
     background-color: transparent;
     &:hover{
         color: $brand;

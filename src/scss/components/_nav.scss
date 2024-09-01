@@ -19,7 +19,7 @@
             a{
                 font-size: $body-large;
                 font-weight: 600;
-                color: $neutral-900;
+                color: var(--fg-main);
                 border-bottom: 2px solid transparent;
                 transition: border .3s ease, color .3s ease;
                 text-decoration: none;

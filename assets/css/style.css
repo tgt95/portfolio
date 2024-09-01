@@ -38,12 +38,22 @@
   --h4: 24px;
   --h5: 20px;
   --h6: 18px;
+  --fg-main: #454545;
+  --fg-subtle: #636363;
+  --fg-subtlest: #828282;
+  --fg-disabled: #ABABAB;
+  --fg-inverse: white;
+  --fg-brand-rest: #EA5D5D;
+  --fg-brand-hover: #EA5D5D;
+  --surface-1: white;
+  --surface-2: #FAFBFF;
 }
 
 body {
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  color: #454545;
+  color: var(--fg-main);
   font-size: 14px;
+  background-color: var(--surface-1);
 }
 
 .divider {
@@ -79,7 +89,7 @@ body {
 .page-loader .loader-content .title {
   -webkit-animation: flash 3s ease infinite;
           animation: flash 3s ease infinite;
-  color: white;
+  color: var(--fg-inverse);
   font-weight: 600;
   font-size: 18px;
 }
@@ -325,12 +335,12 @@ body {
 }
 
 .btn-brand {
-  color: white;
+  color: var(--fg-inverse);
   background-color: #EA5D5D;
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
 }
 .btn-brand:hover, .btn-brand:focus, .btn-brand:active, .btn-brand.active {
-  color: white;
+  color: var(--fg-inverse);
   background-color: #e74646;
 }
 
@@ -339,21 +349,21 @@ body {
   background-color: #fdeded;
 }
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active {
-  color: white;
+  color: var(--fg-inverse);
   background-color: #EA5D5D;
 }
 
 .btn-default {
-  color: #454545;
+  color: var(--fg-main);
   background-color: #E8E8E8;
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
-  color: #454545;
+  color: var(--fg-main);
   background-color: #D4D4D4;
 }
 
 .btn-ghost {
-  color: #454545;
+  color: var(--fg-main);
   background-color: transparent;
 }
 .btn-ghost:hover {
@@ -423,7 +433,7 @@ body {
 .navigation-tabs ul li a {
   font-size: 16px;
   font-weight: 600;
-  color: #454545;
+  color: var(--fg-main);
   border-bottom: 2px solid transparent;
   -webkit-transition: border 0.3s ease, color 0.3s ease;
   transition: border 0.3s ease, color 0.3s ease;
@@ -835,7 +845,7 @@ body {
   font-weight: 600;
 }
 .section-profile .profile-content a {
-  color: #454545;
+  color: var(--fg-main);
 }
 @media (max-width: 991px) {
   .section-profile svg {
@@ -1002,7 +1012,7 @@ body {
   margin-right: 4px;
 }
 .section-work .item > .url-link a {
-  color: #454545;
+  color: var(--fg-main);
   text-decoration: underline;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -1061,12 +1071,12 @@ body {
 }
 .section-work .item > .item-thumbnail .overlay-content .icon {
   font-size: 64px;
-  color: white;
+  color: var(--fg-inverse);
 }
 .section-work .item > .item-thumbnail .overlay-content .text {
   font-size: 16px;
   font-weight: 600;
-  color: white;
+  color: var(--fg-inverse);
 }
 .section-work .item:hover .item-thumbnail .overlay-content {
   visibility: visible;

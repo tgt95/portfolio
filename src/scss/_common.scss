@@ -1,7 +1,8 @@
 body{
 	font-family: $font-primary;
-	color: $neutral-900;
+	color: var(--fg-main);
 	font-size: $body-medium;
+	background-color: var(--surface-1);
 }
 
 .divider{
@@ -27,7 +28,7 @@ body{
 		text-align: center;
 		.title{
 			animation: flash 3s ease infinite;
-			color: white;
+			color: var(--fg-inverse);
 			font-weight: 600;
 			font-size: 18px;
 		}
