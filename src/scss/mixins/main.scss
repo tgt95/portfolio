@@ -37,13 +37,13 @@
     }
     &:not(.icon-right):not(.btn-just-icon){
         >i{
-            margin-right: $space-2-xs;
+            margin-right: $space-xs-2;
         }
     }
     &.icon-right{
         :not(.btn-just-icon){
             >i{
-                margin-left: $space-2-xs;
+                margin-left: $space-xs-2;
             }
         }
     }
@@ -54,10 +54,9 @@
 }
 
 // Variant
-@mixin btn-brand {
+@mixin btn-primary {
     color: var(--fg-inverse);
     background-color: var(--bg-brand);
-    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
     &:hover{
         color: var(--fg-inverse);
         background-color: var(--bg-brand-hover);
@@ -70,29 +69,37 @@
 @mixin btn-secondary {
     color: var(--fg-brand);;
     background-color: var(--bg-secondary);
-    &:hover, &:focus, &:active, &.active{
+    &:hover{
         color: var(--fg-inverse);
         background-color: var(--bg-secondary-hover);
+    }
+    &:focus, &:active, &.active{
+        color: var(--fg-inverse);
+        background-color: var(--bg-secondary-pressed);
     }
 }
 @mixin btn-default {
     color: var(--fg-main);
-    background-color: $neutral-200;
-    &:hover, &:focus, &:active, &.active{
+    background-color: var(--bg-neutral);
+    &:hover{
         color: var(--fg-main);
-        background-color: $neutral-300;
+        background-color: var(--bg-neutral-hover);
+    }
+    &:focus, &:active, &.active{
+        color: var(--fg-main);
+        background-color: var(--bg-neutral-hover);
     }
 }
 @mixin btn-ghost {
     color: var(--fg-main);
     background-color: transparent;
     &:hover{
-        color: var(--fg-brand);
-        background-color: var(--bg-ghost-brand-hover);
+        color: var(--fg-main);
+        background-color: var(--bg-ghost-neutral-hover);
     }
     &:focus, &:active, &.active{
-        color: var(--fg-brand);
-        background-color: var(--bg-ghost-brand-pressed);
+        color: var(--fg-main);
+        background-color: var(--bg-ghost-neutral-pressed);
     }
 }
 @mixin btn-ghost-brand {
@@ -103,7 +110,7 @@
         background-color: var(--bg-ghost-brand-hover);
     }
     &:focus, &:active, &.active{
-        color: var(--fg-brand);
+        color: var(--fg-brand-strong);
         background-color: var(--bg-ghost-brand-pressed);
     }
 }

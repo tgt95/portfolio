@@ -1,15 +1,15 @@
 .section{
-	margin-bottom: 120px;
+	margin-bottom: var(--section-margin-web);
 	@media (max-width: 576px) {
-		margin-bottom: 60px;
+		margin-bottom: var(--section-margin-mobile);
 	}
 	&-heading{
-		margin-bottom: $space-l;
+		margin-bottom: var(--section-title-marign);
 	}
 	&-title{
 		font-weight: 700;
-		font-size: $h1;
-		color: $brand;
+		font-size: var(--h1);
+		color: var(--fg-brand);
 		@media (max-width: 576px) {
 			font-size: $h2;
 		}
@@ -17,6 +17,26 @@
 	&-description{
 		font-size: $body-large;
 		color: $neutral-800;
+	}
+	&.has-divider{
+		padding-top: var(--section-margin-web);
+		// // padding-bottom: var(--section-margin-web);
+		position: relative;
+		&:before{
+			position: absolute;
+			content: '';
+			width: 100%;
+			height: 1px;
+			background-color: var(--border-light);
+		}
+		&:before{
+			top: 0;
+			right: 0;
+		}
+		&:after{
+			bottom: 0;
+			left: 0;
+		}
 	}
 }
 
@@ -31,15 +51,15 @@
 	.content-text{
 		z-index: 999;
 		.title{
-			font-size: $h1;
+			font-size: var(--h1);
 			font-weight: 700;
-			color: $brand;
+			color: var(--fg-brand);
 			@extend .m-b-8;
 			@media (max-width: 576px) {
 				font-size: $h2;
 			}
 			a{
-				color: $brand;
+				color: var(--fg-brand);
 				text-decoration: underline;
 			}
 		}
@@ -142,11 +162,11 @@
 						position: relative;
 						width: 100%;
 						height: 8px;
-						background-color: $neutral-100;
+						background-color: var(--bg-neutral);
 						border-radius: $radius-rounded;
 						@include flex-center-y;
 						.emoji{
-							font-size: $h4;
+							font-size: var(--h4);
 							line-height: 24px;
 							transform: translateX(-8px);
 							animation: personalityProgressText 1.5s ease infinite;
@@ -202,8 +222,8 @@
 
 // Skills
 .section-skills{
-	padding-top: 120px;
-	padding-bottom: 120px;
+	padding-top: var(--section-margin-web);
+	padding-bottom: var(--section-margin-web);
 	position: relative;
 	&:before, &:after{
 		position: absolute;
@@ -281,8 +301,8 @@
 		}
 	}
 	@media (max-width: 576px) {
-		padding-top: 60px;
-		padding-bottom: 60px;
+		padding-top: var(--section-margin-mobile);
+		padding-bottom: var(--section-margin-mobile);
 	}
 }
 
@@ -327,14 +347,14 @@
 				vertical-align: middle;
 			}
 			.icon{
-				margin-right: $space-3-xs;
+				margin-right: $space-xs-3;
 			}
 			a{
 				color: var(--fg-main);
 				text-decoration: underline;
 				transition: all .3s ease;
 				&:hover{
-					color: $brand;
+					color: var(--fg-brand);
 				}
 			}
 		}
@@ -416,24 +436,6 @@
 
 // Testimonials
 .section-testimonials{
-	padding-top: 120px;
-	// // padding-bottom: 120px;
-	position: relative;
-	&:before{
-		position: absolute;
-		content: '';
-		width: 100%;
-		height: 1px;
-		background-color: var(--border-light);
-	}
-	&:before{
-		top: 0;
-		right: 0;
-	}
-	&:after{
-		bottom: 0;
-		left: 0;
-	}
 	.testimonials-content{
 		.icon-quotes{
 			font-size: 56px;
@@ -452,14 +454,14 @@
 				@include flex-center-y;
 				font-size: $h6;
 				font-weight: 600;
-				margin-bottom: $space-4-xs;
+				margin-bottom: $space-xs-4;
 				// line-height: 28px;
 				> a{
 					@include flex-center-y(inline-flex);
 					color: $linkedin;
 					font-size: $h6;
 					vertical-align: sub;
-					margin-left: $space-3-xs;
+					margin-left: $space-xs-3;
 					transition: color .3s ease;
 					&:hover{
 						color: darken($linkedin, 16%);
@@ -568,22 +570,22 @@
 	.content-text{
 		z-index: 999;
 		.title{
-			font-size: $h1;
+			font-size: var(--h1);
 			font-weight: 700;
-			color: $brand;
+			color: var(--fg-brand);
 			@extend .m-b-8;
 			@media (max-width: 576px) {
 				font-size: $h2;
 			}
 			a{
-				color: $brand;
+				color: var(--fg-brand);
 				text-decoration: underline;
 			}
 		}
 		@media (min-width: 768px) {
 			.actions{
 				.btn +.btn{
-					margin-left: $space-2-xs;
+					margin-left: $space-xs-2;
 				}
 			}
 		}
@@ -592,7 +594,7 @@
 				.btn{
 					width: 100%;
 					&:first-child{
-						margin-bottom: $space-2-xs;
+						margin-bottom: $space-xs-2;
 					}
 				}
 			}
@@ -622,7 +624,7 @@
 		}
 	}
 	@media (max-width: 576px) {
-		padding-top: 60px;
+		padding-top: var(--section-margin-mobile);
 		overflow: hidden;
 		.content-text{
 			text-align: center;

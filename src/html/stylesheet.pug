@@ -1,0 +1,127 @@
+extends include/layout.pug
+
+block meta-title
+	title Stylesheet
+
+block custom
+block page-css
+	//- Photoswipte
+	link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/photoswipe.css")
+	link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/default-skin/default-skin.css")
+	//- Swiper
+	link(rel="stylesheet" type="text/css" href="assets/plugins/swiper/swiper-bundle.min.css")
+		
+
+block content
+	style.
+		body{
+			margin-top: calc(76px + var(--section-margin-mobile));
+			background-color: var(--surface-2);
+		}
+		.section-showcase .btn:not(:last-child), .section-showcase .swatch:not(:last-child){
+			margin-right: var(--space-xs-3);
+		}
+		.group-title{
+			margin-bottom: var(--space-xs-2);
+		}
+		.section-color .item:not(:last-child){
+			margin-bottom: var(--space-xs);
+		}
+		.section-color .swatch{
+			width: 100%;
+			height: 40px;
+			border-radius: 8px;
+			border: 1px solid var(--border-light);
+		}
+	section.section.has-divider
+		.container
+			.row.align-items-center
+				.col-md-6.col-lg-12
+					.section-heading
+						.section-title Section title
+					.profile-content Lorem ip sum
+	section.section.section-showcase.has-divider
+		.container
+			.row.align-items-center
+				.col-md-6.col-lg-12
+					.section-heading
+						.section-title Buttons
+					.profile-content
+						.actions
+						-
+							let buttonTypes = ['primary', 'secondary', 'default', 'outline', 'ghost', 'ghost-brand']
+						each item, index in buttonTypes
+							a(href="javascript:void" class=`btn btn-${item}`)
+								i.ri-shut-down-line
+								= item
+							| 
+	section.section.section-showcase.has-divider
+		.container
+			.row.align-items-center
+				.col-md-6.col-lg-12
+					.section-heading
+						.section-title Heading
+					.profile-content.row
+						- for (var i = 1; i <= 6; ++i) {
+							.col-md-12
+								div(class=`h${i}`)= `Heading ${i}`
+						- }
+	section.section.section-showcase.section-color
+		.container
+			.row.align-items-center
+				.col-md-6.col-lg-12
+					.section-heading
+						.section-title Color
+					.section-content
+						-
+							let colors = ['neutral', 'brand']
+							let neutralColor = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+						each color, colorIndex in colors
+							.item
+								.group-title.h6= color
+								.d-flex
+									each item, index in neutralColor
+										.swatch(style=`background-color: var(--${color}-${item});`)
+										//- span <script>getComputedStyle(document.body).getPropertyValue(`--neutral-${item}`)</script>
+									
+
+
+block page-script
+	script(src="assets/plugins/photoswipe/dist/photoswipe.min.js")
+	script(src="assets/plugins/photoswipe/dist/photoswipe-ui-default.min.js")
+	script(src="assets/plugins/swiper/swiper-bundle.min.js")
+
+block script
+	//-  Server side
+	//-  Get Data Image (Not rendered)
+	-
+		for(var type in database) {
+			database[type].data.forEach((item, i)=> {
+				//- Add new Property for JSON array
+				item['w'] = getImageSize(item.src)[0];
+				item['h'] = getImageSize(item.src)[1];
+				//- Serve for identify which ID to open PSWP overlay
+				item['pid'] = `${type}-${i}`;
+			})
+		}
+	//- Client side
+	script.
+		let theme = new Theme(),
+			data = !{JSON.stringify(database)};
+
+		const variable = getComputedStyle(document.body).getPropertyValue('--brand');
+		console.log(variable)
+		console.log(getComputedStyle(document.body))
+
+		// Window Onload
+		document.addEventListener('DOMContentLoaded', e => {
+			theme.init();
+		});
+
+		// Window Resize
+		window.addEventListener('resize', e => {
+			!detectMobile.isMobile ? theme.workSwiper() : 0;
+		}, true);
+
+		//- new Date().getHours() >= 19 ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
+		//- setInterval(()=> console.log(new Date().getHours() + ' ' + new Date().getMinutes() + ' ' + new Date().getSeconds()), 1000);
