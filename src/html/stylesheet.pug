@@ -10,7 +10,7 @@ block page-css
 	link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/default-skin/default-skin.css")
 	//- Swiper
 	link(rel="stylesheet" type="text/css" href="assets/plugins/swiper/swiper-bundle.min.css")
-		
+
 
 block content
 	style.
@@ -24,6 +24,12 @@ block content
 		.group-title{
 			margin-bottom: var(--space-xs-2);
 		}
+		.section-showcase .item{
+			margin-bottom: var(--space-s);
+		}
+		.section-showcase .item:not(:first-child){
+			margin-top: var(--space-s);
+		}
 		.section-color .item:not(:last-child){
 			margin-bottom: var(--space-xs);
 		}
@@ -32,6 +38,12 @@ block content
 			height: 40px;
 			border-radius: 8px;
 			border: 1px solid var(--border-light);
+		}
+		.section-typography .box{
+			width: 100%;
+			height: 100%;
+			//- border-radius: 8px;
+			//- border: 1px solid var(--border-light);
 		}
 	section.section.has-divider
 		.container
@@ -55,18 +67,30 @@ block content
 								i.ri-shut-down-line
 								= item
 							| 
-	section.section.section-showcase.has-divider
+	section.section.section-showcase.section-typography.has-divider
 		.container
 			.row.align-items-center
 				.col-md-6.col-lg-12
 					.section-heading
-						.section-title Heading
-					.profile-content.row
-						- for (var i = 1; i <= 6; ++i) {
-							.col-md-12
-								div(class=`h${i}`)= `Heading ${i}`
-						- }
-	section.section.section-showcase.section-color
+						.section-title Typography
+					.section-content
+						.item
+							.group-title.h6 Heading
+							.row.align-items-center
+								- for (var i = 1; i <= 6; ++i) {
+									.col-md-4.box
+										div(class=`h${i}`)= `Heading ${i}`
+								- }
+						.divider
+						.item
+							.group-title.h6 Body
+							.row.align-items-center
+								-
+									let bodyTexts = ['large', 'medium', 'small']
+								each item in bodyTexts
+									.col-md-4.box
+										div(class=`text-${item}`)= `Body ${item}`
+	section.section.section-showcase.section-color.has-divider
 		.container
 			.row.align-items-center
 				.col-md-6.col-lg-12
@@ -83,7 +107,7 @@ block content
 									each item, index in neutralColor
 										.swatch(style=`background-color: var(--${color}-${item});`)
 										//- span <script>getComputedStyle(document.body).getPropertyValue(`--neutral-${item}`)</script>
-									
+
 
 
 block page-script

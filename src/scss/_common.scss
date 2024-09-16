@@ -12,15 +12,6 @@ body{
 	background-color: var(--border-light);
 }
 
-// Heading
-@for $i from 1 through 6 {
-	.h#{$i} {
-		font-size: var(--h#{$i});
-		font-weight: var(--h#{$i}-font-weight);
-		line-height: var(--h#{$i}-line-height);
-	}
-}
-
 // Loading
 .page-loader{
 	position: fixed;
@@ -29,7 +20,7 @@ body{
 	bottom: 0;
 	top: 0;
 	// background-color: lighten($brand, 24%);
-	background-color: $brand;
+	background-color: var(--bg-brand);
 	display: flex;
 	justify-content: center;
 	align-items: center;

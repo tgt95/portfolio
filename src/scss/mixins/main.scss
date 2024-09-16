@@ -129,3 +129,32 @@
         border: 1px solid var(--border-light);
     }
 }
+
+
+
+// Typography -------------------------------------------------------
+
+// Heading
+@mixin typo-heading($parameter: $i) {
+	font-size: var(--h#{$parameter});
+	font-weight: var(--h#{$parameter}-font-weight);
+	line-height: var(--h#{$parameter}-line-height);
+}
+@for $i from 1 through 6 {
+	.h#{$i} {
+		@include typo-heading($i)
+	}
+}
+
+// Body
+$sizing: small medium large;
+@mixin typo-body($parameter: $i) {
+    font-size: var(--body-font-size-#{$parameter});
+	line-height: var(--body-line-height-#{$parameter});
+}
+
+@each $i in $sizing {
+    .text-#{$i} {
+        @include typo-body($i)
+    }
+}

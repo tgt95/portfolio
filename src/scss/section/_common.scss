@@ -7,11 +7,10 @@
 		margin-bottom: var(--section-title-marign);
 	}
 	&-title{
-		font-weight: 700;
-		font-size: var(--h1);
+		@include typo-heading(1);
 		color: var(--fg-brand);
 		@media (max-width: 576px) {
-			font-size: $h2;
+			@include typo-heading(2);
 		}
 	}
 	&-description{
@@ -51,12 +50,11 @@
 	.content-text{
 		z-index: 999;
 		.title{
-			font-size: var(--h1);
-			font-weight: 700;
+			@include typo-heading(1);
 			color: var(--fg-brand);
 			@extend .m-b-8;
 			@media (max-width: 576px) {
-				font-size: $h2;
+				@include typo-heading(2);
 			}
 			a{
 				color: var(--fg-brand);
@@ -570,12 +568,11 @@
 	.content-text{
 		z-index: 999;
 		.title{
-			font-size: var(--h1);
-			font-weight: 700;
+			@include typo-heading(1);
 			color: var(--fg-brand);
 			@extend .m-b-8;
 			@media (max-width: 576px) {
-				font-size: $h2;
+				@include typo-heading(2);
 			}
 			a{
 				color: var(--fg-brand);

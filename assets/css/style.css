@@ -131,49 +131,13 @@ body {
   background-color: var(--border-light);
 }
 
-.h1 {
-  font-size: var(--h1);
-  font-weight: var(--h1-font-weight);
-  line-height: var(--h1-line-height);
-}
-
-.h2 {
-  font-size: var(--h2);
-  font-weight: var(--h2-font-weight);
-  line-height: var(--h2-line-height);
-}
-
-.h3 {
-  font-size: var(--h3);
-  font-weight: var(--h3-font-weight);
-  line-height: var(--h3-line-height);
-}
-
-.h4 {
-  font-size: var(--h4);
-  font-weight: var(--h4-font-weight);
-  line-height: var(--h4-line-height);
-}
-
-.h5 {
-  font-size: var(--h5);
-  font-weight: var(--h5-font-weight);
-  line-height: var(--h5-line-height);
-}
-
-.h6 {
-  font-size: var(--h6);
-  font-weight: var(--h6-font-weight);
-  line-height: var(--h6-line-height);
-}
-
 .page-loader {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
-  background-color: #EA5D5D;
+  background-color: var(--bg-brand);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -288,6 +252,57 @@ body {
 
 [class^=ri-], [class*=" ri-"] {
   vertical-align: middle;
+}
+
+.h1 {
+  font-size: var(--h1);
+  font-weight: var(--h1-font-weight);
+  line-height: var(--h1-line-height);
+}
+
+.h2 {
+  font-size: var(--h2);
+  font-weight: var(--h2-font-weight);
+  line-height: var(--h2-line-height);
+}
+
+.h3 {
+  font-size: var(--h3);
+  font-weight: var(--h3-font-weight);
+  line-height: var(--h3-line-height);
+}
+
+.h4 {
+  font-size: var(--h4);
+  font-weight: var(--h4-font-weight);
+  line-height: var(--h4-line-height);
+}
+
+.h5 {
+  font-size: var(--h5);
+  font-weight: var(--h5-font-weight);
+  line-height: var(--h5-line-height);
+}
+
+.h6 {
+  font-size: var(--h6);
+  font-weight: var(--h6-font-weight);
+  line-height: var(--h6-line-height);
+}
+
+.text-small {
+  font-size: var(--body-font-size-small);
+  line-height: var(--body-line-height-small);
+}
+
+.text-medium {
+  font-size: var(--body-font-size-medium);
+  line-height: var(--body-line-height-medium);
+}
+
+.text-large {
+  font-size: var(--body-font-size-large);
+  line-height: var(--body-line-height-large);
 }
 
 .m-b-1 {
@@ -806,13 +821,16 @@ body {
   margin-bottom: var(--section-title-marign);
 }
 .section-title {
-  font-weight: 700;
   font-size: var(--h1);
+  font-weight: var(--h1-font-weight);
+  line-height: var(--h1-line-height);
   color: var(--fg-brand);
 }
 @media (max-width: 576px) {
   .section-title {
-    font-size: 32px;
+    font-size: var(--h2);
+    font-weight: var(--h2-font-weight);
+    line-height: var(--h2-line-height);
   }
 }
 .section-description {
@@ -848,12 +866,15 @@ body {
 }
 .section-banner .content-text .title {
   font-size: var(--h1);
-  font-weight: 700;
+  font-weight: var(--h1-font-weight);
+  line-height: var(--h1-line-height);
   color: var(--fg-brand);
 }
 @media (max-width: 576px) {
   .section-banner .content-text .title {
-    font-size: 32px;
+    font-size: var(--h2);
+    font-weight: var(--h2-font-weight);
+    line-height: var(--h2-line-height);
   }
 }
 .section-banner .content-text .title a {
@@ -1191,8 +1212,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .section-work .item > .item-thumbnail .overlay-content {
   display: -webkit-box;
@@ -1411,12 +1431,15 @@ body {
 }
 .section-contact .content-text .title {
   font-size: var(--h1);
-  font-weight: 700;
+  font-weight: var(--h1-font-weight);
+  line-height: var(--h1-line-height);
   color: var(--fg-brand);
 }
 @media (max-width: 576px) {
   .section-contact .content-text .title {
-    font-size: 32px;
+    font-size: var(--h2);
+    font-weight: var(--h2-font-weight);
+    line-height: var(--h2-line-height);
   }
 }
 .section-contact .content-text .title a {
