@@ -357,10 +357,12 @@
 			}
 		}
 		> .item-thumbnail {
-			box-shadow: $level-1;
 			overflow: hidden;
 			position: relative;
 			border-radius: $radius-xs;
+			border: 1px solid var(--border-light);
+			// box-shadow: $level-1;
+			transition: all .3s ease;
 			&:before {
 				display: block;
 				content: "";
@@ -403,6 +405,7 @@
 		}
 		&:hover{
 			.item-thumbnail{
+				box-shadow: $level-3;
 				.overlay-content{
 					visibility: visible;
 					opacity: 1;

@@ -566,6 +566,7 @@ var Theme = /*#__PURE__*/function () {
         // Handle the API response data here
         _this3.data.banner = data; // Section Banner
 
+        document.getElementById('section-banner-description').textContent = data.description;
         var hello = new Typewriter('#section-banner-title', {
           loop: true,
           delay: 75
@@ -575,7 +576,6 @@ var Theme = /*#__PURE__*/function () {
         // 	text_3 : `based in HCMC,VN`,
         // }
 
-        document.getElementById('section-banner-description').textContent = data.description;
         hello.pauseFor(1800) // .typeString(data.title.text_1)
         // .pauseFor(300)
         // .deleteChars(data.title.text_1.length)

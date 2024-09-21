@@ -140,7 +140,10 @@ $space-xl-5:                            72px;
 $custom-control-size: 20px;
 
 // Shadow
-$level-1:                       0 0 10.28px 1.72px rgba(0,0,0,.03);
+$level-1:                       0 3px 8px 0px rgba(0,0,0,.04);
+$level-2:                       0 5px 12px 0px rgba(0,0,0,.12);
+$level-3:                       0 8px 24px 2px rgba(0,0,0,.08);
+// $level-1:                       0 0 10.28px 1.72px rgba(0,0,0,.03);
 
 // Fonts
 // $font-primary: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

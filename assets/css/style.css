@@ -1193,10 +1193,12 @@ body {
   color: var(--fg-brand);
 }
 .section-work .item > .item-thumbnail {
-  box-shadow: 0 0 10.28px 1.72px rgba(0, 0, 0, 0.03);
   overflow: hidden;
   position: relative;
   border-radius: 12px;
+  border: 1px solid var(--border-light);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .section-work .item > .item-thumbnail:before {
   display: block;
@@ -1248,6 +1250,9 @@ body {
   font-size: 16px;
   font-weight: 600;
   color: var(--fg-inverse);
+}
+.section-work .item:hover .item-thumbnail {
+  box-shadow: 0 8px 24px 2px rgba(0, 0, 0, 0.08);
 }
 .section-work .item:hover .item-thumbnail .overlay-content {
   visibility: visible;
