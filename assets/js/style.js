@@ -34,6 +34,10 @@ var Theme = /*#__PURE__*/function () {
     _classCallCheck(this, Theme);
 
     this.spacer = [];
+    this.server = 'https://api.npoint.io/';
+    this.data = {
+      banner: null
+    };
     this.breakpoint = {
       xxs: 320,
       xs: 414,
@@ -99,21 +103,8 @@ var Theme = /*#__PURE__*/function () {
       var _this = this;
 
       var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-      // Section Banner
-      var hello = new Typewriter('#hello-world', {
-        loop: true,
-        delay: 75
-      });
-      hello.paragraph = {
-        text_1: "Hello everyone!",
-        text_2: "I'm a Product Designer",
-        text_3: "based in HCMC,VN"
-      };
-      hello.pauseFor(2200) // .typeString(hello.paragraph.text_1)
-      // .pauseFor(300)
-      // .deleteChars(hello.paragraph.text_1.length)
-      .typeString(hello.paragraph.text_2).pauseFor(100).deleteChars(hello.paragraph.text_2.length).typeString(hello.paragraph.text_3).pauseFor(1000).start(); // Human
 
+      // Human
       this.animation.human = function () {
         var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
         var value = 400,
@@ -563,11 +554,43 @@ var Theme = /*#__PURE__*/function () {
 
     }
   }, {
+    key: "fetchData",
+    value: function fetchData() {
+      var _this3 = this;
+
+      // Making a GET request
+      // Get Banner data
+      fetch(this.server + 'df2e5675f00bc58b57ca').then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        // Handle the API response data here
+        _this3.data.banner = data; // Section Banner
+
+        var hello = new Typewriter('#section-banner-title', {
+          loop: true,
+          delay: 75
+        }); // hello.paragraph = {
+        // 	text_1 : `Hello everyone!`,
+        // 	text_2 : `I'm a Product Designer`,
+        // 	text_3 : `based in HCMC,VN`,
+        // }
+
+        document.getElementById('section-banner-description').textContent = data.description;
+        hello.pauseFor(1800) // .typeString(data.title.text_1)
+        // .pauseFor(300)
+        // .deleteChars(data.title.text_1.length)
+        .typeString(data.title.text_2).pauseFor(100).deleteChars(data.title.text_2.length).typeString(data.title.text_3).pauseFor(1000).start();
+      })["catch"](function (err) {
+        return console.error(err);
+      });
+    }
+  }, {
     key: "init",
     value: function init() {
       this.baseConfig();
       this.navigation();
       this.loading();
+      this.fetchData();
       this.mobileResponsive();
     }
   }]);
