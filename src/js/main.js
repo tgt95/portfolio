@@ -563,57 +563,98 @@ class Theme {
 				.pauseFor(1000)
 				.start();
 
-			
-			// this.data.profile.forEach((item, i) => {
-			// 	let element = '';
+			// Section Profile
+			this.data.profile.forEach((item, i) => {
+				let element = '';
+				if (item.activated){
+					if (item.type == 'dob'){
+						element = `
+							<li>
+								<div class="title">${item.label}</div>
+								<span>${item.value} &nbsp;</span>
+								<i style="color: var(--fg-main);">
+									(age ${new Date().getFullYear() - item.birthYear})
+								</i>
+							</li>
+						`
+					}
+					else if (item.type == 'email'){
+						element = `
+							<li data-type="email">
+								<div class="title">${item.label}</div>
+								<div class="content">
+									<a class= href="mailto:${item.value}">${item.value}</a>
+									<i class="${item.iconClassName != undefined ? item.iconClassName : ''}" style="color: ${item.textColor != undefined ? item.textColor : ' '};"></i>
+								</div>
+							</li>
+						`
+					}
+					else if (item.type == 'phone'){
+						element = `
+							<li data-type="phone">
+								<div class="title">${item.label}</div>
+								<div class="content">
+									<a class= href="mailto:${item.value}">${item.value}</a>
+									<i class="${item.iconClassName != undefined ? item.iconClassName : ''}" style="color: ${item.textColor != undefined ? item.textColor : ' '};"></i>
+								</div>
+							</li>
+						`
+					}
+					else if (item.type == 'social'){
+						element = `
+							<li data-type="social">
+								<div class="title">${item.label}</div>
+								<div class="content">
+									<a href="${item.href}">${item.value}</a>
+									<i class="${item.iconClassName != undefined ? item.iconClassName : ''}" style="color: ${item.textColor != undefined ? item.textColor : ' '};"></i>
+								</div>
+							</li>
+						`
+					}
+					else if (item.type == 'exp'){
+						element = `
+							<li>
+								<div class="title">${item.label}</div>
+								<span>
+									${(new Date().getFullYear() -1) - item.value}
+									&nbsp;yrs+ &nbsp;<i style="color: var(--neutral-700);">(${item.value} - Present)</i>
+								</span>
+							</li>
+						`
+					}
+					else if (item.type == 'personality'){
+						element = `
+							<li class="align-items-center"><div class="personality-progress"><div class="label"><span><b>Introvert </b>(${item.value})</span><span><b>Extrovert</b></span></div><div class="holder"><div class="tracker"></div><span class="emoji">${item.emoji}</span></div></div></li>
+						`
+					}
+					else {
+						element = `
+							<li>
+								<div class="title">${item.label}</div>
+								<span>${item.value}</span>
+							</li>
+						`
+					}
+					document.getElementById('section-profile-content').insertAdjacentHTML('beforeend', element);
+				}
+			})
 
-			// 	if (item.activated){
-			// 		if (item.type == 'dob'){
-			// 			element = `
-			// 				<li>
-			// 					<div class="title">${item.label}</div>
-			// 					<span>${item.value} &nbsp;</span>
-			// 					<i style="color: var(--fg-main);">
-			// 						(age &nbsp;
-			// 							${new Date().getFullYear() - item.birthYear})
-			// 						)
-			// 					</i>
-			// 				</li>
-			// 			`
-			// 		}
-			// 		else if (item.type == 'email'){
-			// 			element = `
-			// 				<li>
-			// 					<div class="title">${item.label}</div>
-			// 					<div class="align-items-center d-inline-flex">
-			// 						<a class=mr-1 href=mailto:${item.value} style="text-decoration: underline;">${item.value}</a>
-			// 						<i class=ri-mail-open-line style="font-size: 20px; color: var(--fg-main);"></i>
-			// 					</div>
-			// 				</li>
-			// 			`
-			// 		}
-			// 		else if (item.type == 'exp'){
-			// 			element = `
-			// 				<li>
-			// 					<div class="title">${item.label}</div>
-			// 					<span>
-			// 						${(new Date().getFullYear() -1) - item.value}
-			// 						&nbsp;yrs+ &nbsp;<i style="color: var(--neutral-700);">(${item.value} - Present)</i>
-			// 					</span>
-			// 				</li>
-			// 			`
-			// 		}
-			// 		else {
-			// 			element = `
-			// 				<li>
-			// 					<div class="title">${item.label}</div>
-			// 					<span>${item.value}</span>
-			// 				</li>
-			// 			`
-			// 		}
-			// 		document.getElementById('section-profile-content').insertAdjacentHTML('beforeend', element);
-			// 	}
-			// })
+			// Section Footer
+			let footer = new Typewriter('#section-footer-description', {
+				loop: true,
+				delay: 75,
+				cursor: '',
+				deleteSpeed: 'fast'
+			});
+			
+			footer
+				// .pauseFor(1800)
+				.typeString(this.data.footer.text_1)
+				// .pauseFor(100)
+				.deleteChars(this.data.footer.text_1.length - 3)
+				.typeString(this.data.footer.text_2)
+				// .pauseFor(1000)
+				.start();
 		})
 		.catch(err => console.error(err))
 	}

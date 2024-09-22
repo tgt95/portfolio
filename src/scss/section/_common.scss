@@ -144,6 +144,18 @@
 						max-width: 344px;
 					}
 				}
+				&[data-type="email"], &[data-type="social"]{
+					>.content{
+						@include flex-center-y(inline-flex);
+						a{
+							text-decoration: underline;
+							margin-right: var(--space-xs-3);
+						}
+						i{
+							font-size: 20px;
+						}
+					}
+				}
 				.personality-progress{
 					// padding: 16px;
 					// background-color: $neutral-100;

@@ -5,6 +5,9 @@
     .author-content{
         display: flex;
         align-items: center;
+        background: linear-gradient(172deg, var(--fg-main) 0%, var(--neutral-500) 25%, var(--neutral-600) 50%, var(--neutral-500) 75%, var(--fg-main) 100%);
+        background-clip: text;
+        color: transparent;
     }
     ul.social-list{
         list-style-type: none;

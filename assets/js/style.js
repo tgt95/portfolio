@@ -576,55 +576,43 @@ var Theme = /*#__PURE__*/function () {
         hello.pauseFor(1800) // .typeString(this.data.introduce.title.text_1)
         // .pauseFor(300)
         // .deleteChars(this.data.introduce.title.text_1.length)
-        .typeString(_this3.data.introduce.title.text_2).pauseFor(100).deleteChars(_this3.data.introduce.title.text_2.length).typeString(_this3.data.introduce.title.text_3).pauseFor(1000).start(); // this.data.profile.forEach((item, i) => {
-        // 	let element = '';
-        // 	if (item.activated){
-        // 		if (item.type == 'dob'){
-        // 			element = `
-        // 				<li>
-        // 					<div class="title">${item.label}</div>
-        // 					<span>${item.value} &nbsp;</span>
-        // 					<i style="color: var(--fg-main);">
-        // 						(age &nbsp;
-        // 							${new Date().getFullYear() - item.birthYear})
-        // 						)
-        // 					</i>
-        // 				</li>
-        // 			`
-        // 		}
-        // 		else if (item.type == 'email'){
-        // 			element = `
-        // 				<li>
-        // 					<div class="title">${item.label}</div>
-        // 					<div class="align-items-center d-inline-flex">
-        // 						<a class=mr-1 href=mailto:${item.value} style="text-decoration: underline;">${item.value}</a>
-        // 						<i class=ri-mail-open-line style="font-size: 20px; color: var(--fg-main);"></i>
-        // 					</div>
-        // 				</li>
-        // 			`
-        // 		}
-        // 		else if (item.type == 'exp'){
-        // 			element = `
-        // 				<li>
-        // 					<div class="title">${item.label}</div>
-        // 					<span>
-        // 						${(new Date().getFullYear() -1) - item.value}
-        // 						&nbsp;yrs+ &nbsp;<i style="color: var(--neutral-700);">(${item.value} - Present)</i>
-        // 					</span>
-        // 				</li>
-        // 			`
-        // 		}
-        // 		else {
-        // 			element = `
-        // 				<li>
-        // 					<div class="title">${item.label}</div>
-        // 					<span>${item.value}</span>
-        // 				</li>
-        // 			`
-        // 		}
-        // 		document.getElementById('section-profile-content').insertAdjacentHTML('beforeend', element);
-        // 	}
-        // })
+        .typeString(_this3.data.introduce.title.text_2).pauseFor(100).deleteChars(_this3.data.introduce.title.text_2.length).typeString(_this3.data.introduce.title.text_3).pauseFor(1000).start(); // Section Profile
+
+        _this3.data.profile.forEach(function (item, i) {
+          var element = '';
+
+          if (item.activated) {
+            if (item.type == 'dob') {
+              element = "\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<div class=\"title\">".concat(item.label, "</div>\n\t\t\t\t\t\t\t\t<span>").concat(item.value, " &nbsp;</span>\n\t\t\t\t\t\t\t\t<i style=\"color: var(--fg-main);\">\n\t\t\t\t\t\t\t\t\t(age ").concat(new Date().getFullYear() - item.birthYear, ")\n\t\t\t\t\t\t\t\t</i>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t");
+            } else if (item.type == 'email') {
+              element = "\n\t\t\t\t\t\t\t<li data-type=\"email\">\n\t\t\t\t\t\t\t\t<div class=\"title\">".concat(item.label, "</div>\n\t\t\t\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\t\t\t\t<a class= href=\"mailto:").concat(item.value, "\">").concat(item.value, "</a>\n\t\t\t\t\t\t\t\t\t<i class=\"").concat(item.iconClassName != undefined ? item.iconClassName : '', "\" style=\"color: ").concat(item.textColor != undefined ? item.textColor : ' ', ";\"></i>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t");
+            } else if (item.type == 'phone') {
+              element = "\n\t\t\t\t\t\t\t<li data-type=\"phone\">\n\t\t\t\t\t\t\t\t<div class=\"title\">".concat(item.label, "</div>\n\t\t\t\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\t\t\t\t<a class= href=\"mailto:").concat(item.value, "\">").concat(item.value, "</a>\n\t\t\t\t\t\t\t\t\t<i class=\"").concat(item.iconClassName != undefined ? item.iconClassName : '', "\" style=\"color: ").concat(item.textColor != undefined ? item.textColor : ' ', ";\"></i>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t");
+            } else if (item.type == 'social') {
+              element = "\n\t\t\t\t\t\t\t<li data-type=\"social\">\n\t\t\t\t\t\t\t\t<div class=\"title\">".concat(item.label, "</div>\n\t\t\t\t\t\t\t\t<div class=\"content\">\n\t\t\t\t\t\t\t\t\t<a href=\"").concat(item.href, "\">").concat(item.value, "</a>\n\t\t\t\t\t\t\t\t\t<i class=\"").concat(item.iconClassName != undefined ? item.iconClassName : '', "\" style=\"color: ").concat(item.textColor != undefined ? item.textColor : ' ', ";\"></i>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t");
+            } else if (item.type == 'exp') {
+              element = "\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<div class=\"title\">".concat(item.label, "</div>\n\t\t\t\t\t\t\t\t<span>\n\t\t\t\t\t\t\t\t\t").concat(new Date().getFullYear() - 1 - item.value, "\n\t\t\t\t\t\t\t\t\t&nbsp;yrs+ &nbsp;<i style=\"color: var(--neutral-700);\">(").concat(item.value, " - Present)</i>\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t");
+            } else if (item.type == 'personality') {
+              element = "\n\t\t\t\t\t\t\t<li class=\"align-items-center\"><div class=\"personality-progress\"><div class=\"label\"><span><b>Introvert </b>(".concat(item.value, ")</span><span><b>Extrovert</b></span></div><div class=\"holder\"><div class=\"tracker\"></div><span class=\"emoji\">").concat(item.emoji, "</span></div></div></li>\n\t\t\t\t\t\t");
+            } else {
+              element = "\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<div class=\"title\">".concat(item.label, "</div>\n\t\t\t\t\t\t\t\t<span>").concat(item.value, "</span>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t");
+            }
+
+            document.getElementById('section-profile-content').insertAdjacentHTML('beforeend', element);
+          }
+        }); // Section Footer
+
+
+        var footer = new Typewriter('#section-footer-description', {
+          loop: true,
+          delay: 75,
+          cursor: '',
+          deleteSpeed: 'fast'
+        });
+        footer // .pauseFor(1800)
+        .typeString(_this3.data.footer.text_1) // .pauseFor(100)
+        .deleteChars(_this3.data.footer.text_1.length - 3).typeString(_this3.data.footer.text_2) // .pauseFor(1000)
+        .start();
       })["catch"](function (err) {
         return console.error(err);
       });
