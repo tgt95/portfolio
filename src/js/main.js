@@ -653,7 +653,8 @@ class Theme {
 				// .pauseFor(100)
 				.deleteChars(this.data.footer.text_1.length - 3)
 				.typeString(this.data.footer.text_2)
-				// .pauseFor(1000)
+				.deleteChars(this.data.footer.text_2.length - 3)
+				.pauseFor(100)
 				.start();
 		})
 		.catch(err => console.error(err))

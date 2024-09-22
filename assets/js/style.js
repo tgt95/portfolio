@@ -611,8 +611,7 @@ var Theme = /*#__PURE__*/function () {
         });
         footer // .pauseFor(1800)
         .typeString(_this3.data.footer.text_1) // .pauseFor(100)
-        .deleteChars(_this3.data.footer.text_1.length - 3).typeString(_this3.data.footer.text_2) // .pauseFor(1000)
-        .start();
+        .deleteChars(_this3.data.footer.text_1.length - 3).typeString(_this3.data.footer.text_2).deleteChars(_this3.data.footer.text_2.length - 3).pauseFor(100).start();
       })["catch"](function (err) {
         return console.error(err);
       });
