@@ -33,19 +33,19 @@ block content
 					.section-heading
 						.section-title Profile
 					.profile-content
-						ul
+						ul(id="section-profile-content")
 							li
 								.title Full name
 								span Trình Gia Tuấn
 							li
 								.title Date of Birth
 								span 11th October, 1995 &nbsp;
-								i(style="color: var(--neutral-700);") (age&nbsp;<script>document.write((new Date().getFullYear()) -1995)</script>)
+								i(style="color: var(--fg-main);") (age&nbsp;<script>document.write((new Date().getFullYear()) -1995)</script>)
 							li
 								.title Email
 								.d-inline-flex.align-items-center
 									a.mr-1(href="mailto:giatuantrinh@gmail.com" style="text-decoration: underline;") giatuantrinh@gmail.com
-									i.ri-mail-open-line(style="font-size: 20px; color: var(--neutral-700);")
+									i.ri-mail-open-line(style="font-size: 20px; color: var(--fg-main);")
 							//- li
 								.title Phone
 								a(href="tel:+84703000876") 0703 000 876
@@ -61,10 +61,10 @@ block content
 								.title Address
 								span District 11, Ho Chi Minh City
 							//- li.divider
-							li
-								.title Experience
-								span <script>document.write((new Date().getFullYear()-1) -2017)</script>&nbsp; yrs+ &nbsp;
-									i(style="color: var(--neutral-700);") (2017 - Present)
+							//- li
+							//- 	.title Experience
+							//- 	span <script>document.write((new Date().getFullYear()-1) -2017)</script>&nbsp; yrs+ &nbsp;
+							//- 		i(style="color: var(--neutral-700);") (2017 - Present)
 							li.align-items-center
 								//- .title Personality (INFP)
 								.personality-progress
@@ -260,7 +260,8 @@ block script
 		let theme = new Theme(),
 			data = !{JSON.stringify(database)};
 
-		console.log(data.featured)
+		//- console.log(data.featured);
+		
 
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', e => {
@@ -271,6 +272,7 @@ block script
 			setTimeout(()=> {
 				theme.workSwiper();
 				theme.testimonialSwiper();
+				
 			}, 1100);
 		});
 

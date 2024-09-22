@@ -362,7 +362,6 @@
 			border-radius: $radius-xs;
 			border: 1px solid var(--border-light);
 			// box-shadow: $level-1;
-			transition: all .3s ease;
 			&:before {
 				display: block;
 				content: "";
@@ -378,6 +377,7 @@
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
+				transition: all .3s ease;
 			}
 			.overlay-content{
 				@include flex-center;
@@ -405,8 +405,10 @@
 		}
 		&:hover{
 			.item-thumbnail{
-				transform: scale(1.015);
 				box-shadow: $level-3;
+				img{
+					transform: scale(1.015);
+				}
 				.overlay-content{
 					visibility: visible;
 					opacity: 1;

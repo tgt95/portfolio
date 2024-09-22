@@ -29,7 +29,6 @@ class Theme {
 		this.spacer = [];
 		this.server = 'https://api.npoint.io/';
 		this.data = {
-			banner : null
 		};
 		this.breakpoint = {
 			xxs: 320,
@@ -539,34 +538,82 @@ class Theme {
 		fetch(this.server + 'df2e5675f00bc58b57ca').then(response => response.json())
 		.then(data => {
 			// Handle the API response data here
+			this.data = data;
 
-			this.data.banner = data;
+			// Sort the date by the index (Only apply for Arrray)
+			this.data.profile = data.profile.sort((a, b) => a.index - b.index)
 
 			// Section Banner
-			document.getElementById('section-banner-description').textContent = data.description;
+			document.getElementById('section-banner-description').textContent = this.data.introduce.description;
 			
-			var hello = new Typewriter('#section-banner-title', {
+			let hello = new Typewriter('#section-banner-title', {
 				loop: true,
 				delay: 75,
 			});
-
-			// hello.paragraph = {
-			// 	text_1 : `Hello everyone!`,
-			// 	text_2 : `I'm a Product Designer`,
-			// 	text_3 : `based in HCMC,VN`,
-			// }
 			
 			hello
 				.pauseFor(1800)
-				// .typeString(data.title.text_1)
+				// .typeString(this.data.introduce.title.text_1)
 				// .pauseFor(300)
-				// .deleteChars(data.title.text_1.length)
-				.typeString(data.title.text_2)
+				// .deleteChars(this.data.introduce.title.text_1.length)
+				.typeString(this.data.introduce.title.text_2)
 				.pauseFor(100)
-				.deleteChars(data.title.text_2.length)
-				.typeString(data.title.text_3)
+				.deleteChars(this.data.introduce.title.text_2.length)
+				.typeString(this.data.introduce.title.text_3)
 				.pauseFor(1000)
 				.start();
+
+			
+			// this.data.profile.forEach((item, i) => {
+			// 	let element = '';
+
+			// 	if (item.activated){
+			// 		if (item.type == 'dob'){
+			// 			element = `
+			// 				<li>
+			// 					<div class="title">${item.label}</div>
+			// 					<span>${item.value} &nbsp;</span>
+			// 					<i style="color: var(--fg-main);">
+			// 						(age &nbsp;
+			// 							${new Date().getFullYear() - item.birthYear})
+			// 						)
+			// 					</i>
+			// 				</li>
+			// 			`
+			// 		}
+			// 		else if (item.type == 'email'){
+			// 			element = `
+			// 				<li>
+			// 					<div class="title">${item.label}</div>
+			// 					<div class="align-items-center d-inline-flex">
+			// 						<a class=mr-1 href=mailto:${item.value} style="text-decoration: underline;">${item.value}</a>
+			// 						<i class=ri-mail-open-line style="font-size: 20px; color: var(--fg-main);"></i>
+			// 					</div>
+			// 				</li>
+			// 			`
+			// 		}
+			// 		else if (item.type == 'exp'){
+			// 			element = `
+			// 				<li>
+			// 					<div class="title">${item.label}</div>
+			// 					<span>
+			// 						${(new Date().getFullYear() -1) - item.value}
+			// 						&nbsp;yrs+ &nbsp;<i style="color: var(--neutral-700);">(${item.value} - Present)</i>
+			// 					</span>
+			// 				</li>
+			// 			`
+			// 		}
+			// 		else {
+			// 			element = `
+			// 				<li>
+			// 					<div class="title">${item.label}</div>
+			// 					<span>${item.value}</span>
+			// 				</li>
+			// 			`
+			// 		}
+			// 		document.getElementById('section-profile-content').insertAdjacentHTML('beforeend', element);
+			// 	}
+			// })
 		})
 		.catch(err => console.error(err))
 	}
