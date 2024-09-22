@@ -1252,6 +1252,9 @@ body {
   color: var(--fg-inverse);
 }
 .section-work .item:hover .item-thumbnail {
+  -webkit-transform: scale(1.015);
+      -ms-transform: scale(1.015);
+          transform: scale(1.015);
   box-shadow: 0 8px 24px 2px rgba(0, 0, 0, 0.08);
 }
 .section-work .item:hover .item-thumbnail .overlay-content {

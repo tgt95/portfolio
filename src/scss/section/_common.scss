@@ -405,6 +405,7 @@
 		}
 		&:hover{
 			.item-thumbnail{
+				transform: scale(1.015);
 				box-shadow: $level-3;
 				.overlay-content{
 					visibility: visible;
