@@ -25,7 +25,7 @@ mixin galleryCard__Internal(item, index, category)
 mixin galleryCard__External(item, index, category)
 	.swiper-slide.item
 		.item-thumbnail
-			img(src=item.image)
+			img(src=item.image, alt=item.title)
 			a(href=item.externalURL 
 				target="_blank"
 				rel="nofollow"

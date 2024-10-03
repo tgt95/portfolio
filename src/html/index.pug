@@ -150,6 +150,24 @@ block content
 						.swiper-pagination
 						//- .swiper-scrollbar
 
+	//- section.section.section-blog.has-background
+		.container
+			.section-heading
+				.section-title Knowledge sharing
+				.section-description What I learned during my work
+		.container
+			.row
+				each item, index in blogDatabase
+					.col-md-4.item 
+						.item-thumbnail
+							img(src=item.image, alt=item.title)
+							a(href=item.externalURL).overlay-content
+								.text-center
+									i.icon.ri-external-link-line
+									.text= item.guideText
+						.title= item.title
+
+
 	section.section.section-testimonials.has-divider
 		.container
 			.section-heading.text-center
