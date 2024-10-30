@@ -349,7 +349,7 @@
 			max-width: 550px;
 		}
 		> .title{
-			font-size: $body-large;
+			font-size: var(--body-font-size-large);
 			font-weight: 600;
 			margin-top: $space-xs;
 		}
