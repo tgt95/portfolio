@@ -7,7 +7,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     cursor: pointer;
     text-decoration: none;
     transition: all .3s ease;
@@ -24,26 +24,26 @@
 // Sizes
 @mixin btn-md {
     >i{
-        font-size: $h5;
+        font-size: var(--h5);
     }
     &.btn-just-icon{
         width: $ui-size-md;
         height: $ui-size-md;
-        padding: $space-s;
+        padding: var(--space-s);
     }
     &:not(.btn-just-icon){
-        padding: 0 $space-s;
+        padding: 0 var(--space-s);
         line-height: $ui-size-md;
     }
     &:not(.icon-right):not(.btn-just-icon){
         >i{
-            margin-right: $space-xs-2;
+            margin-right: var(--space-xs-2);
         }
     }
     &.icon-right{
         :not(.btn-just-icon){
             >i{
-                margin-left: $space-xs-2;
+                margin-left: var(--space-xs-2);
             }
         }
     }

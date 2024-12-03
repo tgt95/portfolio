@@ -205,13 +205,15 @@ $level-3:                       0 8px 24px 2px rgba(0,0,0,.08);
     --font-family:                  'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-family-code:             ui-monospace, Menlo, Consolas, Monaco, monospace;
     --font-base:                    var(--body-font-size-medium);
-    --font-weight:                  400;  // Regular
+    --font-weight-regular:          400;
+    --font-weight-semibold:         600;
+    --font-weight-bold:             700;
 
     // Body
     --body-font-size-small:         #{$body-small};
     --body-font-size-medium:        #{$body-medium};
     --body-font-size-large:         #{$body-large};
-
+    
     --body-line-height-small:       16px;
     --body-line-height-medium:      20px;
     --body-line-height-large:       24px;
@@ -231,12 +233,12 @@ $level-3:                       0 8px 24px 2px rgba(0,0,0,.08);
     --h5-line-height:               30px;
     --h6-line-height:               26px;
 
-    --h1-font-weight:               700;   // Regular
-    --h2-font-weight:               700;
-    --h3-font-weight:               700;
-    --h4-font-weight:               600;   // Semi-bold
-    --h5-font-weight:               600;
-    --h6-font-weight:               600;
+    --h1-font-weight:               var(--font-weight-bold);   // Regular
+    --h2-font-weight:               var(--font-weight-bold);
+    --h3-font-weight:               var(--font-weight-bold);
+    --h4-font-weight:               var(--font-weight-semibold);   // Semi-bold
+    --h5-font-weight:               var(--font-weight-semibold);
+    --h6-font-weight:               var(--font-weight-semibold);
 
     
     // Foreground -------------------------------------------------------

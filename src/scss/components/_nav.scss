@@ -14,10 +14,10 @@
         flex-wrap: wrap;
         li{
             &:not(:last-child){
-                margin-right: $space-l;
+                margin-right: var(--space-l);
             }
             a{
-                font-size: $body-large;
+                font-size: var(--body-font-size-large);
                 font-weight: 600;
                 color: var(--fg-main);
                 border-bottom: 2px solid transparent;
@@ -80,7 +80,7 @@
         @media (max-width: 768px) {
             order: 0;
             width: 100%;
-            margin-bottom: $space-s;
+            margin-bottom: var(--space-s);
             a{
                 &.btn-just-icon{
                     width: 50%;
