@@ -1304,7 +1304,11 @@ body {
 }
 
 .section-blog {
-  background-color: var(--neutral-50);
+  background-image: -webkit-radial-gradient(var(--neutral-100) 1.5px, transparent 1px);
+  background-image: radial-gradient(var(--neutral-100) 1.5px, transparent 1px);
+  -webkit-backdrop-filter: saturate(50%) blur(4px);
+          backdrop-filter: saturate(50%) blur(4px);
+  background-size: 12px 12px;
   padding: calc(var(--section-margin-web) / 2) 0;
 }
 .section-blog .item {
