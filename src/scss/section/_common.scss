@@ -454,11 +454,11 @@
 
 // Blog
 .section-blog{
-	// background-color: var(--neutral-50);
 	background-image: radial-gradient(var(--neutral-100) 1.3px, transparent 1px);
 	backdrop-filter: saturate(50%) blur(4px);
     background-size: 12px 12px;
 	padding: calc(var(--section-margin-web)/2) 0;
+	box-shadow: 0px 0px 40px 0.1px rgba(0, 0, 0, 0.04) inset;
 	.item{
 		transition: all .3s ease;
 		margin-bottom: var(--space-l);
