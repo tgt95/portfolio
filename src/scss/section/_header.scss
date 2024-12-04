@@ -66,41 +66,19 @@
 							@include btn-ghost-brand;
 						}
 			        }
-					// a{
-					// 	color: $brand;
-					// 	font-weight: 600;
-					// 	transition: border .3s ease, color .3s ease;
-					// 	text-decoration: none;
-						// border-bottom: 3px solid transparent;
-
-						// &:hover{
-						// 	color: darken($brand, 5%);
-						// 	// border-color: $brand;
-						// }
-					// }
 				}
 			}
 			&.social-list{
-				display: flex;
-				align-items: center;
+				@include flex-center-y;
 				li{
 					&:not(:last-child){
-						margin-right: 24px;
+						margin-right: var(--space-s);
 					}
-				}
-				a{
-					// text-decoration: none;
-					// display: flex;
-					// align-items: center;
-					// justify-content: center;
 				}
 				@media (max-width: 576px) {
 					display: none;
 				}
 			}
-		}
-		&-right{
-
 		}
 	}
 }

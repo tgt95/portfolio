@@ -3,8 +3,7 @@
     padding: var(--space-s) 0;
     border-top: 1px solid var(--border-light);
     .author-content{
-        display: flex;
-        align-items: center;
+        @include flex-center-y;
         background: linear-gradient(172deg, var(--fg-main) 0%, var(--neutral-500) 25%, var(--neutral-600) 50%, var(--neutral-500) 75%, var(--fg-main) 100%);
         background-clip: text;
         color: transparent;
@@ -18,13 +17,11 @@
         flex-wrap: wrap;
         li{
             &:not(:last-child){
-                margin-right: var(--space-m);
+                margin-right: var(--space-s);
             }
         }
         a{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include flex-center;
             text-decoration: none;
             &:hover{
                 text-decoration: none;

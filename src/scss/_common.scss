@@ -14,17 +14,11 @@ body{
 
 // Loading
 .page-loader{
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
 	// background-color: lighten($brand, 24%);
 	background-color: var(--bg-brand);
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	z-index: 1060;
+	@include position($position: fixed);
+	@include flex-center;
 	.loader-content{
 		text-align: center;
 		.title{
