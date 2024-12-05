@@ -107,7 +107,7 @@ block content
 		
 
 	//- Work
-	section.section.section-work.mb-0
+	section.section.section-work
 		.container
 			.section-heading
 				.section-title Work
@@ -116,7 +116,7 @@ block content
 					//- li.active
 					//- 	a(href="#" data-tab-target="#category-featured") 
 					//- 		i.ri-star-smile-fill(style="color: var(--yellow)")
-					//- 		|  Featured
+					//- 		|  Featured  
 					- databaseIndex = 0
 					each obj, name in database
 						-
@@ -125,9 +125,9 @@ block content
 						li(class=activeClass)
 							a(href="#" data-tab-target=`#category-${name}`)= database[`${name}`].fullName
 				.switch-view
-					a.btn-just-icon(href="#" action="grid").active
-						i.ri-function-line
 					a.btn-just-icon(href="#" action="list")
+						i.ri-function-line
+					a.btn-just-icon(href="#" action="grid").active
 						i.ri-list-check-2
 
 
@@ -150,7 +150,7 @@ block content
 						.swiper-pagination
 						//- .swiper-scrollbar
 
-	section.section.section-blog.mb-0
+	section.section.section-blog.has-divider
 		.container
 			.section-heading
 				.section-title Knowledge sharing
@@ -209,7 +209,7 @@ block content
 				.swiper-pagination
 
 	//- Contact
-	section.section.section-contact.mb-0
+	section.section.section-contact
 		img(src="assets/images/shape/shape-wave-1.svg").shape-wave-1
 		img(src="assets/images/shape/shape-wave-2.svg").shape-wave-2
 		img(src="assets/images/shape/tree-1.svg").shape-tree-1
@@ -290,7 +290,6 @@ block script
 			setTimeout(()=> {
 				theme.workSwiper();
 				theme.testimonialSwiper();
-				
 			}, 1100);
 		});
 

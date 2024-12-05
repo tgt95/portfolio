@@ -34,7 +34,7 @@
 				li{
 					display: inline-block;
 					&:not(:last-child){
-						margin-right: 24px;
+						margin-right: var(--space-s);
 						@media (max-width: 576px) {
 							margin-right: var(--space-xs-2);
 						}
