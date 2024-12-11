@@ -8,23 +8,25 @@
         background-clip: text;
         color: transparent;
     }
-    ul.social-list{
+    ul{
         list-style-type: none;
-        padding-left: 0;
-        margin-bottom: 0;
-        display: flex;
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        li{
-            &:not(:last-child){
-                margin-right: var(--space-s);
+        &.social-list{
+            padding-left: 0;
+            margin-bottom: 0;
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            li{
+                &:not(:last-child){
+                    margin-right: var(--space-s);
+                }
             }
-        }
-        a{
-            @include flex-center;
-            text-decoration: none;
-            &:hover{
+            a{
+                @include flex-center;
                 text-decoration: none;
+                &:hover{
+                    text-decoration: none;
+                }
             }
         }
     }
