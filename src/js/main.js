@@ -41,6 +41,7 @@ class Theme {
 			xxxl: 1600
 		};
 		this.elements = {
+			// body :				document.querySelector('.content-page'),
 			contentPage :		document.querySelector('.content-page'),
 			header :			document.querySelector('.header'),
 			footer :			document.querySelector('.footer'),
@@ -419,7 +420,7 @@ class Theme {
 		document.body.insertAdjacentHTML('beforeend', `
 		<div class="page-loader">
 			<div class="loader-content"><img class="logo-img" src="${src}"/>
-				<div class="title mt-2">${des}</div>
+				<div class="page-loader-title mt-2">${des}</div>
 			</div>
 		</div>
 		`);

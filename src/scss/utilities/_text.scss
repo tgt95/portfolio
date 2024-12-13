@@ -1,5 +1,49 @@
+// Alignment
 @each $type in (center, left, right){
 	.text-#{$type}{
 		text-align: $type;
 	}
+}
+
+// Display
+@mixin text-display($parameter: $i) {
+	font-size: var(--display-#{$parameter});
+	font-weight: var(--display-font-weight-#{$parameter});
+	line-height: var(--display-line-height-#{$parameter});
+}
+@for $i from 1 through 3 {
+	.text-display-#{$i} {
+		@include text-display($i)
+	}
+}
+
+// Heading
+@mixin text-heading($parameter: $i) {
+	font-size: var(--heading-#{$parameter});
+	font-weight: var(--heading-font-weight-#{$parameter});
+	line-height: var(--heading-line-height-#{$parameter});
+}
+@for $i from 1 through 6 {
+	.h#{$i} {
+		@include text-heading($i)
+	}
+}
+
+// Body
+@mixin text-body($parameter: $i) {
+    font-size: var(--body-font-size-#{$parameter});
+	line-height: var(--body-line-height-#{$parameter});
+}
+
+@each $fullName, $shortName in (small, sm), (medium, md), (large, lg) {
+    .text-#{$fullName} {
+        @include text-body($shortName)
+    }
+}
+
+// Accent
+@each $variant, $color in (info, var(--fg-info)), (success, var(--fg-success)), (warning, var(--fg-warning)), (danger, var(--fg-danger)) {
+    .text-#{$variant} {
+        color: $color;
+    }
 }

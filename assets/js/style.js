@@ -47,6 +47,7 @@ var Theme = /*#__PURE__*/function () {
       xxxl: 1600
     };
     this.elements = {
+      // body :				document.querySelector('.content-page'),
       contentPage: document.querySelector('.content-page'),
       header: document.querySelector('.header'),
       footer: document.querySelector('.footer'),
@@ -448,7 +449,7 @@ var Theme = /*#__PURE__*/function () {
       document.body.style.overflow = 'hidden';
       document.body.style.display = '';
       document.body.style.backgroundColor = '';
-      document.body.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"page-loader\">\n\t\t\t<div class=\"loader-content\"><img class=\"logo-img\" src=\"".concat(src, "\"/>\n\t\t\t\t<div class=\"title mt-2\">").concat(des, "</div>\n\t\t\t</div>\n\t\t</div>\n\t\t"));
+      document.body.insertAdjacentHTML('beforeend', "\n\t\t<div class=\"page-loader\">\n\t\t\t<div class=\"loader-content\"><img class=\"logo-img\" src=\"".concat(src, "\"/>\n\t\t\t\t<div class=\"page-loader-title mt-2\">").concat(des, "</div>\n\t\t\t</div>\n\t\t</div>\n\t\t"));
       var loader = document.body.querySelector('.page-loader'); // Show the loading overlay
 
       var showTime = function showTime(doSomthingAfter) {

@@ -1,6 +1,6 @@
 .footer{
-    margin-top: var(--space-s);
-    padding: var(--space-s) 0;
+    margin-top: var(--space-sm);
+    padding: var(--space-sm) 0;
     border-top: 1px solid var(--border-light);
     .author-content{
         @include flex-center-y;
@@ -18,7 +18,7 @@
             flex-wrap: wrap;
             li{
                 &:not(:last-child){
-                    margin-right: var(--space-s);
+                    margin-right: var(--space-sm);
                 }
             }
             a{

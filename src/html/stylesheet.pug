@@ -25,10 +25,10 @@ block content
 			margin-bottom: var(--space-xs-2);
 		}
 		.section-showcase .item{
-			margin-bottom: var(--space-s);
+			margin-bottom: var(--space-sm);
 		}
 		.section-showcase .item:not(:first-child){
-			margin-top: var(--space-s);
+			margin-top: var(--space-sm);
 		}
 		.section-color .item:not(:last-child){
 			margin-bottom: var(--space-xs);
@@ -51,22 +51,33 @@ block content
 				.col-md-6.col-lg-12
 					.section-heading
 						.section-title Section title
-					.profile-content Lorem ip sum
+					.content Lorem ip sum
 	section.section.section-showcase.has-divider
 		.container
 			.row.align-items-center
 				.col-md-6.col-lg-12
 					.section-heading
 						.section-title Buttons
-					.profile-content
-						.actions
-						-
-							let buttonTypes = ['primary', 'secondary', 'default', 'outline', 'ghost', 'ghost-brand']
-						each item, index in buttonTypes
-							a(href="javascript:void" class=`btn btn-${item}`)
-								i.ri-shut-down-line
-								= item
-							| 
+					.content
+						.h6 Main button
+						.mb-3
+							-
+								let buttonTypes = ['primary', 'secondary', 'default', 'outline', 'ghost', 'ghost-brand']
+							each item, index in buttonTypes
+								a(href="javascript:void" class=`btn btn-${item}`)
+									i.ri-shut-down-line
+									= item
+								| 
+						.h6 Accent
+						.mb-3
+							-
+								let buttonTypesAccent = ['info', 'success', 'warning', 'danger']
+							each item, index in buttonTypesAccent
+								a(href="javascript:void" class=`btn btn-${item}`)
+									i.ri-shut-down-line
+									= item
+								| 
+						
 	section.section.section-showcase.section-typography.has-divider
 		.container
 			.row.align-items-center
@@ -98,13 +109,13 @@ block content
 						.section-title Color
 					.section-content
 						-
-							let colors = ['neutral', 'brand']
-							let neutralColor = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+							let colors = ['neutral', 'brand', 'blue', 'green', 'orange', 'red']
+							let scale = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
 						each color, colorIndex in colors
 							.item
 								.group-title.h6= color
 								.d-flex
-									each item, index in neutralColor
+									each item, index in scale
 										.swatch(style=`background-color: var(--${color}-${item});`)
 										//- span <script>getComputedStyle(document.body).getPropertyValue(`--neutral-${item}`)</script>
 

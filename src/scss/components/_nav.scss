@@ -14,11 +14,11 @@
         flex-wrap: wrap;
         li{
             &:not(:last-child){
-                margin-right: var(--space-l);
+                margin-right: var(--space-lg);
             }
             a{
-                font-size: var(--body-font-size-large);
-                font-weight: 600;
+                font-size: var(--body-font-size-lg);
+                font-weight: var(--font-weight-semibold);
                 color: var(--fg-main);
                 border-bottom: 2px solid transparent;
                 transition: border .3s ease, color .3s ease;
@@ -34,7 +34,7 @@
         }
     }
     .switch-view{
-        border-radius: $radius-rounded;
+        border-radius: var(--radius-rounded);
         background-color: lighten($brand, 32%);
         a{
             @include btn;
@@ -80,7 +80,7 @@
         @media (max-width: 768px) {
             order: 0;
             width: 100%;
-            margin-bottom: var(--space-s);
+            margin-bottom: var(--space-sm);
             a{
                 &.btn-just-icon{
                     width: 50%;

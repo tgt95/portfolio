@@ -1,0 +1,281 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		meta(name='theme-color', content='#ea5d5d' media="(prefers-color-scheme: light)")
+		meta(name='theme-color', content='#ea5d5d' media="(prefers-color-scheme: dark)")
+		//- embed(src="[MR-Inst]-Surfaces-Good-Day.mp3" autostart="true" loop="true" hidden="true" id="#bg-music")
+
+		block meta-title
+		
+		//- Default image when paste social link
+		meta(property="og:image" content="assets/images/og-image.jpg")
+		meta(property="og:title" content="Trình Gia Tuấn | Senior Product Designer | UX/UI | Resume")
+		meta(property="og:image:type" content="image/png")
+		meta(property="og:image:width" content="1024")
+		meta(property="og:image:height" content="1024")
+		//- Favicon
+		link(rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon_io/apple-touch-icon.png")
+		link(rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon_io/favicon-32x32.png")
+		link(rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon_io/favicon-16x16.png")
+		link(rel="manifest" href="assets/images/favicon_io/site.webmanifest")
+		
+
+
+		//- Bootstrap
+		link(rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-grid.min.css")
+		link(rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-reboot.min.css")
+
+		//- Animate CSS
+		link(rel="stylesheet" type="text/css" href="assets/plugins/animate.css/animate.min.css")
+
+		//- Icons
+		link(rel="stylesheet" type="text/css" href="assets/plugins/remixicon/fonts/remixicon.css")
+		//- link(rel="stylesheet" type="text/css" href="assets/plugins/phosphor/style.css")
+		//- link(rel="stylesheet" type="text/css" href="assets/plugins/slick-carousel/slick/slick-theme.css")
+		//- link(rel="stylesheet" type="text/css" href="assets/plugins/slick-carousel/slick/slick.css")
+
+		block page-css
+		link(rel="stylesheet" type="text/css" href="assets/css/style.min.css")
+
+		// Global site tag (gtag.js) - Google Analytics
+		script(async src="https://www.googletagmanager.com/gtag/js?id=UA-79549330-2")
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-79549330-2');
+	
+	style.
+		body{
+			margin-top: calc(76px + var(--section-margin-mobile));
+			background-color: var(--surface-2);
+		}
+
+	body
+		// Header
+		-
+			let navigationMenu = {
+				title: [
+						//- 'Home', 
+						'Profile',
+						'Work', 
+						'Resume'
+					],
+				url: [
+					//- '.section-banner', 
+					'.section-profile', 
+					'.section-work', 
+					'.section-contact'
+					],
+			}
+			let socialIcon = ['linkedin-box', 'behance', 'dribbble', 'github']
+		header.header.is-sticky
+			.container
+				.navigation-menu
+					ul
+						li.logo
+							a.disable-function(href="index.html")
+								img(src="assets/images/logo.svg", alt="TGT Logo")
+						//- each item, index in navigationMenu.title
+							li
+								a(href=navigationMenu.url[index] data-offset-top="88")= navigationMenu.title[index]
+					ul.social-list
+						- let socialLink = ['https://www.linkedin.com/in/tgt95', 'https://www.behance.net/tgt95', 'https://dribbble.com/tgt95', 'https://github.com/tgt95']
+						each icon, index in socialIcon
+							li
+								a(href=socialLink[index] target="_blank").btn.btn-just-icon.btn-ghost-brand
+									i(class=`ri-${icon}-fill`)
+		
+		//- Profile
+		section.section.section-personal-info
+			.container
+				.section-personal-info-container
+					.section-personal-info-header
+						.section-personal-info-header-left
+							img.avatar(src="assets/images/avatar.png", alt="Gia Tuan")
+						.section-personal-info-header-right
+							.m-b-5
+								.name Tuan (Cody) Trinh
+								.role Senior Product Designer
+							.bottom
+								.description I help the business owner by balancing the business value & the user needs. Create value for the product by Problem Solving, Critical Thinking, Data Metric, and Interaction Design.
+								a(href="product-designer-trinh-gia-tuan.pdf" download).btn.btn-outline 
+									i.ri-download-2-fill
+									|  Download Resume
+					.divider
+					.section-personal-info-body
+						.row
+							.section-personal-info-body-experience.col-lg-8.col-md-7
+								.group-title Experience
+								.timeline-content
+									.milestone
+										.milestone-header
+											.milestone-header-left
+												img.logo(src="assets/images/logo/be.svg")
+											.milestone-header-right
+												.date-range 12/2022 - Present
+												.job-title Senior Product Designer 
+													span •
+													|  
+													span.company-name beGroup
+										ul.description
+											li.text-success Achievement: Food GMV streak (3.5x ↑), reduce Cancel trip rate of Driver
+											li In charge of Food delivery service in beGroup ecosystem (Consumer, Merchant) from end to end to level up the experience.
+											li Conducted UX research by using Usability Evaluation (Heuristics), and Competitive Analysis to find a cost-effective solution.
+											li Contributed and maintained the Design System, Toolkit, and Process.
+									.milestone
+										.milestone-header
+											.milestone-header-left
+												img.logo(src="assets/images/logo/whydah.svg")
+											.milestone-header-right
+												.date-range 07/2022 - 11/2022
+												.job-title Senior Product Designer 
+													span •
+													|  
+													span.company-name WhyDah
+										ul.description
+											li Design the internal mobile app that enhances employee performance (Check-in/Check-out, Event, Rewards system,...).
+											li Create a design system to maintain multiple products.
+									.milestone
+										.milestone-header
+											.milestone-header-left
+												img.logo(src="assets/images/logo/momo.svg")
+											.milestone-header-right
+												.date-range 08/2021 - 07/2022
+												.job-title Senior Product Designer 
+													span •
+													|  
+													span.company-name MoMo
+										ul.description
+											li.text-success A key member of the FAST 2022 project: Improved payment speed of Pay QR feature
+											li A solo designer of the AppX cell team handles all experiences in the MoMo application (Home, Transaction detail,... ).
+											li Mentor other Junior designers to perform well their work
+									.milestone.milestone-start
+										.milestone-header
+											.milestone-header-left
+												img.logo(src="assets/images/logo/bigin.svg")
+											.milestone-header-right
+												.date-range 2020 - 07/2021
+												.job-title Senior UX/UI Designer 
+													span •
+													|  
+													span.company-name BigIn
+										ul.description
+											li Design multiple products across multiple platforms (Mobile/Web application, Portal, Landing page): Travel, Food, Relocation.
+											li Work with team to build the design system to maintain multiple products of the company.
+											li Promote to Lead Design Team (managed 2 members).
+									//- .milestone.milestone-mid
+										.milestone-header
+											.milestone-header-left
+												.logo
+													.dot
+											.milestone-header-right
+												.date-range 2017 - 2020
+												.job-title UX/UI Designer 
+													span •
+													|  
+													span.company-name BigIn
+										ul.description
+											li Design Back Office System for trading, exchange Crypto.
+											li Provide the design solution for the leading industry brands: Ông Bầu Coffee, CitiGym, Nutifood sub-brands (Ayaka diaper, PariMilk), 007Flower.
+									.milestone.milestone-end
+										.milestone-header
+											.milestone-header-left
+												.logo
+													.dot
+											.milestone-header-right
+												.date-range 2017 - 2020
+												.job-title UX/UI Designer 
+													span •
+													|  
+													span.company-name BigIn
+										ul.description
+											li Design Back Office System for trading, exchange Crypto.
+											li Provide the design solution for the leading industry brands: Ông Bầu Coffee, CitiGym, Nutifood sub-brands (Ayaka diaper, PariMilk), 007Flower.
+									.divider-dashed
+									.milestone
+										.milestone-header
+											.milestone-header-right
+												.job-title Personal Project
+										ul.description(style="padding-left: var(--space-sm);")
+											li Color Range Picker: 
+												a(href="https://tgt95.github.io/color-generator/" _blank)  https://tgt95.github.io/color-generator/
+							.col-lg-4.col-md-5
+								.section-personal-info-body-profile
+									.group-title Profile
+									.profile-content
+										ul
+											li
+												span.text-wrapper
+													i.icon.ri-user-5-line
+													.value Trình Gia Tuấn 
+													i(style="color: var(--fg-subtlest);") (he/him)
+											li
+												span.text-wrapper
+													i.icon.ri-cake-2-line
+													.value 11th October, 1995
+													i(style="color: var(--fg-subtlest);") (age&nbsp;<script>document.write((new Date().getFullYear()) -1995)</script>)
+											li
+												span.text-wrapper
+													i.icon.ri-mail-line
+													.value giatuantrinh@gmail.com
+											li
+												span.text-wrapper
+													i.icon.ri-map-pin-2-line
+													.value District 11, Ho Chi Minh City
+								.divider
+								.section-personal-info-body-education
+									.group-title Education
+									.timeline-content
+										.milestone
+											.milestone-header
+												.milestone-header-right
+													.date-range 2013 - 2016
+													.job-title Bachelor Degree of Apply Information
+											ul.description(style="padding-left: var(--space-sm);")
+												li Ho Chi Minh City University of Natural Resources And Environment
+
+		// Footer
+		include include/section/footer.pug
+
+
+// Javascript
+//- script(src="assets/js/style.min.js")
+
+script.
+	//- Client side
+	let detectMobile = {
+		isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+	};
+
+	const _getHeight = el => {
+		return parseFloat(getComputedStyle(el, null).height.replace("px", ""));
+	}
+
+	const _getWidth = el => {
+		return parseFloat(getComputedStyle(el, null).width.replace("px", ""));
+	}
+
+	window.addEventListener('scroll', ()=> {
+		!detectMobile.isMobile && (document.querySelector('html').scrollTop > _getHeight(document.querySelector('.header'))) ? document.querySelector('.header').classList.add('has-background') : document.querySelector('.header').classList.remove('has-background');
+	});
+
+	if(detectMobile.isMobile) {
+		document.body.classList.add('is-mobile');
+
+		// Fix bug for use Navigation bottom
+		document.body.style.paddingBottom = _getHeight(document.querySelector('.header')) + 'px';
+		document.body.style.marginTop = 'var(--space-xl)';
+	}
+
+	// Window Onload
+	document.addEventListener('DOMContentLoaded', e => {
+		//- theme.init();
+	});
+

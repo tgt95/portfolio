@@ -2,78 +2,19 @@
 $brand: 						    #EA5D5D                       !default;
 $brand-bg: 						    #FFFAFA                       !default;
 
-// Semantic
-$blue: 							    #1896FF                       !default;
-$green: 						    #7AD610                       !default;
-$orange: 						    #FFA65E                       !default;
-$red: 							    #FF5E5E                       !default;
-$yellow: 						    #FFD836                       !default;
-
 
 // Neutral
-$neutral-950:                           #0A0A0A                       !default;
-$neutral-900:                           #262626                       !default;
-$neutral-800:                           #262626                       !default;
-$neutral-700:                           #404040                       !default;
-$neutral-600:                           #525252                       !default;
-$neutral-500:                           #737373                       !default;
-$neutral-400:                           #A3A3A3                       !default;
-$neutral-300:                           #D4D4D4                       !default;
-$neutral-200:                           #E5E5E5                       !default;
-$neutral-100:                           #F5F5F5                       !default;
-$neutral-50:                            #FAFAFA                       !default;
-
-$brand-950:                             #692A2A                       !default;
-$brand-900:                             #853535                       !default;
-$brand-800:                             #A64242                       !default;
-$brand-700:                             #C74F4F                       !default;
-$brand-600:                             #EA5D5D                       !default;
-$brand-500:                             #EE7A7A                       !default;
-$brand-400:                             #F29999                       !default;
-$brand-300:                             #F6B9B9                       !default;
-$brand-200:                             #FAD8D8                       !default;
-$brand-100:                             #FDEFEF                       !default;
-$brand-50:                              #FEF6F6                       !default;
-
-// $neutral-900:                           #454545                       !default;
-// $neutral-800:                           #636363                       !default;
-// $neutral-700:                           #828282                       !default;
-// $neutral-600:                           #969696                       !default;
-// $neutral-500:                           #ABABAB                       !default;
-// $neutral-400:                           #BFBFBF                       !default;
-// $neutral-300:                           #D4D4D4                       !default;
-// $neutral-200:                           #E8E8E8                       !default;
-// $neutral-100:                           #F4F5F9                       !default;
-// $neutral-90:                            #F4F6FA                       !default;
-// $neutral-75:                            #F9FAFC                       !default;
-// $neutral-50:                            #FAFBFF                       !default;
-
-// Canvas
-$surface-1:                              white                       !default;
-$surface-2:                              $neutral-50                   !default;
-
-// Border
-$border-color:                          $neutral-200                    !default;
-
-// |----- Typography -------------------------------------------------------|
-// Heading
-$h1:                                    40px                            !default;
-$h2:                                    32px                            !default;
-$h3:                                    28px                            !default;
-$h4:                                    24px                            !default;
-$h5:                                    20px                            !default;
-$h6:                                    18px                            !default;
-
-// Body
-$body-small:                            12px                        !default;
-$body-medium:                           14px                        !default;
-$body-large:                            16px                        !default;
-
-// Display
-$display-1:                             96px                        !default;
-$display-2:                             64px                        !default;
-$display-3:                             48px                        !default;
-
+$neutral-50:                   #fafafa;
+$neutral-100:                  #f5f5f5;
+$neutral-200:                  #e5e5e5;
+$neutral-300:                  #d4d4d4;
+$neutral-400:                  #a3a3a3;
+$neutral-500:                  #737373;
+$neutral-600:                  #525252;
+$neutral-700:                  #404040;
+$neutral-800:                  #262626;
+$neutral-900:                  #171717;
+$neutral-950:                  #0a0a0a;
 
 // Social
 $twitter: 						        #55acee					!default;
@@ -90,103 +31,95 @@ $reddit: 						        #ff4500					!default;
 $skype: 						        #00aff0					!default;
 
 
-// Radius
-$radius-4-xs:                           2px                         !default;
-$radius-3-xs:                           4px                         !default;
-$radius-2-xs:                           8px                         !default;
-$radius-xs:                             12px        			    !default;
-$radius-s:                              16px                        !default;
-$radius-m:                              24px                        !default;
-$radius-l:                              32px                        !default;
-$radius-xl:                             40px                        !default;
-$radius-rounded:                        128px        			    !default;
-
-// Global UI control
-$ui-size-md:                            40px				        !default;
-$ui-size-lg:                            48px				        !default;
-
-// $border-input:                	#ced4da     			!default;
-
-// Input
-$input-height-sm:				        32px					    !default;
-$input-height-md:				        $ui-size-md;
-$input-height-lg:				        $ui-size-lg;
-$input-border-color:			        $border-color			    !default;
-
-// $input-bg:                		white					!default;
-// $input-color:                	$neutral-900					!default;
-// $input-color-active:			$brand					!default;
-
-// $input-placeholder:				$neutral--2					!default;
-
-// $input-disabled:				$neutral--2					!default;
-// $input-disabled-bg:				$neutral--4					!default;
-
-$space-xs-4:                            2px;
-$space-xs-3:                            4px;
-$space-xs-2:                            8px;
-$space-xs:                              12px;
-$space-s:                               16px;
-$space-m:                               24px;
-$space-l:                               32px;
-$space-xl:                              40px;
-$space-xl-2:                            48px;
-$space-xl-3:                            56px;
-$space-xl-4:                            64px;
-$space-xl-5:                            72px;
-
-
 // Checkbox & Radio
 $custom-control-size: 20px;
-
-// Shadow
-$level-1:                       0 3px 8px 0px rgba(0,0,0,.04);
-$level-2:                       0 5px 12px 0px rgba(0,0,0,.12);
-$level-3:                       0 8px 24px 2px rgba(0,0,0,.08);
-// $level-1:                       0 0 10.28px 1.72px rgba(0,0,0,.03);
-
 // Fonts
 // $font-primary: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 // @import url(https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&display=swap);
-// @import url(https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap);
 // @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap);
 
 
 :root{
     // Color ------------------------------------------------------------
-    --brand: 						#{$brand};
-    --brand-bg: 					#{$brand-bg};
+    --brand: 						var(--brand-600);
+    --brand-bg: 					var(--brand-200);
 
-    --blue:                         #{$blue};
-    --green: 					    #{$green};
-    --orange: 					    #{$orange};
-    --red: 					        #{$red};
-    --yellow: 					    #{$yellow};
+    --neutral-50:                   #fafafa;
+    --neutral-100:                  #f5f5f5;
+    --neutral-200:                  #e5e5e5;
+    --neutral-300:                  #d4d4d4;
+    --neutral-400:                  #a3a3a3;
+    --neutral-500:                  #737373;
+    --neutral-600:                  #525252;
+    --neutral-700:                  #404040;
+    --neutral-800:                  #262626;
+    --neutral-900:                  #171717;
+    --neutral-950:                  #0a0a0a;
 
-    --neutral-950:                  #{$neutral-950};
-    --neutral-900:                  #{$neutral-900};
-    --neutral-800:                  #{$neutral-800};
-    --neutral-700:                  #{$neutral-700};
-    --neutral-600:                  #{$neutral-600};
-    --neutral-500:                  #{$neutral-500};
-    --neutral-400:                  #{$neutral-400};
-    --neutral-300:                  #{$neutral-300};
-    --neutral-200:                  #{$neutral-200};
-    --neutral-100:                  #{$neutral-100};
-    --neutral-50:                   #{$neutral-50};
+    --brand-50:                     #FEF6F6;
+    --brand-100:                    #FDEFEF;
+    --brand-200:                    #FAD8D8;
+    --brand-300:                    #F6B9B9;
+    --brand-400:                    #F29999;
+    --brand-500:                    #EE7A7A;
+    --brand-600:                    #EA5D5D;
+    --brand-700:                    #C74F4F;
+    --brand-800:                    #A64242;
+    --brand-900:                    #853535;
+    --brand-950:                    #692A2A;
+    
+    --blue-50:                      #EFF6FF;
+    --blue-100:                     #DBEAFE;
+    --blue-200:                     #BFDBFE;
+    --blue-300:                     #93C5FD;
+    --blue-400:                     #60A5FA;
+    --blue-500:                     #3B82F6;
+    --blue-600:                     #2563EB;
+    --blue-700:                     #1D4ED8;
+    --blue-800:                     #1E40AF;
+    --blue-900:                     #1E3A8A;
+    --blue-950:                     #172554;
+    
+    --green-50:                     #f0fdf4;
+    --green-100:                    #dcfce7;
+    --green-200:                    #bbf7d0;
+    --green-300:                    #86efac;
+    --green-400:                    #4ade80;
+    --green-500:                    #22c55e;
+    --green-600:                    #16a34a;
+    --green-700:                    #15803d;
+    --green-800:                    #166534;
+    --green-900:                    #14532d;
+    --green-950:                    #052e16;
+    
+    --orange-50:                    #fff7ed;
+    --orange-100:                   #ffedd5;
+    --orange-200:                   #fed7aa;
+    --orange-300:                   #fdba74;
+    --orange-400:                   #fb923c;
+    --orange-500:                   #f97316;
+    --orange-600:                   #ea580c;
+    --orange-700:                   #c2410c;
+    --orange-800:                   #9a3412;
+    --orange-900:                   #7c2d12;
+    --orange-950:                   #431407;
+    
+    --red-50:                       #fef2f2;
+    --red-100:                      #fee2e2;
+    --red-200:                      #fecaca;
+    --red-300:                      #fca5a5;
+    --red-400:                      #f87171;
+    --red-500:                      #ef4444;
+    --red-600:                      #dc2626;
+    --red-700:                      #b91c1c;
+    --red-800:                      #991b1b;
+    --red-900:                      #7f1d1d;
+    --red-950:                      #450a0a;
 
-    --brand-950:                    #{$brand-950};
-    --brand-900:                    #{$brand-900};
-    --brand-800:                    #{$brand-800};
-    --brand-700:                    #{$brand-700};
-    --brand-600:                    #{$brand-600};
-    --brand-500:                    #{$brand-500};
-    --brand-400:                    #{$brand-400};
-    --brand-300:                    #{$brand-300};
-    --brand-200:                    #{$brand-200};
-    --brand-100:                    #{$brand-100};
-    --brand-50:                     #{$brand-50};
 
+
+    
     // Social -----------------------------------------------------------
     --twitter: 						#{$twitter};
     --facebook: 					#{$facebook};
@@ -201,109 +134,208 @@ $level-3:                       0 8px 24px 2px rgba(0,0,0,.08);
     --reddit: 					    #{$reddit};
     --skype: 					    #{$skype};
 
+    
+
+
+
+    
     // Typography -------------------------------------------------------
+
+    // Plus Jakarta Sans, Space Grotesk, Gilroy
     --font-family:                  'Gilroy', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    // --font-family:                  'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    // --font-family:                  'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-family-code:             ui-monospace, Menlo, Consolas, Monaco, monospace;
-    --font-base:                    var(--body-font-size-medium);
+    --font-size-base:               var(--body-font-size-md);
+    
     --font-weight-regular:          400;
+    --font-weight-medium:           500;
     --font-weight-semibold:         600;
     --font-weight-bold:             700;
 
     // Body
-    --body-font-size-small:         #{$body-small};
-    --body-font-size-medium:        #{$body-medium};
-    --body-font-size-large:         #{$body-large};
+    --body-font-size-sm:            12px;
+    --body-font-size-md:            14px;
+    --body-font-size-lg:            16px;
     
-    --body-line-height-small:       16px;
-    --body-line-height-medium:      20px;
-    --body-line-height-large:       24px;
+    --body-line-height-sm:          16px;
+    --body-line-height-md:          20px;
+    --body-line-height-lg:          24px;
+
+
+    // Display
+    --display-1:                    96px;
+    --display-2:                    64px;
+    --display-3:                    48px;
+
+    --display-font-weight-1:        var(--font-weight-bold);   // Bold
+    --display-font-weight-2:        var(--font-weight-bold);
+    --display-font-weight-3:        var(--font-weight-bold);
+
+    --display-line-height-1:        144px;
+    --display-line-height-2:        80px;
+    --display-line-height-3:        72px;
+
 
     // Heading
-    --h1:                           #{$h1};
-    --h2:                           #{$h2};
-    --h3:                           #{$h3};
-    --h4:                           #{$h4};
-    --h5:                           #{$h5};
-    --h6:                           #{$h6};
+    --heading-1:                    40px;
+    --heading-2:                    32px;
+    --heading-3:                    28px;
+    --heading-4:                    24px;
+    --heading-5:                    20px;
+    --heading-6:                    18px;
 
-    --h1-line-height:               60px;
-    --h2-line-height:               48px;
-    --h3-line-height:               42px;
-    --h4-line-height:               36px;
-    --h5-line-height:               30px;
-    --h6-line-height:               26px;
+    --heading-font-weight-1:        var(--font-weight-bold);   // Bold
+    --heading-font-weight-2:        var(--font-weight-bold);
+    --heading-font-weight-3:        var(--font-weight-bold);
+    --heading-font-weight-4:        var(--font-weight-semibold);   // Semibold
+    --heading-font-weight-5:        var(--font-weight-semibold);
+    --heading-font-weight-6:        var(--font-weight-semibold);
 
-    --h1-font-weight:               var(--font-weight-bold);   // Bold
-    --h2-font-weight:               var(--font-weight-bold);
-    --h3-font-weight:               var(--font-weight-bold);
-    --h4-font-weight:               var(--font-weight-semibold);   // Semibold
-    --h5-font-weight:               var(--font-weight-semibold);
-    --h6-font-weight:               var(--font-weight-semibold);
+    --heading-line-height-1:        60px;
+    --heading-line-height-2:        48px;
+    --heading-line-height-3:        42px;
+    --heading-line-height-4:        36px;
+    --heading-line-height-5:        30px;
+    --heading-line-height-6:        26px;
 
     
+
+
+
+
     // Foreground -------------------------------------------------------
     --fg-main:                      var(--neutral-900);
-    --fg-subtle:                    var(--neutral-800);
-    --fg-subtlest:                  var(--neutral-700);
-    --fg-disabled:                  var(--neutral-500);
+    --fg-subtle:                    var(--neutral-600);
+    --fg-subtlest:                  var(--neutral-500);
+    --fg-disabled:                  var(--neutral-300);
     --fg-decor:                     var(--neutral-300);
-    --fg-inverse:                   #{white};
+    --fg-inverse:                   #ffffff;
     
     --fg-brand:                     var(--brand-600);
     --fg-brand-strong:              var(--brand-700);
     --fg-brand-light:               var(--brand-500);
+
+    --fg-info:                      var(--blue-600);
+    --fg-success:                   var(--green-600);
+    --fg-warning:                   var(--orange-600);
+    --fg-danger:                    var(--red-600);
     
     
+
+
+
+     
     // Backround -------------------------------------------------------
-    --bg-neutral:                   var(--neutral-200);
-    --bg-neutral-hover:             var(--neutral-300);
-    --bg-neutral-pressed:           var(--neutral-400);
 
+    --bg-neutral:                                           var(--neutral-200);
+    --bg-neutral-hover:                                     var(--neutral-300);
+    --bg-neutral-pressed:                                   var(--neutral-400);
+    --bg-neutral-disabled:                                  var(--neutral-200);
 
-    --bg-brand:                     var(--brand-600);
-    --bg-brand-hover:               var(--brand-700);
-    --bg-brand-pressed:             var(--brand-800);
-    // --bg-brand:                     #{$brand};
-    // --bg-brand-hover:               #{darken($brand, 5%)};
-    // --bg-brand-pressed:             #{darken($brand, 10%)};
+    --bg-brand:                                             var(--brand-600);
+    --bg-brand-hover:                                       var(--brand-700);
+    --bg-brand-pressed:                                     var(--brand-800);
     
-    --bg-secondary:                 var(--brand-200);
-    --bg-secondary-hover:           var(--brand-600);
-    --bg-secondary-pressed:         var(--brand-700);
-    // --bg-secondary:                 #{lighten($brand, 32%)};
-    // --bg-secondary-hover:           #{$brand};
-    // --bg-secondary-pressed:         #{darken($brand, 5%)};
+    --bg-secondary:                                         var(--brand-200);
+    --bg-secondary-hover:                                   var(--brand-600);
+    --bg-secondary-pressed:                                 var(--brand-700);
     
-    --bg-ghost-brand:               #{transparent};
-    --bg-ghost-brand-hover:         var(--brand-200);
-    --bg-ghost-brand-pressed:       var(--brand-300);
-    // --bg-ghost-brand-hover:         #{lighten($brand, 30%)};
-    // --bg-ghost-brand-pressed:       #{lighten($brand, 26%)};
+    --bg-ghost-brand:                                       transparent;
+    --bg-ghost-brand-hover:                                 var(--brand-200);
+    --bg-ghost-brand-pressed:                               var(--brand-300);
     
-    --bg-ghost-neutral:             var(--neutral-200);
-    --bg-ghost-neutral-hover:       var(--neutral-300);
-    --bg-ghost-neutral-pressed:     var(--neutral-400);
+    --bg-ghost-neutral:                                     var(--neutral-200);
+    --bg-ghost-neutral-hover:                               var(--neutral-300);
+    --bg-ghost-neutral-pressed:                             var(--neutral-400);
     
+    
+    // Accent
+    --bg-accent-info:                                       var(--blue-600);
+    --bg-accent-info-hover:                                 var(--blue-500);
+    --bg-accent-info-pressed:                               var(--blue-700);
+    --bg-accent-info-disabled:                              var(--blue-50);
+
+    --bg-accent-info-subtle:                                var(--blue-100);
+    --bg-accent-info-subtle-hover:                          var(--blue-200);
+    --bg-accent-info-subtle-pressed:                        var(--blue-700);
+    --bg-accent-info-subtle-disabled:                       var(--blue-50);
+    
+    
+    --bg-accent-success:                                    var(--green-600);
+    --bg-accent-success-hover:                              var(--green-500);
+    --bg-accent-success-pressed:                            var(--green-700);
+    --bg-accent-success-disabled:                           var(--green-50);
+
+    --bg-accent-success-subtle:                             var(--green-100);
+    --bg-accent-success-subtle-hover:                       var(--green-200);
+    --bg-accent-success-subtle-pressed:                     var(--green-700);
+    --bg-accent-success-subtle-disabled:                    var(--green-50);
+    
+    
+    --bg-accent-warning:                                    var(--orange-600);
+    --bg-accent-warning-hover:                              var(--orange-500);
+    --bg-accent-warning-pressed:                            var(--orange-700);
+    --bg-accent-warning-disabled:                           var(--orange-50);
+
+    --bg-accent-warning-subtle:                             var(--orange-100);
+    --bg-accent-warning-subtle-hover:                       var(--orange-200);
+    --bg-accent-warning-subtle-pressed:                     var(--orange-700);
+    --bg-accent-warning-subtle-disabled:                    var(--orange-50);
+    
+    
+    --bg-accent-danger:                                     var(--red-600);
+    --bg-accent-danger-hover:                               var(--red-500);
+    --bg-accent-danger-pressed:                             var(--red-700);
+    --bg-accent-danger-disabled:                            var(--red-50);
+
+    --bg-accent-danger-subtle:                              var(--red-100);
+    --bg-accent-danger-subtle-hover:                        var(--red-200);
+    --bg-accent-danger-subtle-pressed:                      var(--red-700);
+    --bg-accent-danger-subtle-disabled:                     var(--red-50);
+    
+
     // Surface
-    --surface-1:                    #{$surface-1};
-    --surface-2:                    #{$surface-2};
+    --surface-1:                    white; // Canvas
+    --surface-2:                    var(--neutral-50); // Scrollable
+    --surface-3:                    white; // Card
+    --surface-4:                    rgba(0, 0, 0, 0.64); // Overlay
+    --surface-5:                    white; // Card
+    
     
 
-    // Border ----------------------------------------------------------
-    --border-light:                 #{$border-color};
-    --border-strong:                #{$neutral-300};
+
+
     
+    // Shadow
+    --shadow-50:                    0 1px 2px 0px rgba(0,0,0,.04);
+    --shadow-100:                   0 3px 4px 0px rgba(0,0,0,.04);
+    --shadow-200:                   0 3px 8px 0px rgba(0,0,0,.08);
+    --shadow-300:                   0 5px 12px 0px rgba(0,0,0,.12);
+    --shadow-400:                   0 5px 16px 0px rgba(0,0,0,.16);
+    --shadow-500:                   0 6px 24px 0px rgba(0,0,0,.16);
+    
+    
+
+
+
+    
+    // Border ----------------------------------------------------------
+    --border-light:                 var(--neutral-200);
+    --border-strong:                var(--neutral-300);
+    --border-brand:                 var(--brand-600);
+    
+    
+
+
+
     
     // Spacing ---------------------------------------------------------
     --space-xs-4:                   2px;
     --space-xs-3:                   4px;
     --space-xs-2:                   8px;
     --space-xs:                     12px;
-    --space-s:                      16px;
-    --space-m:                      24px;
-    --space-l:                      32px;
+    --space-sm:                     16px;
+    --space-md:                     24px;
+    --space-lg:                     32px;
     --space-xl:                     40px;
     --space-xl-2:                   48px;
     --space-xl-3:                   56px;
@@ -312,8 +344,45 @@ $level-3:                       0 8px 24px 2px rgba(0,0,0,.08);
     --space-xl-6:                   96px;
     --space-xl-7:                   128px;
     
+    
+
+
+
+    
+    // Spacing ---------------------------------------------------------
+    --radius-xs-4:                  2px;
+    --radius-xs-3:                  4px;
+    --radius-xs-2:                  8px;
+    --radius-xs:                    12px;
+    --radius-sm:                    16px;
+    --radius-md:                    24px;
+    --radius-lg:                    32px;
+    --radius-xl:                    40px;
+    --radius-rounded:               128px;
+    
+    
+
+
+
+    
+    // UI control ------------------------------------------------------
+    --ui-size-xs-2:                 var(--space-sm);
+    --ui-size-xs:                   var(--space-md);
+    --ui-size-sm:                   var(--space-lg);
+    --ui-size-md:                   var(--space-xl);
+    --ui-size-lg:                   var(--space-xl-2);
+    
+    --ui-radius-sm:                 var(--radius-xs-2);
+    --ui-radius-md:                 var(--radius-xs);
+    --ui-radius-lg:                 var(--radius-sm);
+
+    
+
+
+
+    
     // Dimension Theme -------------------------------------------------
-    --section-margin-web:           var(--space-xl-7);
-    --section-title-marign:         var(--space-l);
     --section-margin-mobile:        var(--space-xl-4);
+    --section-margin-web:           var(--space-xl-7);
+    --section-title-marign:         var(--space-lg);
 }

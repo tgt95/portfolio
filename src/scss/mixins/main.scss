@@ -4,36 +4,48 @@
 
 // Button
 @mixin btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center(inline-flex);
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
     text-decoration: none;
     transition: all .3s ease;
-    border-radius: $radius-xs;
     &:hover, &:focus, &:active, &.active{
         text-decoration: none;
     }
     >i{
-       font-weight: 400;
+       font-weight: var(--font-weight-regular);
        vertical-align: sub;
+    }
+}
+
+// Styling the button
+@mixin btn-color($textColor, $textColorHover, $textColorFocus, $bgColor, $bgColorHover, $bgColorFocus) {
+    color: $textColor;
+    background-color: $bgColor;
+    &:hover{
+        color: $textColorHover;
+        background-color: $bgColorHover;
+    }
+    &:focus, &:active, &.active{
+        color: $textColor;
+        background-color: $bgColorFocus;
     }
 }
 
 // Sizes
 @mixin btn-md {
+    border-radius: var(--ui-radius-md);
     >i{
-        font-size: var(--h5);
+        font-size: var(--heading-5);
     }
     &.btn-just-icon{
-        width: $ui-size-md;
-        height: $ui-size-md;
-        padding: var(--space-s);
+        width: var(--ui-size-md);
+        height: var(--ui-size-md);
+        padding: var(--space-sm);
     }
     &:not(.btn-just-icon){
-        padding: 0 var(--space-s);
-        line-height: $ui-size-md;
+        padding: 0 var(--space-sm);
+        line-height: var(--ui-size-md);
     }
     &:not(.icon-right):not(.btn-just-icon){
         >i{
@@ -49,112 +61,6 @@
     }
 }
 @mixin btn-lg {
-    line-height: $ui-size-lg;
-    padding: 0 $space-m;
-}
-
-// Variant
-@mixin btn-primary {
-    color: var(--fg-inverse);
-    background-color: var(--bg-brand);
-    &:hover{
-        color: var(--fg-inverse);
-        background-color: var(--bg-brand-hover);
-    }
-    &:focus, &:active, &.active{
-        color: var(--fg-inverse);
-        background-color: var(--bg-brand-pressed);
-    }
-}
-@mixin btn-secondary {
-    color: var(--fg-brand);;
-    background-color: var(--bg-secondary);
-    &:hover{
-        color: var(--fg-inverse);
-        background-color: var(--bg-secondary-hover);
-    }
-    &:focus, &:active, &.active{
-        color: var(--fg-inverse);
-        background-color: var(--bg-secondary-pressed);
-    }
-}
-@mixin btn-default {
-    color: var(--fg-main);
-    background-color: var(--bg-neutral);
-    &:hover{
-        color: var(--fg-main);
-        background-color: var(--bg-neutral-hover);
-    }
-    &:focus, &:active, &.active{
-        color: var(--fg-main);
-        background-color: var(--bg-neutral-hover);
-    }
-}
-@mixin btn-ghost {
-    color: var(--fg-main);
-    background-color: transparent;
-    &:hover{
-        color: var(--fg-main);
-        background-color: var(--bg-ghost-neutral-hover);
-    }
-    &:focus, &:active, &.active{
-        color: var(--fg-main);
-        background-color: var(--bg-ghost-neutral-pressed);
-    }
-}
-@mixin btn-ghost-brand {
-    color: var(--fg-brand);
-    background-color: var(--bg-ghost-brand);
-    &:hover{
-        color: var(--fg-brand);
-        background-color: var(--bg-ghost-brand-hover);
-    }
-    &:focus, &:active, &.active{
-        color: var(--fg-brand-strong);
-        background-color: var(--bg-ghost-brand-pressed);
-    }
-}
-@mixin btn-outline {
-    color: var(--fg-main);
-    background-color: white;
-    border: 1px solid var(--border-light);
-    &:hover{
-        color: var(--fg-main);
-        background-color: var(--bg-ghost-neutral-hover);
-        border: 1px solid var(--border-light);
-    }
-    &:focus, &:active, &.active{
-        color: var(--fg-main);
-        background-color: var(--bg-ghost-neutral-pressed);
-        border: 1px solid var(--border-light);
-    }
-}
-
-
-
-// Typography -------------------------------------------------------
-
-// Heading
-@mixin typo-heading($parameter: $i) {
-	font-size: var(--h#{$parameter});
-	font-weight: var(--h#{$parameter}-font-weight);
-	line-height: var(--h#{$parameter}-line-height);
-}
-@for $i from 1 through 6 {
-	.h#{$i} {
-		@include typo-heading($i)
-	}
-}
-
-// Body
-$sizing: small medium large;
-@mixin typo-body($parameter: $i) {
-    font-size: var(--body-font-size-#{$parameter});
-	line-height: var(--body-line-height-#{$parameter});
-}
-
-@each $i in $sizing {
-    .text-#{$i} {
-        @include typo-body($i)
-    }
+    line-height: var(--ui-size-lg);
+    padding: 0 var(--space-md);
 }
