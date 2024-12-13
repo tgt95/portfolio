@@ -114,105 +114,105 @@
 
 // Profile
 .section-profile{
-}
-.profile-content{
-	ul{
-		list-style-type: none;
-		padding-left: 0;
-		margin-bottom: 0;
-		li{
-			display: flex;
-			flex-wrap: wrap;
-			@media (min-width: 577px) and (max-width: 991px) {
-				display: block;
-			}
-			.title{
-				font-weight: var(--font-weight-semibold);
-				width: 100%;
-				max-width: 156px;
-				@media (max-width: 390px) {
-					max-width: 132px;
+	@media (max-width: 991px) {
+		svg{
+			width: 100%;
+		}
+	}
+	@media (max-width: 576px) {
+		.content-text{
+			order: 0;
+			margin-bottom: var(--space-lg);
+		}
+		.content-bg{
+			order: 1;
+		}
+	}
+	.profile-content{
+		ul{
+			list-style-type: none;
+			padding-left: 0;
+			margin-bottom: 0;
+			li{
+				display: flex;
+				flex-wrap: wrap;
+				@media (min-width: 577px) and (max-width: 991px) {
+					display: block;
 				}
-			}
-			&:not(:last-child){
-				margin-bottom: var(--space-md);
-			}
-			&.divider{
-				@media (min-width: 415px) {
-					max-width: 344px;
-				}
-			}
-			&[data-type="email"], &[data-type="social"]{
-				>.content{
-					@include flex-center-y(inline-flex);
-					a{
-						text-decoration: underline;
-						margin-right: var(--space-xs-3);
-					}
-					i{
-						font-size: var(--heading-5);
-					}
-				}
-			}
-			.personality-progress{
-				border-radius: var(--radius-xs);
-				width: 100%;
-				@media (min-width: 415px) {
-					max-width: 344px;
-				}
-				.holder{
-					position: relative;
+				.title{
+					font-weight: var(--font-weight-semibold);
 					width: 100%;
-					height: 8px;
-					background-color: var(--bg-neutral);
-					border-radius: var(--radius-rounded);
-					@include flex-center-y;
-					.emoji{
-						font-size: var(--heading-4);
-						line-height: 24px;
-						transform: translateX(-8px);
-						animation: personalityProgressText 1.5s ease infinite;
+					max-width: 156px;
+					@media (max-width: 390px) {
+						max-width: 132px;
 					}
 				}
-				.tracker{
-					border-radius: var(--radius-rounded);
-					border-bottom-right-radius: 0;
-					border-top-right-radius: 0;
-					width: 15%;
-					height: 100%;
-					background-color: $neutral-300;
-					animation: personalityProgressTracker 3s ease infinite;
-					// @include flex-center-y;
-					// left: 50%;
-					// transform: translate(-425%,-50%);
+				&:not(:last-child){
+					margin-bottom: var(--space-md);
 				}
-				.label{
-					b{
-						font-weight: var(--font-weight-semibold);
+				&.divider{
+					@media (min-width: 415px) {
+						max-width: 344px;
 					}
-					display: flex;
-					justify-content: space-between;
-					margin-bottom: var(--space-xs);
+				}
+				&[data-type="email"], &[data-type="social"]{
+					>.content{
+						@include flex-center-y(inline-flex);
+						a{
+							text-decoration: underline;
+							margin-right: var(--space-xs-3);
+						}
+						i{
+							font-size: var(--heading-5);
+						}
+					}
+				}
+				.personality-progress{
+					border-radius: var(--radius-xs);
+					width: 100%;
+					@media (min-width: 415px) {
+						max-width: 344px;
+					}
+					.holder{
+						position: relative;
+						width: 100%;
+						height: 8px;
+						background-color: var(--bg-neutral);
+						border-radius: var(--radius-rounded);
+						@include flex-center-y;
+						.emoji{
+							font-size: var(--heading-4);
+							line-height: 24px;
+							transform: translateX(-8px);
+							animation: personalityProgressText 1.5s ease infinite;
+						}
+					}
+					.tracker{
+						border-radius: var(--radius-rounded);
+						border-bottom-right-radius: 0;
+						border-top-right-radius: 0;
+						width: 15%;
+						height: 100%;
+						background-color: $neutral-300;
+						animation: personalityProgressTracker 3s ease infinite;
+						// @include flex-center-y;
+						// left: 50%;
+						// transform: translate(-425%,-50%);
+					}
+					.label{
+						b{
+							font-weight: var(--font-weight-semibold);
+						}
+						display: flex;
+						justify-content: space-between;
+						margin-bottom: var(--space-xs);
+					}
 				}
 			}
 		}
-	}
-	a{
-		color: var(--fg-main);
-	}
-}
-@media (max-width: 991px) {
-	svg{
-		width: 100%;
-	}
-}
-@media (max-width: 576px) {
-	.content-text{
-		order: 0;
-		margin-bottom: var(--space-lg);
-	}
-	.content-bg{
-		order: 1;
+		a{
+			color: var(--fg-main);
+		}
 	}
 }
 
@@ -895,7 +895,12 @@
 		}
 		.profile-content{
 			ul{
+				list-style-type: none;
+				padding-left: 0;
+				margin-bottom: 0;
 				li{
+					display: flex;
+					flex-wrap: wrap;
 					.text-wrapper{
 						@include flex-center-y;
 						@media (min-width: 992px) {

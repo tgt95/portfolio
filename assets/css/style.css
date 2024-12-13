@@ -1199,12 +1199,32 @@ a {
     display: none;
   }
 }
-.profile-content ul {
+@media (max-width: 991px) {
+  .section-profile svg {
+    width: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .section-profile .content-text {
+    -webkit-box-ordinal-group: 1;
+    -webkit-order: 0;
+        -ms-flex-order: 0;
+            order: 0;
+    margin-bottom: var(--space-lg);
+  }
+  .section-profile .content-bg {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+}
+.section-profile .profile-content ul {
   list-style-type: none;
   padding-left: 0;
   margin-bottom: 0;
 }
-.profile-content ul li {
+.section-profile .profile-content ul li {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1214,29 +1234,29 @@ a {
           flex-wrap: wrap;
 }
 @media (min-width: 577px) and (max-width: 991px) {
-  .profile-content ul li {
+  .section-profile .profile-content ul li {
     display: block;
   }
 }
-.profile-content ul li .title {
+.section-profile .profile-content ul li .title {
   font-weight: var(--font-weight-semibold);
   width: 100%;
   max-width: 156px;
 }
 @media (max-width: 390px) {
-  .profile-content ul li .title {
+  .section-profile .profile-content ul li .title {
     max-width: 132px;
   }
 }
-.profile-content ul li:not(:last-child) {
+.section-profile .profile-content ul li:not(:last-child) {
   margin-bottom: var(--space-md);
 }
 @media (min-width: 415px) {
-  .profile-content ul li.divider, .profile-content ul li.divider-dashed {
+  .section-profile .profile-content ul li.divider, .section-profile .profile-content ul li.divider-dashed {
     max-width: 344px;
   }
 }
-.profile-content ul li[data-type=email] > .content, .profile-content ul li[data-type=social] > .content {
+.section-profile .profile-content ul li[data-type=email] > .content, .section-profile .profile-content ul li[data-type=social] > .content {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1246,23 +1266,23 @@ a {
       -ms-flex-align: center;
           align-items: center;
 }
-.profile-content ul li[data-type=email] > .content a, .profile-content ul li[data-type=social] > .content a {
+.section-profile .profile-content ul li[data-type=email] > .content a, .section-profile .profile-content ul li[data-type=social] > .content a {
   text-decoration: underline;
   margin-right: var(--space-xs-3);
 }
-.profile-content ul li[data-type=email] > .content i, .profile-content ul li[data-type=social] > .content i {
+.section-profile .profile-content ul li[data-type=email] > .content i, .section-profile .profile-content ul li[data-type=social] > .content i {
   font-size: var(--heading-5);
 }
-.profile-content ul li .personality-progress {
+.section-profile .profile-content ul li .personality-progress {
   border-radius: var(--radius-xs);
   width: 100%;
 }
 @media (min-width: 415px) {
-  .profile-content ul li .personality-progress {
+  .section-profile .profile-content ul li .personality-progress {
     max-width: 344px;
   }
 }
-.profile-content ul li .personality-progress .holder {
+.section-profile .profile-content ul li .personality-progress .holder {
   position: relative;
   width: 100%;
   height: 8px;
@@ -1277,7 +1297,7 @@ a {
       -ms-flex-align: center;
           align-items: center;
 }
-.profile-content ul li .personality-progress .holder .emoji {
+.section-profile .profile-content ul li .personality-progress .holder .emoji {
   font-size: var(--heading-4);
   line-height: 24px;
   -webkit-transform: translateX(-8px);
@@ -1286,7 +1306,7 @@ a {
   -webkit-animation: personalityProgressText 1.5s ease infinite;
           animation: personalityProgressText 1.5s ease infinite;
 }
-.profile-content ul li .personality-progress .tracker {
+.section-profile .profile-content ul li .personality-progress .tracker {
   border-radius: var(--radius-rounded);
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
@@ -1296,7 +1316,7 @@ a {
   -webkit-animation: personalityProgressTracker 3s ease infinite;
           animation: personalityProgressTracker 3s ease infinite;
 }
-.profile-content ul li .personality-progress .label {
+.section-profile .profile-content ul li .personality-progress .label {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1307,34 +1327,13 @@ a {
           justify-content: space-between;
   margin-bottom: var(--space-xs);
 }
-.profile-content ul li .personality-progress .label b {
+.section-profile .profile-content ul li .personality-progress .label b {
   font-weight: var(--font-weight-semibold);
 }
-.profile-content a {
+.section-profile .profile-content a {
   color: var(--fg-main);
 }
 
-@media (max-width: 991px) {
-  svg {
-    width: 100%;
-  }
-}
-@media (max-width: 576px) {
-  .content-text {
-    -webkit-box-ordinal-group: 1;
-    -webkit-order: 0;
-        -ms-flex-order: 0;
-            order: 0;
-    margin-bottom: var(--space-lg);
-  }
-
-  .content-bg {
-    -webkit-box-ordinal-group: 2;
-    -webkit-order: 1;
-        -ms-flex-order: 1;
-            order: 1;
-  }
-}
 .section-skills {
   padding-top: var(--section-margin-web);
   padding-bottom: var(--section-margin-web);
@@ -2137,6 +2136,20 @@ a {
     height: 0.5px;
     background-color: var(--border-light);
   }
+}
+.section-personal-info-body .profile-content ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.section-personal-info-body .profile-content ul li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 .section-personal-info-body .profile-content ul li .text-wrapper {
   display: -webkit-box;
