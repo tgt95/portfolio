@@ -108,9 +108,13 @@ html
 								.role Senior Product Designer
 							.bottom
 								.description I help the business owner by balancing the business value & the user needs. Create value for the product by Problem Solving, Critical Thinking, Data Metric, and Interaction Design.
-								a(href="product-designer-trinh-gia-tuan.pdf" download).btn.btn-outline 
-									i.ri-download-2-fill
-									|  Download Resume
+								.actions
+									a(href="product-designer-trinh-gia-tuan.pdf" download).btn.btn-outline 
+										i.ri-download-2-fill
+										|  Download Resume
+									a(href="mailto:giatuantrinh@gmail.com" download).btn.btn-outline 
+										i.ri-mail-send-line
+										|  Contact me
 					.divider
 					.section-personal-info-body
 						.row
@@ -284,9 +288,18 @@ script.
 			autoplay: {
 				delay: 3000,
 			},
-			effect: 'flip',
 			loop: true,
-			speed: 1000
+			effect: 'flip',
+			speed: 1000,
+			grabCursor: true,
+			on: {
+			click(event) {
+				console.log('event.target ', this);
+				//- console.log('event.target ', this.clickedIndex);
+				avatarSlider.slideNext();
+				avatarSlider.update();
+			},
+		},
 		});
 	});
 

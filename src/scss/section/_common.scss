@@ -762,6 +762,14 @@
 				font-size: var(--body-font-size-lg);
 				margin-bottom: var(--space-sm);
 			}
+			.actions{
+				.btn:not(:last-child){
+					@media (min-width: 576px) {
+						margin-right: var(--space-xs-2);
+					}
+					margin-bottom: var(--space-xs-2);
+				}
+			}
 		}
 	}
 	.divider{

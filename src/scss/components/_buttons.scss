@@ -25,7 +25,7 @@
 .btn-outline{
     @include btn-color(var(--fg-main), var(--fg-main), var(--fg-main), white, var(--bg-ghost-neutral-hover), var(--bg-ghost-neutral-pressed));
     border: 1px solid var(--border-light);
-    box-shadow: var(--shawdow-50);
+    box-shadow: var(--shadow-50);
     &:hover{
         border: 1px solid var(--border-light);
     }

@@ -679,7 +679,7 @@ a {
   color: var(--fg-main);
   background-color: white;
   border: 1px solid var(--border-light);
-  box-shadow: var(--shawdow-50);
+  box-shadow: var(--shadow-50);
 }
 .btn-outline:hover {
   color: var(--fg-main);
@@ -1984,6 +1984,14 @@ a {
 .section-personal-info-header-right .description {
   font-size: var(--body-font-size-lg);
   margin-bottom: var(--space-sm);
+}
+.section-personal-info-header-right .actions .btn:not(:last-child), .section-personal-info-header-right .actions .header .navigation-menu ul:not(.social-list) li:not(:first-child) a:not(:last-child), .header .navigation-menu ul:not(.social-list) li:not(:first-child) .section-personal-info-header-right .actions a:not(:last-child) {
+  margin-bottom: var(--space-xs-2);
+}
+@media (min-width: 576px) {
+  .section-personal-info-header-right .actions .btn:not(:last-child), .section-personal-info-header-right .actions .header .navigation-menu ul:not(.social-list) li:not(:first-child) a:not(:last-child), .header .navigation-menu ul:not(.social-list) li:not(:first-child) .section-personal-info-header-right .actions a:not(:last-child) {
+    margin-right: var(--space-xs-2);
+  }
 }
 .section-personal-info .divider, .section-personal-info .divider-dashed {
   margin-top: var(--space-lg);
