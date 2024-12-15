@@ -1949,6 +1949,8 @@ a {
 .section-personal-info-header-left .avatar {
   width: var(--space-xl-7);
   height: var(--space-xl-7);
+}
+.section-personal-info-header-left .avatar img {
   border-radius: var(--radius-rounded);
   background-color: var(--bg-neutral);
   border: 1px solid var(--border-light);

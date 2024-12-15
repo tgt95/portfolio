@@ -734,9 +734,12 @@
 			.avatar{
 				width: var(--space-xl-7);
 				height: var(--space-xl-7);
-				border-radius: var(--radius-rounded);
-				background-color: var(--bg-neutral);
-				border: 1px solid var(--border-light);
+				img{
+					// max-width: var(--space-xl-7);
+					border-radius: var(--radius-rounded);
+					background-color: var(--bg-neutral);
+					border: 1px solid var(--border-light);
+				}
 				@media (min-width: 992px) {
 					margin-right: var(--space-md);
 				}

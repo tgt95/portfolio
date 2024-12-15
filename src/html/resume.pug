@@ -34,8 +34,8 @@ html
 		//- Icons
 		link(rel="stylesheet" type="text/css" href="assets/plugins/remixicon/fonts/remixicon.css")
 		//- link(rel="stylesheet" type="text/css" href="assets/plugins/phosphor/style.css")
-		//- link(rel="stylesheet" type="text/css" href="assets/plugins/slick-carousel/slick/slick-theme.css")
-		//- link(rel="stylesheet" type="text/css" href="assets/plugins/slick-carousel/slick/slick.css")
+		//- Swiper
+		link(rel="stylesheet" type="text/css" href="assets/plugins/swiper/swiper-bundle.min.css")
 
 		block page-css
 		link(rel="stylesheet" type="text/css" href="assets/css/style.min.css")
@@ -98,7 +98,10 @@ html
 				.section-personal-info-container
 					.section-personal-info-header
 						.section-personal-info-header-left
-							img.avatar(src="assets/images/avatar.png", alt="Gia Tuan")
+							.avatar.swiper-container
+								.swiper-wrapper
+									img.swiper-slide(src="assets/images/avatar.png", alt="Gia Tuan")
+									img.swiper-slide(src="assets/images/avatar-illustraion.svg", alt="Gia Tuan")
 						.section-personal-info-header-right
 							.m-b-5
 								.name Tuan (Cody) Trinh
@@ -246,6 +249,7 @@ html
 
 
 // Javascript
+script(src="assets/plugins/swiper/swiper-bundle.min.js")
 //- script(src="assets/js/style.min.js")
 
 script.
@@ -276,6 +280,13 @@ script.
 
 	// Window Onload
 	document.addEventListener('DOMContentLoaded', e => {
-		//- theme.init();
+		let avatarSlider = new Swiper('.section-personal-info-header-left .swiper-container', {
+			autoplay: {
+				delay: 3000,
+			},
+			effect: 'flip',
+			loop: true,
+			speed: 1000
+		});
 	});
 
