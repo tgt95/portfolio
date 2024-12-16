@@ -1,21 +1,21 @@
-@mixin flex-center($default: flex){
+@mixin flex-center($default: flex) {
     display: $default;
     align-items: center;
     justify-content: center;
 }
 
-@mixin flex-center-y-between($default: flex){
+@mixin flex-center-y-between($default: flex) {
     display: $default;
     align-items: center;
     justify-content: space-between;
 }
 
-@mixin flex-center-y($default: flex){
+@mixin flex-center-y($default: flex) {
     display: $default;
     align-items: center;
 }
 
-@mixin flex-center-x($default: flex){
+@mixin flex-center-x($default: flex) {
     display: $default;
     justify-content: center;
 }

@@ -1,60 +1,82 @@
 $space-step: 0 !default;
+
 @for $i from 1 through 19 {
-	@if ($i < 3){
+	@if ($i < 3) {
 		$space-step: $space-step + 2;
 	}
-	@if ($i >= 3 and $i < 8){
+
+	@if ($i >=3 and $i < 8) {
 		$space-step: $space-step + 4;
 	}
-	@if ($i >= 8 and $i < 11){
+
+	@if ($i >=8 and $i < 11) {
 		$space-step: $space-step + 8;
 	}
-	@if ($i == 11){
+
+	@if ($i ==11) {
 		$space-step: $space-step + 12;
 	}
-	@if ($i == 12){
+
+	@if ($i ==12) {
 		$space-step: $space-step + 40;
 	}
-	@if ($i == 13){
+
+	@if ($i ==13) {
 		$space-step: $space-step + 20;
 	}
-	@if ($i >= 14 and $i < 17){
+
+	@if ($i >=14 and $i < 17) {
 		$space-step: $space-step + 40;
 	}
-	@if ($i >= 17 and $i < 19){
+
+	@if ($i >=17 and $i < 19) {
 		$space-step: $space-step + 80;
 	}
-	@if ($i == 19){
+
+	@if ($i ==19) {
 		$space-step: $space-step + 200;
 	}
-	.m-b-#{$i}{
+
+	.m-b-#{$i} {
 		margin-bottom: #{$space-step + 'px'};
 	}
 }
 
-.col{
+.col {
 	padding-right: var(--space-sm);
 	padding-left: var(--space-sm);
+
 	@for $i from 1 through 12 {
-		&-#{$i}, &-auto{
+
+		&-#{$i},
+		&-auto {
 			@extend .col;
 		}
+
 		@each $shortName in sm md lg xl {
-			&-#{$shortName}-#{$i}, &-#{$shortName}-auto{
+
+			&-#{$shortName}-#{$i},
+			&-#{$shortName}-auto {
 				@extend .col;
 			}
 		}
 	}
 }
-.row{
+
+.row {
 	margin-right: calc(var(--space-sm) * -1);
-    margin-left: calc(var(--space-sm) * -1);
+	margin-left: calc(var(--space-sm) * -1);
 }
 
-.container{
+.container {
 	padding-right: var(--space-sm);
 	padding-left: var(--space-sm);
-	&-fluid, &-lg, &-md, &-sm, &-xl{
+
+	&-fluid,
+	&-lg,
+	&-md,
+	&-sm,
+	&-xl {
 		@extend .container
 	}
 }
