@@ -102,6 +102,7 @@ html
 								.swiper-wrapper
 									img.swiper-slide(src="assets/images/avatar.png", alt="Gia Tuan")
 									img.swiper-slide(src="assets/images/avatar-illustraion.svg", alt="Gia Tuan")
+								span.badge.badge-success.open-to-work Open to work
 						.section-personal-info-header-right
 							.m-b-5
 								.name Tuan (Cody) Trinh
@@ -254,21 +255,12 @@ html
 
 // Javascript
 script(src="assets/plugins/swiper/swiper-bundle.min.js")
-//- script(src="assets/js/style.min.js")
+script(src="assets/js/helper.js")
+script(src="assets/js/index.js")
 
 script.
 	//- Client side
-	let detectMobile = {
-		isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-	};
-
-	const _getHeight = el => {
-		return parseFloat(getComputedStyle(el, null).height.replace("px", ""));
-	}
-
-	const _getWidth = el => {
-		return parseFloat(getComputedStyle(el, null).width.replace("px", ""));
-	}
+	let theme = new Theme();
 
 	window.addEventListener('scroll', ()=> {
 		!detectMobile.isMobile && (document.querySelector('html').scrollTop > _getHeight(document.querySelector('.header'))) ? document.querySelector('.header').classList.add('has-background') : document.querySelector('.header').classList.remove('has-background');
@@ -284,22 +276,28 @@ script.
 
 	// Window Onload
 	document.addEventListener('DOMContentLoaded', e => {
+		// Init avatar flip effect
 		let avatarSlider = new Swiper('.section-personal-info-header-left .swiper-container', {
 			autoplay: {
 				delay: 3000,
 			},
-			loop: true,
+			//- grabCursor: true,
 			effect: 'flip',
 			speed: 1000,
-			grabCursor: true,
+			loop: true,
 			on: {
-			click(event) {
-				console.log('event.target ', this);
-				//- console.log('event.target ', this.clickedIndex);
-				avatarSlider.slideNext();
-				avatarSlider.update();
-			},
-		},
+				click(event) {
+					console.log('event.target ', this);
+					//- console.log('event.target ', this.clickedIndex);
+					avatarSlider.slideNext();
+					avatarSlider.update();
+				},
+			}
 		});
+
+		// Get Open to work status
+		fetch(theme.server + 'df2e5675f00bc58b57ca').then(response => response.json())
+		.then(data => !data.openToWork ? document.querySelector('.open-to-work').style.display = 'none' : 0)
+		.catch(err => console.error(err))
 	});
 

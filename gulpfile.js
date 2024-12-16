@@ -160,15 +160,16 @@ const scssWatch = ()=> {
 
 // JS task: concatenates and uglifies JS files to script.js
 const js = ()=> {
-	return src([
-            // 'Your URL',
-            // paths.node_modules + '/jquery/dist/jquery.min.js',
-            // paths.node_modules + '/popper.js/dist/umd/popper.min.js',
-            // paths.node_modules + '/bootstrap/dist/js/bootstrap.min.js',
-            // paths.node_modules + '/slick-carousel/slick/slick.min.js',
-            // paths.node_modules + '/babel-polyfill/dist/polyfill.js',
-            paths.src.js + '/main.js'
-		])
+	return src([paths.src.js + '/*.js'])
+	// return src([
+    //         // 'Your URL',
+    //         // paths.node_modules + '/jquery/dist/jquery.min.js',
+    //         // paths.node_modules + '/popper.js/dist/umd/popper.min.js',
+    //         // paths.node_modules + '/bootstrap/dist/js/bootstrap.min.js',
+    //         // paths.node_modules + '/slick-carousel/slick/slick.min.js',
+    //         // paths.node_modules + '/babel-polyfill/dist/polyfill.js',
+    //         paths.src.js + '/main.js'
+	// 	])
 	.pipe(plumber({
 	errorHandler: error => {
 		notify.onError({
@@ -186,10 +187,13 @@ const js = ()=> {
 		]
 	}))
 	.pipe(sourcemaps.init())
-	.pipe(concat('style.js'))
-	.pipe(dest(paths.dist.js))
 
-	.pipe(rename('style.min.js'))
+	// Join 2 files into 1 file then Rename
+	// .pipe(concat('style.js'))
+	// .pipe(dest(paths.dist.js))
+	// .pipe(rename('style.min.js'))
+
+	// Minify JS file
 	.pipe(uglify())
 	.pipe(sourcemaps.write('./'))
 	.pipe(dest(paths.dist.js))

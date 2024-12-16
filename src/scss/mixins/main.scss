@@ -2,7 +2,7 @@
     background-image: linear-gradient(to right, white 0%, #ffc3bf 100%);
 }
 
-// Button
+// Button ---------------------------------------------------------------------------------------------------
 @mixin btn {
     @include flex-center(inline-flex);
     font-weight: var(--font-weight-semibold);
@@ -60,7 +60,33 @@
         }
     }
 }
+
 @mixin btn-lg {
     line-height: var(--ui-size-lg);
     padding: 0 var(--space-md);
+}
+
+// Badge ----------------------------------------------------------------------------------------------------
+@mixin badge {
+    @include flex-center(inline-flex);
+    font-size: var(--body-font-size-sm);
+    line-height: var(--body-line-height-sm);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--space-xs-3) var(--space-xs-2);
+    border-radius: var(--ui-radius-sm);
+    >i{
+        font-size: var(--body-font-size-md);
+        font-weight: var(--font-weight-regular);
+        vertical-align: sub;
+        margin-right: var(--space-xs-3);
+    }
+}
+
+// Styling the button
+@mixin badge-color($textColor, $bgColor, $borderColor: null) {
+    color: $textColor;
+    background-color: $bgColor;
+    @if $borderColor != null {
+        border: 1px solid $borderColor;
+    }
 }

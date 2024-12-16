@@ -196,6 +196,10 @@
   --border-light: var(--neutral-200);
   --border-strong: var(--neutral-300);
   --border-brand: var(--brand-600);
+  --border-info: var(--blue-600);
+  --border-success: var(--green-600);
+  --border-warning: var(--orange-600);
+  --border-danger: var(--red-600);
   --space-xs-4: 2px;
   --space-xs-3: 4px;
   --space-xs-2: 8px;
@@ -230,8 +234,14 @@
   --section-margin-mobile: var(--space-xl-4);
   --section-margin-web: var(--space-xl-7);
   --section-title-marign: var(--space-lg);
+  --border-angle: 0deg;
 }
 
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
 .m-b-1 {
   margin-bottom: 2px;
 }
@@ -558,8 +568,110 @@ a {
   animation-name: move2Left;
 }
 
+@-webkit-keyframes border-angle-rotate {
+  from {
+    --border-angle: 0deg;
+  }
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes border-angle-rotate {
+  from {
+    --border-angle: 0deg;
+  }
+  to {
+    --border-angle: 360deg;
+  }
+}
 [class^=ri-], [class*=" ri-"] {
   vertical-align: middle;
+}
+
+:root {
+  --badge-text-info-emphasize: var(--fg-inverse);
+  --badge-bg-info-emphasize: var(--bg-accent-info);
+  --badge-text-info: var(--fg-info);
+  --badge-bg-info: var(--bg-accent-info-subtle);
+  --badge-border-info: var(--blue-300);
+  --badge-text-success-emphasize: var(--fg-inverse);
+  --badge-bg-success-emphasize: var(--bg-accent-success);
+  --badge-text-success: var(--fg-success);
+  --badge-bg-success: var(--bg-accent-success-subtle);
+  --badge-border-success: var(--green-300);
+  --badge-text-warning-emphasize: var(--fg-inverse);
+  --badge-bg-warning-emphasize: var(--bg-accent-warning);
+  --badge-text-warning: var(--fg-warning);
+  --badge-bg-warning: var(--bg-accent-warning-subtle);
+  --badge-border-warning: var(--orange-300);
+  --badge-text-danger-emphasize: var(--fg-inverse);
+  --badge-bg-danger-emphasize: var(--bg-accent-danger);
+  --badge-text-danger: var(--fg-danger);
+  --badge-bg-danger: var(--bg-accent-danger-subtle);
+  --badge-border-danger: var(--red-300);
+}
+
+.badge {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: var(--body-font-size-sm);
+  line-height: var(--body-line-height-sm);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-xs-3) var(--space-xs-2);
+  border-radius: var(--ui-radius-sm);
+}
+.badge > i {
+  font-size: var(--body-font-size-md);
+  font-weight: var(--font-weight-regular);
+  vertical-align: sub;
+  margin-right: var(--space-xs-3);
+}
+.badge.badge-emphasize.badge-info {
+  color: var(--badge-text-info-emphasize);
+  background-color: var(--badge-bg-info-emphasize);
+}
+.badge.badge-emphasize.badge-success {
+  color: var(--badge-text-success-emphasize);
+  background-color: var(--badge-bg-success-emphasize);
+}
+.badge.badge-emphasize.badge-warning {
+  color: var(--badge-text-warning-emphasize);
+  background-color: var(--badge-bg-warning-emphasize);
+}
+.badge.badge-emphasize.badge-danger {
+  color: var(--badge-text-danger-emphasize);
+  background-color: var(--badge-bg-danger-emphasize);
+}
+.badge:not(.badge-emphasize).badge-info {
+  color: var(--badge-text-info);
+  background-color: var(--badge-bg-info);
+  border: 1px solid var(--badge-border-info);
+}
+.badge:not(.badge-emphasize).badge-success {
+  color: var(--badge-text-success);
+  background-color: var(--badge-bg-success);
+  border: 1px solid var(--badge-border-success);
+}
+.badge:not(.badge-emphasize).badge-warning {
+  color: var(--badge-text-warning);
+  background-color: var(--badge-bg-warning);
+  border: 1px solid var(--badge-border-warning);
+}
+.badge:not(.badge-emphasize).badge-danger {
+  color: var(--badge-text-danger);
+  background-color: var(--badge-bg-danger);
+  border: 1px solid var(--badge-border-danger);
 }
 
 .btn, .header .navigation-menu ul:not(.social-list) li:not(:first-child) a {
@@ -1947,6 +2059,7 @@ a {
   }
 }
 .section-personal-info-header-left .avatar {
+  position: relative;
   width: var(--space-xl-7);
   height: var(--space-xl-7);
 }
@@ -1954,11 +2067,31 @@ a {
   border-radius: var(--radius-rounded);
   background-color: var(--bg-neutral);
   border: 1px solid var(--border-light);
+  cursor: pointer;
 }
 @media (min-width: 992px) {
   .section-personal-info-header-left .avatar {
     margin-right: var(--space-md);
   }
+}
+.section-personal-info-header-left .avatar .badge {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  bottom: calc(var(--space-xs-3) * -1);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 1;
+}
+.section-personal-info-header-left .avatar .badge.open-to-work {
+  border: 1px solid transparent;
+  -webkit-animation: border-angle-rotate 2s infinite linear;
+          animation: border-angle-rotate 2s infinite linear;
+  background: -webkit-linear-gradient(var(--badge-bg-success), white) padding-box, conic-gradient(from var(--border-angle), var(--badge-border-success) 50%, white) border-box;
+  background: linear-gradient(var(--badge-bg-success), white) padding-box, conic-gradient(from var(--border-angle), var(--badge-border-success) 50%, white) border-box;
 }
 .section-personal-info-header-right .name {
   font-size: var(--heading-4);

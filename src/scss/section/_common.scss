@@ -732,6 +732,7 @@
 				margin-bottom: var(--space-md);
 			}
 			.avatar{
+				position: relative;
 				width: var(--space-xl-7);
 				height: var(--space-xl-7);
 				img{
@@ -739,9 +740,29 @@
 					border-radius: var(--radius-rounded);
 					background-color: var(--bg-neutral);
 					border: 1px solid var(--border-light);
+					cursor: pointer;
 				}
 				@media (min-width: 992px) {
 					margin-right: var(--space-md);
+				}
+				.badge{
+					width: max-content;
+					position: absolute;
+					bottom: calc(var(--space-xs-3) * -1);
+					left: 50%;
+					transform: translateX(-50%);
+					z-index: 1;
+					&.open-to-work{
+						border: 1px solid transparent;
+						animation: border-angle-rotate 2s infinite linear;
+						background: linear-gradient(var(--badge-bg-success), white) padding-box,
+							conic-gradient(
+								from var(--border-angle),
+								var(--badge-border-success) 50%,
+								white
+								)
+								border-box;
+					}
 				}
 			}
 		}

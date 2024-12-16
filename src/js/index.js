@@ -1,35 +1,8 @@
-'use strict';
-let detectMobile = {
-	isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-};
-
-const _getHeight = el => {
-	return parseFloat(getComputedStyle(el, null).height.replace("px", ""));
-}
-
-const _getWidth = el => {
-	return parseFloat(getComputedStyle(el, null).width.replace("px", ""));
-}
-
-const trigger  = (el, eventType) => {
-	if (typeof eventType === 'string' && typeof el[eventType] === 'function') {
-	  el[eventType]();
-	} else {
-	  const event =
-		typeof eventType === 'string'
-		  ? new Event(eventType, {bubbles: true})
-		  : eventType;
-	  el.dispatchEvent(event);
-	}
-}
-
-
 class Theme {
 	constructor(){
 		this.spacer = [];
 		this.server = 'https://api.npoint.io/';
-		this.data = {
-		};
+		this.data = {};
 		this.breakpoint = {
 			xxs: 320,
 			xs : 414,
@@ -41,7 +14,6 @@ class Theme {
 			xxxl: 1600
 		};
 		this.elements = {
-			// body :				document.querySelector('.content-page'),
 			contentPage :		document.querySelector('.content-page'),
 			header :			document.querySelector('.header'),
 			footer :			document.querySelector('.footer'),
@@ -55,13 +27,12 @@ class Theme {
 			temp = temp === undefined ? 2 : temp + temp;
 			this.spacer.push(temp);
 		}
-		// $('[data-toggle="tooltip"]').tooltip();
 	}
 	navigation(){
 		let header = this.elements.header,
-			footer = this.elements.footer;
+			navigation = this.elements.navigation;
 
-		this.elements.navigation.querySelectorAll('ul:first-child a').forEach((element, index)=> {
+		navigation.querySelectorAll('ul:first-child a').forEach((element, index)=> {
 			element.addEventListener('click', (e)=> {
 				e.preventDefault();
 

@@ -1,0 +1,68 @@
+:root{
+    --badge-text-info-emphasize:    var(--fg-inverse);
+    --badge-bg-info-emphasize:      var(--bg-accent-info);
+
+    --badge-text-info:              var(--fg-info);
+    --badge-bg-info:                var(--bg-accent-info-subtle);
+    --badge-border-info:            var(--blue-300);
+
+
+
+    --badge-text-success-emphasize:    var(--fg-inverse);
+    --badge-bg-success-emphasize:      var(--bg-accent-success);
+
+    --badge-text-success:              var(--fg-success);
+    --badge-bg-success:                var(--bg-accent-success-subtle);
+    --badge-border-success:            var(--green-300);
+
+
+
+    --badge-text-warning-emphasize:    var(--fg-inverse);
+    --badge-bg-warning-emphasize:      var(--bg-accent-warning);
+
+    --badge-text-warning:              var(--fg-warning);
+    --badge-bg-warning:                var(--bg-accent-warning-subtle);
+    --badge-border-warning:            var(--orange-300);
+
+
+
+    --badge-text-danger-emphasize:    var(--fg-inverse);
+    --badge-bg-danger-emphasize:      var(--bg-accent-danger);
+
+    --badge-text-danger:              var(--fg-danger);
+    --badge-bg-danger:                var(--bg-accent-danger-subtle);
+    --badge-border-danger:            var(--red-300);
+}
+
+.badge{
+    @include badge;
+    // Parameter: btn-color($textColor, $bgColor)
+    &.badge-emphasize{
+        &.badge-info{
+            @include badge-color(var(--badge-text-info-emphasize), var(--badge-bg-info-emphasize));
+        }
+        &.badge-success{
+            @include badge-color(var(--badge-text-success-emphasize), var(--badge-bg-success-emphasize));
+        }
+        &.badge-warning{
+            @include badge-color(var(--badge-text-warning-emphasize), var(--badge-bg-warning-emphasize));
+        }
+        &.badge-danger{
+            @include badge-color(var(--badge-text-danger-emphasize), var(--badge-bg-danger-emphasize));
+        }
+    }
+    &:not(.badge-emphasize){
+        &.badge-info{
+            @include badge-color(var(--badge-text-info), var(--badge-bg-info), var(--badge-border-info));
+        }
+        &.badge-success{
+            @include badge-color(var(--badge-text-success), var(--badge-bg-success), var(--badge-border-success));
+        }
+        &.badge-warning{
+            @include badge-color(var(--badge-text-warning), var(--badge-bg-warning), var(--badge-border-warning));
+        }
+        &.badge-danger{
+            @include badge-color(var(--badge-text-danger), var(--badge-bg-danger), var(--badge-border-danger));
+        }
+    }
+}

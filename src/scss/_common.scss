@@ -81,6 +81,11 @@ a{
 	animation-name: move2Left;
 }
 
+@keyframes border-angle-rotate {
+	from { --border-angle: 0deg; }
+	to { --border-angle: 360deg; }
+}
+
 
 [class^="ri-"], [class*=" ri-"]{
 	vertical-align: middle;

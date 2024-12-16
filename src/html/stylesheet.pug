@@ -71,9 +71,30 @@ block content
 						.h6 Accent
 						.mb-3
 							-
-								let buttonTypesAccent = ['info', 'success', 'warning', 'danger']
-							each item, index in buttonTypesAccent
+								let accentTypes = ['info', 'success', 'warning', 'danger']
+							each item, index in accentTypes
 								a(href="javascript:void" class=`btn btn-${item}`)
+									i.ri-shut-down-line
+									= item
+								| 
+	section.section.section-showcase.has-divider
+		.container
+			.row.align-items-center
+				.col-md-6.col-lg-12
+					.section-heading
+						.section-title Badge
+					.content
+						.h6 Default
+						.mb-3
+							each item, index in accentTypes
+								span(class=`badge badge-${item}`)
+									i.ri-shut-down-line
+									= item
+								| 
+						.h6 Emphasize
+						.mb-3
+							each item, index in accentTypes
+								span(class=`badge badge-${item} badge-emphasize`)
 									i.ri-shut-down-line
 									= item
 								| 
