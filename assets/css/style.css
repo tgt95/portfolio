@@ -2079,15 +2079,16 @@ a {
   width: -moz-max-content;
   width: max-content;
   position: absolute;
-  bottom: calc(var(--space-xs-3) * -1);
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
+  bottom: calc(var(--space-xs-3) - 6px);
+  left: 52%;
+  -webkit-transform: translateX(-50%) rotate(-4deg);
+      -ms-transform: translateX(-50%) rotate(-4deg);
+          transform: translateX(-50%) rotate(-4deg);
+  box-shadow: var(--shadow-300);
   z-index: 1;
 }
 .section-personal-info-header-left .avatar .badge.open-to-work {
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   -webkit-animation: border-angle-rotate 2s infinite linear;
           animation: border-angle-rotate 2s infinite linear;
   background: -webkit-linear-gradient(var(--badge-bg-success), white) padding-box, conic-gradient(from var(--border-angle), var(--badge-border-success) 50%, white) border-box;

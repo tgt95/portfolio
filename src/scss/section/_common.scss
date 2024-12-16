@@ -748,12 +748,16 @@
 				.badge{
 					width: max-content;
 					position: absolute;
-					bottom: calc(var(--space-xs-3) * -1);
-					left: 50%;
-					transform: translateX(-50%);
+					// bottom: calc(var(--space-xs-3) * -1);
+					// left: 50%;
+					// transform: translateX(-50%);
+					bottom: calc(var(--space-xs-3) + 6px * -1);
+    				left: 52%;
+					transform: translateX(-50%) rotate(-4deg);
+					box-shadow: var(--shadow-300);
 					z-index: 1;
 					&.open-to-work{
-						border: 1px solid transparent;
+						border: 2px solid transparent;
 						animation: border-angle-rotate 2s infinite linear;
 						background: linear-gradient(var(--badge-bg-success), white) padding-box,
 							conic-gradient(
