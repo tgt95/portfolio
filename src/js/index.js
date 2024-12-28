@@ -31,25 +31,24 @@ class Theme {
 	navigation() {
 		let header = this.elements.header,
 			navigation = this.elements.navigation,
-			toggleButton = document.getElementById('mode-toggle'),
 			html = document.querySelector('html');
 
 		navigation.querySelectorAll('ul:first-child a').forEach((element, index) => {
 			element.addEventListener('click', (e) => {
-				
+
 				let $this = e.currentTarget,
 					href = $this.getAttribute('href'),
 					el,
 					elRect,
 					offsetTop;
-					
-				if (document.querySelector(href) !== null){
+
+				if (document.querySelector(href) !== null) {
 					e.preventDefault();
 
 					el = document.querySelector(href);
 					elRect = el.getBoundingClientRect();
 					offsetTop = $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
-					
+
 					html.velocity({
 						scrollTop: (elRect.top - document.body.getBoundingClientRect().top - offsetTop) + 'px'
 					}, { duration: 400 });
@@ -60,22 +59,35 @@ class Theme {
 		window.addEventListener('scroll', () => {
 			!detectMobile.isMobile && (html.scrollTop > _getHeight(header)) ? header.classList.add('has-background') : header.classList.remove('has-background');
 		});
+	}
+	appearanceOnTime() {
+		let html = document.querySelector('html');
+		let themeToggle = document.getElementById('mode-toggle');
 
-		// Add a click event listener to the button
-		toggleButton.addEventListener('click', () => {
-			// Toggle the 'dark-mode' class on the <html> element
+		const applyThemeBasedOnTime = () => {
+			let currentHour = new Date().getHours();
+			let isNightTime = currentHour >= 18 || currentHour < 6; // Night: 6 PM to 6 AM
+
+			// Add or remove dark mode class based on the time
+			if (isNightTime) {
+				html.classList.add('dark-mode');
+				themeToggle.checked = false; // Update toggle status
+			} else {
+				html.classList.remove('dark-mode');
+				themeToggle.checked = true; // Update toggle status
+			}
+		}
+
+		// Function to toggle theme manually
+		const toggleThemeManually = () => {
 			html.classList.toggle('dark-mode');
-		});
+		}
 
-		// Theming the Dark mode by current time (> 5PM : Dark mode ON)
-		if (new Date().getHours() < 17){
-			html.classList.remove('dark-mode');
-			toggleButton.setAttribute('checked', 'checked');
-		}
-		else{
-			html.classList.add('dark-mode');
-			toggleButton.removeAttribute('checked');
-		}
+		// Attach an event listener to the toggle input
+		themeToggle.addEventListener('change', toggleThemeManually);
+
+		// Apply the initial theme based on time
+		applyThemeBasedOnTime();
 	}
 	animation(status = true) {
 		// Human
@@ -204,17 +216,17 @@ class Theme {
 			});
 		}
 
-		let filterButtons = 		document.querySelectorAll('.section-work .navigation-tabs ul a'),
-			switchViewButtons = 	document.querySelectorAll('.section-work .navigation-tabs .switch-view a'),
-			switchGirdButton = 		document.querySelector('.section-work .navigation-tabs .switch-view a[action="grid"]'),
-			switchListButton = 		document.querySelector('.section-work .navigation-tabs .switch-view a[action="list"]'),
-			filterLi = 				document.querySelectorAll('.section-work .navigation-tabs li'),
-			buttonPrev = 			document.querySelectorAll('.section-work .slide-button-prev'),
-			buttonNext = 			document.querySelectorAll('.section-work .slide-button-next'),
-			container = 			document.querySelectorAll('.section-work .swiper-container'),
-			row = 					document.querySelectorAll('.section-work .swiper-container .slide-wrapper'),
-			item = 					document.querySelectorAll('.section-work .swiper-container .slide-wrapper .item'),
-			title = 				document.querySelector('.section-work .section-title'),
+		let filterButtons = document.querySelectorAll('.section-work .navigation-tabs ul a'),
+			switchViewButtons = document.querySelectorAll('.section-work .navigation-tabs .switch-view a'),
+			switchGirdButton = document.querySelector('.section-work .navigation-tabs .switch-view a[action="grid"]'),
+			switchListButton = document.querySelector('.section-work .navigation-tabs .switch-view a[action="list"]'),
+			filterLi = document.querySelectorAll('.section-work .navigation-tabs li'),
+			buttonPrev = document.querySelectorAll('.section-work .slide-button-prev'),
+			buttonNext = document.querySelectorAll('.section-work .slide-button-next'),
+			container = document.querySelectorAll('.section-work .swiper-container'),
+			row = document.querySelectorAll('.section-work .swiper-container .slide-wrapper'),
+			item = document.querySelectorAll('.section-work .swiper-container .slide-wrapper .item'),
+			title = document.querySelector('.section-work .section-title'),
 			setttings = {
 				slidesPerView: 'auto',
 				slidesOffsetBefore: title.getBoundingClientRect().left,

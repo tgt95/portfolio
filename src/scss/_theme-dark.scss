@@ -248,9 +248,24 @@ html.dark-mode{
             fill: rgba($brand-200, .4);
         }
     }
-    .designer-boy--hair{
-        fill: #777a9d;
+    // Hair
+    #paint0_linear_150563_36651, #paint6_linear_150518_57503, #paint1_linear_150510_57227{
+        stop{
+            &:nth-child(1){
+                stop-color: #256DFF;
+            }
+            &:nth-child(2){
+                stop-color: #226AFF;
+            }
+            &:nth-child(2){
+                stop-color: #256DFF;
+            }
+        }
     }
+    // .designer-boy--hair{
+    //     fill: #777a9d;
+    // }
+
     // Illustration: Contact
     .section-contact{
         background-image: linear-gradient(to right, rgba($brand-200, .1) 0, rgba($brand-200, .2) 100%);

@@ -423,8 +423,14 @@ html.dark-mode #paint2_linear_150518_57503 stop:nth-child(2), html.dark-mode #pa
 html.dark-mode #tree-root-1, html.dark-mode #tree-root-2, html.dark-mode #tree-root-3, html.dark-mode #tree-root-4 {
   fill: rgba(248, 213, 211, 0.4);
 }
-html.dark-mode .designer-boy--hair {
-  fill: #777a9d;
+html.dark-mode #paint0_linear_150563_36651 stop:nth-child(1), html.dark-mode #paint6_linear_150518_57503 stop:nth-child(1), html.dark-mode #paint1_linear_150510_57227 stop:nth-child(1) {
+  stop-color: #256DFF;
+}
+html.dark-mode #paint0_linear_150563_36651 stop:nth-child(2), html.dark-mode #paint6_linear_150518_57503 stop:nth-child(2), html.dark-mode #paint1_linear_150510_57227 stop:nth-child(2) {
+  stop-color: #226AFF;
+}
+html.dark-mode #paint0_linear_150563_36651 stop:nth-child(2), html.dark-mode #paint6_linear_150518_57503 stop:nth-child(2), html.dark-mode #paint1_linear_150510_57227 stop:nth-child(2) {
+  stop-color: #256DFF;
 }
 html.dark-mode .section-contact {
   background-image: -webkit-linear-gradient(left, rgba(248, 213, 211, 0.1) 0, rgba(248, 213, 211, 0.2) 100%);
@@ -2991,8 +2997,8 @@ a:disabled, a.disabled {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  background: -webkit-linear-gradient(278deg, var(--fg-main) 0%, var(--neutral-500) 25%, var(--neutral-600) 50%, var(--neutral-500) 75%, var(--fg-main) 100%);
-  background: linear-gradient(172deg, var(--fg-main) 0%, var(--neutral-500) 25%, var(--neutral-600) 50%, var(--neutral-500) 75%, var(--fg-main) 100%);
+  background: -webkit-linear-gradient(278deg, var(--fg-main) 0%, var(--fg-subtle) 25%, var(--fg-subtlest) 50%, var(--fg-subtle) 75%, var(--fg-main) 100%);
+  background: linear-gradient(172deg, var(--fg-main) 0%, var(--fg-subtle) 25%, var(--fg-subtlest) 50%, var(--fg-subtle) 75%, var(--fg-main) 100%);
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;

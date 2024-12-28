@@ -22,7 +22,7 @@ block content
 					p(id="section-banner-description") I help the business owner balance the business value & the user needs. Create value for the product by Problem Solving, Critical Thinking, Data Metric, and Interaction Design.
 					//- p My name is Trinh Gia Tuan, a designer with the passion for designing Applications User Interfaces including mobile applications, and websites.
 				.col-lg-6.content-bg
-					include svg/boy.svg
+					include svg/human.svg
 					//- include svg/banner-bg.svg
 	
 	//- Profile
@@ -277,12 +277,11 @@ block script
 		let theme = new Theme(),
 			data = !{JSON.stringify(database)};
 
-		//- console.log(data.featured);
-		
 
 		// Window Onload
 		document.addEventListener('DOMContentLoaded', e => {
 			theme.init();
+			theme.appearanceOnTime();
 			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', !{JSON.stringify(database)});
 
 			// Waiting for loading end (Fix bug when have scrollbar appear)
@@ -297,5 +296,4 @@ block script
 			!detectMobile.isMobile ? theme.workSwiper() : 0;
 		}, true);
 
-		//- new Date().getHours() >= 19 ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
 		//- setInterval(()=> console.log(new Date().getHours() + ' ' + new Date().getMinutes() + ' ' + new Date().getSeconds()), 1000);
