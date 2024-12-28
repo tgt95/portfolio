@@ -4,6 +4,7 @@ body {
 	font-size: var(--font-size-base);
 	font-weight: var(--font-weight-regular);
 	background-color: var(--surface-1);
+	transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .divider {

@@ -1,5 +1,7 @@
 .header {
+	min-height: 76px;
 	transition: background-color .3s ease, box-shadow .3s ease;
+	@include flex-center-y;
 
 	&.is-sticky {
 		position: fixed;
@@ -49,9 +51,8 @@
 					}
 
 					&.logo {
-						$logo-size: 60px;
-						width: $logo-size;
-						height: $logo-size;
+						width: var(--space-xl-2);
+						height: var(--space-xl-2);
 
 						img {
 							width: 100%;
@@ -63,6 +64,7 @@
 							display: inline-block;
 							border: 2px solid;
 							border-color: transparent;
+							transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
 						}
 
 						&:hover {
@@ -75,16 +77,14 @@
 					&:not(:first-child) {
 						a {
 							@include btn-md;
-							@extend .btn;
-							@extend .btn-ghost-brand;
+							@include btn;
+							@include btn-color(var(--fg-brand), var(--fg-brand), var(--fg-inverse-static), var(--bg-ghost-brand), var(--bg-ghost-brand-hover), var(--bg-ghost-brand-pressed));
+							@media (max-width: 389px) {
+								padding: 0 var(--space-xs)!important;
+							}
 						}
 					}
 
-					@media (max-width: 576px) {
-						a{
-							// padding: 0 var(--space-xs);
-						}
-					}
 				}
 			}
 
