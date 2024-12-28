@@ -424,13 +424,13 @@ html.dark-mode #tree-root-1, html.dark-mode #tree-root-2, html.dark-mode #tree-r
   fill: rgba(248, 213, 211, 0.4);
 }
 html.dark-mode #paint0_linear_150563_36651 stop:nth-child(1), html.dark-mode #paint6_linear_150518_57503 stop:nth-child(1), html.dark-mode #paint1_linear_150510_57227 stop:nth-child(1) {
-  stop-color: #256DFF;
+  stop-color: #2E59B0;
 }
 html.dark-mode #paint0_linear_150563_36651 stop:nth-child(2), html.dark-mode #paint6_linear_150518_57503 stop:nth-child(2), html.dark-mode #paint1_linear_150510_57227 stop:nth-child(2) {
-  stop-color: #226AFF;
+  stop-color: #2A53A2;
 }
 html.dark-mode #paint0_linear_150563_36651 stop:nth-child(2), html.dark-mode #paint6_linear_150518_57503 stop:nth-child(2), html.dark-mode #paint1_linear_150510_57227 stop:nth-child(2) {
-  stop-color: #256DFF;
+  stop-color: #325EB7;
 }
 html.dark-mode .section-contact {
   background-image: -webkit-linear-gradient(left, rgba(248, 213, 211, 0.1) 0, rgba(248, 213, 211, 0.2) 100%);
