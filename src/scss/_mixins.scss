@@ -27,7 +27,7 @@
         background-color: $bgColorHover;
     }
     &:focus, &:active, &.active{
-        color: $textColor;
+        color: $textColorFocus;
         background-color: $bgColorFocus;
     }
 }

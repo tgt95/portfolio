@@ -8,7 +8,7 @@ body {
 
 .divider {
 	width: 100%;
-	background-color: var(--border-light);
+	background-color: var(--border);
 	height: 1px;
 
 	&-dashed {
@@ -16,15 +16,15 @@ body {
 		--s: 12px;
 		@extend .divider;
 		background:
-			radial-gradient(circle closest-side, var(--border-light) 98%, #0000) 0 0/var(--s) 100%,
-			linear-gradient(90deg, var(--border-light) 50%, #0000 0) calc(var(--s)/2) 0/calc(2*var(--s)) 100%;
+			radial-gradient(circle closest-side, var(--border) 98%, #0000) 0 0/var(--s) 100%,
+			linear-gradient(90deg, var(--border) 50%, #0000 0) calc(var(--s)/2) 0/calc(2*var(--s)) 100%;
 
 		&.vertical {
 			height: 100%;
 			width: 1px;
 			background:
-				radial-gradient(circle closest-side, var(--border-light) 98%, #0000) 0 0/100% var(--s),
-				linear-gradient(var(--border-light) 50%, #0000 0) 0 calc(var(--s)/2)/100% calc(2*var(--s));
+				radial-gradient(circle closest-side, var(--border) 98%, #0000) 0 0/100% var(--s),
+				linear-gradient(var(--border) 50%, #0000 0) 0 calc(var(--s)/2)/100% calc(2*var(--s));
 		}
 	}
 }
@@ -56,12 +56,12 @@ a {
 
 	&-title {
 		animation: flash 3s ease infinite;
-		color: var(--fg-inverse);
+		color: var(--fg-inverse-static);
 		@include text-heading(6);
 	}
 
 	.logo-img {
-		width: 120px;
+		width: var(--space-xl-6);
 	}
 }
 

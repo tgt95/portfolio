@@ -1,0 +1,17 @@
+<svg viewBox="0 0 1440 152.43" class="shape-wave-1">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: var(--surface-1);
+                fill-rule: evenodd;
+            }
+        </style>
+    </defs>
+    <title>Asset 2</title>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+            <path id="Combined-Shape" class="cls-1"
+                d="M954.06,0c107.57,0,181.53,35.74,217.9,60.35,46.37,31.36,160.67,74.13,219.37,31.36q38.24-27.85,48.67-31.94V0ZM0,0,.19,71.75Q76.56,9,205.45,29C334.32,48.94,384,163.4,532.15,151.58S697.9,38.49,858.07,9a530,530,0,0,1,96-9Z" />
+        </g>
+    </g>
+</svg>

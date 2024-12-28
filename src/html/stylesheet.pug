@@ -1,18 +1,45 @@
-extends include/layout.pug
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		meta(name='theme-color', content='#ea5d5d' media="(prefers-color-scheme: light)")
+		meta(name='theme-color', content='#ea5d5d' media="(prefers-color-scheme: dark)")
+		//- embed(src="[MR-Inst]-Surfaces-Good-Day.mp3" autostart="true" loop="true" hidden="true" id="#bg-music")
 
-block meta-title
-	title Stylesheet
+		block meta-title
+		
+		//- Default image when paste social link
+		meta(property="og:image" content="assets/images/og-image.jpg")
+		meta(property="og:title" content="Trình Gia Tuấn | Senior Product Designer | UX/UI | Resume")
+		meta(property="og:image:type" content="image/png")
+		meta(property="og:image:width" content="1024")
+		meta(property="og:image:height" content="1024")
+		//- Favicon
+		link(rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon_io/apple-touch-icon.png")
+		link(rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon_io/favicon-32x32.png")
+		link(rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon_io/favicon-16x16.png")
+		link(rel="manifest" href="assets/images/favicon_io/site.webmanifest")
+		
 
-block custom
-block page-css
-	//- Photoswipte
-	link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/photoswipe.css")
-	link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/default-skin/default-skin.css")
-	//- Swiper
-	link(rel="stylesheet" type="text/css" href="assets/plugins/swiper/swiper-bundle.min.css")
 
+		//- Bootstrap
+		link(rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-grid.min.css")
+		link(rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-reboot.min.css")
 
-block content
+		//- Animate CSS
+		link(rel="stylesheet" type="text/css" href="assets/plugins/animate.css/animate.min.css")
+
+		//- Icons
+		link(rel="stylesheet" type="text/css" href="assets/plugins/remixicon/fonts/remixicon.css")
+		//- link(rel="stylesheet" type="text/css" href="assets/plugins/phosphor/style.css")
+		//- Swiper
+		link(rel="stylesheet" type="text/css" href="assets/plugins/swiper/swiper-bundle.min.css")
+
+		block page-css
+		link(rel="stylesheet" type="text/css" href="assets/css/style.min.css")
+
 	style.
 		body{
 			margin-top: calc(76px + var(--section-margin-mobile));
@@ -45,139 +72,163 @@ block content
 			//- border-radius: 8px;
 			//- border: 1px solid var(--border-light);
 		}
-	section.section.has-divider
-		.container
-			.row.align-items-center
-				.col-md-6.col-lg-12
-					.section-heading
-						.section-title Section title
-					.content Lorem ip sum
-	section.section.section-showcase.has-divider
-		.container
-			.row.align-items-center
-				.col-md-6.col-lg-12
-					.section-heading
-						.section-title Buttons
-					.content
-						.h6 Main button
-						.mb-3
-							-
-								let buttonTypes = ['primary', 'secondary', 'default', 'outline', 'ghost', 'ghost-brand']
-							each item, index in buttonTypes
-								a(href="javascript:void" class=`btn btn-${item}`)
-									i.ri-shut-down-line
-									= item
-								| 
-						.h6 Accent
-						.mb-3
-							-
-								let accentTypes = ['info', 'success', 'warning', 'danger']
-							each item, index in accentTypes
-								a(href="javascript:void" class=`btn btn-${item}`)
-									i.ri-shut-down-line
-									= item
-								| 
-	section.section.section-showcase.has-divider
-		.container
-			.row.align-items-center
-				.col-md-6.col-lg-12
-					.section-heading
-						.section-title Badge
-					.content
-						.h6 Default
-						.mb-3
-							each item, index in accentTypes
-								span(class=`badge badge-${item}`)
-									i.ri-shut-down-line
-									= item
-								| 
-						.h6 Emphasize
-						.mb-3
-							each item, index in accentTypes
-								span(class=`badge badge-${item} badge-emphasize`)
-									i.ri-shut-down-line
-									= item
-								| 
-						
-	section.section.section-showcase.section-typography.has-divider
-		.container
-			.row.align-items-center
-				.col-md-6.col-lg-12
-					.section-heading
-						.section-title Typography
-					.section-content
-						.item
-							.group-title.h6 Heading
-							.row.align-items-center
-								- for (var i = 1; i <= 6; ++i) {
-									.col-md-4.box
-										div(class=`h${i}`)= `Heading ${i}`
-								- }
-						.divider
-						.item
-							.group-title.h6 Body
-							.row.align-items-center
+	body
+		// Header
+		-
+			let navigationMenu = {
+				title: [
+						//- 'Home', 
+						'Profile',
+						'Work', 
+						'Resume'
+					],
+				url: [
+					//- '.section-banner', 
+					'.section-profile', 
+					'.section-work', 
+					'.section-contact'
+					],
+			}
+			let socialIcon = ['linkedin-box', 'behance', 'dribbble', 'github']
+		header.header.is-sticky
+			.container
+				.navigation-menu
+					ul
+						li.logo
+							a.disable-function(href="index.html")
+								img(src="assets/images/logo.svg", alt="TGT Logo")
+						//- each item, index in navigationMenu.title
+							li
+								a(href=navigationMenu.url[index] data-offset-top="88")= navigationMenu.title[index]
+					ul.social-list
+						- let socialLink = ['https://www.linkedin.com/in/tgt95', 'https://www.behance.net/tgt95', 'https://dribbble.com/tgt95', 'https://github.com/tgt95']
+						each icon, index in socialIcon
+							li
+								a(href=socialLink[index] target="_blank").btn.btn-just-icon.btn-outline
+									i(class=`ri-${icon}-fill`)
+						li.theme-switch-action
+							label.theme-switch
+								input.theme-switch__checkbox(type='checkbox' checked)#mode-toggle
+								.theme-switch__container
+									.theme-switch__clouds
+									.theme-switch__stars-container
+										include svg/theme-toggle.svg
+									.theme-switch__circle-container
+										.theme-switch__sun-moon-container
+											.theme-switch__moon
+												.theme-switch__spot
+												.theme-switch__spot
+												.theme-switch__spot
+		
+		section.section.has-divider
+			.container
+				.row.align-items-center
+					.col-md-6.col-lg-12
+						.section-heading
+							.section-title Section title
+						.content Lorem ip sum
+		section.section.section-showcase.has-divider
+			.container
+				.row.align-items-center
+					.col-md-6.col-lg-12
+						.section-heading
+							.section-title Buttons
+						.content
+							.h6 Main button
+							.mb-3
 								-
-									let bodyTexts = ['large', 'medium', 'small']
-								each item in bodyTexts
-									.col-md-4.box
-										div(class=`text-${item}`)= `Body ${item}`
-	section.section.section-showcase.section-color.has-divider
-		.container
-			.row.align-items-center
-				.col-md-6.col-lg-12
-					.section-heading
-						.section-title Color
-					.section-content
-						-
-							let colors = ['neutral', 'brand', 'blue', 'green', 'orange', 'red']
-							let scale = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
-						each color, colorIndex in colors
+									let buttonTypes = ['primary', 'secondary', 'default', 'outline', 'ghost', 'ghost-brand']
+								each item, index in buttonTypes
+									a(href="javascript:void" class=`btn btn-${item}`)
+										i.ri-shut-down-line
+										= item
+									| 
+							.h6 Accent
+							.mb-3
+								-
+									let accentTypes = ['info', 'success', 'warning', 'danger']
+								each item, index in accentTypes
+									a(href="javascript:void" class=`btn btn-${item}`)
+										i.ri-shut-down-line
+										= item
+									| 
+		section.section.section-showcase.has-divider
+			.container
+				.row.align-items-center
+					.col-md-6.col-lg-12
+						.section-heading
+							.section-title Badge
+						.content
+							.h6 Default
+							.mb-3
+								each item, index in accentTypes
+									span(class=`badge badge-${item}`)
+										i.ri-shut-down-line
+										= item
+									| 
+							.h6 Emphasize
+							.mb-3
+								each item, index in accentTypes
+									span(class=`badge badge-${item} badge-emphasize`)
+										i.ri-shut-down-line
+										= item
+									| 
+							
+		section.section.section-showcase.section-typography.has-divider
+			.container
+				.row.align-items-center
+					.col-md-6.col-lg-12
+						.section-heading
+							.section-title Typography
+						.section-content
 							.item
-								.group-title.h6= color
-								.d-flex
-									each item, index in scale
-										.swatch(style=`background-color: var(--${color}-${item});`)
-										//- span <script>getComputedStyle(document.body).getPropertyValue(`--neutral-${item}`)</script>
+								.group-title.h6 Heading
+								.row.align-items-center
+									- for (var i = 1; i <= 6; ++i) {
+										.col-md-4.box
+											div(class=`h${i}`)= `Heading ${i}`
+									- }
+							.divider
+							.item
+								.group-title.h6 Body
+								.row.align-items-center
+									-
+										let bodyTexts = ['large', 'medium', 'small']
+									each item in bodyTexts
+										.col-md-4.box
+											div(class=`text-${item}`)= `Body ${item}`
+		section.section.section-showcase.section-color.has-divider
+			.container
+				.row.align-items-center
+					.col-md-6.col-lg-12
+						.section-heading
+							.section-title Color
+						.section-content
+							-
+								let colors = ['neutral', 'brand', 'blue', 'green', 'orange', 'red']
+								let scale = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+							each color, colorIndex in colors
+								.item
+									.group-title.h6= color
+									.d-flex
+										each item, index in scale
+											.swatch(style=`background-color: var(--${color}-${item});`)
+											//- span <script>getComputedStyle(document.body).getPropertyValue(`--neutral-${item}`)</script>
 
 
 
-block page-script
-	script(src="assets/plugins/photoswipe/dist/photoswipe.min.js")
-	script(src="assets/plugins/photoswipe/dist/photoswipe-ui-default.min.js")
-	script(src="assets/plugins/swiper/swiper-bundle.min.js")
+// Javascript
+script(src="assets/plugins/swiper/swiper-bundle.min.js")
+script(src="assets/js/helper.js")
+script(src="assets/js/index.js")
 
-block script
-	//-  Server side
-	//-  Get Data Image (Not rendered)
-	-
-		for(var type in database) {
-			database[type].data.forEach((item, i)=> {
-				//- Add new Property for JSON array
-				item['w'] = getImageSize(item.src)[0];
-				item['h'] = getImageSize(item.src)[1];
-				//- Serve for identify which ID to open PSWP overlay
-				item['pid'] = `${type}-${i}`;
-			})
-		}
-	//- Client side
-	script.
-		let theme = new Theme(),
-			data = !{JSON.stringify(database)};
+script.
+	let theme = new Theme();
 
-		const variable = getComputedStyle(document.body).getPropertyValue('--brand');
-		console.log(variable)
-		console.log(getComputedStyle(document.body))
+	const variable = getComputedStyle(document.body).getPropertyValue('--brand');
+	console.log(variable)
 
-		// Window Onload
-		document.addEventListener('DOMContentLoaded', e => {
-			theme.init();
-		});
-
-		// Window Resize
-		window.addEventListener('resize', e => {
-			!detectMobile.isMobile ? theme.workSwiper() : 0;
-		}, true);
-
-		//- new Date().getHours() >= 19 ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
-		//- setInterval(()=> console.log(new Date().getHours() + ' ' + new Date().getMinutes() + ' ' + new Date().getSeconds()), 1000);
+	// Window Onload
+	document.addEventListener('DOMContentLoaded', e => {
+		theme.navigation();
+	});

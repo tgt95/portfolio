@@ -89,8 +89,21 @@ html
 						- let socialLink = ['https://www.linkedin.com/in/tgt95', 'https://www.behance.net/tgt95', 'https://dribbble.com/tgt95', 'https://github.com/tgt95']
 						each icon, index in socialIcon
 							li
-								a(href=socialLink[index] target="_blank").btn.btn-just-icon.btn-ghost-brand
+								a(href=socialLink[index] target="_blank").btn.btn-just-icon.btn-outline
 									i(class=`ri-${icon}-fill`)
+						li.theme-switch-action
+							label.theme-switch
+								input.theme-switch__checkbox(type='checkbox' checked)#mode-toggle
+								.theme-switch__container
+									.theme-switch__clouds
+									.theme-switch__stars-container
+										include svg/theme-toggle.svg
+									.theme-switch__circle-container
+										.theme-switch__sun-moon-container
+											.theme-switch__moon
+												.theme-switch__spot
+												.theme-switch__spot
+												.theme-switch__spot
 		
 		//- Profile
 		section.section.section-personal-info
@@ -113,7 +126,7 @@ html
 									a(href="product-designer-trinh-gia-tuan.pdf" download).btn.btn-primary 
 										i.ri-download-2-fill
 										|  Download Resume
-									a(href="mailto:giatuantrinh@gmail.com" download).btn.btn-secondary 
+									a(href="mailto:giatuantrinh@gmail.com" download).btn.btn-outline 
 										i.ri-mail-send-line
 										|  Contact me
 					.divider
@@ -265,10 +278,6 @@ script.
 	//- Client side
 	let theme = new Theme();
 
-	window.addEventListener('scroll', ()=> {
-		!detectMobile.isMobile && (document.querySelector('html').scrollTop > _getHeight(document.querySelector('.header'))) ? document.querySelector('.header').classList.add('has-background') : document.querySelector('.header').classList.remove('has-background');
-	});
-
 	if(detectMobile.isMobile) {
 		document.body.classList.add('is-mobile');
 
@@ -279,6 +288,8 @@ script.
 
 	// Window Onload
 	document.addEventListener('DOMContentLoaded', e => {
+		theme.navigation();
+		
 		// Init avatar flip effect
 		let avatarSlider = new Swiper('.section-personal-info-header-left .swiper-container', {
 			autoplay: {

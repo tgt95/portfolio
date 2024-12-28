@@ -1,10 +1,12 @@
 @import 'variables';
+@import 'theme-light';
+@import 'theme-dark';
 
-@import 'mixins/main';
+@import 'mixins';
 
 @import 'utilities/main';
 
-@import 'common';
+@import 'base';
 
 @import 'components/main';
 

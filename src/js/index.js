@@ -1,148 +1,169 @@
 class Theme {
-	constructor(){
+	constructor() {
 		this.spacer = [];
 		this.server = 'https://api.npoint.io/';
 		this.data = {};
 		this.breakpoint = {
 			xxs: 320,
-			xs : 414,
-			sm : 576,
-			md : 768,
-			lg : 992,
-			xl : 1200,
+			xs: 414,
+			sm: 576,
+			md: 768,
+			lg: 992,
+			xl: 1200,
 			xxl: 1440,
 			xxxl: 1600
 		};
 		this.elements = {
-			contentPage :		document.querySelector('.content-page'),
-			header :			document.querySelector('.header'),
-			footer :			document.querySelector('.footer'),
-			navigation :		document.querySelector('.header .navigation-menu'),
+			contentPage: document.querySelector('.content-page'),
+			header: document.querySelector('.header'),
+			footer: document.querySelector('.footer'),
+			navigation: document.querySelector('.header .navigation-menu'),
 		};
 	}
-	baseConfig(){
+	baseConfig() {
 		// Push Spacing
 		let temp;
-		for (let i = 1; i <= 10; i++){
+		for (let i = 1; i <= 10; i++) {
 			temp = temp === undefined ? 2 : temp + temp;
 			this.spacer.push(temp);
 		}
 	}
-	navigation(){
+	navigation() {
 		let header = this.elements.header,
-			navigation = this.elements.navigation;
+			navigation = this.elements.navigation,
+			toggleButton = document.getElementById('mode-toggle'),
+			html = document.querySelector('html');
 
-		navigation.querySelectorAll('ul:first-child a').forEach((element, index)=> {
-			element.addEventListener('click', (e)=> {
-				e.preventDefault();
-
-				let $this 		= e.currentTarget,
-					href		= $this.getAttribute('href'),
-					el 			= document.querySelector(href),
-					elRect		= el.getBoundingClientRect(),
-					offsetTop 	= $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
-
-				// Native smooth scroll of Browser
-				// window.scrollTo({
-				// 	top: (elRect.top - document.body.getBoundingClientRect().top - offsetTop), 
-				// 	behavior: 'smooth'
-				// });
+		navigation.querySelectorAll('ul:first-child a').forEach((element, index) => {
+			element.addEventListener('click', (e) => {
 				
-				document.querySelector('html').velocity({
-					scrollTop: (elRect.top - document.body.getBoundingClientRect().top - offsetTop) + 'px'
-				}, { duration: 400 });
+				let $this = e.currentTarget,
+					href = $this.getAttribute('href'),
+					el,
+					elRect,
+					offsetTop;
+					
+				if (document.querySelector(href) !== null){
+					e.preventDefault();
+
+					el = document.querySelector(href);
+					elRect = el.getBoundingClientRect();
+					offsetTop = $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
+					
+					html.velocity({
+						scrollTop: (elRect.top - document.body.getBoundingClientRect().top - offsetTop) + 'px'
+					}, { duration: 400 });
+				}
 			});
 		});
 
-		window.addEventListener('scroll', ()=> {
-			!detectMobile.isMobile && (document.querySelector('html').scrollTop > _getHeight(header)) ? header.classList.add('has-background') : header.classList.remove('has-background');
+		window.addEventListener('scroll', () => {
+			!detectMobile.isMobile && (html.scrollTop > _getHeight(header)) ? header.classList.add('has-background') : header.classList.remove('has-background');
 		});
+
+		// Add a click event listener to the button
+		toggleButton.addEventListener('click', () => {
+			// Toggle the 'dark-mode' class on the <html> element
+			html.classList.toggle('dark-mode');
+		});
+
+		// Theming the Dark mode by current time (> 5PM : Dark mode ON)
+		if (new Date().getHours() < 17){
+			html.classList.remove('dark-mode');
+			toggleButton.setAttribute('checked', 'checked');
+		}
+		else{
+			html.classList.add('dark-mode');
+			toggleButton.removeAttribute('checked');
+		}
 	}
-	animation(status = true){
-        // Human
-        this.animation.human = (status = true)=> {
-			let value = 400,
-				element = document.getElementById('banner--human-body').querySelector('g');
-			
-			if(status)
+	animation(status = true) {
+		// Human
+		this.animation.human = (status = true) => {
+			let value = 32,
+				element = document.getElementById('boy');
+
+			if (status) {
 				element
-				.velocity({ transform: ["translate(55.216854, 355.290468)", `translate(55.216854, ${value}.290468)`] }, 2500)
-				.velocity({ transform: [`translate(55.216854, ${value}.290468)`, "translate(55.216854, 355.290468)"] }, 4000, this.animation.human);
-			else
+					.velocity({ transform: ["translate(0, 0)", `translate(10, ${value})`] }, 2500)
+					.velocity({ transform: [`translate(10, ${value})`, "translate(0, 0)"] }, 4000, this.animation.human);
+			}
+			else {
 				element.velocity('stop');
+			}
 		};
-		
-        // Trees
-        this.animation.trees = (status = true)=> {
-			let valueY = 532, valueX = 432,
-				element = document.getElementById('Trees').querySelector('g');
-			
-			if(status)
+
+		// Trees
+		this.animation.trees = (status = true) => {
+			let valueY = 12, valueX = 24,
+				element = document.getElementById('trees');
+
+			if (status)
 				element
-				.velocity({ transform: ["translate(480.000000, 489.000000)", `translate(${valueX}.000000, ${valueY}.000000)`] }, 3500)
-				.velocity({ transform: [`translate(${valueX}.000000, ${valueY}.000000)`, "translate(480.000000, 489.000000)"] }, 5000, this.animation.trees);
+					.velocity({ transform: ["translate(0, 0)", `translate(${valueX}, ${valueY})`] }, 3500)
+					.velocity({ transform: [`translate(${valueX}, ${valueY})`, "translate(0, 0)"] }, 5000, this.animation.trees);
 			else
 				element.velocity('stop');
 		};
 
-        // Trees
-		this.animation.svg = (status = true)=> {
-            let value = 1,
-				element = document.querySelector('.section-banner svg');
-			
-			if(status)
+		// Container
+		// this.animation.svg = (status = true)=> {
+		//     let value = 1,
+		// 		element = document.querySelector('.section-banner svg');
+
+		// 	if(status)
+		// 		element
+		// 		.velocity({ transform: ["scale(0.97)", `scale(${value})`] }, 3500)
+		// 		.velocity({ transform: [`scale(${value})`, "scale(0.97)"] }, 5000, this.animation.svg);
+		// 	else
+		// 		element.velocity('stop');
+		// };
+
+		// Light Shape
+		this.animation.lightShape = (status = true) => {
+			let value = 1.04,
+				element = document.getElementById('light-shape');
+
+			if (status)
 				element
-				.velocity({ transform: ["scale(0.97)", `scale(${value})`] }, 3500)
-				.velocity({ transform: [`scale(${value})`, "scale(0.97)"] }, 5000, this.animation.svg);
-			else
-				element.velocity('stop');
-		};
-		
-        // Light Shape
-		this.animation.lightShape = (status = true)=> {
-            let value = 1.04,
-				element = document.getElementById('Light-Shape');
-			
-			if(status)
-				element
-				.velocity({ transform: ["scale(1)", `scale(${value})`] }, 3500)
-				.velocity({ transform: [`scale(${value})`, "scale(1)"] }, 5000, this.animation.lightShape);
+					.velocity({ transform: ["scale(1)", `scale(${value})`] }, 3500)
+					.velocity({ transform: [`scale(${value})`, "scale(1)"] }, 5000, this.animation.lightShape);
 			else
 				element.velocity('stop');
 		};
 
 		// Section Profile
-        // Profile
-		this.animation.profile = (status = true)=> {
-            let element = document.getElementById('DESIGNERDEVELOPER')
-			
-			if(status)
-				element.velocity({ opacity: 0.1 },{ loop: true });
+		// Profile
+		this.animation.profile = (status = true) => {
+			let element = document.getElementById('DESIGNERDEVELOPER')
+
+			if (status)
+				element.velocity({ opacity: 0.1 }, { loop: true });
 			else
 				element.velocity('stop');
-			};
-			
+		};
+
 
 		// Section Contact
 		// Hand Shake
-		this.animation.handShake = (status = true)=> {
+		this.animation.handShake = (status = true) => {
 			let hand = Snap.select('#Hand'),
-			handBBbox = hand.getBBox();
+				handBBbox = hand.getBBox();
 
 			let state = true;
-			const waveLeft = ()=> {
+			const waveLeft = () => {
 				hand.animate({ transform: `r8, ${handBBbox.cx}, ${handBBbox.y2}` }, 500);
 			}
-			const waveRight = ()=> {
+			const waveRight = () => {
 				hand.animate({ transform: `r-2, ${handBBbox.cx}, ${handBBbox.y2}` }, 500);
 			}
 			waveRight();
-			setInterval(()=> {
-				if(state){
+			setInterval(() => {
+				if (state) {
 					waveLeft();
 					state = false;
 				}
-				else{
+				else {
 					waveRight();
 					state = true;
 				}
@@ -153,14 +174,14 @@ class Theme {
 
 		this.animation.human(status);
 		this.animation.trees(status);
-		this.animation.svg(status);
+		// this.animation.svg(status);
 		this.animation.lightShape(status);
 
 		this.animation.profile(status);
-		
+
 		this.animation.handShake(status);
 	}
-	testimonialSwiper(){
+	testimonialSwiper() {
 		let testimonialsSlider = new Swiper('.section-testimonials .swiper-container', {
 			mousewheel: true,
 			keyboard: true,
@@ -175,32 +196,32 @@ class Theme {
 			}
 		});
 	}
-	workSwiper(){
+	workSwiper() {
 		if (window.innerWidth <= this.breakpoint.sm && !this.listView) {
 			// < 576
-			document.querySelectorAll('.section-work .item').forEach((el, i)=> {
+			document.querySelectorAll('.section-work .item').forEach((el, i) => {
 				el.style.maxWidth = window.innerWidth - this.spacer[6] - this.spacer[5] + 'px';
 			});
 		}
 
-		let filterButtons	= document.querySelectorAll('.section-work .navigation-tabs ul a'),
-			switchViewButtons	= document.querySelectorAll('.section-work .navigation-tabs .switch-view a'),
-			switchGirdButton	= document.querySelector('.section-work .navigation-tabs .switch-view a[action="grid"]'),
-			switchListButton	= document.querySelector('.section-work .navigation-tabs .switch-view a[action="list"]'),
-			filterLi		= document.querySelectorAll('.section-work .navigation-tabs li'),
-			buttonPrev		= document.querySelectorAll('.section-work .slide-button-prev'),
-			buttonNext		= document.querySelectorAll('.section-work .slide-button-next'),
-			container 		= document.querySelectorAll('.section-work .swiper-container'),
-			row 			= document.querySelectorAll('.section-work .swiper-container .slide-wrapper'),
-			item 			= document.querySelectorAll('.section-work .swiper-container .slide-wrapper .item'),
-			title			= document.querySelector('.section-work .section-title'),
-			setttings		= {
+		let filterButtons = 		document.querySelectorAll('.section-work .navigation-tabs ul a'),
+			switchViewButtons = 	document.querySelectorAll('.section-work .navigation-tabs .switch-view a'),
+			switchGirdButton = 		document.querySelector('.section-work .navigation-tabs .switch-view a[action="grid"]'),
+			switchListButton = 		document.querySelector('.section-work .navigation-tabs .switch-view a[action="list"]'),
+			filterLi = 				document.querySelectorAll('.section-work .navigation-tabs li'),
+			buttonPrev = 			document.querySelectorAll('.section-work .slide-button-prev'),
+			buttonNext = 			document.querySelectorAll('.section-work .slide-button-next'),
+			container = 			document.querySelectorAll('.section-work .swiper-container'),
+			row = 					document.querySelectorAll('.section-work .swiper-container .slide-wrapper'),
+			item = 					document.querySelectorAll('.section-work .swiper-container .slide-wrapper .item'),
+			title = 				document.querySelector('.section-work .section-title'),
+			setttings = {
 				slidesPerView: 'auto',
 				slidesOffsetBefore: title.getBoundingClientRect().left,
 				slidesOffsetAfter: title.getBoundingClientRect().left,
 				// mousewheel: true,
 				keyboard: true,
-				parallax:true,
+				parallax: true,
 				pagination: {
 					// el: ".swiper-pagination",
 					// clickable: true,
@@ -219,45 +240,45 @@ class Theme {
 					}
 				}
 			},
-			gallerySlider 	= new Swiper('.section-work .swiper-container', setttings);
-		
+			gallerySlider = new Swiper('.section-work .swiper-container', setttings);
+
 		// Click Grid view event
-		switchGirdButton.addEventListener('click', (e)=> {
+		switchGirdButton.addEventListener('click', (e) => {
 			e.preventDefault();
 
-			let $this			= e.currentTarget;
+			let $this = e.currentTarget;
 
-			switchViewButtons.forEach((element, index)=> element.classList.remove('active'));
+			switchViewButtons.forEach((element, index) => element.classList.remove('active'));
 			$this.classList.add('active');
 
-			container.forEach((element, index)=> {
+			container.forEach((element, index) => {
 				// Show Swiper navigation
 				element.querySelector('.swiper-controls').style.display = 'block';
 
 				// Remove list view property classes
 				element.classList.remove('container')
 			});
-			row.forEach((element, index)=> element.classList.remove('row'));
-			item.forEach((element, index)=> element.classList.remove('col-md-6'));
+			row.forEach((element, index) => element.classList.remove('row'));
+			item.forEach((element, index) => element.classList.remove('col-md-6'));
 
-			gallerySlider 	= new Swiper('.section-work .swiper-container', setttings);
+			gallerySlider = new Swiper('.section-work .swiper-container', setttings);
 		});
 
 		// Click List view event
-		switchListButton.addEventListener('click', (e)=> {
+		switchListButton.addEventListener('click', (e) => {
 			e.preventDefault();
 
-			let $this			= e.currentTarget;
+			let $this = e.currentTarget;
 
-			switchViewButtons.forEach((element, index)=> element.classList.remove('active'));
-			gallerySlider.forEach((element, index)=> { element.destroy() });
+			switchViewButtons.forEach((element, index) => element.classList.remove('active'));
+			gallerySlider.forEach((element, index) => { element.destroy() });
 			$this.classList.add('active');
 
-			filterLi.forEach((element, index)=> {
-				if(element.classList[0] == 'active'){
+			filterLi.forEach((element, index) => {
+				if (element.classList[0] == 'active') {
 					let target = element.children[0].getAttribute('data-tab-target').substring(1);
 
-					container.forEach((element, index)=> { 
+					container.forEach((element, index) => {
 						element.getAttribute('id') != target ? element.style.display = 'none' : 0;
 
 						// Hide Swiper navigation
@@ -265,38 +286,38 @@ class Theme {
 
 						// Add list view property classes
 						element.classList.add('container');
-						row.forEach((element, index)=> element.classList.add('row') );
-						item.forEach((element, index)=> element.classList.add('col-md-6') );
+						row.forEach((element, index) => element.classList.add('row'));
+						item.forEach((element, index) => element.classList.add('col-md-6'));
 					});
 				}
 			});
 		});
-		
+
 		// Click Filter tab navigation event
-		filterButtons.forEach((element, index)=> {
-			element.addEventListener('click', (e)=> {
+		filterButtons.forEach((element, index) => {
+			element.addEventListener('click', (e) => {
 				e.preventDefault();
 
-				let $this			= e.currentTarget,
-					$ul				= $this.parentNode.parentNode,
-					$li				= $this.parentNode,
-					dataTarget		= $this.getAttribute('data-tab-target'),
-					target			= document.querySelector(dataTarget),
-					containers		= document.querySelectorAll('.section-work .swiper-container');
+				let $this = e.currentTarget,
+					$ul = $this.parentNode.parentNode,
+					$li = $this.parentNode,
+					dataTarget = $this.getAttribute('data-tab-target'),
+					target = document.querySelector(dataTarget),
+					containers = document.querySelectorAll('.section-work .swiper-container');
 
-				filterLi.forEach((el, i)=> el.classList.remove('active'));
+				filterLi.forEach((el, i) => el.classList.remove('active'));
 				$li.classList.add('active');
-				containers.forEach((el, i)=> {
-					if (getComputedStyle(el, null).display !== 'none'){
-						el.velocity({ opacity: 0 }, 200, ()=> { 
+				containers.forEach((el, i) => {
+					if (getComputedStyle(el, null).display !== 'none') {
+						el.velocity({ opacity: 0 }, 200, () => {
 							el.style.display = 'none';
 						});
 					}
 				});
-				target.velocity({ opacity: 1 }, 200, ()=> { 
+				target.velocity({ opacity: 1 }, 200, () => {
 					target.style.display = 'block';
-					$ul.querySelectorAll('li').forEach((el, i)=> {
-						if(el.classList.contains('active')){
+					$ul.querySelectorAll('li').forEach((el, i) => {
+						if (el.classList.contains('active')) {
 							gallerySlider[i].update();
 						}
 					});
@@ -313,28 +334,28 @@ class Theme {
 			$gallerys = $container.querySelectorAll(gallerys);
 
 		// Get data featured
-		const parseDataFeatured = (database)=> {
+		const parseDataFeatured = (database) => {
 			let database_featured = [];
-			for(var type in database) {
-				database[type].data.forEach((item, index)=> {
+			for (var type in database) {
+				database[type].data.forEach((item, index) => {
 					let isFeatured = database[type].data[index].featured;
-					(typeof(isFeatured) === 'boolean') && isFeatured ? database_featured.push(item) : 0;
+					(typeof (isFeatured) === 'boolean') && isFeatured ? database_featured.push(item) : 0;
 				});
 			}
 			return database_featured;
 		}
 
 		// Get Data
-		const parseData = (gid, database)=> {
-			gid = gid.replace('category-','');
+		const parseData = (gid, database) => {
+			gid = gid.replace('category-', '');
 			return gid === 'featured' ? parseDataFeatured(database) : database[gid].data;
 		}
 
 		// Open Photoswipe from URL
-		(()=> {
+		(() => {
 			let hash = window.location.hash.substring(1);
-			if (hash.includes('gid') && hash.includes('pid')){
-				let vars = hash.split('&').slice(1,3),
+			if (hash.includes('gid') && hash.includes('pid')) {
+				let vars = hash.split('&').slice(1, 3),
 					gid = vars[0].substring(4),
 					pid = vars[1].substring(4),
 					options = {
@@ -348,17 +369,17 @@ class Theme {
 			}
 		})();
 
-		const thumbnailsOnClick = (e)=> {
+		const thumbnailsOnClick = (e) => {
 			e.preventDefault();
-			
+
 			let thumbnail = e.currentTarget,
 				gid = thumbnail.closest(gallerys).getAttribute('id'),
 				options = {
 					arrowEl: true,
 					bgOpacity: 0.8,
-					index:  parseInt(thumbnail.getAttribute('data-img-index')),
+					index: parseInt(thumbnail.getAttribute('data-img-index')),
 					galleryUID: gid,
-					getThumbBoundsFn: (index)=> {
+					getThumbBoundsFn: (index) => {
 						// get window scroll Y
 						var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
 						// optionally get horizontal scroll
@@ -367,7 +388,7 @@ class Theme {
 						var rect = thumbnail.getBoundingClientRect();
 
 						// w = width
-						return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+						return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
 					}
 				};
 
@@ -376,18 +397,18 @@ class Theme {
 		}
 
 		// Thumbnails on click
-		$gallerys.forEach((el, i)=> {
-			el.querySelectorAll(thumbnails).forEach((element, index)=> {
-				element.onclick = (e)=> { thumbnailsOnClick(e) }
+		$gallerys.forEach((el, i) => {
+			el.querySelectorAll(thumbnails).forEach((element, index) => {
+				element.onclick = (e) => { thumbnailsOnClick(e) }
 			});
 		});
 	}
-	loading(timeout = 1000, des = 'Loading...', src = 'assets/images/logo.svg'){
+	loading(timeout = 1000, des = 'Loading...', src = 'assets/images/logo.svg') {
 		// Append loading
-		document.body.style.overflow 			= 'hidden';
-		document.body.style.display 			= '';
-		document.body.style.backgroundColor 	= '';
-		
+		document.body.style.overflow = 'hidden';
+		document.body.style.display = '';
+		document.body.style.backgroundColor = '';
+
 		document.body.insertAdjacentHTML('beforeend', `
 		<div class="page-loader">
 			<div class="loader-content"><img class="logo-img" src="${src}"/>
@@ -399,8 +420,8 @@ class Theme {
 		let loader = document.body.querySelector('.page-loader');
 
 		// Show the loading overlay
-		const showTime = (doSomthingAfter)=> {
-			setTimeout(()=> {
+		const showTime = (doSomthingAfter) => {
+			setTimeout(() => {
 				// Time to show loading - 1s
 				document.body.style.overflow = '';
 				loader.classList.add('move2Left', 'animated');
@@ -410,52 +431,52 @@ class Theme {
 
 		// After animated then remove
 		// Set time out for pending the loading do the animation then remove
-		showTime(()=> setTimeout(()=> loader.remove(), 1000));
+		showTime(() => setTimeout(() => loader.remove(), 1000));
 	}
-	mobileResponsive(){
-		if(detectMobile.isMobile) {
+	mobileResponsive() {
+		let container = document.querySelector('.section-banner'),
+			row = container.querySelector('.row'),
+			background = container.querySelector('.content-bg'),
+			text = container.querySelector('.content-text'),
+			svg = container.querySelector('svg');
+
+		if (detectMobile.isMobile) {
 			document.body.classList.add('is-mobile');
 
 			// Fix bug for use Navigation bottom
 			document.body.style.paddingBottom = _getHeight(this.elements.header) + 'px';
-			
+
 			// Turn off animation
 			this.animation(false);
 		}
-		else{
+		else {
 			// Turn on animation
 			this.animation();
 		}
 
-		let container			= document.querySelector('.section-banner'),
-			row					= container.querySelector('.row'),
-            background			= container.querySelector('.content-bg'),
-            text				= container.querySelector('.content-text'),
-            svg					= container.querySelector('svg');
-
 		// (Desktop: >= 992px)
-		if (window.innerWidth >= this.breakpoint.lg){
+		if (window.innerWidth >= this.breakpoint.lg) {
 			row.style.height = _getHeight(svg) + 'px';
 		}
 
 		// (Tablet: >= 768px and < 992px)
-		if (window.innerWidth >= this.breakpoint.md && window.innerWidth < this.breakpoint.lg){
+		if (window.innerWidth >= this.breakpoint.md && window.innerWidth < this.breakpoint.lg) {
 			let width = parseInt(_getWidth(svg) + this.spacer[4]),
 				mt = 320;
-				
+
 			svg.setAttribute('width', `${width}px`);
 			svg.setAttribute('viewBox', `0 0 ${width} 1093`);
 			svg.style.transform = `translate(-164px, -${mt}px)`;
-			
+
 			text.style.marginTop = `${this.spacer[5]}px`;
 			background.style.height = `${_getHeight(svg) - mt}px`;
 		}
 
 		// (Mobile Large: >= 576 and < 768px)
-		if (window.innerWidth >= this.breakpoint.sm && window.innerWidth < this.breakpoint.md){
+		if (window.innerWidth >= this.breakpoint.sm && window.innerWidth < this.breakpoint.md) {
 			let width = parseInt(window.innerWidth + this.spacer[5] + 480),
 				height = 800;
-				
+
 			svg.setAttribute('width', `${width}px`);
 			svg.setAttribute('height', `${height}px`);
 			svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
@@ -466,10 +487,10 @@ class Theme {
 		}
 
 		// (Mobile Small: < 576)
-		if (window.innerWidth >= this.breakpoint.xxs && window.innerWidth < this.breakpoint.sm){
+		if (window.innerWidth >= this.breakpoint.xxs && window.innerWidth < this.breakpoint.sm) {
 			let width = parseInt(window.innerWidth + this.spacer[5] + 480),
 				height = 800;
-				
+
 			svg.setAttribute('width', `${width}px`);
 			svg.setAttribute('height', `${height}px`);
 			svg.setAttribute('viewBox', `0 0 ${1200} ${height}`);
@@ -478,69 +499,46 @@ class Theme {
 			text.style.marginTop = `${this.spacer[5]}px`;
 			svg.style.marginTop = `-${this.spacer[7] + this.spacer[5]}px`;
 		}
-		// if (window.innerWidth <= this.breakpoint.lg){
-		// 	bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
-		// 	bannerBackgroundSvg.setAttribute('viewBox', `0 0 ${window.innerWidth} 1093`);
-		// 	// bannerBackgroundSvg.style.marginLeft = `calc(${window.innerWidth}px - 50%)`;
-		// }
-
-		// if (window.innerWidth <= this.breakpoint.sm){
-		// 	bannerText.style.marginTop = this.spacer[5] + 'px';
-		// }
-
-		// if (window.innerWidth > this.breakpoint.xs && window.innerWidth <= this.breakpoint.sm){
-		// 	// > 414 && < 576 
-		// 	let dataHeight = bannerBackground.getAttribute('data-responsive-sm--height');
-		// 	bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
-		// 	bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
-		// 	bannerBackgroundSvg.setAttribute('viewBox', `0 0 1024 ${dataHeight}`);
-		// }
-		// if (window.innerWidth <= this.breakpoint.xs){
-		// 	// < 414
-		// 	let dataHeight = bannerBackground.getAttribute('data-responsive-xs--height');
-		// 	bannerBackgroundSvg.setAttribute('width', `${window.innerWidth}px`);
-		// 	bannerBackgroundSvg.setAttribute('height', `${dataHeight}px`);
-		// 	bannerBackgroundSvg.setAttribute('viewBox', `0 0 1180 ${dataHeight}`);
 		// }
 	}
-	fetchData(){
+	fetchData() {
 		// Making a GET request
 
 		// Get Banner data
 		fetch(this.server + 'df2e5675f00bc58b57ca').then(response => response.json())
-		.then(data => {
-			// Handle the API response data here
-			this.data = data;
+			.then(data => {
+				// Handle the API response data here
+				this.data = data;
 
-			// Sort the date by the index (Only apply for Arrray)
-			this.data.profile = data.profile.sort((a, b) => a.index - b.index)
+				// Sort the date by the index (Only apply for Arrray)
+				this.data.profile = data.profile.sort((a, b) => a.index - b.index)
 
-			// Section Banner
-			document.getElementById('section-banner-description').textContent = this.data.introduce.description;
-			
-			let hello = new Typewriter('#section-banner-title', {
-				loop: true,
-				delay: 75,
-			});
-			
-			hello
-				.pauseFor(1800)
-				// .typeString(this.data.introduce.title.text_1)
-				// .pauseFor(300)
-				// .deleteChars(this.data.introduce.title.text_1.length)
-				.typeString(this.data.introduce.title.text_2)
-				.pauseFor(100)
-				.deleteChars(this.data.introduce.title.text_2.length)
-				.typeString(this.data.introduce.title.text_3)
-				.pauseFor(1000)
-				.start();
+				// Section Banner
+				document.getElementById('section-banner-description').textContent = this.data.introduce.description;
 
-			// Section Profile
-			this.data.profile.forEach((item, i) => {
-				let element = '';
-				if (item.activated){
-					if (item.type == 'dob'){
-						element = `
+				let hello = new Typewriter('#section-banner-title', {
+					loop: true,
+					delay: 75,
+				});
+
+				hello
+					.pauseFor(1800)
+					// .typeString(this.data.introduce.title.text_1)
+					// .pauseFor(300)
+					// .deleteChars(this.data.introduce.title.text_1.length)
+					.typeString(this.data.introduce.title.text_2)
+					.pauseFor(100)
+					.deleteChars(this.data.introduce.title.text_2.length)
+					.typeString(this.data.introduce.title.text_3)
+					.pauseFor(1000)
+					.start();
+
+				// Section Profile
+				this.data.profile.forEach((item, i) => {
+					let element = '';
+					if (item.activated) {
+						if (item.type == 'dob') {
+							element = `
 							<li>
 								<div class="title">${item.label}</div>
 								<span>${item.value} &nbsp;</span>
@@ -549,9 +547,9 @@ class Theme {
 								</i>
 							</li>
 						`
-					}
-					else if (item.type == 'email'){
-						element = `
+						}
+						else if (item.type == 'email') {
+							element = `
 							<li data-type="email">
 								<div class="title">${item.label}</div>
 								<div class="content">
@@ -560,9 +558,9 @@ class Theme {
 								</div>
 							</li>
 						`
-					}
-					else if (item.type == 'phone'){
-						element = `
+						}
+						else if (item.type == 'phone') {
+							element = `
 							<li data-type="phone">
 								<div class="title">${item.label}</div>
 								<div class="content">
@@ -571,9 +569,9 @@ class Theme {
 								</div>
 							</li>
 						`
-					}
-					else if (item.type == 'social'){
-						element = `
+						}
+						else if (item.type == 'social') {
+							element = `
 							<li data-type="social">
 								<div class="title">${item.label}</div>
 								<div class="content">
@@ -582,56 +580,56 @@ class Theme {
 								</div>
 							</li>
 						`
-					}
-					else if (item.type == 'exp'){
-						element = `
+						}
+						else if (item.type == 'exp') {
+							element = `
 							<li>
 								<div class="title">${item.label}</div>
 								<span>
-									${(new Date().getFullYear() -1) - item.value}
-									&nbsp;yrs+ &nbsp;<i style="color: var(--neutral-700);">(${item.value} - Present)</i>
+									${(new Date().getFullYear() - 1) - item.value}
+									&nbsp;yrs+ &nbsp;<i style="color: var(--fg-subtlest);">(${item.value} - Present)</i>
 								</span>
 							</li>
 						`
-					}
-					else if (item.type == 'personality'){
-						element = `
+						}
+						else if (item.type == 'personality') {
+							element = `
 							<li class="align-items-center"><div class="personality-progress"><div class="label"><span><b>Introvert </b>(${item.value})</span><span><b>Extrovert</b></span></div><div class="holder"><div class="tracker"></div><span class="emoji">${item.emoji}</span></div></div></li>
 						`
-					}
-					else {
-						element = `
+						}
+						else {
+							element = `
 							<li>
 								<div class="title">${item.label}</div>
 								<span>${item.value}</span>
 							</li>
 						`
+						}
+						document.getElementById('section-profile-content').insertAdjacentHTML('beforeend', element);
 					}
-					document.getElementById('section-profile-content').insertAdjacentHTML('beforeend', element);
-				}
-			})
+				})
 
-			// Section Footer
-			let footer = new Typewriter('#section-footer-description', {
-				loop: true,
-				delay: 75,
-				cursor: '',
-				deleteSpeed: 'fast'
-			});
-			
-			footer
-				// .pauseFor(1800)
-				.typeString(this.data.footer.text_1)
-				// .pauseFor(100)
-				.deleteChars(this.data.footer.text_1.length - 3)
-				.typeString(this.data.footer.text_2)
-				.deleteChars(this.data.footer.text_2.length - 3)
-				.pauseFor(100)
-				.start();
-		})
-		.catch(err => console.error(err))
+				// Section Footer
+				let footer = new Typewriter('#section-footer-description', {
+					loop: true,
+					delay: 75,
+					cursor: '',
+					deleteSpeed: 'fast'
+				});
+
+				footer
+					// .pauseFor(1800)
+					.typeString(this.data.footer.text_1)
+					// .pauseFor(100)
+					.deleteChars(this.data.footer.text_1.length - 3)
+					.typeString(this.data.footer.text_2)
+					.deleteChars(this.data.footer.text_2.length - 3)
+					.pauseFor(100)
+					.start();
+			})
+			.catch(err => console.error(err))
 	}
-	init(){
+	init() {
 		this.baseConfig();
 		this.navigation();
 		this.loading();

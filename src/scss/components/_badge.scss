@@ -1,37 +1,37 @@
 :root{
-    --badge-text-info-emphasize:    var(--fg-inverse);
-    --badge-bg-info-emphasize:      var(--bg-accent-info);
+    --badge-text-info-emphasize:        var(--fg-inverse-static);
+    --badge-bg-info-emphasize:          var(--bg-accent-info);
 
-    --badge-text-info:              var(--fg-info);
-    --badge-bg-info:                var(--bg-accent-info-subtle);
-    --badge-border-info:            var(--blue-300);
-
-
-
-    --badge-text-success-emphasize:    var(--fg-inverse);
-    --badge-bg-success-emphasize:      var(--bg-accent-success);
-
-    --badge-text-success:              var(--fg-success);
-    --badge-bg-success:                var(--bg-accent-success-subtle);
-    --badge-border-success:            var(--green-300);
+    --badge-text-info:                  var(--fg-info);
+    --badge-bg-info:                    var(--bg-accent-info-subtle);
+    --badge-border-info:                var(--border-info-light);
 
 
 
-    --badge-text-warning-emphasize:    var(--fg-inverse);
-    --badge-bg-warning-emphasize:      var(--bg-accent-warning);
+    --badge-text-success-emphasize:     var(--fg-inverse-static);
+    --badge-bg-success-emphasize:       var(--bg-accent-success);
 
-    --badge-text-warning:              var(--fg-warning);
-    --badge-bg-warning:                var(--bg-accent-warning-subtle);
-    --badge-border-warning:            var(--orange-300);
+    --badge-text-success:               var(--fg-success);
+    --badge-bg-success:                 var(--bg-accent-success-subtle);
+    --badge-border-success:             var(--border-success-light);
 
 
 
-    --badge-text-danger-emphasize:    var(--fg-inverse);
-    --badge-bg-danger-emphasize:      var(--bg-accent-danger);
+    --badge-text-warning-emphasize:     var(--fg-inverse-static);
+    --badge-bg-warning-emphasize:       var(--bg-accent-warning);
 
-    --badge-text-danger:              var(--fg-danger);
-    --badge-bg-danger:                var(--bg-accent-danger-subtle);
-    --badge-border-danger:            var(--red-300);
+    --badge-text-warning:               var(--fg-warning);
+    --badge-bg-warning:                 var(--bg-accent-warning-subtle);
+    --badge-border-warning:             var(--border-warning-light);
+
+
+
+    --badge-text-danger-emphasize:      var(--fg-inverse-static);
+    --badge-bg-danger-emphasize:        var(--bg-accent-danger);
+
+    --badge-text-danger:                var(--fg-danger);
+    --badge-bg-danger:                  var(--bg-accent-danger-subtle);
+    --badge-border-danger:              var(--border-danger-light);
 }
 
 .badge{

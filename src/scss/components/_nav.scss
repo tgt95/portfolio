@@ -26,8 +26,8 @@
             }
             &.active, &:hover{
                 a{
-                    color: $brand;
-                    border-color: $brand;
+                    color: var(--fg-brand);
+                    border-color: var(--fg-brand);
                     text-decoration: none;
                 }
             }
@@ -35,11 +35,11 @@
     }
     .switch-view{
         border-radius: var(--radius-rounded);
-        background-color: lighten($brand, 32%);
+        background-color: var(--bg-brand-subtle);
         a{
             @include btn;
             @include btn-md;
-            color: $neutral-800;
+            color: var(--fg-subtle);
             position: relative;
             &:before{
                 content: "";
@@ -64,16 +64,16 @@
                     width: 1px;
                     transform: translateY(-50%);
                     height: calc(100% - 28px);
-                    background: lighten($brand, 24%);
+                    background: var(--border);
                     transition: all .3s ease;
                     border-radius: 8px;
                 }
             }
             &:hover, &:focus, &:active, &.active{
                 &:before{
-                    background: $brand;
+                    background: var(--fg-brand);
                 }
-                color: $brand;
+                color: var(--fg-brand);
                 // border-bottom: 2px solid $brand;
             }
         }
