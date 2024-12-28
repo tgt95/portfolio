@@ -34,7 +34,7 @@
 			content: '';
 			width: 100%;
 			height: 1px;
-			background-color: var(--border);
+			background-color: var(--border-light);
 		}
 
 		&:before {
@@ -315,7 +315,7 @@
 					right: 0;
 					animation: line-blow-up 3s ease infinite;
 					border-radius: var(--radius-rounded);
-					border: 1px solid rgba($brand, .2);
+					border: 1px solid rgba($brand-600, .2);
 				}
 
 				img {
@@ -369,7 +369,7 @@
 .section-work {
 	.slide-wrapper {
 		padding: var(--space-lg) 0;
-		transition: all .3s ease;
+		transition: all .3s var(--transition-base);
 
 		&.row {
 			width: initial;
@@ -401,7 +401,7 @@
 
 	.item {
 		width: 100%;
-		transition: all .3s ease;
+		transition: all .3s var(--transition-base);
 
 		&:not([class*="col-"]) {
 			max-width: 550px;
@@ -428,7 +428,7 @@
 			a {
 				color: var(--fg-main);
 				text-decoration: underline;
-				transition: all .3s ease;
+				transition: all .3s var(--transition-base);
 
 				&:hover {
 					color: var(--fg-brand);
@@ -454,15 +454,15 @@
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				transition: all .3s ease;
+				transition: all .3s var(--transition-base);
 			}
 
 			.overlay-content {
 				@include flex-center;
 				@include position;
 				// background-color: rgba(var(--bg-brand), .8);
-				background-color: rgba($brand, .8);
-				transition: background-color .3s ease, visibility .3s ease, opacity .3s ease;
+				background-color: rgba($brand-600, .8);
+				transition: background-color .3s var(--transition-base), visibility .3s var(--transition-base), opacity .3s var(--transition-base);
 				visibility: hidden;
 				opacity: 0;
 				text-decoration: none;
@@ -525,13 +525,13 @@
 
 // Blog
 .section-blog {
-	background-image: radial-gradient(var(--bg-section-blog) 1.3px, transparent 1px);
+	background-image: radial-gradient(var(--bg-section-blog) 1.3px, var(--surface-2) 1px);
 	backdrop-filter: saturate(50%) blur(4px);
 	background-size: 12px 12px;
 	box-shadow: 0px 0px 40px 0.1px rgba(0, 0, 0, 0.04) inset;
 
 	.item {
-		transition: all .3s ease;
+		transition: all .3s var(--transition-base);
 		margin-bottom: var(--space-lg);
 
 		&:not([class*="col-"]) {
@@ -559,7 +559,7 @@
 			a {
 				color: var(--fg-main);
 				text-decoration: underline;
-				transition: all .3s ease;
+				transition: all .3s var(--transition-base);
 
 				&:hover {
 					color: var(--fg-brand);
@@ -585,14 +585,14 @@
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				transition: all .3s ease;
+				transition: all .3s var(--transition-base);
 			}
 
 			.overlay-content {
 				@include flex-center;
 				@include position;
-				background-color: rgba($brand, .8);
-				transition: background-color .3s ease, visibility .3s ease, opacity .3s ease;
+				background-color: rgba($brand-600, .8);
+				transition: background-color .3s var(--transition-base), visibility .3s var(--transition-base), opacity .3s var(--transition-base);
 				visibility: hidden;
 				opacity: 0;
 				text-decoration: none;
@@ -600,13 +600,13 @@
 
 				.icon {
 					font-size: var(--display-2);
-					color: var(--fg-inverse);
+					color: var(--fg-inverse-static);
 				}
 
 				.text {
 					font-size: var(--body-font-size-lg);
 					font-weight: var(--font-weight-semibold);
-					color: var(--fg-inverse);
+					color: var(--fg-inverse-static);
 				}
 			}
 		}
@@ -659,7 +659,7 @@
 					font-size: var(--heading-6);
 					vertical-align: sub;
 					margin-left: var(--space-xs-3);
-					transition: color .3s ease;
+					transition: color .3s var(--transition-base);
 
 					&:hover {
 						color: darken($linkedin, 16%);

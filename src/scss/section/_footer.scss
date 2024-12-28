@@ -1,7 +1,7 @@
 .footer {
     margin-top: var(--space-sm);
     padding: var(--space-sm) 0;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border-light);
 
     .author-content {
         @include flex-center-y;

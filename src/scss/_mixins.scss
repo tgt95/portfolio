@@ -8,7 +8,7 @@
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
     text-decoration: none;
-    transition: all .3s ease;
+    transition: all .3s var(--transition-base);
     &:hover, &:focus, &:active, &.active{
         text-decoration: none;
     }

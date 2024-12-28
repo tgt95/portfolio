@@ -43,13 +43,11 @@ $reddit: 						        #ff4500					!default;
 $skype: 						        #00aff0					!default;
 
 
-// Checkbox & Radio
-$custom-control-size: 20px;
 // Fonts
 // $font-primary: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 // @import url(https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&display=swap);
-// @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap);
+// @import url(https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap);
 
 
 :root{
@@ -82,17 +80,17 @@ $custom-control-size: 20px;
     // --brand-950:                    #390F11;
 
 
-    --brand-50:                     #faecec;
-    --brand-100:                    #f7e5e4;
-    --brand-200:                    #f8d5d3;
-    --brand-300:                    #ffc1bd;
-    --brand-400:                    #fc9692;
-    --brand-500:                    #ef6464;
-    --brand-600:                    #c94b4f;
-    --brand-700:                    #a3343c;
-    --brand-800:                    #7d222b;
-    --brand-900:                    #57171f;
-    --brand-950:                    #390F11;
+    --brand-50:                     #{$brand-50};
+    --brand-100:                    #{$brand-100};
+    --brand-200:                    #{$brand-200};
+    --brand-300:                    #{$brand-300};
+    --brand-400:                    #{$brand-400};
+    --brand-500:                    #{$brand-500};
+    --brand-600:                    #{$brand-600};
+    --brand-700:                    #{$brand-700};
+    --brand-800:                    #{$brand-800};
+    --brand-900:                    #{$brand-900};
+    --brand-950:                    #{$brand-950};
 
 
     // --brand-50:                     #FCF3F3;
@@ -194,7 +192,7 @@ $custom-control-size: 20px;
     // Typography -------------------------------------------------------
 
     // Plus Jakarta Sans, Space Grotesk, Gilroy
-    --font-family:                  'Gilroy', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-family:                  'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-family-code:             ui-monospace, Menlo, Consolas, Monaco, monospace;
     --font-size-base:               var(--body-font-size-md);
     
@@ -314,6 +312,10 @@ $custom-control-size: 20px;
 
 
     --border-angle: 0deg;
+
+
+    --transition-base: ease-out;
+    // --transition-base: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @property --border-angle {

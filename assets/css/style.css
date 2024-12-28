@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap);
 :root {
   --brand:	var(--brand-600);
   --brand-bg:	var(--brand-200);
@@ -80,7 +80,7 @@
   --github-alt:	#333333;
   --reddit: #ff4500;
   --skype: #00aff0;
-  --font-family: "Gilroy", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
   --font-size-base: var(--body-font-size-md);
   --font-weight-regular: 400;
@@ -155,6 +155,7 @@
   --section-margin-web: var(--space-xl-7);
   --section-title-marign: var(--space-lg);
   --border-angle: 0deg;
+  --transition-base: ease-out;
 }
 
 @property --border-angle {
@@ -266,7 +267,7 @@ html {
   --border-warning-light: var(--orange-300);
   --border-danger: var(--red-600);
   --border-danger-light: var(--red-300);
-  --bg-section-blog: var(--neutral-100);
+  --bg-section-blog: var(--neutral-200);
   --bg-section-resume: var(--neutral-100);
 }
 
@@ -927,8 +928,8 @@ a:disabled, a.disabled {
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
   text-decoration: none;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
 }
 .btn:hover, .btn:focus, .btn:active, .btn.active {
   text-decoration: none;
@@ -1173,8 +1174,8 @@ a:disabled, a.disabled {
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
   text-decoration: none;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
   border-radius: var(--ui-radius-md);
   color: var(--fg-subtle);
   position: relative;
@@ -1667,7 +1668,7 @@ a:disabled, a.disabled {
   content: "";
   width: 100%;
   height: 1px;
-  background-color: var(--border);
+  background-color: var(--border-light);
 }
 .section.has-divider:before {
   top: 0;
@@ -1936,7 +1937,7 @@ a:disabled, a.disabled {
   -webkit-animation: line-blow-up 3s ease infinite;
           animation: line-blow-up 3s ease infinite;
   border-radius: var(--radius-rounded);
-  border: 1px solid rgba(234, 93, 93, 0.2);
+  border: 1px solid rgba(201, 75, 79, 0.2);
 }
 .section-skills .skills-content .item .icon img {
   width: 100%;
@@ -1984,8 +1985,8 @@ a:disabled, a.disabled {
 
 .section-work .slide-wrapper {
   padding: var(--space-lg) 0;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
 }
 .section-work .slide-wrapper.row {
   width: initial;
@@ -2012,8 +2013,8 @@ a:disabled, a.disabled {
 }
 .section-work .item {
   width: 100%;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
 }
 .section-work .item:not([class*=col-]) {
   max-width: 550px;
@@ -2034,8 +2035,8 @@ a:disabled, a.disabled {
 .section-work .item > .url-link a {
   color: var(--fg-main);
   text-decoration: underline;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
 }
 .section-work .item > .url-link a:hover {
   color: var(--fg-brand);
@@ -2061,8 +2062,8 @@ a:disabled, a.disabled {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
 }
 .section-work .item > .item-thumbnail .overlay-content {
   display: -webkit-box;
@@ -2082,9 +2083,9 @@ a:disabled, a.disabled {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(234, 93, 93, 0.8);
-  -webkit-transition: background-color 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
-  transition: background-color 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+  background-color: rgba(201, 75, 79, 0.8);
+  -webkit-transition: background-color 0.3s var(--transition-base), visibility 0.3s var(--transition-base), opacity 0.3s var(--transition-base);
+  transition: background-color 0.3s var(--transition-base), visibility 0.3s var(--transition-base), opacity 0.3s var(--transition-base);
   visibility: hidden;
   opacity: 0;
   text-decoration: none;
@@ -2136,16 +2137,16 @@ a:disabled, a.disabled {
 }
 
 .section-blog {
-  background-image: -webkit-radial-gradient(var(--bg-section-blog) 1.3px, transparent 1px);
-  background-image: radial-gradient(var(--bg-section-blog) 1.3px, transparent 1px);
+  background-image: -webkit-radial-gradient(var(--bg-section-blog) 1.3px, var(--surface-2) 1px);
+  background-image: radial-gradient(var(--bg-section-blog) 1.3px, var(--surface-2) 1px);
   -webkit-backdrop-filter: saturate(50%) blur(4px);
           backdrop-filter: saturate(50%) blur(4px);
   background-size: 12px 12px;
   box-shadow: 0px 0px 40px 0.1px rgba(0, 0, 0, 0.04) inset;
 }
 .section-blog .item {
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
   margin-bottom: var(--space-lg);
 }
 .section-blog .item:not([class*=col-]) {
@@ -2167,8 +2168,8 @@ a:disabled, a.disabled {
 .section-blog .item > .url-link a {
   color: var(--fg-main);
   text-decoration: underline;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
 }
 .section-blog .item > .url-link a:hover {
   color: var(--fg-brand);
@@ -2194,8 +2195,8 @@ a:disabled, a.disabled {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
 }
 .section-blog .item > .item-thumbnail .overlay-content {
   display: -webkit-box;
@@ -2215,9 +2216,9 @@ a:disabled, a.disabled {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(234, 93, 93, 0.8);
-  -webkit-transition: background-color 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
-  transition: background-color 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+  background-color: rgba(201, 75, 79, 0.8);
+  -webkit-transition: background-color 0.3s var(--transition-base), visibility 0.3s var(--transition-base), opacity 0.3s var(--transition-base);
+  transition: background-color 0.3s var(--transition-base), visibility 0.3s var(--transition-base), opacity 0.3s var(--transition-base);
   visibility: hidden;
   opacity: 0;
   text-decoration: none;
@@ -2225,12 +2226,12 @@ a:disabled, a.disabled {
 }
 .section-blog .item > .item-thumbnail .overlay-content .icon {
   font-size: var(--display-2);
-  color: var(--fg-inverse);
+  color: var(--fg-inverse-static);
 }
 .section-blog .item > .item-thumbnail .overlay-content .text {
   font-size: var(--body-font-size-lg);
   font-weight: var(--font-weight-semibold);
-  color: var(--fg-inverse);
+  color: var(--fg-inverse-static);
 }
 .section-blog .item:hover .item-thumbnail {
   box-shadow: var(--shadow-300);
@@ -2285,8 +2286,8 @@ a:disabled, a.disabled {
   font-size: var(--heading-6);
   vertical-align: sub;
   margin-left: var(--space-xs-3);
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
+  -webkit-transition: color 0.3s var(--transition-base);
+  transition: color 0.3s var(--transition-base);
 }
 .section-testimonials .testimonials-content .testimonials-author-name > a:hover {
   color: #063d74;
@@ -2781,8 +2782,8 @@ a:disabled, a.disabled {
 
 .header {
   min-height: 76px;
-  -webkit-transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  -webkit-transition: background-color 0.3s var(--transition-base), box-shadow 0.3s var(--transition-base);
+  transition: background-color 0.3s var(--transition-base), box-shadow 0.3s var(--transition-base);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2888,8 +2889,8 @@ a:disabled, a.disabled {
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
   text-decoration: none;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s var(--transition-base);
+  transition: all 0.3s var(--transition-base);
   color: var(--fg-brand);
   background-color: var(--bg-ghost-brand);
 }
@@ -2979,7 +2980,7 @@ a:disabled, a.disabled {
 .footer {
   margin-top: var(--space-sm);
   padding: var(--space-sm) 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-light);
 }
 .footer .author-content {
   display: -webkit-box;

@@ -1,6 +1,6 @@
 .header {
 	min-height: 76px;
-	transition: background-color .3s ease, box-shadow .3s ease;
+	transition: background-color .3s var(--transition-base), box-shadow .3s var(--transition-base);
 	@include flex-center-y;
 
 	&.is-sticky {
