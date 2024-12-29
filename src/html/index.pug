@@ -174,37 +174,38 @@ block content
 				.section-description Things that keep my colleagues love working with me 🫶
 		.container
 			.col-md-8.swiper.swiper-container.px-0
-				.swiper-wrapper.testimonials-content
-					-
-						let testimonials = [
-							{
-								'avatar': 'assets/images/testimonials/1630071259712.jpeg',
-								'message': '"Tuan is an excellent UX/UI Designer. His passion for quality and purpose behind his job shines through every interactive design he has made. He is super dedicated and always aims toward higher levels in his career. His learning mindset is amazing. He earned Rising Star and Most Dedicated awards of the company in 2 consecutive years. It would be valuable to have him in a team."',
-								'author': 'Long Van',
-								'role': 'Chief Executive Officer at BigIn',
-								'linkedin': 'https://www.linkedin.com/in/long-van?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bx7m5Uk12Sp2dlbg618KfhA%3D%3D',
-							},
-							{
-								'avatar': 'assets/images/testimonials/1545035045296.jpeg',
-								'message': '"Tuan here to speed up very fast your idea from draft to high-end design. But also input more than expected with Lean Experience for end-users"',
-								'author': 'Danh Nguyen',
-								'role': 'Head of Design at BigIn',
-								'linkedin': 'https://www.linkedin.com/in/danhnguyenhoang?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bx7m5Uk12Sp2dlbg618KfhA%3D%3D',
-							},
-						]
+				.swiper-wrapper.testimonials-content(id="section-testimonials-content")
+					//-------- Fetch data from JSON --------
+					//- -
+					//- 	let testimonials = [
+					//- 		{
+					//- 			'avatar': 'assets/images/testimonials/1630071259712.jpeg',
+					//- 			'message': '"Tuan is an excellent UX/UI Designer. His passion for quality and purpose behind his job shines through every interactive design he has made. He is super dedicated and always aims toward higher levels in his career. His learning mindset is amazing. He earned Rising Star and Most Dedicated awards of the company in 2 consecutive years. It would be valuable to have him in a team."',
+					//- 			'author': 'Long Van',
+					//- 			'role': 'Chief Executive Officer at BigIn',
+					//- 			'linkedin': 'https://www.linkedin.com/in/long-van?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bx7m5Uk12Sp2dlbg618KfhA%3D%3D',
+					//- 		},
+					//- 		{
+					//- 			'avatar': 'assets/images/testimonials/1545035045296.jpeg',
+					//- 			'message': '"Tuan here to speed up very fast your idea from draft to high-end design. But also input more than expected with Lean Experience for end-users"',
+					//- 			'author': 'Danh Nguyen',
+					//- 			'role': 'Head of Design at BigIn',
+					//- 			'linkedin': 'https://www.linkedin.com/in/danhnguyenhoang?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bx7m5Uk12Sp2dlbg618KfhA%3D%3D',
+					//- 		},
+					//- 	]
 
-					each item, index in testimonials
-						.swiper-slide
-							i.icon-quotes.ri-double-quotes-l(style="color: var(--fg-decor);")
-							.testimonials-description= item.message
-							.testimonials-author-content
-								.testimonials-author-content-left
-									img.testimonials-author-avatar(src=item.avatar)
-								.testimonials-author-content-right
-									.testimonials-author-name= item.author
-										a(href=item.linkedin)
-											i.ri-linkedin-box-fill 
-									.testimonials-author-role= item.role
+					//- each item, index in testimonials
+					//- 	.swiper-slide
+					//- 		i.icon-quotes.ri-double-quotes-l(style="color: var(--fg-decor);")
+					//- 		.testimonials-description= item.message
+					//- 		.testimonials-author-content
+					//- 			.testimonials-author-content-left
+					//- 				img.testimonials-author-avatar(src=item.avatar)
+					//- 			.testimonials-author-content-right
+					//- 				.testimonials-author-name= item.author
+					//- 					a(href=item.linkedin)
+					//- 						i.ri-linkedin-box-fill 
+					//- 				.testimonials-author-role= item.role
 				.swiper-pagination
 
 	//- Contact

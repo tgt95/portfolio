@@ -288,6 +288,7 @@ script.
 
 	// Window Onload
 	document.addEventListener('DOMContentLoaded', e => {
+		theme.loading();
 		theme.navigation();
 		theme.appearanceOnTime();
 		
@@ -314,5 +315,6 @@ script.
 		fetch(theme.server + 'df2e5675f00bc58b57ca').then(response => response.json())
 		.then(data => !data.openToWork ? document.querySelector('.open-to-work').style.display = 'none' : 0)
 		.catch(err => console.error(err))
+
 	});
 

@@ -12,7 +12,7 @@ const sourcemaps   		= require('gulp-sourcemaps');
 const notify 		 	= require('gulp-notify');
 const rename 		 	= require('gulp-rename');
 const uglify 		 	= require('gulp-uglify');
-const htmlMinify 		= require('html-minifier');
+const htmlMinify 		= require('gulp-htmlmin');
 const iconfont 	 		= require('gulp-iconfont');
 const iconfontCss  		= require('gulp-iconfont-css');
 const browserSync  		= require('browser-sync').create();
@@ -28,7 +28,11 @@ const htmlMinifyOptions = {
 	removeStyleLinkTypeAttributes: true,
 	sortClassName: true,
 	useShortDoctype: true,
-	collapseWhitespace: true
+	collapseWhitespace: true,
+	removeComments: true,
+	minifyCSS: true,
+	minifyJS: true,
+	removeEmptyAttributes: true,
 };
 
 /**
@@ -99,10 +103,11 @@ const html = ()=> {
 			require: require,
 		}
 	}))
-	.on('data', file => {
-		const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), htmlMinifyOptions))
-		return file.contents = buferFile
-	})
+	// .on('data', file => {
+	// 	const buferFile = Buffer.from(htmlMinify.minify(file.contents.toString(), htmlMinifyOptions))
+	// 	return file.contents = buferFile
+	// })
+	.pipe(htmlMinify(htmlMinifyOptions))
 	.pipe(dest('./'))
 	.pipe(browserSync.stream({stream: true}));
 }

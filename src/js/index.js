@@ -29,65 +29,49 @@ class Theme {
 		}
 	}
 	navigation() {
-		let header = this.elements.header,
-			navigation = this.elements.navigation,
-			html = document.querySelector('html');
+		let { header, navigation } = this.elements;
+			
+		navigation.querySelectorAll("ul:first-child a").forEach((link) => {
+			link.addEventListener("click", (e) => {
+				const targetId = link.getAttribute("href");
+				const offsetTop = parseInt(link.getAttribute("data-offset-top")) || 0; // Offset = 0 if it is not defined
+				const targetElement = document.querySelector(targetId);
 
-		navigation.querySelectorAll('ul:first-child a').forEach((element, index) => {
-			element.addEventListener('click', (e) => {
-
-				let $this = e.currentTarget,
-					href = $this.getAttribute('href'),
-					el,
-					elRect,
-					offsetTop;
-
-				if (document.querySelector(href) !== null) {
+				if (targetElement) {
 					e.preventDefault();
-
-					el = document.querySelector(href);
-					elRect = el.getBoundingClientRect();
-					offsetTop = $this.getAttribute('data-offset-top') !== undefined ? $this.getAttribute('data-offset-top') : 0;
-
-					html.velocity({
-						scrollTop: (elRect.top - document.body.getBoundingClientRect().top - offsetTop) + 'px'
+					const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offsetTop;
+					// window.scrollTo({ top: targetPosition, behavior: "smooth" });
+					document.documentElement.velocity({
+						scrollTop: targetPosition + 'px'
 					}, { duration: 400 });
 				}
 			});
 		});
 
 		window.addEventListener('scroll', () => {
-			!detectMobile.isMobile && (html.scrollTop > _getHeight(header)) ? header.classList.add('has-background') : header.classList.remove('has-background');
+			// Device is not Mobile, and HTML scrollY > <Header> height then toggle class "has-background"
+			!detectMobile.isMobile && header.classList.toggle("has-background", window.scrollY > header.offsetHeight);
 		});
 	}
 	appearanceOnTime() {
-		let html = document.querySelector('html');
-		let themeToggle = document.getElementById('mode-toggle');
+		const html = document.documentElement;
+		const themeToggle = document.getElementById("mode-toggle");
 
-		const applyThemeBasedOnTime = () => {
-			let currentHour = new Date().getHours();
-			let isNightTime = currentHour >= 18 || currentHour < 6; // Night: 6 PM to 6 AM
-
+		const applyTheme = () => {
 			// Add or remove dark mode class based on the time
-			if (isNightTime) {
-				html.classList.add('dark-mode');
-				themeToggle.checked = false; // Update toggle status
-			} else {
-				html.classList.remove('dark-mode');
-				themeToggle.checked = true; // Update toggle status
-			}
-		}
+			const isNight = new Date().getHours() >= 18 || new Date().getHours() < 6;
 
-		// Function to toggle theme manually
-		const toggleThemeManually = () => {
-			html.classList.toggle('dark-mode');
-		}
+			// The second parameter can be used to determine whether the class is included or not. This example would include the 'dark-mode' class only if {isNight} is true
+			html.classList.toggle("dark-mode", isNight);
+			themeToggle.checked = !isNight;
+		};
 
-		// Attach an event listener to the toggle input
-		themeToggle.addEventListener('change', toggleThemeManually);
+		themeToggle.addEventListener("change", () => {
+			this.loading(1000, 'Updating...');
+			html.classList.toggle("dark-mode");
+		});
 
-		// Apply the initial theme based on time
-		applyThemeBasedOnTime();
+		applyTheme();
 	}
 	animation(status = true) {
 		// Human
@@ -194,7 +178,7 @@ class Theme {
 		this.animation.handShake(status);
 	}
 	testimonialSwiper() {
-		let testimonialsSlider = new Swiper('.section-testimonials .swiper-container', {
+		new Swiper('.section-testimonials .swiper-container', {
 			mousewheel: true,
 			keyboard: true,
 			parallax: true,
@@ -415,35 +399,28 @@ class Theme {
 			});
 		});
 	}
-	loading(timeout = 1000, des = 'Loading...', src = 'assets/images/logo.svg') {
+	loading(timeout = 1000, description = 'Loading...', src = 'assets/images/logo.svg') {
+		let loader, loaderHTML = `
+			<div class="page-loader">
+				<div class="loader-content"><img class="logo-img" src="${src}"/>
+					<div class="page-loader-title mt-2">${description}</div>
+				</div>
+			</div>`;
+
 		// Append loading
 		document.body.style.overflow = 'hidden';
 		document.body.style.display = '';
 		document.body.style.backgroundColor = '';
+		document.body.insertAdjacentHTML('beforeend', loaderHTML);
 
-		document.body.insertAdjacentHTML('beforeend', `
-		<div class="page-loader">
-			<div class="loader-content"><img class="logo-img" src="${src}"/>
-				<div class="page-loader-title mt-2">${des}</div>
-			</div>
-		</div>
-		`);
+		loader = document.body.querySelector('.page-loader');
 
-		let loader = document.body.querySelector('.page-loader');
-
-		// Show the loading overlay
-		const showTime = (doSomthingAfter) => {
-			setTimeout(() => {
-				// Time to show loading - 1s
-				document.body.style.overflow = '';
-				loader.classList.add('move2Left', 'animated');
-				doSomthingAfter();
-			}, timeout);
-		}
-
-		// After animated then remove
-		// Set time out for pending the loading do the animation then remove
-		showTime(() => setTimeout(() => loader.remove(), 1000));
+		setTimeout(() => {
+			// Time to show loading - 1s
+			document.body.style.overflow = '';
+			loader.classList.add('move2Left', 'animated');
+			loader.addEventListener("animationend", () => loader.remove());
+		}, timeout);
 	}
 	mobileResponsive() {
 		let container = document.querySelector('.section-banner'),
@@ -456,7 +433,7 @@ class Theme {
 			document.body.classList.add('is-mobile');
 
 			// Fix bug for use Navigation bottom
-			document.body.style.paddingBottom = _getHeight(this.elements.header) + 'px';
+			document.body.style.paddingBottom = this.elements.header.offsetHeight + 'px';
 
 			// Turn off animation
 			this.animation(false);
@@ -620,6 +597,28 @@ class Theme {
 						document.getElementById('section-profile-content').insertAdjacentHTML('beforeend', element);
 					}
 				})
+
+				// Section Testimonials
+				this.data.testimonial.forEach((item, i) => document.getElementById('section-testimonials-content').insertAdjacentHTML('beforeend', `
+					<div class=swiper-slide>
+						<i class="icon-quotes ri-double-quotes-l" style="color: var(--fg-decor);"></i>
+						<div class=testimonials-description>${item.message}</div>
+						<div class=testimonials-author-content>
+							<div class=testimonials-author-content-left>
+								<img class=testimonials-author-avatar src=${item.avatar}>
+							</div>
+							<div class=testimonials-author-content-right>
+								<div class=testimonials-author-name>
+									${item.author}
+									<a href="${item.linkedin}">
+										<i class=ri-linkedin-box-fill></i>
+									</a>
+								</div>
+								<div class=testimonials-author-role>${item.role}</div>
+							</div>
+						</div>
+					</div>`) 
+				)
 
 				// Section Footer
 				let footer = new Typewriter('#section-footer-description', {
