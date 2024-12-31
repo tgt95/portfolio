@@ -9,7 +9,7 @@
 
 // Parameter: btn-color($textColor, $textColorHover, $textColorFocus, $bgColor, $bgColorHover, $bgColorFocus)
 .btn-primary {
-    @include btn-color(var(--fg-inverse-static), var(--fg-inverse-static), var(--fg-inverse-static), var(--bg-brand), var(--bg-brand-hover), var(--bg-brand-pressed));
+    @include btn-color(var(--fg-inverse), var(--fg-inverse), var(--fg-inverse), var(--bg-brand), var(--bg-brand-hover), var(--bg-brand-pressed));
 }
 
 .btn-secondary {

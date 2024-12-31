@@ -2,6 +2,21 @@
     background-image: linear-gradient(to right, white 0%, #ffc3bf 100%);
 }
 
+// Font -----------------------------------------------------------------------------------------------------
+// Define a mixin for font-face
+@mixin font-face($font-family, $font-path, $font-weight, $font-style: normal) {
+    @font-face {
+        font-family: $font-family;
+        src: url("#{$font-path}.eot");
+        src: url("#{$font-path}.eot?#iefix") format("embedded-opentype"),
+            url("#{$font-path}.woff2") format("woff2"),
+            url("#{$font-path}.woff") format("woff"),
+            url("#{$font-path}.ttf") format("truetype");
+        font-weight: $font-weight;
+        font-style: $font-style;
+    }
+}
+
 // Button ---------------------------------------------------------------------------------------------------
 @mixin btn {
     @include flex-center(inline-flex);

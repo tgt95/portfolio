@@ -1,0 +1,11 @@
+// Use the mixin for each font variant
+@include font-face("Gilroy", "../fonts/Gilroy/Gilroy-Thin", 100);
+@include font-face("Gilroy", "../fonts/Gilroy/Gilroy-UltraLight", 200);
+@include font-face("Gilroy", "../fonts/Gilroy/Gilroy-Light", 300);
+@include font-face("Gilroy", "../fonts/Gilroy/Gilroy", 400);
+@include font-face("Gilroy", "../fonts/Gilroy/Gilroy-Medium", 500);
+@include font-face("Gilroy", "../fonts/Gilroy/Gilroy-Semibold", 600);
+@include font-face("Gilroy", "../fonts/Gilroy/Gilroy-Bold", 700);
+@include font-face("Gilroy", "../fonts/Gilroy/Gilroy-Extrabold", 800);
+@include font-face("Gilroy", "../fonts/Gilroy/Gilroy-Black", 900);
+  

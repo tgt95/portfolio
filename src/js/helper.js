@@ -11,7 +11,7 @@ const _getWidth = el => {
     return parseFloat(getComputedStyle(el, null).width.replace("px", ""));
 }
 
-const trigger  = (el, eventType) => {
+const trigger = (el, eventType) => {
     if (typeof eventType === 'string' && typeof el[eventType] === 'function') {
     el[eventType]();
     } else {

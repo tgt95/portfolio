@@ -1,0 +1,5 @@
+// Use the mixin for each font variant
+@include font-face("Space Grotesk", "../fonts/SpaceGrotesk/SpaceGrotesk-Light", 300);
+@include font-face("Space Grotesk", "../fonts/SpaceGrotesk/SpaceGrotesk-Regular", 400);
+@include font-face("Space Grotesk", "../fonts/SpaceGrotesk/SpaceGrotesk-Medium", 500);
+@include font-face("Space Grotesk", "../fonts/SpaceGrotesk/SpaceGrotesk-Bold", 700);

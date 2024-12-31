@@ -604,7 +604,7 @@ class Theme {
 						<div class=testimonials-description>${item.message}</div>
 						<div class=testimonials-author-content>
 							<div class=testimonials-author-content-left>
-								<img class=testimonials-author-avatar src=${item.avatar}>
+								<img class=testimonials-author-avatar src=${item.avatar} alt=${item.author}>
 							</div>
 							<div class=testimonials-author-content-right>
 								<div class=testimonials-author-name>

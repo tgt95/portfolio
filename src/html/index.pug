@@ -122,9 +122,9 @@ block content
 						li(class=activeClass)
 							a(href="#" data-tab-target=`#category-${name}`)= database[`${name}`].fullName
 				.switch-view
-					a.btn-just-icon(href="#" action="list")
+					a.btn-just-icon(href="#" action="list" aria-label="Click to switch to list view")
 						i.ri-function-line
-					a.btn-just-icon(href="#" action="grid").active
+					a.btn-just-icon(href="#" action="grid" aria-label="Click to switch to gird view").active
 						i.ri-list-check-2
 
 
