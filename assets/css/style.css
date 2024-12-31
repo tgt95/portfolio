@@ -2808,8 +2808,8 @@ a:disabled, a.disabled {
 .header.has-background {
   background-image: -webkit-radial-gradient(transparent 1px, var(--surface-3) 1px);
   background-image: radial-gradient(transparent 1px, var(--surface-3) 1px);
-  -webkit-backdrop-filter: saturate(50%) blur(4px);
-          backdrop-filter: saturate(50%) blur(4px);
+  -webkit-backdrop-filter: saturate(50%) blur(12px);
+          backdrop-filter: saturate(50%) blur(12px);
   background-size: 6px 6px;
 }
 @media (min-width: 992px) {
@@ -2965,10 +2965,29 @@ a:disabled, a.disabled {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: var(--space-sm);
+  position: relative;
+}
+.header .theme-switch-action::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--space-sm) * -1);
+  top: var(--space-xs-3);
+  bottom: var(--space-xs-3);
+  height: calc(100% - var(--space-xs-3) * 2);
+  width: 1px;
+  background-color: var(--border);
 }
 @media (max-width: 575px) {
+  .header .theme-switch-action {
+    margin-left: var(--space-xs);
+  }
   .header .theme-switch-action .theme-switch {
     --theme-toggle-size: 8px;
+  }
+  .header .theme-switch-action::before {
+    left: calc(var(--space-xs) * -1);
+    height: calc(100% - var(--space-xs-3) * 2);
   }
 }
 

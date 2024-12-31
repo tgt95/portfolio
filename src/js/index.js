@@ -67,7 +67,6 @@ class Theme {
 		};
 
 		themeToggle.addEventListener("change", () => {
-			this.loading(1000, 'Updating...');
 			html.classList.toggle("dark-mode");
 		});
 
