@@ -1,22 +1,28 @@
-.navigation-tabs{
+.navigation-tabs {
     @include flex-center-y-between;
+
     @media (max-width: 768px) {
         flex-wrap: wrap;
-        ul{
+
+        ul {
             order: 1;
         }
     }
-    ul{
+
+    ul {
         list-style-type: none;
         padding-left: 0;
         margin-bottom: 0;
         display: flex;
         flex-wrap: wrap;
-        li{
-            &:not(:last-child){
+
+        li {
+            &:not(:last-child) {
                 margin-right: var(--space-lg);
             }
-            a{
+
+            a,
+            button {
                 font-size: var(--body-font-size-lg);
                 font-weight: var(--font-weight-semibold);
                 color: var(--fg-main);
@@ -24,38 +30,52 @@
                 transition: border .3s ease, color .3s ease;
                 text-decoration: none;
             }
-            &.active, &:hover{
-                a{
+
+            &.active,
+            &:hover {
+
+                a,
+                button {
                     color: var(--fg-brand);
                     border-color: var(--fg-brand);
                     text-decoration: none;
                 }
             }
+
+            &:focus-visible {
+                outline: 1px solid var(--border);
+                border-radius: var(--radius-xs-4);
+            }
         }
     }
-    .switch-view{
+
+    .switch-view {
         border-radius: var(--radius-rounded);
         background-color: var(--bg-brand-subtle);
-        a{
+
+        a,
+        button {
             @include btn;
             @include btn-md;
             color: var(--fg-subtle);
             position: relative;
-            &:before{
+
+            &:before {
                 content: "";
                 position: absolute;
                 bottom: 0px;
                 left: 50%;
                 right: 0;
-                width: 12px;
+                width: var(--space-xs);
                 height: 2px;
-                transform: translateX(calc(-50% - 1px));
+                transform: translateX(calc(-25% - 3px));
                 background: transparent;
-                transition: all .3s ease;
+                transition: all 0.3s ease;
                 border-radius: 8px;
             }
-            &:first-child{
-                &:after{
+
+            &:first-child {
+                &:after {
                     content: "";
                     position: absolute;
                     top: 50%;
@@ -69,20 +89,28 @@
                     border-radius: 8px;
                 }
             }
-            &:hover, &:focus, &:active, &.active{
-                &:before{
+
+            &:hover,
+            &:focus,
+            &:active,
+            &.active {
+                &:before {
                     background: var(--fg-brand);
                 }
+
                 color: var(--fg-brand);
                 // border-bottom: 2px solid $brand;
             }
         }
+
         @media (max-width: 768px) {
             order: 0;
             width: 100%;
             margin-bottom: var(--space-sm);
-            a{
-                &.btn-just-icon{
+
+            a,
+            button {
+                &.btn-just-icon {
                     width: 50%;
                 }
             }

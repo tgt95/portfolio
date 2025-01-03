@@ -1145,7 +1145,8 @@ a:disabled, a.disabled {
 .navigation-tabs ul li:not(:last-child) {
   margin-right: var(--space-lg);
 }
-.navigation-tabs ul li a {
+.navigation-tabs ul li a,
+.navigation-tabs ul li button {
   font-size: var(--body-font-size-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--fg-main);
@@ -1154,16 +1155,23 @@ a:disabled, a.disabled {
   transition: border 0.3s ease, color 0.3s ease;
   text-decoration: none;
 }
-.navigation-tabs ul li.active a, .navigation-tabs ul li:hover a {
+.navigation-tabs ul li.active a,
+.navigation-tabs ul li.active button, .navigation-tabs ul li:hover a,
+.navigation-tabs ul li:hover button {
   color: var(--fg-brand);
   border-color: var(--fg-brand);
   text-decoration: none;
+}
+.navigation-tabs ul li:focus-visible {
+  outline: 1px solid var(--border);
+  border-radius: var(--radius-xs-4);
 }
 .navigation-tabs .switch-view {
   border-radius: var(--radius-rounded);
   background-color: var(--bg-brand-subtle);
 }
-.navigation-tabs .switch-view a {
+.navigation-tabs .switch-view a,
+.navigation-tabs .switch-view button {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1185,48 +1193,60 @@ a:disabled, a.disabled {
   color: var(--fg-subtle);
   position: relative;
 }
-.navigation-tabs .switch-view a:hover, .navigation-tabs .switch-view a:focus, .navigation-tabs .switch-view a:active, .navigation-tabs .switch-view a.active {
+.navigation-tabs .switch-view a:hover, .navigation-tabs .switch-view a:focus, .navigation-tabs .switch-view a:active, .navigation-tabs .switch-view a.active,
+.navigation-tabs .switch-view button:hover,
+.navigation-tabs .switch-view button:focus,
+.navigation-tabs .switch-view button:active,
+.navigation-tabs .switch-view button.active {
   text-decoration: none;
 }
-.navigation-tabs .switch-view a > i {
+.navigation-tabs .switch-view a > i,
+.navigation-tabs .switch-view button > i {
   font-weight: var(--font-weight-regular);
   vertical-align: sub;
 }
-.navigation-tabs .switch-view a > i {
+.navigation-tabs .switch-view a > i,
+.navigation-tabs .switch-view button > i {
   font-size: var(--heading-5);
 }
-.navigation-tabs .switch-view a.btn-just-icon {
+.navigation-tabs .switch-view a.btn-just-icon,
+.navigation-tabs .switch-view button.btn-just-icon {
   width: var(--ui-size-md);
   height: var(--ui-size-md);
   padding: var(--space-sm);
 }
-.navigation-tabs .switch-view a:not(.btn-just-icon) {
+.navigation-tabs .switch-view a:not(.btn-just-icon),
+.navigation-tabs .switch-view button:not(.btn-just-icon) {
   padding: 0 var(--space-sm);
   line-height: var(--ui-size-md);
 }
-.navigation-tabs .switch-view a:not(.icon-right):not(.btn-just-icon) > i {
+.navigation-tabs .switch-view a:not(.icon-right):not(.btn-just-icon) > i,
+.navigation-tabs .switch-view button:not(.icon-right):not(.btn-just-icon) > i {
   margin-right: var(--space-xs-2);
 }
-.navigation-tabs .switch-view a.icon-right :not(.btn-just-icon) > i {
+.navigation-tabs .switch-view a.icon-right :not(.btn-just-icon) > i,
+.navigation-tabs .switch-view button.icon-right :not(.btn-just-icon) > i {
   margin-left: var(--space-xs-2);
 }
-.navigation-tabs .switch-view a:before {
+.navigation-tabs .switch-view a:before,
+.navigation-tabs .switch-view button:before {
   content: "";
   position: absolute;
   bottom: 0px;
   left: 50%;
   right: 0;
-  width: 12px;
+  width: var(--space-xs);
   height: 2px;
-  -webkit-transform: translateX(calc(-50% - 1px));
-      -ms-transform: translateX(calc(-50% - 1px));
-          transform: translateX(calc(-50% - 1px));
+  -webkit-transform: translateX(calc(-25% - 3px));
+      -ms-transform: translateX(calc(-25% - 3px));
+          transform: translateX(calc(-25% - 3px));
   background: transparent;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   border-radius: 8px;
 }
-.navigation-tabs .switch-view a:first-child:after {
+.navigation-tabs .switch-view a:first-child:after,
+.navigation-tabs .switch-view button:first-child:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -1242,10 +1262,18 @@ a:disabled, a.disabled {
   transition: all 0.3s ease;
   border-radius: 8px;
 }
-.navigation-tabs .switch-view a:hover, .navigation-tabs .switch-view a:focus, .navigation-tabs .switch-view a:active, .navigation-tabs .switch-view a.active {
+.navigation-tabs .switch-view a:hover, .navigation-tabs .switch-view a:focus, .navigation-tabs .switch-view a:active, .navigation-tabs .switch-view a.active,
+.navigation-tabs .switch-view button:hover,
+.navigation-tabs .switch-view button:focus,
+.navigation-tabs .switch-view button:active,
+.navigation-tabs .switch-view button.active {
   color: var(--fg-brand);
 }
-.navigation-tabs .switch-view a:hover:before, .navigation-tabs .switch-view a:focus:before, .navigation-tabs .switch-view a:active:before, .navigation-tabs .switch-view a.active:before {
+.navigation-tabs .switch-view a:hover:before, .navigation-tabs .switch-view a:focus:before, .navigation-tabs .switch-view a:active:before, .navigation-tabs .switch-view a.active:before,
+.navigation-tabs .switch-view button:hover:before,
+.navigation-tabs .switch-view button:focus:before,
+.navigation-tabs .switch-view button:active:before,
+.navigation-tabs .switch-view button.active:before {
   background: var(--fg-brand);
 }
 @media (max-width: 768px) {
@@ -1257,7 +1285,8 @@ a:disabled, a.disabled {
     width: 100%;
     margin-bottom: var(--space-sm);
   }
-  .navigation-tabs .switch-view a.btn-just-icon {
+  .navigation-tabs .switch-view a.btn-just-icon,
+.navigation-tabs .switch-view button.btn-just-icon {
     width: 50%;
   }
 }
