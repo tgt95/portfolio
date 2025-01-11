@@ -1,0 +1,193 @@
+import { Component, createRef } from 'react'
+import { convertToPathName, getImageSize } from '../../../utils/helpers'
+import { fetchData } from '../../../utils/api'
+import ProductCard from '../../common/card/product'
+
+// Import Swiper JS
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+// Main components
+export default class Work extends Component {
+  swiperRef = createRef()
+  constructor(props) {
+    super(props)
+    this.state = {
+      mySwiper: null,
+      data: null,
+      gridView: true,
+    }
+    this.switchGalleryView = this.switchGalleryView.bind(this)
+  }
+
+  switchGalleryView = (e) => {
+    const action = e.target.parentNode.getAttribute('action'),
+      prevInstance = this.state.mySwiper,
+      nextInstance = null,
+      settings = {
+        speed: 400,
+        spaceBetween: 100,
+      }
+
+    action == 'grid' ? this.setState({ gridView: true }) : this.setState({ gridView: false })
+    // prevInstance.initialized ? prevInstance.destroy() : prevInstance.onInit()
+    
+    if (prevInstance.initialized){
+      this.setState({ mySwiper: prevInstance.el })
+      prevInstance.destroy()
+      // console.log(this.state.mySwiper)
+    }
+    else {
+      debugger
+      // nextInstance = new Swiper.default(prevInstance.parentNode, settings)
+      new Swiper.default(prevInstance, settings)
+    }
+  }
+
+  componentDidMount() {
+    // Fetch data from NPoint
+    fetchData('edbd1cc3f62bba3efd1c')
+      .then((result) => {
+        // Modify the fetched data (e.g., adding the childs)
+        const modifiedData = result.map((item, index) => ({
+          ...item,
+          pathName: convertToPathName(item.fullName), // Adding a child to each item
+          pid: `${convertToPathName(item.fullName)}-${index}`
+        }))
+
+        // Filter the Featured pool
+        modifiedData.forEach((item) => {
+          // Re-Map the image path name
+          item.data.forEach((sub, j) => {
+            sub.imageThumbnail = '../../' + sub.imageThumbnail
+            sub.imageOriginal = '../../' + sub.imageOriginal
+
+            // Get image size: Width x Height
+            const imageOriginalSize = {
+              imageOriginalSize: getImageSize(process.env.REACT_APP_API_URL + '/../../' + sub.imageOriginal)
+            }
+            // Add child object to parent
+            item.data[j] = { ...item.data[j], ...imageOriginalSize }
+          })
+
+          // Ignore the 'feature' pool at the 1 position (push projects are feature to 1 one pool)
+          if (item.data.length != 0) {
+            item.data.forEach((sub) => {
+              if (sub.featured) modifiedData[0].data.push(sub)
+            })
+          }
+        })
+
+        // Sorting the Featured pool by Numeric (0 → 9)
+        modifiedData[0].data = modifiedData[0].data.sort((a, b) => a.position - b.position)
+
+        // Update the state with the modified data
+        this.setState({ data: modifiedData })
+      })
+      .catch(console.error)
+  }
+  
+  render() {
+    const { data, mySwiper } = this.state
+    // console.log(mySwiper)
+    return (
+      <section className='section section-work'>
+        <div className='container'>
+          <div className='section-heading'>
+            <div className='section-title'>Work</div>
+          </div>
+
+          <div className='navigation-tabs'>
+            <ul>
+              {data &&
+                data.map((item, index) => (
+                  <li key={index} className={index === 0 ? 'active' : undefined}>
+                    <a href='#' data-tab-target={`#category-${item.pathName}`}>
+                      {item.fullName}
+                    </a>
+                  </li>
+                ))}
+            </ul>
+            <div className='switch-view'>
+              <button className={`btn-just-icon ${this.state.gridView ? 'active' : ''}`} action='grid' onClick={this.switchGalleryView}>
+                <i className='ri-function-line'></i>
+              </button>
+              <button className={`btn-just-icon ${this.state.gridView ? '' : 'active'}`} action='list' onClick={this.switchGalleryView}>
+                <i className='ri-list-check-2'></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className='swiper swiper-container' id={`category-${data && data[0].pathName}`}>
+          <div className='swiper-wrapper slide-wrapper'>
+            {data &&
+              <Swiper
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                slidesOffsetBefore={document.querySelector('.section-work .section-title').getBoundingClientRect().left}
+                slidesOffsetAfter={document.querySelector('.section-work .section-title').getBoundingClientRect().left}
+                spaceBetween={32}
+                slidesPerView={'auto'}
+                parallax={true}
+                // mousewheel={true}
+                navigation={{
+                  nextEl: '.slide-button-next',
+                  prevEl: '.slide-button-prev'
+                }}
+                breakpoints={{
+                  576: {
+                    spaceBetween: 32,
+                  },
+                  320: {
+                    spaceBetween: 16,
+                  }
+                }}
+                // onSlideChange={() => console.log('slide change')}
+                ref={this.swiperRef}
+                onSwiper={(mySwiper) => this.setState({mySwiper : mySwiper})}
+              >
+                {data.map((item, index) => (
+                  index == 0 && item.data.map((element, j) =>
+                    <SwiperSlide key={j} className='item'>
+                      <ProductCard
+                        key={j}
+                        index={j}
+                        title={element.title}
+                        img={element.imageThumbnail}
+                        guideText={element.guideText}
+                        website={element.website}
+                        src={element.externalURL}
+                        isExternal={element.external}
+                        imageOriginalSizeWidth={element.imageOriginalSize.width}
+                        imageOriginalSizeHeight={element.imageOriginalSize.height}
+                        className=''
+                      />
+                    </SwiperSlide>
+                  ))
+                )}
+              </Swiper>
+            }
+          </div>
+        </div>
+        <div className='container'>
+          <div className='swiper-controls'>
+            <button className='btn btn-just-icon btn-default slide-button-prev me-2'>
+              <i className='ri-arrow-left-s-line'></i>
+            </button>
+            <button className='btn btn-just-icon btn-default slide-button-next'>
+              <i className='ri-arrow-right-s-line'></i>
+            </button>
+            <div className='swiper-pagination'></div>
+          </div>
+        </div>
+
+      </section>
+    )
+  }
+}

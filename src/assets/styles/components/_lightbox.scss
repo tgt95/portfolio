@@ -1,0 +1,41 @@
+@use '../utilities/main' as utilities;
+
+.lightbox {
+  &-wrapper {
+    padding-top: var(--space-xl-4);
+    background-color: rgba(0, 0, 0, 0.72);
+    @include utilities.position(fixed);
+    z-index: 1000;
+    overflow-y: scroll;
+  }
+
+  &-toolbar,
+  &-caption {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    padding: var(--space-xs) var(--space-sm);
+    backdrop-filter: blur(12px);
+    background-color: rgba(38, 38, 38, 0.8);
+  }
+
+  // background-size: 6px 6px;
+  &-toolbar {
+    // background-image: radial-gradient(transparent 1px, var(--surface-3) 1px);
+    // backdrop-filter: saturate(50%) blur(4px);
+    // background-size: 6px 6px;
+    top: 0;
+    border-bottom: 1px solid (--border);
+  }
+
+  &-body {
+    text-align: center;
+  }
+
+  &-caption {
+    bottom: 0;
+    text-align: center;
+    border-top: 1px solid (--border);
+  }
+}

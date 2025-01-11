@@ -1,0 +1,7 @@
+@use '../mixins';
+
+// Use the mixin for each font variant
+@include mixins.font-face('Space Grotesk', '../fonts/SpaceGrotesk/SpaceGrotesk-Light', 300);
+@include mixins.font-face('Space Grotesk', '../fonts/SpaceGrotesk/SpaceGrotesk-Regular', 400);
+@include mixins.font-face('Space Grotesk', '../fonts/SpaceGrotesk/SpaceGrotesk-Medium', 500);
+@include mixins.font-face('Space Grotesk', '../fonts/SpaceGrotesk/SpaceGrotesk-Bold', 700);

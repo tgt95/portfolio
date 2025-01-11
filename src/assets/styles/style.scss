@@ -1,0 +1,26 @@
+// @use 'tailwindcss/base';
+// @use "tailwindcss/components";
+// @use "tailwindcss/utilities";
+
+@use 'bootstrap/dist/css/bootstrap-reboot.css';
+@use 'bootstrap/dist/css/bootstrap-grid.css';
+
+@use 'animate.css/animate.css';
+@use 'remixicon/fonts/remixicon.css';
+
+@use 'variables';
+
+@use 'theme-light';
+@use 'theme-dark';
+
+@use 'utilities/main' as utilities;
+
+@use 'fonts/main' as fonts;
+
+@use 'base/main' as base;
+
+@use 'components/main' as components;
+
+@use 'pages/main' as pages;
+
+@use 'layouts/main' as layouts;

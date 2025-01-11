@@ -1,0 +1,104 @@
+@use '../../variables' as *;
+@use '../../utilities/main' as utils;
+@use '../../mixins';
+
+// Skills
+.section-skills {
+  padding-top: var(--section-margin-web);
+  padding-bottom: var(--section-margin-web);
+  position: relative;
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    width: 50%;
+    height: 1px;
+    background-color: var(--border);
+  }
+
+  &:before {
+    top: 0;
+    right: 0;
+  }
+
+  &:after {
+    bottom: 0;
+    left: 0;
+  }
+
+  .skills-content {
+    .item {
+      text-align: center;
+
+      .icon {
+        width: 128px;
+        height: 128px;
+        padding: var(--space-lg);
+        border-radius: var(--radius-rounded);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include mixins.main-gradient;
+        margin-bottom: var(--space-md);
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          animation: line-blow-up 3s ease infinite;
+          border-radius: var(--radius-rounded);
+          border: 1px solid rgba($brand-600, 0.2);
+        }
+
+        img {
+          width: 100%;
+          // height: 100%;
+          // object-fit: contain;
+        }
+      }
+
+      .title {
+        @include utils.text-heading(5);
+      }
+
+      @media (max-width: 576px) {
+        width: 50%;
+
+        .icon {
+          width: 64px;
+          height: 64px;
+          margin-bottom: var(--space-sm);
+
+          img {
+            width: 32px;
+          }
+        }
+
+        .title {
+          @include utils.text-heading(6);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .skills-content {
+      justify-content: center;
+
+      .item {
+        margin-bottom: var(--space-md);
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding-top: var(--section-margin-mobile);
+    padding-bottom: var(--section-margin-mobile);
+  }
+}

@@ -1,0 +1,67 @@
+@use '../../variables' as *;
+@use '../../utilities/main' as utils;
+@use '../../mixins';
+
+// Testimonials
+.section-testimonials {
+  .testimonials-content {
+    .icon-quotes {
+      font-size: var(--space-xl-3);
+    }
+
+    .testimonials-description {
+      font-size: var(--heading-5);
+      line-height: 32px;
+      margin-bottom: var(--space-md);
+
+      @media (max-width: 576px) {
+        font-size: var(--body-font-size-lg);
+        line-height: 24px;
+      }
+    }
+
+    .testimonials-author {
+      &-name {
+        @include utils.flex-center-y;
+        font-size: var(--heading-6);
+        font-weight: var(--font-weight-semibold);
+        margin-bottom: var(--space-xs-4);
+
+        > a {
+          @include utils.flex-center-y(inline-flex);
+          color: var(--linkedin);
+          font-size: var(--heading-6);
+          vertical-align: sub;
+          margin-left: var(--space-xs-3);
+          transition: color 0.3s var(--transition-base);
+
+          &:hover {
+            color: darken($linkedin, 16%);
+            text-decoration: none;
+          }
+        }
+      }
+
+      &-role {
+        color: var(--fg-subtlest);
+      }
+
+      &-avatar {
+        width: var(--space-xl-5);
+        height: var(--space-xl-5);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-rounded);
+        background-color: var(--bg-neutral);
+      }
+
+      &-content {
+        @include utils.flex-center-y;
+        margin-bottom: var(--space-xl);
+
+        &-left {
+          margin-right: var(--space-sm);
+        }
+      }
+    }
+  }
+}

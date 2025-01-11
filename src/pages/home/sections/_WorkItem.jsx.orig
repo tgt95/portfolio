@@ -1,0 +1,81 @@
+import React, { useState } from 'react'
+import { Lightbox } from '../../../components/common/Lightbox/Lightbox'
+
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/navigation'
+import 'swiper/css/thumbs'
+
+import 'swiper/css'
+
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules'
+
+export function GalleryItem({ title, guideText, imgPreview, img, website, index, external, externalURL, viewMode }) {
+  const [openLightbox, setOpenLightbox] = useState(false)
+  const [thumbsSwiper, setThumbsSwiper] = useState(null)
+
+  function handleClickOpenLightBox(e, external) {
+    if (!external) {
+      e.preventDefault()
+      setOpenLightbox(true)
+      document.body.style.overflow = 'hidden'
+    }
+  }
+
+  function handleClickClosedLightBox() {
+    document.body.style.overflow = ''
+    setOpenLightbox(false)
+  }
+
+  return (
+    <>
+      <div className={viewMode === 'grid' ? 'item col-lg-4 col-md-6' : 'item'}>
+        <div className='item-thumbnail'>
+          <img src={imgPreview} alt={title} />
+          <a
+            className={external ? 'overlay-content external' : 'overlay-content'}
+            href={external ? externalURL : img}
+            // target="_blank"
+            // rel="nofollow"
+            onClick={(e) => handleClickOpenLightBox(e, external, img)}
+          >
+            <div className='text-center'>
+              <i className={'icon ' + (external ? 'ri-external-link-line' : 'ri-zoom-in-line')}></i>
+              <div className='text'>{guideText}</div>
+            </div>
+          </a>
+        </div>
+        <div className='title'>{title}</div>
+        {!external && (
+          <div className='url-link'>
+            <a href={website} target='_blank' rel='nofollow'>
+              {website}
+            </a>
+          </div>
+        )}
+      </div>
+      {openLightbox && (
+        <Lightbox caption={title} onClose={handleClickClosedLightBox} isOpen={openLightbox}>
+          <Swiper
+            slidesPerView={1}
+            // breakpoints={{
+            //   576: {
+            //     slidesPerView=1
+            //   },
+            //   320: {
+            //     slidesPerView=1
+            //   }
+            // }}
+          >
+            <SwiperSlide>
+              <img className='w-100 m-auto' src={img} />
+            </SwiperSlide>
+          </Swiper>
+        </Lightbox>
+      )}
+    </>
+  )
+}

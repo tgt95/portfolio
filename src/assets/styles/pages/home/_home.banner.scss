@@ -1,0 +1,109 @@
+@use '../../variables' as *;
+@use '../../utilities/main' as utils;
+@use '../../mixins';
+
+// Banner
+.section-banner {
+  position: relative;
+  overflow-x: hidden;
+
+  .content-text {
+    z-index: 999;
+
+    .title {
+      @include utils.text-heading(1);
+      color: var(--fg-brand);
+      margin-bottom: var(--space-lg);
+
+      @media (max-width: 576px) {
+        @include utils.text-heading(2);
+      }
+
+      a {
+        color: var(--fg-brand);
+        text-decoration: underline;
+      }
+    }
+
+    @media (max-width: 1600px) and (min-width: 1080px) {
+      top: -10%;
+    }
+
+    @media (min-width: 992px) {
+      p {
+        font-size: var(--body-font-size-lg);
+        line-height: 28px;
+      }
+    }
+  }
+
+  .content-bg {
+    position: absolute;
+    right: 0;
+    top: -10%;
+
+    @media (min-width: 992px) {
+      overflow: hidden;
+    }
+
+    @media (max-width: 991px) {
+      position: static;
+
+      // transform: translateY(-20%);
+      // margin-top: -20%;
+      svg {
+        // width: 100%;
+        // width: 800px;
+        // height: 100%;
+        // margin-left: -30%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      // margin-top: -40%;
+      // margin-top: -396px;
+      overflow: unset;
+
+      svg {
+        // background: linear-gradient(180deg,#fff7f7 0,#ffc3bf 60%, #ffbab5 70%, #ffc4bf 80%,#fff 100%)
+        background: linear-gradient(180deg, #fff7f7 0, #ffe7e5 86%, #fff 100%);
+
+        #boy-container {
+          fill: transparent;
+        }
+
+        #trees {
+          display: none;
+        }
+      }
+    }
+
+    @media (max-width: 414px) {
+      // margin-top: -496px;
+      svg {
+        // margin-top: -128px;
+      }
+    }
+  }
+
+  // Animation
+  #boy {
+    animation: floating-boy 8s ease infinite;
+  }
+
+  // #light-shape{
+  //   animation: light-shape 10s ease infinite;
+  // }
+  #painted-brush,
+  #pencil-brush {
+    transform-origin: 306px 450px;
+    animation: rotate-2deg 2s ease infinite;
+  }
+
+  #laptop-front,
+  #laptop-behind,
+  #laptop-front-shadow {
+    transform-origin: 306px 450px;
+    animation: rotate-2deg 6s ease infinite;
+  }
+}

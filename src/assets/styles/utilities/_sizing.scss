@@ -1,0 +1,8 @@
+@each $range in 25, 50, 75, 100 {
+  .w-#{$range} {
+    width: #{$range} + '%';
+  }
+  .h-#{$range} {
+    height: #{$range} + '%';
+  }
+}

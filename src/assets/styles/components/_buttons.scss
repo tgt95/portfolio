@@ -1,0 +1,133 @@
+@use '../mixins';
+
+.btn {
+  // transition: color .3s ease, border .3s ease, box-shadow .3s ease;
+  @include mixins.btn;
+
+  &:not(.btn-lg):not(.btn-sm):not(.btn-xs) {
+    @include mixins.btn-md;
+  }
+}
+
+// Parameter: btn-color($textColor, $textColorHover, $textColorFocus, $bgColor, $bgColorHover, $bgColorFocus)
+.btn-primary {
+  @include mixins.btn-color(
+    var(--fg-inverse),
+    var(--fg-inverse),
+    var(--fg-inverse),
+    var(--bg-brand),
+    var(--bg-brand-hover),
+    var(--bg-brand-pressed)
+  );
+}
+
+.btn-secondary {
+  @include mixins.btn-color(
+    var(--fg-brand),
+    var(--fg-brand),
+    var(--fg-inverse-static),
+    var(--bg-brand-subtle),
+    var(--bg-brand-subtle-hover),
+    var(--bg-brand-subtle-pressed)
+  );
+}
+
+.btn-default {
+  @include mixins.btn-color(
+    var(--fg-main),
+    var(--fg-main),
+    var(--fg-main),
+    var(--bg-neutral),
+    var(--bg-neutral-hover),
+    var(--bg-neutral-pressed)
+  );
+}
+
+.btn-ghost {
+  @include mixins.btn-color(
+    var(--fg-main),
+    var(--fg-main),
+    var(--fg-main),
+    transparent,
+    var(--bg-neutral-hover),
+    var(--bg-neutral-pressed)
+  );
+}
+
+.btn-ghost-brand {
+  @include mixins.btn-color(
+    var(--fg-brand),
+    var(--fg-brand),
+    var(--fg-inverse-static),
+    var(--bg-ghost-brand),
+    var(--bg-ghost-brand-hover),
+    var(--bg-ghost-brand-pressed)
+  );
+}
+
+.btn-outline {
+  @include mixins.btn-color(
+    var(--fg-main),
+    var(--fg-main),
+    var(--fg-main),
+    var(--surface-3),
+    var(--bg-ghost-neutral-hover),
+    var(--bg-ghost-neutral-pressed)
+  );
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-50);
+
+  &:hover {
+    border: 1px solid var(--border);
+  }
+
+  &:focus,
+  &:active,
+  &.active {
+    border: 1px solid var(--border);
+  }
+}
+
+.btn-info {
+  @include mixins.btn-color(
+    var(--fg-inverse-static),
+    var(--fg-inverse-static),
+    var(--fg-inverse-static),
+    var(--bg-accent-info),
+    var(--bg-accent-info-hover),
+    var(--bg-accent-info-pressed)
+  );
+}
+
+.btn-success {
+  @include mixins.btn-color(
+    var(--fg-inverse-static),
+    var(--fg-inverse-static),
+    var(--fg-inverse-static),
+    var(--bg-accent-success),
+    var(--bg-accent-success-hover),
+    var(--bg-accent-success-pressed)
+  );
+}
+
+.btn-warning {
+  @include mixins.btn-color(
+    var(--fg-inverse-static),
+    var(--fg-inverse-static),
+    var(--fg-inverse-static),
+    var(--bg-accent-warning),
+    var(--bg-accent-warning-hover),
+    var(--bg-accent-warning-pressed)
+  );
+}
+
+.btn-danger {
+  @include mixins.btn-color(
+    var(--fg-inverse-static),
+    var(--fg-inverse-static),
+    var(--fg-inverse-static),
+    var(--bg-accent-danger),
+    var(--bg-accent-danger-hover),
+    var(--bg-accent-danger-pressed)
+  );
+}

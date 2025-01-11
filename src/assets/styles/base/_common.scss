@@ -1,0 +1,85 @@
+@use '../mixins';
+@use '../utilities/main' as utils;
+
+body {
+  font-family: var(--font-family);
+  color: var(--fg-main);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  background-color: var(--surface-1);
+  transition: all 0.3s var(--transition-base);
+  margin: 0;
+}
+
+/**
+ * ==============   Divider   ================
+ */
+
+.divider {
+  width: 100%;
+  background-color: var(--border);
+  height: 1px;
+
+  &-dashed {
+    /* control the space between dashes */
+    --s: 12px;
+    @extend .divider;
+    background:
+      radial-gradient(circle closest-side, var(--border) 98%, #0000) 0 0 / var(--s) 100%,
+      linear-gradient(90deg, var(--border) 50%, #0000 0) calc(var(--s) / 2) 0 / calc(2 * var(--s)) 100%;
+
+    &.vertical {
+      height: 100%;
+      width: 1px;
+      background:
+        radial-gradient(circle closest-side, var(--border) 98%, #0000) 0 0/100% var(--s),
+        linear-gradient(var(--border) 50%, #0000 0) 0 calc(var(--s) / 2) / 100% calc(2 * var(--s));
+    }
+  }
+}
+
+/**
+ * ==============   Link, a(href)   ================
+ */
+a {
+  color: var(--fg-link);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--fg-link-hover);
+  }
+
+  &:active,
+  &.active {
+    color: var(--fg-link-pressed);
+  }
+
+  &:disabled,
+  &.disabled {
+    color: var(--fg-link-disabled);
+  }
+}
+
+/**
+ * ==============   Loader   ================
+ */
+.page-loader {
+  background-color: var(--bg-brand);
+  z-index: 1060;
+  @include utils.position($position: fixed);
+  @include utils.flex-center;
+
+  .loader-content {
+    text-align: center;
+  }
+
+  &-title {
+    animation: flash 3s ease infinite;
+    color: var(--fg-inverse-static);
+    @include utils.text-heading(6);
+  }
+
+  .logo-img {
+    width: var(--space-xl-6);
+  }
+}

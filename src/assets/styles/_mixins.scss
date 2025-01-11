@@ -1,0 +1,147 @@
+@use 'utilities/main' as utilities;
+
+@mixin main-gradient {
+  background-image: linear-gradient(to right, white 0%, #ffc3bf 100%);
+}
+
+/**
+ * ==============   Font   ================
+ */
+
+// Define a mixin for font-face
+@mixin font-face($font-family, $font-path, $font-weight, $font-style: normal) {
+  @font-face {
+    font-family: $font-family;
+    // src: url('#{$font-path}.eot');
+    src: // url('#{$font-path}.eot?#iefix') format('embedded-opentype'),
+      url('#{$font-path}.woff2') format('woff2'),
+      // url('#{$font-path}.woff') format('woff'),
+      url('#{$font-path}.ttf') format('truetype');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+/**
+ * ==============   Button   ================
+ */
+@mixin btn {
+  @include utilities.flex-center(inline-flex);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s var(--transition-base);
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    text-decoration: none;
+  }
+
+  > i {
+    font-weight: var(--font-weight-regular);
+    vertical-align: sub;
+  }
+}
+
+// Styling the button
+@mixin btn-color($textColor, $textColorHover, $textColorFocus, $bgColor, $bgColorHover, $bgColorFocus) {
+  color: $textColor;
+  background-color: $bgColor;
+
+  &:hover {
+    color: $textColorHover;
+    background-color: $bgColorHover;
+  }
+
+  &:focus,
+  &.active {
+    color: $textColorFocus;
+    background-color: $bgColorFocus;
+  }
+}
+
+// Sizes
+@mixin btn-md {
+  border-radius: var(--ui-radius-md);
+
+  > i {
+    font-size: var(--heading-5);
+  }
+
+  &.btn-just-icon {
+    width: var(--ui-size-md);
+    height: var(--ui-size-md);
+    padding: var(--space-sm);
+  }
+
+  &:not(.btn-just-icon) {
+    padding: 0 var(--space-sm);
+    line-height: var(--ui-size-md);
+  }
+
+  &:not(.icon-right):not(.btn-just-icon) {
+    > i {
+      margin-right: var(--space-xs-2);
+    }
+  }
+
+  &.icon-right {
+    :not(.btn-just-icon) {
+      > i {
+        margin-left: var(--space-xs-2);
+      }
+    }
+  }
+}
+
+@mixin btn-lg {
+  line-height: var(--ui-size-lg);
+  padding: 0 var(--space-md);
+}
+
+/**
+ * ==============   Badge   ================
+ */
+@mixin badge {
+  @include utilities.flex-center(inline-flex);
+  font-size: var(--body-font-size-sm);
+  line-height: var(--body-line-height-sm);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-xs-3) var(--space-xs-2);
+  border-radius: var(--ui-radius-sm);
+
+  > i {
+    font-size: var(--body-font-size-md);
+    font-weight: var(--font-weight-regular);
+    vertical-align: sub;
+    margin-right: var(--space-xs-3);
+  }
+}
+
+// Styling the button
+@mixin badge-color($textColor, $bgColor, $borderColor: null) {
+  color: $textColor;
+  background-color: $bgColor;
+
+  @if $borderColor !=null {
+    border: 1px solid $borderColor;
+  }
+}
+
+/**
+ * ==============   Animation   ================
+ */
+@mixin animate-rotate($start: 0, $end) {
+  @keyframes rotate-#{$end}deg {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(#{$end}deg);
+    }
+  }
+}

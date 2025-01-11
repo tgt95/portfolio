@@ -1,0 +1,142 @@
+@use '../../variables' as *;
+@use '../../utilities/main' as utils;
+@use '../../mixins';
+
+// Contact
+.section-contact {
+  padding-top: var(--space-xl-4);
+  padding-bottom: var(--space-xl-4);
+  position: relative;
+  @include mixins.main-gradient;
+
+  // Animation
+  #hand {
+    transform-origin: 374px 80px; // Set the pivot point of the hand, which is turned around the wrist
+    animation: rotate-8deg 0.8s ease infinite;
+  }
+
+  .shape-wave {
+    &-1,
+    &-2 {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
+
+    &-1 {
+      top: 0;
+    }
+
+    &-2 {
+      bottom: -1px;
+    }
+  }
+
+  .shape-tree {
+    &-1,
+    &-2 {
+      position: absolute;
+      // width: 100%;
+      bottom: 0;
+
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+
+    &-1 {
+      left: 0;
+      width: 500px;
+    }
+
+    &-2 {
+      width: 294px;
+      right: 0;
+    }
+  }
+
+  .content-text {
+    z-index: 999;
+
+    .title {
+      @include utils.text-heading(1);
+      color: var(--fg-brand);
+      margin-bottom: var(--space-lg);
+
+      @media (max-width: 576px) {
+        @include utils.text-heading(2);
+      }
+
+      a {
+        color: var(--fg-brand);
+        text-decoration: underline;
+      }
+    }
+
+    @media (min-width: 576px) {
+      .actions {
+        .btn + .btn {
+          margin-left: var(--space-xs-2);
+        }
+      }
+    }
+
+    @media (max-width: 414px) {
+      .actions {
+        .btn {
+          width: 100%;
+
+          &:first-child {
+            margin-bottom: var(--space-xs-2);
+          }
+        }
+      }
+    }
+  }
+
+  .content-bg {
+    svg {
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 991px) {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .content-bg {
+      svg {
+        width: 100%;
+        height: 460px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-bg {
+      svg {
+        width: 100%;
+        height: 430px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding-top: var(--section-margin-mobile);
+    overflow: hidden;
+
+    .content-text {
+      text-align: center;
+    }
+
+    .content-bg {
+      svg {
+        // width: 800px;
+        // height: 400px;
+        transform: translateY(50px);
+      }
+    }
+  }
+}

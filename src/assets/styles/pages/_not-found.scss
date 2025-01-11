@@ -1,0 +1,26 @@
+@use '../utilities/main' as utils;
+
+// 404: Not found
+.section-404 {
+  // height: 100vh;
+  // overflow: auto;
+
+  .content-wrapper {
+      @include utils.flex-center;
+      text-align: center;
+      padding: calc(var(--space-xl-7) * 2.5) var(--space-md) var(--space-xl-5) var(--space-md);
+      // height: 100%;
+  }
+
+  .title {
+      font-size: 128px;/*  */
+      font-weight: var(--font-weight-bold);
+      background-color: var(--fg-subtlest);
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: #dedede 0px 4px 16px;
+      animation: flicker 4s var(--transition-base) infinite;
+  }
+}

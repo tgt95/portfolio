@@ -1,0 +1,149 @@
+@use '../mixins';
+
+/**
+ * ==============   Animation   ================
+ */
+@keyframes move2Left {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+@keyframes personalityProgressTracker {
+
+    0%,
+    100% {
+        width: 15%;
+    }
+
+    50% {
+        width: 13%;
+    }
+}
+
+@keyframes personalityProgressText {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(3deg);
+    }
+
+    50% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes flash-opacity-02 {
+
+    0%,
+    50%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes flicker {
+
+    0%,
+    19.9%,
+    22%,
+    62.9%,
+    64%,
+    64.9%,
+    70%,
+    100% {
+        opacity: 0.99;
+        transform: skewX(0deg);
+    }
+
+    20%,
+    21.9%,
+    63%,
+    63.9%,
+    65%,
+    69.9% {
+        opacity: 0.4;
+        transform: skewX(-10deg);
+    }
+}
+
+.move2Left {
+    -webkit-animation-name: move2Left;
+    animation-name: move2Left;
+}
+
+@keyframes border-angle-rotate {
+    from {
+        --border-angle: 0deg;
+    }
+
+    to {
+        --border-angle: 360deg;
+    }
+}
+
+@keyframes floating-boy {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(0, 32px);
+    }
+}
+
+@keyframes light-shape {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+@keyframes line-blow-up {
+    0% {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  
+    50% {
+      top: -12%;
+      left: -12%;
+      bottom: -12%;
+      right: -12%;
+    }
+  
+    100% {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+// Animation name: rotate-#{$end}deg
+@include mixins.animate-rotate(0, 2);
+@include mixins.animate-rotate(0, 8);

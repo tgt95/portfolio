@@ -1,0 +1,109 @@
+@use '../utilities/main' as utilities;
+@use '../mixins';
+
+.navigation-tabs {
+  @include utilities.flex-center-y-between;
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    ul {
+      order: 1;
+    }
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      &:not(:last-child) {
+        margin-right: var(--space-lg);
+      }
+      a,
+      button {
+        font-size: var(--body-font-size-lg);
+        font-weight: var(--font-weight-semibold);
+        color: var(--fg-main);
+        border-bottom: 2px solid transparent;
+        transition:
+          border 0.3s ease,
+          color 0.3s ease;
+        text-decoration: none;
+      }
+      &.active,
+      &:hover {
+        a,
+        button {
+          color: var(--fg-brand);
+          border-color: var(--fg-brand);
+          text-decoration: none;
+        }
+      }
+      &:focus-visible {
+        outline: 1px solid var(--border);
+        border-radius: var(--radius-xs-4);
+      }
+    }
+  }
+  .switch-view {
+    border-radius: var(--radius-rounded);
+    background-color: var(--bg-brand-subtle);
+    padding: 0 var(--space-xs-3);
+    a,
+    button {
+      @include mixins.btn;
+      @include mixins.btn-md;
+      color: var(--fg-subtle);
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        right: 0;
+        width: var(--space-xs);
+        height: 2px;
+        transform: translateX(calc(-25% - 3px));
+        background: transparent;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+      }
+      &:first-child {
+        &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          bottom: 0;
+          right: 0;
+          width: 1px;
+          transform: translateY(-50%);
+          height: calc(100% - 28px);
+          background: var(--border);
+          transition: all 0.3s ease;
+          border-radius: 8px;
+        }
+      }
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        &:before {
+          background: var(--fg-brand);
+        }
+        color: var(--fg-brand);
+        // border-bottom: 2px solid $brand;
+      }
+    }
+    @media (max-width: 768px) {
+      order: 0;
+      width: 100%;
+      margin-bottom: var(--space-sm);
+      a,
+      .btn:not(.btn-lg):not(.btn-sm):not(.btn-xs) {
+        &.btn-just-icon {
+          width: 50%;
+        }
+      }
+    }
+  }
+}

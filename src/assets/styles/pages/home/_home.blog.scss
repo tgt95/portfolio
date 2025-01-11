@@ -1,0 +1,111 @@
+@use '../../variables' as *;
+@use '../../utilities/main' as utils;
+@use '../../mixins';
+
+// Blog
+.section-blog {
+  background-image: radial-gradient(var(--bg-section-blog) 1.3px, var(--surface-2) 1px);
+  backdrop-filter: saturate(50%) blur(4px);
+  background-size: 12px 12px;
+  box-shadow: 0px 0px 40px 0.1px rgba(0, 0, 0, 0.04) inset;
+
+  .item {
+    transition: all 0.3s var(--transition-base);
+    margin-bottom: var(--space-lg);
+
+    &:not([class*='col-']) {
+      max-width: 550px;
+    }
+
+    > .title {
+      font-size: var(--body-font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      margin-top: var(--space-xs);
+    }
+
+    > .url-link {
+      [class^='ri-'],
+      [class*=' ri-'] {
+        font-size: var(--heading-5);
+        vertical-align: middle;
+      }
+
+      .icon {
+        margin-right: var(--space-xs-3);
+      }
+
+      a {
+        color: var(--fg-main);
+        text-decoration: underline;
+        transition: all 0.3s var(--transition-base);
+
+        &:hover {
+          color: var(--fg-brand);
+        }
+      }
+    }
+
+    > .item-thumbnail {
+      overflow: hidden;
+      position: relative;
+      border-radius: var(--radius-xs);
+      border: 1px solid var(--border);
+
+      &:before {
+        display: block;
+        content: '';
+        width: 100%;
+        padding-top: calc(3 / 4) * 100%;
+      }
+
+      img {
+        @include utils.position;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.3s var(--transition-base);
+      }
+
+      .overlay-content {
+        @include utils.flex-center;
+        @include utils.position;
+        background-color: rgba($brand-600, 0.8);
+        backdrop-filter: blur(2px);
+        transition:
+          background-color 0.3s var(--transition-base),
+          visibility 0.3s var(--transition-base),
+          opacity 0.3s var(--transition-base);
+        visibility: hidden;
+        opacity: 0;
+        text-decoration: none;
+        border-radius: var(--radius-xs);
+
+        .icon {
+          font-size: var(--display-2);
+          color: var(--fg-inverse-static);
+        }
+
+        .text {
+          font-size: var(--body-font-size-lg);
+          font-weight: var(--font-weight-semibold);
+          color: var(--fg-inverse-static);
+        }
+      }
+    }
+
+    &:hover {
+      .item-thumbnail {
+        box-shadow: var(--shadow-300);
+
+        img {
+          transform: scale(1.015);
+        }
+
+        .overlay-content {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

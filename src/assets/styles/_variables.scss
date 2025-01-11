@@ -1,0 +1,252 @@
+/**
+ * ==============   Customize Bootstrap   ================
+ */
+// $grid-gutter-width: 24px !default;
+
+/**
+  * ==============   Color   ================
+  */
+
+// Neutral
+$neutral-50: #fafafa;
+$neutral-100: #f5f5f5;
+$neutral-200: #e5e5e5;
+$neutral-300: #d4d4d4;
+$neutral-400: #a3a3a3;
+$neutral-500: #737373;
+$neutral-600: #525252;
+$neutral-700: #404040;
+$neutral-800: #262626;
+$neutral-900: #171717;
+$neutral-950: #0a0a0a;
+
+$brand-50: #faecec;
+$brand-100: #f7e5e4;
+$brand-200: #f8d5d3;
+$brand-300: #ffc1bd;
+$brand-400: #fc9692;
+$brand-500: #ef6464;
+$brand-600: #c94b4f;
+$brand-700: #a3343c;
+$brand-800: #7d222b;
+$brand-900: #57171f;
+$brand-950: #390f11;
+
+// Social
+$twitter: #55acee !default;
+$facebook: #4466ae !default;
+$google: #dd4b39 !default;
+$dribbble: #ea4c89 !default;
+$behance: #1769ff !default;
+$linkedin: #0a66c2 !default;
+$pinterest: #cc2127 !default;
+$youtube: #e52d27 !default;
+$tumblr: #35465c !default;
+$github-alt: #333333 !default;
+$reddit: #ff4500 !default;
+$skype: #00aff0 !default;
+
+:root {
+  // Color ------------------------------------------------------------
+  --brand: var(--brand-600);
+  --brand-bg: var(--brand-200);
+
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --neutral-950: #0a0a0a;
+
+  --brand-50: #{$brand-50};
+  --brand-100: #{$brand-100};
+  --brand-200: #{$brand-200};
+  --brand-300: #{$brand-300};
+  --brand-400: #{$brand-400};
+  --brand-500: #{$brand-500};
+  --brand-600: #{$brand-600};
+  --brand-700: #{$brand-700};
+  --brand-800: #{$brand-800};
+  --brand-900: #{$brand-900};
+  --brand-950: #{$brand-950};
+
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+  --green-950: #052e16;
+
+  --orange-50: #fff7ed;
+  --orange-100: #ffedd5;
+  --orange-200: #fed7aa;
+  --orange-300: #fdba74;
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+  --orange-800: #9a3412;
+  --orange-900: #7c2d12;
+  --orange-950: #431407;
+
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-800: #991b1b;
+  --red-900: #7f1d1d;
+  --red-950: #450a0a;
+
+  // Social -----------------------------------------------------------
+  --twitter: #{$twitter};
+  --facebook: #{$facebook};
+  --google: #{$google};
+  --dribbble: #{$dribbble};
+  --behance: #{$behance};
+  --linkedin: #{$linkedin};
+  --pinterest: #{$pinterest};
+  --youtube: #{$youtube};
+  --tumblr: #{$tumblr};
+  --github-alt: #{$github-alt};
+  --reddit: #{$reddit};
+  --skype: #{$skype};
+
+  /**
+  * ==============   Typography   ================
+  */
+
+  // Plus Jakarta Sans, Space Grotesk, Gilroy
+  --font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
+  --font-size-base: var(--body-font-size-md);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Body
+  --body-font-size-sm: 12px;
+  --body-font-size-md: 14px;
+  --body-font-size-lg: 16px;
+
+  --body-line-height-sm: 16px;
+  --body-line-height-md: 20px;
+  --body-line-height-lg: 24px;
+
+  // Display
+  --display-1: 96px;
+  --display-2: 64px;
+  --display-3: 48px;
+
+  --display-font-weight-1: var(--font-weight-bold); // Bold
+  --display-font-weight-2: var(--font-weight-bold);
+  --display-font-weight-3: var(--font-weight-bold);
+
+  --display-line-height-1: 144px;
+  --display-line-height-2: 80px;
+  --display-line-height-3: 72px;
+
+  // Heading
+  --heading-1: 40px;
+  --heading-2: 32px;
+  --heading-3: 28px;
+  --heading-4: 24px;
+  --heading-5: 20px;
+  --heading-6: 18px;
+
+  --heading-font-weight-1: var(--font-weight-bold); // Bold
+  --heading-font-weight-2: var(--font-weight-bold);
+  --heading-font-weight-3: var(--font-weight-bold);
+  --heading-font-weight-4: var(--font-weight-semibold); // Semibold
+  --heading-font-weight-5: var(--font-weight-semibold);
+  --heading-font-weight-6: var(--font-weight-semibold);
+
+  --heading-line-height-1: 60px;
+  --heading-line-height-2: 48px;
+  --heading-line-height-3: 42px;
+  --heading-line-height-4: 36px;
+  --heading-line-height-5: 30px;
+  --heading-line-height-6: 26px;
+
+  // Spacing ---------------------------------------------------------
+  --space-xs-4: 2px;
+  --space-xs-3: 4px;
+  --space-xs-2: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 40px;
+  --space-xl-2: 48px;
+  --space-xl-3: 56px;
+  --space-xl-4: 64px;
+  --space-xl-5: 72px;
+  --space-xl-6: 96px;
+  --space-xl-7: 128px;
+
+  // Spacing ---------------------------------------------------------
+  --radius-xs-4: 2px;
+  --radius-xs-3: 4px;
+  --radius-xs-2: 8px;
+  --radius-xs: 12px;
+  --radius-sm: 16px;
+  --radius-md: 24px;
+  --radius-lg: 32px;
+  --radius-xl: 40px;
+  --radius-rounded: 128px;
+
+  // UI control ------------------------------------------------------
+  --ui-size-xs-2: var(--space-sm);
+  --ui-size-xs: var(--space-md);
+  --ui-size-sm: var(--space-lg);
+  --ui-size-md: var(--space-xl);
+  --ui-size-lg: var(--space-xl-2);
+
+  --ui-radius-sm: var(--radius-xs-2);
+  --ui-radius-md: var(--radius-xs);
+  --ui-radius-lg: var(--radius-sm);
+
+  // Dimension Theme -------------------------------------------------
+  --section-margin-mobile: var(--space-xl-4);
+  --section-margin-web: var(--space-xl-7);
+  --section-title-marign: var(--space-lg);
+
+  --border-angle: 0deg;
+
+  --transition-base: ease-out;
+  // --transition-base: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}

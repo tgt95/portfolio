@@ -1,0 +1,41 @@
+@use '../utilities/main' as utilities;
+
+input {
+  background-color: var(--surface-1);
+  color: var(--fg-main);
+  padding: 0.5315rem var(--space-xs);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xs);
+  outline: none;
+  // height: 100%;
+  // max-height: var(--ui-size-md);
+  &:focus {
+    border-color: var(--border-info);
+  }
+}
+
+.form-group {
+  input {
+    margin-bottom: var(--space-xs-3);
+  }
+  .help-text {
+    color: var(--fg-subtlest);
+    @include utilities.text-body(small);
+    @include utilities.flex-center-y;
+    > .icon {
+      font-size: var(--space-sm);
+      margin-right: var(--space-xs-3);
+    }
+    // &.invalid-feedback{
+    //   color: var(--fg-danger);
+    // }
+  }
+  &.is-error {
+    input {
+      border-color: var(--fg-danger);
+    }
+    .help-text {
+      color: var(--fg-danger);
+    }
+  }
+}
