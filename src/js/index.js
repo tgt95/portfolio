@@ -418,7 +418,7 @@ class Theme {
 			// Time to show loading - 1s
 			document.body.style.overflow = '';
 			loader.classList.add('move2Left', 'animated');
-			loader.addEventListener("animationend", () => loader.remove());
+			// loader.addEventListener("animationend", () => loader.remove());
 		}, timeout);
 	}
 	mobileResponsive() {

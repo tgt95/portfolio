@@ -1,298 +1,146 @@
-extends include/layout.pug
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		meta(name='theme-color', content='#ea5d5d' media="(prefers-color-scheme: light)")
+		meta(name='theme-color', content='#ea5d5d' media="(prefers-color-scheme: dark)")
+		//- embed(src="[MR-Inst]-Surfaces-Good-Day.mp3" autostart="true" loop="true" hidden="true" id="#bg-music")
 
-block meta-title
-	title Trình Gia Tuấn | Senior Product Designer | UX/UI | Portfolio
-
-block custom
-block page-css
-	//- Photoswipte
-	link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/photoswipe.css")
-	link(rel="stylesheet" type="text/css" href="assets/plugins/photoswipe/dist/default-skin/default-skin.css")
-	//- Swiper
-	link(rel="stylesheet" type="text/css" href="assets/plugins/swiper/swiper-bundle.min.css")
-
-block content
-	//- Banner
-	section.section.section-banner
-		.container
-			.row.align-items-center
-				.col-lg-6.content-text
-					//-------- Fetch data from JSON --------
-					.title(id="section-banner-title") Hello, <br> I'm a Product Designer
-					p(id="section-banner-description") I help the business owner balance the business value & the user needs. Create value for the product by Problem Solving, Critical Thinking, Data Metric, and Interaction Design.
-				.col-lg-6.content-bg
-					include svg/human.svg
-	
-	//- Profile
-	section.section.section-profile
-		.container
-			.row.align-items-center
-				.col-md-7.col-lg-6.content-bg
-					include svg/profile-illustration.svg
-				.col-md-5.col-lg-6.content-text
-					.section-heading
-						.section-title Profile
-					.profile-content
-						ul(id="section-profile-content")
-							//-------- Fetch data from JSON --------
-							//- li
-							//- 	.title Full name
-							//- 	span Trình Gia Tuấn
-							//- li
-							//- 	.title Date of Birth
-							//- 	span 11th October, 1995 &nbsp;
-							//- 	i(style="color: var(--fg-main);") (age&nbsp;<script>document.write((new Date().getFullYear()) -1995)</script>)
-							//- li
-							//- 	.title Email
-							//- 	.d-inline-flex.align-items-center
-							//- 		a.mr-1(href="mailto:giatuantrinh@gmail.com" style="text-decoration: underline;") giatuantrinh@gmail.com
-							//- 		i.ri-mail-open-line(style="font-size: 20px; color: var(--fg-main);")
-							//- //- li
-							//- 	.title Phone
-							//- 	a(href="tel:+84703000876") 0703 000 876
-							//- 	.mx-1 -
-							//- 	a(href="skype:live:giatuantrinh?chat")
-							//- 		i.ri-skype-fill(style="font-size: 20px; color: #00aff0;")
-							//- //- li
-							//- //- 	.title Skype
-							//- //- 	.d-inline-flex.align-items-center
-							//- //- 		a.mr-1(href="skype:live:giatuantrinh?chat" style="text-decoration: underline;") live:giatuantrinh
-							//- //- 		i.ri-skype-fill(style="font-size: 20px; color: var(--skype);")
-							//- li
-							//- 	.title Address
-							//- 	span District 11, Ho Chi Minh City
-							//- //- li.divider
-							//- //- li
-							//- //- 	.title Experience
-							//- //- 	span <script>document.write((new Date().getFullYear()-1) -2017)</script>&nbsp; yrs+ &nbsp;
-							//- //- 		i(style="color: var(--neutral-700);") (2017 - Present)
-							//- li.align-items-center
-							//- 	.title Personality (INTP)
-							//- 	.personality-progress
-							//- 		.label
-							//- 			span 
-							//- 				b Introvert 
-							//- 				| (INTP)
-							//- 			span Extrovert
-							//- 		.holder
-							//- 			.tracker 
-							//- 			span.emoji 👀
-
-
-	//- Skills
-	//- section.section.section-skills
-		.container
-			.section-heading
-				.section-title.text-center Skills
-			.row.align-items-center.skills-content
-				-
-					let skills = [
-						{
-							'title': 'UI Design',
-							'icon': 'ui.svg'
-						},
-						{
-							'title': 'UX Design',
-							'icon': 'ux.svg'
-						},
-						{
-							'title': 'Develop',
-							'icon': 'develop.svg'
-						},
-					]
-				each item, index in skills
-					.col-md-4.col-sm-6.item
-						.icon
-							img(src!=`assets/images/icons/${item.icon}`)
-						.title= item.title
+		block meta-title
+		
+		//- Default image when paste social link
+		meta(property="og:image" content="assets/images/og-image.jpg")
+		meta(property="og:title" content="Trình Gia Tuấn | Senior Product Designer | UX/UI | Resume")
+		meta(property="og:image:type" content="image/png")
+		meta(property="og:image:width" content="1024")
+		meta(property="og:image:height" content="1024")
+		//- Favicon
+		link(rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon_io/apple-touch-icon.png")
+		link(rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon_io/favicon-32x32.png")
+		link(rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon_io/favicon-16x16.png")
+		link(rel="manifest" href="assets/images/favicon_io/site.webmanifest")
 		
 
-	//- Work
-	section.section.section-work
-		.container
-			.section-heading
-				.section-title Work
-			.navigation-tabs
-				ul
-					- databaseIndex = 0
-					each obj, name in database
-						-
-							let activeClass = databaseIndex === 0 ? 'active' : ''
-							databaseIndex = databaseIndex+1
-						li(class=activeClass)
-							a(href="#" data-tab-target=`#category-${name}`)= database[`${name}`].fullName
-				.switch-view
-					a.btn-just-icon(href="#" action="list" aria-label="Click to switch to list view")
-						i.ri-function-line
-					a.btn-just-icon(href="#" action="grid" aria-label="Click to switch to gird view").active
-						i.ri-list-check-2
 
+		//- Bootstrap
+		link(rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-grid.min.css")
+		link(rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap-reboot.min.css")
 
-		//- Fetch data from database
-		each obj, name in database
-			.swiper.swiper-container(id=`category-${name}` style="display: none;")
-				.swiper-wrapper.slide-wrapper
-					each item, index in database[`${name}`].data
-						- let isExternal = database[`${name}`].data[index].external
-						if ((typeof(isExternal) === 'boolean') && isExternal)
-							+galleryCard__External(item, index, `category-${name}`)
-						else
-							+galleryCard__Internal(item, index, `category-${name}`)
-				.container
-					.swiper-controls
-						a(href="#").btn.btn-just-icon.btn-default.slide-button-prev.mr-2
-							i.ri-arrow-left-s-line
-						a(href="#").btn.btn-just-icon.btn-default.slide-button-next
-							i.ri-arrow-right-s-line
-						.swiper-pagination
-						//- .swiper-scrollbar
+		//- Animate CSS
+		link(rel="stylesheet" type="text/css" href="assets/plugins/animate.css/animate.min.css")
 
-	section.section.section-blog.has-divider
-		.container
-			.section-heading
-				.section-title Knowledge sharing
-				.section-description What I learned during my work
-		.container
-			.row
-				each item, index in blogDatabase
-					.col-md-4.item 
-						.item-thumbnail
-							img(src=item.image, alt=item.title)
-							a(href=item.externalURL).overlay-content
-								.text-center
-									i.icon.ri-external-link-line
-									.text= item.guideText
-						.title= item.title
+		//- Icons
+		link(rel="stylesheet" type="text/css" href="assets/plugins/remixicon/fonts/remixicon.css")
+		//- link(rel="stylesheet" type="text/css" href="assets/plugins/phosphor/style.css")
+		//- Swiper
+		link(rel="stylesheet" type="text/css" href="assets/plugins/swiper/swiper-bundle.min.css")
 
+		block page-css
+		link(rel="stylesheet" type="text/css" href="assets/css/style.min.css")
 
-	section.section.section-testimonials.has-divider
-		.container
-			.section-heading.text-center
-				.section-title Hear the messages
-				.section-description Things that keep my colleagues love working with me 🫶
-		.container
-			.col-md-8.swiper.swiper-container.px-0
-				.swiper-wrapper.testimonials-content(id="section-testimonials-content")
-					//-------- Fetch data from JSON --------
-					//- -
-					//- 	let testimonials = [
-					//- 		{
-					//- 			'avatar': 'assets/images/testimonials/1630071259712.jpeg',
-					//- 			'message': '"Tuan is an excellent UX/UI Designer. His passion for quality and purpose behind his job shines through every interactive design he has made. He is super dedicated and always aims toward higher levels in his career. His learning mindset is amazing. He earned Rising Star and Most Dedicated awards of the company in 2 consecutive years. It would be valuable to have him in a team."',
-					//- 			'author': 'Long Van',
-					//- 			'role': 'Chief Executive Officer at BigIn',
-					//- 			'linkedin': 'https://www.linkedin.com/in/long-van?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bx7m5Uk12Sp2dlbg618KfhA%3D%3D',
-					//- 		},
-					//- 		{
-					//- 			'avatar': 'assets/images/testimonials/1545035045296.jpeg',
-					//- 			'message': '"Tuan here to speed up very fast your idea from draft to high-end design. But also input more than expected with Lean Experience for end-users"',
-					//- 			'author': 'Danh Nguyen',
-					//- 			'role': 'Head of Design at BigIn',
-					//- 			'linkedin': 'https://www.linkedin.com/in/danhnguyenhoang?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bx7m5Uk12Sp2dlbg618KfhA%3D%3D',
-					//- 		},
-					//- 	]
+		// Global site tag (gtag.js) - Google Analytics
+		script(async src="https://www.googletagmanager.com/gtag/js?id=UA-79549330-2")
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
 
-					//- each item, index in testimonials
-					//- 	.swiper-slide
-					//- 		i.icon-quotes.ri-double-quotes-l(style="color: var(--fg-decor);")
-					//- 		.testimonials-description= item.message
-					//- 		.testimonials-author-content
-					//- 			.testimonials-author-content-left
-					//- 				img.testimonials-author-avatar(src=item.avatar)
-					//- 			.testimonials-author-content-right
-					//- 				.testimonials-author-name= item.author
-					//- 					a(href=item.linkedin)
-					//- 						i.ri-linkedin-box-fill 
-					//- 				.testimonials-author-role= item.role
-				.swiper-pagination
-
-	//- Contact
-	section.section.section-contact
-		include svg/shape-wave-1.svg
-		include svg/shape-wave-2.svg
-		include svg/tree-1.svg
-		include svg/tree-2.svg
-		.container
-			.row.align-items-center
-				.col-md-7.col-lg-6.content-text
-					.title#slow-scroll-demo-button Interested in my work?
-					.actions
-						a(href="product-designer-trinh-gia-tuan.pdf" download).btn.btn-primary 
-							i.ri-download-2-fill
-							|  Download Resume
-						a(href="resume.html").btn.btn-outline
-							i.ri-eye-line
-							|  View Resume
-				.col-md-5.col-lg-6.content-bg
-					include svg/human-2.svg
+			gtag('config', 'UA-79549330-2');
 	
-	//- Photoswipe
-	.pswp(tabindex="-1" role="dialog" aria-hidden="true")
-		.pswp__bg
-		.pswp__scroll-wrap
-			.pswp__container
-				.pswp__item
-				.pswp__item
-				.pswp__item
-			.pswp__ui.pswp__ui--hidden
-				.pswp__top-bar
-					.pswp__counter
-					button.pswp__button.pswp__button--close(title="Close (Esc)")
-					button.pswp__button.pswp__button--share(title="Share")
-					button.pswp__button.pswp__button--fs(title="Toggle fullscreen")
-					button.pswp__button.pswp__button--zoom(title="Zoom in/out")
-					.pswp__preloader
-						.pswp__preloader__icn
-							.pswp__preloader__cut
-								.pswp__preloader__donut
-				.pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
-					.pswp__share-tooltip
-				button.pswp__button.pswp__button--arrow--left(title="Previous (arrow left)")
-				button.pswp__button.pswp__button--arrow--right(title="Next (arrow right)")
-				.pswp__caption
-					.pswp__caption__center
+	style.
+
+	body
+		// Header
+		-
+			let navigationMenu = {
+				title: [
+						//- 'Home', 
+						'Profile',
+						'Work', 
+						'Resume'
+					],
+				url: [
+					//- '.section-banner', 
+					'.section-profile', 
+					'.section-work', 
+					'.section-contact'
+					],
+			}
+			let socialIcon = ['linkedin-box', 'behance', 'dribbble', 'github']
+		header.header.is-sticky
+			.container
+				.navigation-menu
+					ul
+						li.logo
+							a.disable-function(href="index.html")
+								img(src="assets/images/logo.svg", alt="TGT Logo")
+						//- each item, index in navigationMenu.title
+							li
+								a(href=navigationMenu.url[index] data-offset-top="88")= navigationMenu.title[index]
+					ul.social-list
+						- let socialLink = ['https://www.linkedin.com/in/tgt95', 'https://www.behance.net/tgt95', 'https://dribbble.com/tgt95', 'https://github.com/tgt95']
+						each icon, index in socialIcon
+							li
+								a(href=socialLink[index] target="_blank").btn.btn-just-icon.btn-outline
+									i(class=`ri-${icon}-fill`)
+						li.theme-switch-action
+							label.theme-switch
+								input.theme-switch__checkbox(type='checkbox' checked)#mode-toggle
+								.theme-switch__container
+									.theme-switch__clouds
+									.theme-switch__stars-container
+										include svg/theme-toggle.svg
+									.theme-switch__circle-container
+										.theme-switch__sun-moon-container
+											.theme-switch__moon
+												.theme-switch__spot
+												.theme-switch__spot
+												.theme-switch__spot
+		
+		//- Profile
+		section.section.section-404
+			.container.content-wrapper
+				.content-text
+					.text-display-1.title(style='text-transform: uppercase') switched up!
+					p.m-b-8
+						| Tuan has switched to another site
+						br
+						b →  
+						//- | -→  
+						a.text-underline(href='https://idodesign.vercel.app/' style='text-decoration: underline; font-weight: var(--font-weight-bold); color: var(--fg-main);') https://idodesign.vercel.app/
+						b  ←
+						//- |  ←-
+						//- br
+						//- |  is wating for you
+					a.btn.btn-primary(href='https://idodesign.vercel.app/' data-discover='true') View now
+
+		// Footer
+		include include/section/footer.pug
 
 
-block page-script
-	script(src="assets/plugins/photoswipe/dist/photoswipe.min.js")
-	script(src="assets/plugins/photoswipe/dist/photoswipe-ui-default.min.js")
-	script(src="assets/plugins/swiper/swiper-bundle.min.js")
+// Javascript
+script(src="assets/js/helper.js")
+script(src="assets/js/index.js")
 
-block script
-	//-  Server side
-	//-  Get Data Image (Not rendered)
-	-
-		for(var type in database) {
-			database[type].data.forEach((item, i)=> {
-				//- Add new Property for JSON array
-				item['w'] = getImageSize(item.src)[0];
-				item['h'] = getImageSize(item.src)[1];
-				//- Serve for identify which ID to open PSWP overlay
-				item['pid'] = `${type}-${i}`;
-			})
-		}
+script.
 	//- Client side
-	script.
-		let theme = new Theme(),
-			data = !{JSON.stringify(database)};
+	let theme = new Theme();
 
+	if(detectMobile.isMobile) {
+		document.body.classList.add('is-mobile');
 
-		// Window Onload
-		document.addEventListener('DOMContentLoaded', e => {
-			theme.init();
-			theme.appearanceOnTime();
-			theme.photoswipeInit('.section-work', '.swiper-container', '.item-thumbnail a.overlay-content:not(.external)', !{JSON.stringify(database)});
+		// Fix bug for use Navigation bottom
+		document.body.style.paddingBottom = _getHeight(document.querySelector('.header')) + 'px';
+		document.body.style.marginTop = 'var(--space-xl)';
+	}
 
-			// Waiting for loading end (Fix bug when have scrollbar appear)
-			setTimeout(()=> {
-				theme.workSwiper();
-				theme.testimonialSwiper();
-			}, 1100);
-		});
+	// Window Onload
+	document.addEventListener('DOMContentLoaded', e => {
+		theme.loading();
+		theme.appearanceOnTime();
+	});
 
-		// Window Resize
-		window.addEventListener('resize', e => {
-			!detectMobile.isMobile ? theme.workSwiper() : 0;
-		}, true);
-
-		//- setInterval(()=> console.log(new Date().getHours() + ' ' + new Date().getMinutes() + ' ' + new Date().getSeconds()), 1000);

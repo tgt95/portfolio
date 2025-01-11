@@ -109,6 +109,31 @@ a {
 	}
 }
 
+@keyframes flicker {
+
+    0%,
+    19.9%,
+    22%,
+    62.9%,
+    64%,
+    64.9%,
+    70%,
+    100% {
+        opacity: 0.99;
+        transform: skewX(0deg);
+    }
+
+    20%,
+    21.9%,
+    63%,
+    63.9%,
+    65%,
+    69.9% {
+        opacity: 0.4;
+        transform: skewX(-10deg);
+    }
+}
+
 .move2Left {
 	-webkit-animation-name: move2Left;
 	animation-name: move2Left;

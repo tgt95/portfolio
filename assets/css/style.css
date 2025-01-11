@@ -805,6 +805,30 @@ a:disabled, a.disabled {
             transform: rotate(0deg);
   }
 }
+@-webkit-keyframes flicker {
+  0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% {
+    opacity: 0.99;
+    -webkit-transform: skewX(0deg);
+            transform: skewX(0deg);
+  }
+  20%, 21.9%, 63%, 63.9%, 65%, 69.9% {
+    opacity: 0.4;
+    -webkit-transform: skewX(-10deg);
+            transform: skewX(-10deg);
+  }
+}
+@keyframes flicker {
+  0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% {
+    opacity: 0.99;
+    -webkit-transform: skewX(0deg);
+            transform: skewX(0deg);
+  }
+  20%, 21.9%, 63%, 63.9%, 65%, 69.9% {
+    opacity: 0.4;
+    -webkit-transform: skewX(-10deg);
+            transform: skewX(-10deg);
+  }
+}
 .move2Left {
   -webkit-animation-name: move2Left;
   animation-name: move2Left;
@@ -2011,7 +2035,6 @@ a:disabled, a.disabled {
   opacity: 0.5;
 }
 .section-work .item {
-  width: 100%;
   -webkit-transition: all 0.3s var(--transition-base);
   transition: all 0.3s var(--transition-base);
 }
@@ -2777,6 +2800,35 @@ a:disabled, a.disabled {
 }
 .section-personal-info-body .profile-content ul li:not(:last-child) {
   margin-bottom: var(--space-sm);
+}
+
+.section-404 .content-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding: calc(var(--space-xl-7) * 2.5) var(--space-md) var(--space-xl-5) var(--space-md);
+}
+.section-404 .title {
+  font-size: 128px;
+  font-weight: var(--font-weight-bold);
+  background-color: var(--fg-subtlest);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: #dedede 0px 4px 16px;
+  -webkit-animation: flicker 4s var(--transition-base) infinite;
+          animation: flicker 4s var(--transition-base) infinite;
 }
 
 .header {
