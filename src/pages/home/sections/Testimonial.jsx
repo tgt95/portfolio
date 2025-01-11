@@ -15,7 +15,8 @@ export function Testimonial({ data }) {
           <div className='testimonials-author-content-left'>
             <img
               className='testimonials-author-avatar'
-              src={baseURL + item.avatar}
+              src={item.avatar}
+              // src={baseURL + item.avatar}
               alt={item.author}
             />
           </div>

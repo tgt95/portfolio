@@ -18,8 +18,10 @@ export function GalleryContainer({ index, projects, viewMode }) {
             key={index}
             id={index}
             title={item.title}
-            imgLargeURL={baseURL + item.imgLargeURL}
-            imgURL={baseURL + item.imgURL}
+            imgLargeURL={item.imgLargeURL}
+            imgURL={item.imgURL}
+            // imgLargeURL={baseURL + item.imgLargeURL}
+            // imgURL={baseURL + item.imgURL}
             guideText={item.guideText}
             featured={item.featured}
             website={item.website}
@@ -40,8 +42,8 @@ export function GalleryContainer({ index, projects, viewMode }) {
             <GalleryItem
               key={index}
               title={item.title}
-              imgLargeURL={baseURL + item.imgLargeURL}
-              imgURL={baseURL + item.imgURL}
+              imgLargeURL={item.imgLargeURL}
+              imgURL={item.imgURL}
               guideText={item.guideText}
               featured={item.featured}
               website={item.website}

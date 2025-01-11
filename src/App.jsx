@@ -9,9 +9,6 @@ import NotFound from './pages/404'
 import { mobileResponsive, baseURL } from './ultils/baseconfig'
 import { fetchData } from './ultils/api'
 
-// import 'bootstrap/dist/css/bootstrap-reboot.css'
-// import 'bootstrap/dist/css/bootstrap-grid.css'
-
 import './assets/styles/style.scss'
 
 // const baseUrl = process.env.REACT_APP_BASE_URL || '/'
@@ -31,7 +28,8 @@ const App = () => {
   return (
     <div className='App'>
       <Loader />
-      <BrowserRouter basename={baseURL}>
+      {/* basename={baseURL} */}
+      <HashRouter>
         <ScrollToTop />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -46,7 +44,7 @@ const App = () => {
           />
           <Route path='*' element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   )
 }

@@ -78,13 +78,15 @@ export function Work({ data }) {
               <Button
                 className={`btn-just-icon ${view === 'grid' ? 'active' : ''}`}
                 action='grid'
+                aria-label='Grid view'
                 onClick={handleClickSwitchingView}
-              >
+                >
                 <i className='ri-function-line'></i>
               </Button>
               <Button
                 className={`btn-just-icon ${view === 'list' ? 'active' : ''}`}
                 action='list'
+                aria-label='List view'
                 onClick={handleClickSwitchingView}
               >
                 <i className='ri-list-check-2'></i>

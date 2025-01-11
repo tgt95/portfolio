@@ -78,7 +78,6 @@ export function Header() {
   const handleSmoothScroll = (e, targetHref) => {
     e.preventDefault()
     const targetElement = document.querySelector(targetHref)
-    console.log(targetElement)
     const offsetPosition = targetElement.offsetTop - headerHeight - 24 // Subtract header height for correct alignment
     window.scrollTo({
       top: offsetPosition,
@@ -102,7 +101,8 @@ export function Header() {
                     onClick={(e) => handleSmoothScroll(e, item.href)} // Use dynamic scroll function
                   >
                     {item.name === 'Home' ? (
-                      <img src={baseURL + 'assets/images/logo.svg'} alt="Gia Tuan's Logo" />
+                      <img src='assets/images/logo.svg' alt="Gia Tuan's Logo" />
+                      // <img src={baseURL + 'assets/images/logo.svg'} alt="Gia Tuan's Logo" />
                     ) : (
                       item.name
                     )}
@@ -133,7 +133,8 @@ export function Header() {
                     whileTap={{ scale: 0.95 }}
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
-                    src={baseURL + 'assets/images/logo.svg'}
+                    src='assets/images/logo.svg'
+                    // src={baseURL + 'assets/images/logo.svg'}
                     alt="Gia Tuan's Logo"
                   />
                 </Link>
